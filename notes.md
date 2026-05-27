@@ -1,0 +1,23 @@
+Portfolio reference:
+- Live Framer site: https://ignaciovergara.me/
+- Project link: https://ignaciovergara.me/projects/portal
+- About link: https://ignaciovergara.me/about
+- Goal: recreate the site in Next.js, not export or depend on Framer.
+- Priority: visual and interaction parity, clean code, responsive behavior, editable content, reusable components and styles.
+- Pages to recreate:
+  - Home
+  - About
+  - Work / Projects
+  - Individual project pages
+- Important interactions:
+  - Ticker / looping carousel
+  - Hover states
+  - Page transitions, if any
+  - Responsive navigation
+  - Smooth scrolling, if any
+- Fonts:
+  - Inter
+- Main breakpoints:
+  - Mobile: 390px
+  - Tablet: 768px
+  - Desktop: 1440px

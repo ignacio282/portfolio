@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+
+# next
+.next/
+out/
+
+# production
+build/
+
+# local env
+.env*
+
+# logs
+*.log
+.codex-dev*.log
+
+# scratch
+tmp/
+
+# typescript
+*.tsbuildinfo
+
+# os/editor
+.DS_Store
+Thumbs.db
