@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactElement } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Loader2, Send, Sparkles, X } from "lucide-react";
 import { motionDistances, motionPresets } from "@/components/motion/presets";
@@ -254,7 +254,7 @@ export function CaseStudyCompanion({
                   <h2 id="case-study-companion-title" className="type-companion-title mt-2">
                     Case Study Companion
                   </h2>
-                  <p className="type-body-small mt-2 text-muted">{projectTitle}</p>
+                  <p className="companion-project-tag mt-3">{projectTitle}</p>
                 </div>
                 <button
                   ref={closeRef}
@@ -281,7 +281,12 @@ export function CaseStudyCompanion({
                   />
                 ) : (
                   messages.map((message) => (
-                    <MessageBubble key={message.id} message={message} streaming={status === "streaming" && message.role === "assistant" && !message.content} />
+                    <MessageBubble
+                      key={message.id}
+                      message={message}
+                      streaming={status === "streaming" && message.role === "assistant" && !message.content}
+                      onNavigate={() => setOpen(false)}
+                    />
                   ))
                 )}
                 {error ? <p className="type-body-small text-muted">{error}</p> : null}
@@ -342,18 +347,21 @@ function CompanionEmptyState({
           Ask about role, impact, decisions, tradeoffs, or what a hiring manager should notice.
         </p>
       </article>
-      <div className="companion-prompts" aria-label="Suggested questions">
-        {companionPrompts.map((prompt) => (
-          <button
-            key={prompt.id}
-            type="button"
-            className="companion-prompt focus-ring"
-            disabled={disabled}
-            onClick={() => onPrompt(prompt)}
-          >
-            {prompt.label}
-          </button>
-        ))}
+      <div className="companion-prompts-section">
+        <p className="type-companion-label companion-prompts-label">Try asking</p>
+        <div className="companion-prompts" aria-label="Suggested questions">
+          {companionPrompts.map((prompt) => (
+            <button
+              key={prompt.id}
+              type="button"
+              className="companion-prompt focus-ring"
+              disabled={disabled}
+              onClick={() => onPrompt(prompt)}
+            >
+              {prompt.label}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -361,29 +369,71 @@ function CompanionEmptyState({
 
 function MessageBubble({
   message,
-  streaming
+  streaming,
+  onNavigate
 }: {
   message: DisplayMessage;
   streaming: boolean;
+  onNavigate: () => void;
 }) {
+  const isAssistant = message.role === "assistant";
+
   return (
-    <article className={cn("companion-message", message.role === "user" ? "is-user" : "is-assistant")}>
-      {message.fallback ? <p className="type-companion-label">Fallback Answer</p> : null}
-      <p className="type-companion-answer">
-        {message.content}
-        {streaming ? <span className="companion-caret" aria-hidden="true" /> : null}
-      </p>
-      {message.sources?.length ? (
-        <div className="companion-sources" aria-label="Relevant sections">
-          {message.sources.map((source) => (
-            <a key={`${source.label}-${source.href}`} className="companion-source focus-ring" href={source.href}>
-              {source.label}
-            </a>
-          ))}
+    <article className={cn("companion-message", isAssistant ? "is-assistant" : "is-user")}>
+      {isAssistant ? (
+        <div className="companion-message-meta">
+          <span className="companion-avatar" aria-hidden="true">
+            <Sparkles size={12} />
+          </span>
+          <span className="type-companion-label">Companion</span>
+          {message.fallback ? <span className="companion-fallback-badge">Guided answer</span> : null}
         </div>
       ) : null}
+      <p className="type-companion-answer">
+        {renderMessageContent(message.content, message.sources, onNavigate)}
+        {streaming ? <span className="companion-caret" aria-hidden="true" /> : null}
+      </p>
     </article>
   );
+}
+
+const inlineLinkPattern = /\[\[([^[\]|]+)\|([^[\]]+)\]\]/g;
+
+function renderMessageContent(content: string, sources: CompanionSource[] | undefined, onNavigate: () => void) {
+  if (!sources?.length || !content.includes("[[")) {
+    return content;
+  }
+
+  const parts: Array<string | ReactElement> = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = inlineLinkPattern.exec(content)) !== null) {
+    const phrase = match[1];
+    const label = match[2];
+    const source = sources.find((item) => item.label === label);
+
+    if (match.index > lastIndex) {
+      parts.push(content.slice(lastIndex, match.index));
+    }
+
+    if (source) {
+      const anchor = source.href.includes("#") ? source.href.slice(source.href.indexOf("#")) : source.href;
+      parts.push(
+        <a key={`${label}-${match.index}`} className="companion-inline-link focus-ring" href={anchor} onClick={onNavigate}>
+          {phrase}
+        </a>
+      );
+    } else {
+      parts.push(phrase);
+    }
+
+    lastIndex = match.index + match[0].length;
+  }
+
+  parts.push(content.slice(lastIndex));
+
+  return parts;
 }
 
 async function readCompanionStream(
