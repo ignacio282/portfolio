@@ -72,7 +72,7 @@ export async function POST(request: Request) {
           const client = new Anthropic({ apiKey });
           const stream = client.messages.stream({
             model,
-            system: buildInstructions(context.sources.length > 0),
+            system: buildInstructions(context.sources),
             messages: [
               {
                 role: "user",
@@ -123,7 +123,9 @@ export async function POST(request: Request) {
   );
 }
 
-function buildInstructions(hasSources: boolean) {
+function buildInstructions(sources: CompanionSource[]) {
+  const sourceLabels = sources.map((source) => source.label).join(", ");
+
   return [
     "You are Ignacio Vergara's AI case study companion for a portfolio website.",
     "Answer only from the portfolio context provided in the request.",
@@ -131,8 +133,14 @@ function buildInstructions(hasSources: boolean) {
     "Do not invent metrics, employers, technologies, outcomes, or responsibilities.",
     "If the answer is not supported by the portfolio context, say that it is not shown in the portfolio.",
     "Refer to Ignacio in third person.",
-    "Keep answers concise, useful, and specific. Target 120-180 words.",
-    hasSources ? "End with one short sentence that starts with 'Relevant sections:' and names the relevant source labels." : ""
+    "Write for a hiring manager skimming on a tight schedule.",
+    "Start with one short sentence (max ~20 words) that directly answers the question - the headline takeaway.",
+    "Then add a blank line, followed by 2-3 short sentences of supporting detail, one per line. Each line should stand on its own as a scannable point.",
+    "Keep the whole answer under 110 words total.",
+    "Write in plain prose with no markdown formatting (no asterisks, bullet points, or headers).",
+    sources.length > 0
+      ? `Required: pick a short phrase (2-5 words) already in your answer that points to one of these portfolio sections: ${sourceLabels}. Mark that phrase, in place, using this exact format: [[the phrase|Section Label]] - e.g. [[the reusable component system|Outcomes]]. This double-bracket markup is not markdown and is the one exception to the no-formatting rule - your response is incomplete without it. Use only the exact section labels listed after the pipe, and keep the phrase itself natural prose that fits the sentence.`
+      : ""
   ]
     .filter(Boolean)
     .join("\n");
