@@ -10,10 +10,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "latest",
     "lucide-react": "latest",
     "motion": "latest",
     "next": "latest",
-    "openai": "^6.39.0",
     "react": "latest",
     "react-dom": "latest"
   },

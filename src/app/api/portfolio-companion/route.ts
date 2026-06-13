@@ -1,4 +1,4 @@
-import OpenAI from "openai";
+import Anthropic from "@anthropic-ai/sdk";
 import {
   buildCompanionContext,
   getFallbackAnswer
@@ -12,7 +12,7 @@ import {
 
 const encoder = new TextEncoder();
 const maxQuestionLength = 500;
-const defaultModel = "gpt-5.4-mini";
+const defaultModel = "claude-haiku-4-5";
 
 type CompanionPayload = {
   slug?: unknown;
@@ -47,8 +47,8 @@ export async function POST(request: Request) {
     return createErrorStream("This case study is not available to the companion.");
   }
 
-  const apiKey = process.env.OPENAI_API_KEY;
-  const model = process.env.OPENAI_MODEL || defaultModel;
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const model = process.env.ANTHROPIC_MODEL || defaultModel;
 
   return new Response(
     new ReadableStream({
@@ -69,22 +69,29 @@ export async function POST(request: Request) {
             })
           );
 
-          const client = new OpenAI({ apiKey });
-          const stream = await client.responses.create({
+          const client = new Anthropic({ apiKey });
+          const stream = client.messages.stream({
             model,
-            instructions: buildInstructions(context.sources.length > 0),
-            input: [
-              context.context,
-              `Visitor question: ${context.question}`
-            ].join("\n\n"),
-            stream: true,
-            max_output_tokens: 520
+            system: buildInstructions(context.sources.length > 0),
+            messages: [
+              {
+                role: "user",
+                content: [
+                  context.context,
+                  `Visitor question: ${context.question}`
+                ].join("\n\n")
+              }
+            ],
+            max_tokens: 520
           });
 
           for await (const event of stream) {
-            if (event.type === "response.output_text.delta" && event.delta) {
+            if (
+              event.type === "content_block_delta" &&
+              event.delta.type === "text_delta"
+            ) {
               hasLiveDelta = true;
-              controller.enqueue(encodeEvent("delta", { text: event.delta }));
+              controller.enqueue(encodeEvent("delta", { text: event.delta.text }));
             }
           }
 
