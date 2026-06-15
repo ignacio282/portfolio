@@ -26,7 +26,8 @@ export function ProjectCardList() {
                 href={`/projects/${project.slug}`}
                 className="surface-link-card project-card group grid gap-5 p-4 md:grid-cols-[420px_1fr] md:items-center md:gap-6 md:p-5"
                 style={{
-                  "--project-hover-tint": project.hoverTint ?? "#f4f0ea"
+                  "--project-hover-tint": project.hoverTint ?? "#f4f0ea",
+                  "--project-accent": project.accent
                 } as React.CSSProperties}
               >
                 <ProjectCardMedia project={project} priority={index === 0} />

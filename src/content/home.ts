@@ -35,9 +35,8 @@ export const homeContent = {
   projects,
   builderLab: {
     label: "Builder Lab",
-    title: "Small products, tools, and experiments I design and ship.",
     body:
-      "A growing set of practical products and prototypes built with AI-assisted programming, from dashboards and games to hardware experiments.",
+      "Small products, tools, and experiments I design and ship: a growing set of practical products and prototypes built with AI-assisted programming, from dashboards and games to hardware experiments.",
     projects: [
       {
         slug: "meal-prep-assistant",
@@ -46,6 +45,8 @@ export const homeContent = {
           "A recipe dashboard for saving meals, planning weekly rotations, and turning scattered cooking ideas into a reusable system.",
         tags: ["Web Dev"],
         accent: "#d36f42",
+        image: "/images/builder/meal-prep-assistant/card.png",
+        imageAlt: "Meal Prep Assistant recipe dashboard",
         modal: {
           description:
             "A personal meal-planning product that keeps recipes, meal rotations, and weekly planning in one dashboard so cooking decisions do not restart from zero every week.",
@@ -56,19 +57,27 @@ export const homeContent = {
           ],
           slides: [
             {
-              title: "Recipe Library",
-              caption: "Saved meals grouped by type, effort, and rotation fit.",
-              variant: "dashboard"
+              title: "Smart Recipe Intake",
+              caption:
+                "Paste a recipe or a rough note and the assistant, connected to OpenAI's API, pulls out the ingredients, fills in the recipe form, and asks a follow-up if something's unclear.",
+              variant: "dashboard",
+              src: "/images/builder/meal-prep-assistant/slide-1.png",
+              alt: "Smart recipe intake form prefilled from a pasted recipe"
             },
             {
               title: "Weekly Rotation",
               caption: "A planning surface for choosing meals across the week.",
-              variant: "planner"
+              variant: "planner",
+              src: "/images/builder/meal-prep-assistant/slide-2.png",
+              alt: "Weekly meal rotation planner"
             },
             {
-              title: "Reusable System",
-              caption: "A small product built around repeat use, not one-time entry.",
-              variant: "workflow"
+              title: "Recipe Randomizer",
+              caption:
+                "When nothing sounds good, the app pulls three options at random from the saved recipe library.",
+              variant: "workflow",
+              src: "/images/builder/meal-prep-assistant/slide-3.png",
+              alt: "Recipe randomizer suggesting three meals from the library"
             }
           ]
         }
@@ -114,29 +123,37 @@ export const homeContent = {
           "A playable arcade experiment exploring enemy waves, upgrades, feedback loops, and the pressure curve behind survival games.",
         tags: ["Game Dev"],
         accent: "#7d5bb8",
+        image: "/images/builder/survivor-style-game/card.png",
+        imageAlt: "Survivor-style arcade game screenshot",
         modal: {
           description:
             "A small arcade game inspired by survival wave mechanics, built to explore player feedback, upgrade loops, pacing, and the feeling of pressure over time.",
           relevance: [
             "Shows interaction design beyond conventional product screens.",
             "Highlights systems thinking through balancing, progression, and feedback loops.",
-            "Adds range to the portfolio by showing I can ship playful, real-time experiences."
+            "Extends my AI-assisted programming workflow into game logic and a real engine, not just web interfaces."
           ],
           slides: [
             {
-              title: "Wave Pressure",
-              caption: "Enemies, movement, and spacing tuned around moment-to-moment readability.",
-              variant: "game"
+              title: "In-Game View",
+              caption: "Polygon-based characters and enemies, with score, time survived, and HP tracked on screen.",
+              variant: "game",
+              src: "/images/builder/survivor-style-game/slide-1.png",
+              alt: "Gameplay screenshot showing polygon characters, score, time, and HP"
             },
             {
-              title: "Upgrade Loops",
-              caption: "Small decisions that compound into a stronger run.",
-              variant: "workflow"
+              title: "Enemy Types",
+              caption: "A look at the different enemy types and how they read at a glance during a run.",
+              variant: "workflow",
+              src: "/images/builder/survivor-style-game/slide-2.png",
+              alt: "The different enemy types in the game"
             },
             {
-              title: "Readable Chaos",
-              caption: "Feedback and pacing designed so action stays understandable.",
-              variant: "game"
+              title: "Built in Godot",
+              caption: "The project in the Godot editor, where the scenes, scripts, and game logic come together.",
+              variant: "game",
+              src: "/images/builder/survivor-style-game/slide-3.png",
+              alt: "The game open in the Godot editor"
             }
           ]
         }
@@ -150,27 +167,33 @@ export const homeContent = {
         accent: "#5c6f82",
         modal: {
           description:
-            "A physical productivity prototype built with Arduino, an LCD screen, and an RFID reader, exploring how simple hardware interactions can trigger work modes and reminders.",
+            "A physical productivity prototype built with Arduino, an LCD screen, and an RFID reader. The routines it triggers matter less than what it shows: that the same AI-assisted coding workflow I use for web products extends to physical computing.",
           relevance: [
             "Shows comfort prototyping outside the screen and working with real-world constraints.",
             "Connects product thinking to tangible interaction design and low-fidelity hardware.",
-            "Makes the Builder Lab feel broader than web apps while still staying tied to productivity."
+            "Demonstrates that my AI-assisted workflow isn't limited to one stack or medium."
           ],
           slides: [
             {
-              title: "RFID Trigger",
-              caption: "Cards become physical shortcuts for focus modes or routines.",
-              variant: "hardware"
+              title: "Arduino Code",
+              caption: "The Arduino sketch that reads RFID tags and drives the LCD display.",
+              variant: "hardware",
+              src: "/images/builder/rfid-productivity-device/slide-1.png",
+              alt: "Arduino IDE showing the device's code"
             },
             {
-              title: "LCD Feedback",
-              caption: "A tiny display gives immediate state and reminder feedback.",
-              variant: "workflow"
+              title: "Tag Reader",
+              caption: "Tapping a tag on the reader shows its routine on the small LCD screen.",
+              variant: "workflow",
+              src: "/images/builder/rfid-productivity-device/slide-2.jpg",
+              alt: "The device with an RFID tag held over the reader and the LCD lit up"
             },
             {
-              title: "Desk Prototype",
-              caption: "A rough but tangible experiment in ambient productivity tools.",
-              variant: "hardware"
+              title: "Wiring",
+              caption: "The physical connections between the Arduino, the LCD, the RFID reader, and the rest of the components.",
+              variant: "hardware",
+              src: "/images/builder/rfid-productivity-device/slide-3.jpg",
+              alt: "Wiring between the Arduino board and its components"
             }
           ]
         }

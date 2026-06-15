@@ -4,17 +4,17 @@ import type { CSSProperties } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
-  CalendarDays,
   ChevronLeft,
   ChevronRight,
+  Code2,
   Cpu,
   Gamepad2,
   Layers3,
-  UtensilsCrossed,
   X
 } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
+import { MediaFrame } from "@/components/visual/media-frame";
 import { PageSection } from "@/components/visual/page-section";
 import { SectionLabel } from "@/components/visual/section-label";
 import { homeContent } from "@/content/home";
@@ -25,32 +25,20 @@ type BuilderAccentStyle = CSSProperties & {
   "--builder-stack-index"?: number;
 };
 
-function ProjectGlyph({ slug, size = 22 }: { slug: string; size?: number }) {
-  if (slug === "meal-prep-assistant") {
-    return <UtensilsCrossed size={size} aria-hidden={true} />;
+function CategoryGlyph({ category, size = 14 }: { category: string; size?: number }) {
+  if (category === "Web Dev") {
+    return <Code2 size={size} aria-hidden={true} />;
   }
 
-  if (slug === "personal-operating-dashboard") {
-    return <CalendarDays size={size} aria-hidden={true} />;
-  }
-
-  if (slug === "survivor-style-game") {
+  if (category === "Game Dev") {
     return <Gamepad2 size={size} aria-hidden={true} />;
   }
 
-  if (slug === "rfid-productivity-device") {
+  if (category === "Physical Computing") {
     return <Cpu size={size} aria-hidden={true} />;
   }
 
   return <Layers3 size={size} aria-hidden={true} />;
-}
-
-function ProjectIcon({ project, size = 22 }: { project: BuilderLabProject; size?: number }) {
-  return (
-    <span className="builder-card-icon" aria-hidden="true">
-      <ProjectGlyph slug={project.slug} size={size} />
-    </span>
-  );
 }
 
 function ProjectTags({ project }: { project: BuilderLabProject }) {
@@ -58,6 +46,7 @@ function ProjectTags({ project }: { project: BuilderLabProject }) {
     <span className="builder-tag-row">
       {project.tags.map((tag, index) => (
         <span className="builder-tag" key={tag}>
+          {index === 0 ? <CategoryGlyph category={tag} /> : null}
           {tag}
           {index < project.tags.length - 1 ? <span className="builder-tag-fallback"> / </span> : null}
         </span>
@@ -69,18 +58,15 @@ function ProjectTags({ project }: { project: BuilderLabProject }) {
 function BuilderProjectCard({
   project,
   featured = false,
-  wide = false,
   onOpen
 }: {
   project: BuilderLabProject;
   featured?: boolean;
-  wide?: boolean;
   onOpen: (project: BuilderLabProject) => void;
 }) {
   const className = [
     "builder-card surface-card",
-    featured ? "builder-card-feature" : "",
-    wide ? "builder-card-wide" : ""
+    featured ? "builder-card-feature" : ""
   ].filter(Boolean).join(" ");
   const style: BuilderAccentStyle = { "--builder-accent": project.accent };
 
@@ -91,60 +77,12 @@ function BuilderProjectCard({
       style={style}
       type="button"
     >
-      <span className="builder-card-topline">
-        <ProjectIcon project={project} />
-      </span>
       <span className="builder-card-copy">
         <ProjectTags project={project} />
         <span className="type-small-title builder-card-title">{project.title}</span>
         <span className="type-body-small builder-card-summary">{project.summary}</span>
       </span>
-      {featured ? <MealPrepPreview /> : null}
-      {wide ? <HardwarePreview /> : null}
     </button>
-  );
-}
-
-function MealPrepPreview() {
-  return (
-    <span className="builder-meal-preview" aria-hidden="true">
-      <span className="builder-meal-sidebar">
-        <span />
-        <span />
-        <span />
-      </span>
-      <span className="builder-meal-panel">
-        <span className="builder-meal-toolbar">
-          <span />
-          <span />
-        </span>
-        <span className="builder-meal-calendar">
-          {["Mon", "Tue", "Wed", "Thu"].map((day, index) => (
-            <span className="builder-meal-day" key={day}>
-              <strong>{day}</strong>
-              <span data-active={index === 1 || index === 3} />
-              <span />
-            </span>
-          ))}
-        </span>
-      </span>
-    </span>
-  );
-}
-
-function HardwarePreview() {
-  return (
-    <span className="builder-hardware-preview" aria-hidden="true">
-      <span className="builder-hardware-board">
-        <span className="builder-hardware-screen">
-          <span>FOCUS</span>
-          <span>25:00</span>
-        </span>
-        <span className="builder-hardware-reader" />
-        <span className="builder-hardware-chip" />
-      </span>
-      <span className="builder-hardware-card" />
-    </span>
   );
 }
 
@@ -156,6 +94,30 @@ function ProductVisual({
   slide: BuilderLabProject["modal"]["slides"][number];
 }) {
   const style: BuilderAccentStyle = { "--builder-accent": project.accent };
+
+  if (slide.src) {
+    return (
+      <motion.div
+        animate={{ opacity: 1, x: 0 }}
+        className="builder-modal-visual"
+        data-variant={slide.variant}
+        exit={{ opacity: 0, x: -12 }}
+        initial={{ opacity: 0, x: 12 }}
+        key={slide.title}
+        style={style}
+        transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <MediaFrame
+          alt={slide.alt ?? slide.title}
+          className="absolute inset-0"
+          fit="contain"
+          radius="none"
+          sizes="(max-width: 1024px) 92vw, 600px"
+          src={slide.src}
+        />
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
@@ -325,7 +287,6 @@ function BuilderProjectModal({
           </div>
 
           <div className="builder-modal-details">
-            <ProjectTags project={project} />
             <p className="type-body builder-modal-description">{project.modal.description}</p>
             <div>
               <h3 className="type-small-title">Why It Belongs Here</h3>
@@ -358,28 +319,19 @@ export function BuilderLabSection() {
     [builderLab.projects]
   );
   const mealPrep = projectsBySlug.get("meal-prep-assistant") ?? builderLab.projects[0];
-  const dashboard = projectsBySlug.get("personal-operating-dashboard") ?? builderLab.projects[1];
-  const game = projectsBySlug.get("survivor-style-game") ?? builderLab.projects[2];
-  const rfid = projectsBySlug.get("rfid-productivity-device") ?? builderLab.projects[3];
+  const game = projectsBySlug.get("survivor-style-game") ?? builderLab.projects[1];
+  const rfid = projectsBySlug.get("rfid-productivity-device") ?? builderLab.projects[2];
 
   return (
     <PageSection id="builder-lab" spacing="lg">
-      <StaggerGroup className="builder-lab" stagger={0.1}>
+      <StaggerGroup className="builder-lab" stagger={0.1} margin="0px 0px -15% 0px" amount={0.1}>
         <StaggerItem>
-          <div className="builder-lab-header">
-            <div>
-              <SectionLabel>{builderLab.label}</SectionLabel>
-              <h2 className="type-display builder-lab-title">{builderLab.title}</h2>
-            </div>
-            <p className="type-body-large builder-lab-body">{builderLab.body}</p>
-          </div>
+          <SectionLabel>{builderLab.label}</SectionLabel>
+          <p className="type-body-large builder-lab-body">{builderLab.body}</p>
         </StaggerItem>
         <div className="builder-lab-grid">
           <StaggerItem className="builder-grid-feature">
             <BuilderProjectCard project={mealPrep} featured onOpen={setActiveProject} />
-          </StaggerItem>
-          <StaggerItem className="builder-grid-wide">
-            <BuilderProjectCard project={dashboard} wide onOpen={setActiveProject} />
           </StaggerItem>
           <StaggerItem className="builder-grid-small">
             <BuilderProjectCard project={game} onOpen={setActiveProject} />
