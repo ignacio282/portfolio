@@ -22,6 +22,8 @@ export type BuilderLabProject = {
   summary: string;
   tags: string[];
   accent: string;
+  image?: string;
+  imageAlt?: string;
   demoUrl?: string;
   repoUrl?: string;
   caseUrl?: string;
@@ -32,6 +34,8 @@ export type BuilderLabProject = {
       title: string;
       caption: string;
       variant: "dashboard" | "planner" | "game" | "hardware" | "workflow";
+      src?: string;
+      alt?: string;
     }[];
   };
 };

@@ -50,13 +50,17 @@ export function StaggerGroup({
   className,
   stagger = 0.1,
   delayChildren = 0.04,
-  trigger = "view"
+  trigger = "view",
+  margin = "-8% 0px -14% 0px",
+  amount = 0.26
 }: {
   children: ReactNode;
   className?: string;
   stagger?: number;
   delayChildren?: number;
   trigger?: "view" | "load";
+  margin?: string;
+  amount?: number;
 }) {
   const reducedMotion = useReducedMotion();
   const isLoadTriggered = trigger === "load";
@@ -67,7 +71,7 @@ export function StaggerGroup({
       initial="hidden"
       animate={isLoadTriggered ? "show" : undefined}
       whileInView={isLoadTriggered ? undefined : "show"}
-      viewport={isLoadTriggered ? undefined : { once: true, margin: "-8% 0px -14% 0px", amount: 0.26 }}
+      viewport={isLoadTriggered ? undefined : { once: true, margin, amount }}
       variants={{
         hidden: {},
         show: {

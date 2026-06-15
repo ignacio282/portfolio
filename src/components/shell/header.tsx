@@ -1,6 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { ExternalLink, FileText, Mail, User } from "lucide-react";
+import { useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import { navItems, siteConfig } from "@/content/site";
+import { cn } from "@/lib/cn";
 import { ResponsiveNav } from "./responsive-nav";
 
 const icons = {
@@ -11,12 +16,29 @@ const icons = {
 };
 
 export function Header() {
+  const { scrollY } = useScroll();
+  const reducedMotion = useReducedMotion();
+  const [isFloating, setIsFloating] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsFloating(latest > 80);
+  });
+
   return (
-    <header className="fixed inset-x-0 top-0 z-40">
-      <div className="mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-8 md:px-8">
+    <header className="fixed inset-x-0 top-0 z-40 flex justify-center px-5 md:px-8">
+      <div
+        className={cn(
+          "mx-auto flex w-full max-w-[1280px] items-center justify-between rounded-full px-5 py-8 ease-out md:px-8",
+          !reducedMotion && "transition-[background-color,box-shadow,padding,margin-top] duration-300",
+          isFloating && "mt-4 bg-paper/95 px-5 py-1 shadow-[0_18px_45px_rgba(36,37,38,0.14),0_4px_14px_rgba(36,37,38,0.08)] md:px-6"
+        )}
+      >
         <Link
           href="/"
-          className="type-brand inline-flex min-h-11 items-center focus-ring"
+          className={cn(
+            "type-brand inline-flex items-center focus-ring transition-[min-height] duration-300",
+            isFloating ? "min-h-9" : "min-h-11"
+          )}
         >
           {siteConfig.title}
         </Link>
@@ -29,14 +51,17 @@ export function Header() {
                 href={item.href}
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noreferrer" : undefined}
-                className="type-nav group inline-flex min-h-11 items-center gap-3 focus-ring"
+                className={cn(
+                  "type-nav group inline-flex items-center gap-3 focus-ring transition-[min-height] duration-300",
+                  isFloating ? "min-h-9" : "min-h-11"
+                )}
               >
                 {Icon ? (
                   <Icon
                     aria-hidden="true"
-                    size={24}
+                    size={isFloating ? 20 : 24}
                     strokeWidth={2.2}
-                    className="transition-transform duration-200 group-hover:-translate-y-0.5"
+                    className="transition-[transform,width,height] duration-200 group-hover:-translate-y-0.5"
                   />
                 ) : null}
                 {item.label}
