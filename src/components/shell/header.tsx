@@ -28,9 +28,10 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-40 flex justify-center px-5 md:px-8">
       <div
         className={cn(
-          "mx-auto flex w-full max-w-[1280px] items-center justify-between rounded-full px-5 py-8 ease-out md:px-8",
-          !reducedMotion && "transition-[background-color,box-shadow,padding,margin-top] duration-300",
-          isFloating && "mt-4 bg-paper/95 px-5 py-1 shadow-[0_18px_45px_rgba(36,37,38,0.14),0_4px_14px_rgba(36,37,38,0.08)] md:px-6"
+          "mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-8 ease-out md:rounded-full md:px-8",
+          !reducedMotion && "transition-[background-color,box-shadow,padding,margin-top,border-radius] duration-300",
+          isFloating &&
+            "-mx-5 border-b border-ink/10 bg-paper px-5 py-3 md:mx-0 md:mt-4 md:border-b-0 md:bg-paper/95 md:px-6 md:py-1 md:shadow-[0_18px_45px_rgba(36,37,38,0.14),0_4px_14px_rgba(36,37,38,0.08)]"
         )}
       >
         <Link

@@ -246,31 +246,33 @@ function BuilderProjectModal({
         </div>
 
         <div className="builder-modal-content">
-          <div className="builder-carousel">
-            <AnimatePresence mode="wait">
-              <ProductVisual project={project} slide={slide} />
-            </AnimatePresence>
-            <div className="builder-carousel-controls">
+          <div className="builder-carousel order-2 lg:order-none">
+            <div className="builder-carousel-frame">
+              <AnimatePresence mode="wait">
+                <ProductVisual project={project} slide={slide} />
+              </AnimatePresence>
               <button
                 aria-label="Show previous image"
-                className="builder-modal-icon-button"
+                className="builder-carousel-arrow builder-carousel-arrow-prev"
                 onClick={showPreviousSlide}
                 type="button"
               >
-                <ChevronLeft size={22} aria-hidden={true} />
+                <ChevronLeft size={20} aria-hidden={true} />
               </button>
+              <button
+                aria-label="Show next image"
+                className="builder-carousel-arrow builder-carousel-arrow-next"
+                onClick={showNextSlide}
+                type="button"
+              >
+                <ChevronRight size={20} aria-hidden={true} />
+              </button>
+            </div>
+            <div className="builder-carousel-controls">
               <p className="type-body-small builder-carousel-caption">
                 <strong>{slide.title}</strong>
                 <span>{slide.caption}</span>
               </p>
-              <button
-                aria-label="Show next image"
-                className="builder-modal-icon-button"
-                onClick={showNextSlide}
-                type="button"
-              >
-                <ChevronRight size={22} aria-hidden={true} />
-              </button>
             </div>
             <div className="builder-carousel-dots" aria-label="Carousel position">
               {project.modal.slides.map((item, index) => (
@@ -286,7 +288,7 @@ function BuilderProjectModal({
             </div>
           </div>
 
-          <div className="builder-modal-details">
+          <div className="builder-modal-details order-1 lg:order-none">
             <p className="type-body builder-modal-description">{project.modal.description}</p>
             <div>
               <h3 className="type-small-title">Why It Belongs Here</h3>

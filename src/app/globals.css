@@ -621,8 +621,24 @@ img {
     background: color-mix(in srgb, var(--builder-accent) 18%, white);
   }
 
+  .builder-carousel-frame {
+    @apply relative;
+  }
+
+  .builder-carousel-arrow {
+    @apply absolute top-1/2 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-full border-0 bg-paper/85 text-ink shadow-[0_8px_20px_rgba(36,37,38,0.18)] backdrop-blur-sm transition-[background-color,color,scale] duration-150 hover:bg-teal hover:text-white active:scale-[0.96];
+  }
+
+  .builder-carousel-arrow-prev {
+    @apply left-2 md:left-3;
+  }
+
+  .builder-carousel-arrow-next {
+    @apply right-2 md:right-3;
+  }
+
   .builder-carousel-controls {
-    @apply grid grid-cols-[44px_1fr_44px] items-center gap-3;
+    @apply grid items-center gap-3;
   }
 
   .builder-carousel-caption {
