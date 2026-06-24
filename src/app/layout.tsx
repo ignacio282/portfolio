@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Footer } from "@/components/shell/footer";
 import { Header } from "@/components/shell/header";
@@ -42,6 +43,7 @@ export default function RootLayout({
         <Header />
         <PageFade>{children}</PageFade>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
