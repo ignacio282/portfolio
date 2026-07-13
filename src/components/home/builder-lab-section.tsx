@@ -3,15 +3,7 @@
 import type { CSSProperties } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Code2,
-  Cpu,
-  Gamepad2,
-  Layers3,
-  X
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
 import { MediaFrame } from "@/components/visual/media-frame";
@@ -22,67 +14,69 @@ import type { BuilderLabProject } from "@/content/types";
 
 type BuilderAccentStyle = CSSProperties & {
   "--builder-accent"?: string;
-  "--builder-stack-index"?: number;
 };
 
-function CategoryGlyph({ category, size = 14 }: { category: string; size?: number }) {
-  if (category === "Web Dev") {
-    return <Code2 size={size} aria-hidden={true} />;
-  }
-
-  if (category === "Game Dev") {
-    return <Gamepad2 size={size} aria-hidden={true} />;
-  }
-
-  if (category === "Physical Computing") {
-    return <Cpu size={size} aria-hidden={true} />;
-  }
-
-  return <Layers3 size={size} aria-hidden={true} />;
-}
-
-function ProjectTags({ project }: { project: BuilderLabProject }) {
-  return (
-    <span className="builder-tag-row">
-      {project.tags.map((tag, index) => (
-        <span className="builder-tag" key={tag}>
-          {index === 0 ? <CategoryGlyph category={tag} /> : null}
-          {tag}
-          {index < project.tags.length - 1 ? <span className="builder-tag-fallback"> / </span> : null}
-        </span>
-      ))}
-    </span>
-  );
-}
-
-function BuilderProjectCard({
+function BuilderShowcaseVisual({
   project,
-  featured = false,
+  slideIndex,
+  onSelectSlide,
   onOpen
 }: {
   project: BuilderLabProject;
-  featured?: boolean;
-  onOpen: (project: BuilderLabProject) => void;
+  slideIndex: number;
+  onSelectSlide: (index: number) => void;
+  onOpen: (project: BuilderLabProject, slideIndex: number) => void;
 }) {
-  const className = [
-    "builder-card surface-card",
-    featured ? "builder-card-feature" : ""
-  ].filter(Boolean).join(" ");
   const style: BuilderAccentStyle = { "--builder-accent": project.accent };
+  const slides = project.modal.slides;
+  const slide = slides[slideIndex] ?? slides[0];
+  const src = slide?.src ?? project.image;
+  const alt = slide?.alt ?? project.imageAlt ?? project.title;
 
   return (
-    <button
-      className={className}
-      onClick={() => onOpen(project)}
-      style={style}
-      type="button"
-    >
-      <span className="builder-card-copy">
-        <ProjectTags project={project} />
-        <span className="type-small-title builder-card-title">{project.title}</span>
-        <span className="type-body-small builder-card-summary">{project.summary}</span>
-      </span>
-    </button>
+    <div className="builder-showcase-visual-wrap">
+      <button
+        aria-label={`Open ${project.title} details`}
+        className="builder-showcase-visual"
+        onClick={() => onOpen(project, slideIndex)}
+        style={style}
+        type="button"
+      >
+        {src ? (
+          <MediaFrame
+            alt={alt}
+            className="absolute inset-0"
+            fit="cover"
+            radius="md"
+            sizes="(max-width: 768px) 100vw, 1200px"
+            src={src}
+          />
+        ) : (
+          <div
+            className="absolute inset-0"
+            style={{ background: `color-mix(in srgb, ${project.accent} 16%, white)` }}
+          />
+        )}
+        <div className="builder-showcase-hover">
+          <p className="builder-showcase-hover-title">{project.title}</p>
+          <p className="builder-showcase-hover-summary">{project.summary}</p>
+        </div>
+      </button>
+      {slides.length > 1 ? (
+        <div className="builder-carousel-dots builder-carousel-dots-overlay" aria-label="Carousel position">
+          {slides.map((item, index) => (
+            <button
+              aria-label={`Show ${item.title}`}
+              aria-pressed={slideIndex === index}
+              className="builder-carousel-dot"
+              key={item.title}
+              onClick={() => onSelectSlide(index)}
+              type="button"
+            />
+          ))}
+        </div>
+      ) : null}
+    </div>
   );
 }
 
@@ -97,39 +91,21 @@ function ProductVisual({
 
   if (slide.src) {
     return (
-      <motion.div
-        animate={{ opacity: 1, x: 0 }}
-        className="builder-modal-visual"
-        data-variant={slide.variant}
-        exit={{ opacity: 0, x: -12 }}
-        initial={{ opacity: 0, x: 12 }}
-        key={slide.title}
-        style={style}
-        transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <div className="builder-modal-visual" data-variant={slide.variant} style={style}>
         <MediaFrame
           alt={slide.alt ?? slide.title}
           className="absolute inset-0"
           fit="contain"
           radius="none"
-          sizes="(max-width: 1024px) 92vw, 600px"
+          sizes="(max-width: 768px) 92vw, 984px"
           src={slide.src}
         />
-      </motion.div>
+      </div>
     );
   }
 
   return (
-    <motion.div
-      animate={{ opacity: 1, x: 0 }}
-      className="builder-modal-visual"
-      data-variant={slide.variant}
-      exit={{ opacity: 0, x: -12 }}
-      initial={{ opacity: 0, x: 12 }}
-      key={slide.title}
-      style={style}
-      transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <div className="builder-modal-visual" data-variant={slide.variant} style={style}>
       <div className="builder-modal-visual-header">
         <span />
         <span />
@@ -143,22 +119,29 @@ function ProductVisual({
         <span />
         <span />
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 function BuilderProjectModal({
   project,
+  initialSlide = 0,
   onClose
 }: {
   project: BuilderLabProject;
+  initialSlide?: number;
   onClose: () => void;
 }) {
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSlide, setActiveSlide] = useState(initialSlide);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const reducedMotion = useReducedMotion();
   const slide = project.modal.slides[activeSlide];
   const slideCount = project.modal.slides.length;
+  const links = [
+    project.demoUrl ? { href: project.demoUrl, label: "Website" } : null,
+    project.repoUrl ? { href: project.repoUrl, label: "GitHub" } : null,
+    project.caseUrl ? { href: project.caseUrl, label: "Case Study" } : null
+  ].filter((link): link is { href: string; label: string } => link !== null);
 
   useEffect(() => {
     closeButtonRef.current?.focus();
@@ -227,78 +210,96 @@ function BuilderProjectModal({
             : { type: "spring", stiffness: 260, damping: 24, mass: 0.82 }
         }
       >
-        <div className="builder-modal-header">
-          <div>
-            <ProjectTags project={project} />
-            <h2 className="type-display builder-modal-title" id="builder-project-modal-title">
-              {project.title}
-            </h2>
-          </div>
-          <button
-            aria-label="Close project details"
-            className="builder-modal-icon-button"
-            onClick={onClose}
-            ref={closeButtonRef}
-            type="button"
-          >
-            <X size={22} aria-hidden={true} />
-          </button>
-        </div>
-
         <div className="builder-modal-content">
-          <div className="builder-carousel order-2 lg:order-none">
-            <div className="builder-carousel-frame">
-              <AnimatePresence mode="wait">
-                <ProductVisual project={project} slide={slide} />
-              </AnimatePresence>
-              <button
-                aria-label="Show previous image"
-                className="builder-carousel-arrow builder-carousel-arrow-prev"
-                onClick={showPreviousSlide}
-                type="button"
-              >
-                <ChevronLeft size={20} aria-hidden={true} />
-              </button>
-              <button
-                aria-label="Show next image"
-                className="builder-carousel-arrow builder-carousel-arrow-next"
-                onClick={showNextSlide}
-                type="button"
-              >
-                <ChevronRight size={20} aria-hidden={true} />
-              </button>
-            </div>
-            <div className="builder-carousel-controls">
+          <div className="builder-carousel-frame">
+            <ProductVisual project={project} slide={slide} />
+            <button
+              aria-label="Close project details"
+              className="builder-carousel-close"
+              onClick={onClose}
+              ref={closeButtonRef}
+              type="button"
+            >
+              <X size={20} aria-hidden={true} />
+            </button>
+            <button
+              aria-label="Show previous image"
+              className="builder-carousel-arrow builder-carousel-arrow-prev"
+              onClick={showPreviousSlide}
+              type="button"
+            >
+              <ChevronLeft size={20} aria-hidden={true} />
+            </button>
+            <button
+              aria-label="Show next image"
+              className="builder-carousel-arrow builder-carousel-arrow-next"
+              onClick={showNextSlide}
+              type="button"
+            >
+              <ChevronRight size={20} aria-hidden={true} />
+            </button>
+            <div className="builder-carousel-caption-overlay">
               <p className="type-body-small builder-carousel-caption">
                 <strong>{slide.title}</strong>
                 <span>{slide.caption}</span>
               </p>
-            </div>
-            <div className="builder-carousel-dots" aria-label="Carousel position">
-              {project.modal.slides.map((item, index) => (
-                <button
-                  aria-label={`Show ${item.title}`}
-                  aria-pressed={activeSlide === index}
-                  className="builder-carousel-dot"
-                  key={item.title}
-                  onClick={() => setActiveSlide(index)}
-                  type="button"
-                />
-              ))}
+              <div className="builder-carousel-dots" aria-label="Carousel position">
+                {project.modal.slides.map((item, index) => (
+                  <button
+                    aria-label={`Show ${item.title}`}
+                    aria-pressed={activeSlide === index}
+                    className="builder-carousel-dot"
+                    key={item.title}
+                    onClick={() => setActiveSlide(index)}
+                    type="button"
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="builder-modal-details order-1 lg:order-none">
-            <p className="type-body builder-modal-description">{project.modal.description}</p>
-            <div>
-              <h3 className="type-small-title">Why It Belongs Here</h3>
-              <ul className="builder-modal-list">
-                {project.modal.relevance.map((point) => (
-                  <li className="type-body-small" key={point}>
-                    {point}
-                  </li>
-                ))}
-              </ul>
+          <div className="builder-modal-footer">
+            <div className="builder-modal-title-row">
+              <h2 className="type-display" id="builder-project-modal-title">
+                {project.title}
+              </h2>
+              {links.length > 0 ? (
+                <div className="builder-modal-links">
+                  {links.map((link, index) => (
+                    <a
+                      className={index === 0 ? "ui-pill" : "ui-pill-outline"}
+                      href={link.href}
+                      key={link.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {link.label}
+                      <ExternalLink size={14} aria-hidden={true} />
+                    </a>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+            <hr className="case-rule" />
+            <div className="builder-modal-sections">
+              <section>
+                <SectionLabel variant="accent">About</SectionLabel>
+                <p className="type-body builder-modal-description">{project.summary}</p>
+              </section>
+              <section>
+                <SectionLabel variant="accent">The Story</SectionLabel>
+                <p className="type-body builder-modal-description">{project.modal.description}</p>
+              </section>
+              <section>
+                <SectionLabel variant="accent">Why It Belongs Here</SectionLabel>
+                <ul className="builder-modal-list">
+                  {project.modal.relevance.map((point) => (
+                    <li className="type-body-small" key={point}>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </section>
             </div>
           </div>
         </div>
@@ -316,6 +317,7 @@ function BuilderProjectModal({
 export function BuilderLabSection() {
   const { builderLab } = homeContent;
   const [activeProject, setActiveProject] = useState<BuilderLabProject | null>(null);
+  const [modalInitialSlide, setModalInitialSlide] = useState(0);
   const projectsBySlug = useMemo(
     () => new Map(builderLab.projects.map((project) => [project.slug, project])),
     [builderLab.projects]
@@ -323,29 +325,61 @@ export function BuilderLabSection() {
   const mealPrep = projectsBySlug.get("meal-prep-assistant") ?? builderLab.projects[0];
   const game = projectsBySlug.get("survivor-style-game") ?? builderLab.projects[1];
   const rfid = projectsBySlug.get("rfid-productivity-device") ?? builderLab.projects[2];
+  const featuredProjects = useMemo(() => [mealPrep, game, rfid], [mealPrep, game, rfid]);
+  const [activeSlug, setActiveSlug] = useState(featuredProjects[0].slug);
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const activeTabProject =
+    featuredProjects.find((project) => project.slug === activeSlug) ?? featuredProjects[0];
+
+  function handleSelectTab(slug: string) {
+    setActiveSlug(slug);
+    setActiveSlideIndex(0);
+  }
+
+  function handleOpen(project: BuilderLabProject, slideIndex: number) {
+    setModalInitialSlide(slideIndex);
+    setActiveProject(project);
+  }
 
   return (
     <PageSection id="builder-lab" spacing="lg">
       <StaggerGroup className="builder-lab" stagger={0.1} margin="0px 0px -15% 0px" amount={0.1}>
         <StaggerItem>
-          <SectionLabel>{builderLab.label}</SectionLabel>
+          <SectionLabel variant="home">{builderLab.label}</SectionLabel>
           <p className="type-body-large builder-lab-body">{builderLab.body}</p>
         </StaggerItem>
-        <div className="builder-lab-grid">
-          <StaggerItem className="builder-grid-feature">
-            <BuilderProjectCard project={mealPrep} featured onOpen={setActiveProject} />
-          </StaggerItem>
-          <StaggerItem className="builder-grid-small">
-            <BuilderProjectCard project={game} onOpen={setActiveProject} />
-          </StaggerItem>
-          <StaggerItem className="builder-grid-small">
-            <BuilderProjectCard project={rfid} onOpen={setActiveProject} />
-          </StaggerItem>
-        </div>
+        <StaggerItem>
+          <div className="builder-showcase">
+            <div className="builder-showcase-media">
+              <BuilderShowcaseVisual
+                onOpen={handleOpen}
+                onSelectSlide={setActiveSlideIndex}
+                project={activeTabProject}
+                slideIndex={activeSlideIndex}
+              />
+            </div>
+            <div className="builder-showcase-tabs" role="tablist">
+              {featuredProjects.map((project) => (
+                <button
+                  aria-selected={project.slug === activeSlug}
+                  className="builder-showcase-tab"
+                  key={project.slug}
+                  onClick={() => handleSelectTab(project.slug)}
+                  role="tab"
+                  style={{ "--builder-accent": project.accent } as BuilderAccentStyle}
+                  type="button"
+                >
+                  {project.title}
+                </button>
+              ))}
+            </div>
+          </div>
+        </StaggerItem>
       </StaggerGroup>
       <AnimatePresence mode="wait">
         {activeProject ? (
           <BuilderProjectModal
+            initialSlide={modalInitialSlide}
             key={activeProject.slug}
             onClose={() => setActiveProject(null)}
             project={activeProject}

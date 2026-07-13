@@ -4,7 +4,8 @@ import { cn } from "@/lib/cn";
 const sectionLabelVariants = {
   default: "type-eyebrow",
   accent: "type-eyebrow-accent",
-  case: "type-case-section-label"
+  case: "type-case-section-label",
+  home: "type-section-title"
 };
 
 export function SectionLabel({
