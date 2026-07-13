@@ -42,7 +42,7 @@ export const homeContent = {
         slug: "meal-prep-assistant",
         title: "MealPrep Buddy",
         summary:
-          "A recipe dashboard for saving meals, planning weekly rotations, and turning scattered cooking ideas into a reusable system.",
+          "A recipe dashboard that turns scattered meal ideas into an easy weekly plan.",
         tags: ["Web Dev"],
         accent: "#d36f42",
         image: "/images/builder/meal-prep-assistant/card.png",
@@ -120,7 +120,7 @@ export const homeContent = {
         slug: "survivor-style-game",
         title: "Poligon Survivors",
         summary:
-          "A playable arcade experiment exploring enemy waves, upgrades, feedback loops, and the pressure curve behind survival games.",
+          "A wave survival arcade game built to explore enemy design, upgrades, and pacing.",
         tags: ["Game Dev"],
         accent: "#7d5bb8",
         image: "/images/builder/survivor-style-game/card.png",
@@ -162,7 +162,7 @@ export const homeContent = {
         slug: "rfid-productivity-device",
         title: "Productivity Pal",
         summary:
-          "A lo-fi Arduino prototype using an LCD screen and RFID reader to trigger small productivity routines away from the browser.",
+          "An Arduino device that triggers quick productivity routines with a tap of a tag.",
         tags: ["Physical Computing"],
         accent: "#5c6f82",
         modal: {
