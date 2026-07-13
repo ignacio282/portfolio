@@ -63,18 +63,36 @@ function BuilderShowcaseVisual({
         </div>
       </button>
       {slides.length > 1 ? (
-        <div className="builder-carousel-dots builder-carousel-dots-overlay" aria-label="Carousel position">
-          {slides.map((item, index) => (
-            <button
-              aria-label={`Show ${item.title}`}
-              aria-pressed={slideIndex === index}
-              className="builder-carousel-dot"
-              key={item.title}
-              onClick={() => onSelectSlide(index)}
-              type="button"
-            />
-          ))}
-        </div>
+        <>
+          <button
+            aria-label={`Show previous image for ${project.title}`}
+            className="builder-carousel-arrow builder-carousel-arrow-prev builder-showcase-arrow"
+            onClick={() => onSelectSlide((slideIndex - 1 + slides.length) % slides.length)}
+            type="button"
+          >
+            <ChevronLeft size={20} aria-hidden={true} />
+          </button>
+          <button
+            aria-label={`Show next image for ${project.title}`}
+            className="builder-carousel-arrow builder-carousel-arrow-next builder-showcase-arrow"
+            onClick={() => onSelectSlide((slideIndex + 1) % slides.length)}
+            type="button"
+          >
+            <ChevronRight size={20} aria-hidden={true} />
+          </button>
+          <div className="builder-carousel-dots builder-carousel-dots-overlay" aria-label="Carousel position">
+            {slides.map((item, index) => (
+              <button
+                aria-label={`Show ${item.title}`}
+                aria-pressed={slideIndex === index}
+                className="builder-carousel-dot"
+                key={item.title}
+                onClick={() => onSelectSlide(index)}
+                type="button"
+              />
+            ))}
+          </div>
+        </>
       ) : null}
     </div>
   );

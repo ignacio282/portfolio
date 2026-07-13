@@ -447,7 +447,7 @@ img {
     background: linear-gradient(180deg, rgba(20, 18, 16, 0.72) 0%, rgba(20, 18, 16, 0.28) 45%, transparent 75%);
   }
 
-  .builder-showcase-visual:hover .builder-showcase-hover,
+  .builder-showcase-visual-wrap:hover .builder-showcase-hover,
   .builder-showcase-visual:focus-visible .builder-showcase-hover {
     @apply opacity-100;
   }
@@ -457,15 +457,21 @@ img {
   }
 
   .builder-showcase-hover-summary {
-    @apply m-0 max-w-md text-sm text-white/85 md:text-base;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
+    @apply m-0 max-w-xl text-sm text-white/85 md:text-base;
+  }
+
+  .builder-showcase-arrow {
+    @apply opacity-0 transition-opacity duration-200;
+  }
+
+  .builder-showcase-visual-wrap:hover .builder-showcase-arrow,
+  .builder-showcase-visual-wrap:focus-within .builder-showcase-arrow {
+    @apply opacity-100;
   }
 
   .builder-showcase-visual:focus-visible,
   .builder-showcase-tab:focus-visible,
+  .builder-showcase-arrow:focus-visible,
   .builder-carousel-close:focus-visible,
   .builder-carousel-dot:focus-visible {
     @apply outline-none ring-2 ring-teal ring-offset-2 ring-offset-paper;
