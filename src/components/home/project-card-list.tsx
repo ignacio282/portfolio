@@ -17,7 +17,7 @@ export function ProjectCardList() {
         trigger="load"
       >
         <StaggerItem>
-          <SectionLabel>Case studies</SectionLabel>
+          <SectionLabel variant="home">Case studies</SectionLabel>
         </StaggerItem>
         <div className="mt-10 grid gap-8">
           {homeContent.projects.map((project, index) => (

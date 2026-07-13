@@ -6,8 +6,8 @@ export const homeContent = {
     title: "Hey, I'm Ignacio",
     kicker: "Product Designer",
     lines: [
-      "Product designer that creates practical solutions for complex problems.",
-      "Using AI Workflows to turn ideas to products for fast-moving teams."
+      "Product designer who thinks in systems, not screens.",
+      "4+ years designing for enterprise banking products. Now I use AI to take that same thinking from prototype to the real thing."
     ]
   },
   workOn: [
@@ -34,13 +34,13 @@ export const homeContent = {
     "These case studies show how I design products in complex, real-world systems, from products used by millions in banking to AI-powered tools, focusing on decisions, trade-offs, and impact.",
   projects,
   builderLab: {
-    label: "Builder Lab",
+    label: "Things I Build",
     body:
-      "Small products, tools, and experiments I design and ship: a growing set of practical products and prototypes built with AI-assisted programming, from dashboards and games to hardware experiments.",
+      "I like to make a lot of things for myself to make my life easier or because it's interesting. I love making things.",
     projects: [
       {
         slug: "meal-prep-assistant",
-        title: "Meal Prep Assistant",
+        title: "MealPrep Buddy",
         summary:
           "A recipe dashboard for saving meals, planning weekly rotations, and turning scattered cooking ideas into a reusable system.",
         tags: ["Web Dev"],
@@ -118,7 +118,7 @@ export const homeContent = {
       },
       {
         slug: "survivor-style-game",
-        title: "Survivor-Style Game",
+        title: "Poligon Survivors",
         summary:
           "A playable arcade experiment exploring enemy waves, upgrades, feedback loops, and the pressure curve behind survival games.",
         tags: ["Game Dev"],
@@ -160,7 +160,7 @@ export const homeContent = {
       },
       {
         slug: "rfid-productivity-device",
-        title: "RFID Productivity Device",
+        title: "Productivity Pal",
         summary:
           "A lo-fi Arduino prototype using an LCD screen and RFID reader to trigger small productivity routines away from the browser.",
         tags: ["Physical Computing"],
