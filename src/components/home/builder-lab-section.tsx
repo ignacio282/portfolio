@@ -111,8 +111,16 @@ function ProductVisual({
     return (
       <div className="builder-modal-visual" data-variant={slide.variant} style={style}>
         <MediaFrame
+          alt=""
+          className="builder-modal-visual-bg"
+          fit="cover"
+          radius="none"
+          sizes="(max-width: 768px) 92vw, 984px"
+          src={slide.src}
+        />
+        <MediaFrame
           alt={slide.alt ?? slide.title}
-          className="absolute inset-0"
+          className="builder-modal-visual-img"
           fit="contain"
           radius="none"
           sizes="(max-width: 768px) 92vw, 984px"
@@ -229,58 +237,12 @@ function BuilderProjectModal({
         }
       >
         <div className="builder-modal-content">
-          <div className="builder-carousel-frame">
-            <ProductVisual project={project} slide={slide} />
-            <button
-              aria-label="Close project details"
-              className="builder-carousel-close"
-              onClick={onClose}
-              ref={closeButtonRef}
-              type="button"
-            >
-              <X size={20} aria-hidden={true} />
-            </button>
-            <button
-              aria-label="Show previous image"
-              className="builder-carousel-arrow builder-carousel-arrow-prev"
-              onClick={showPreviousSlide}
-              type="button"
-            >
-              <ChevronLeft size={20} aria-hidden={true} />
-            </button>
-            <button
-              aria-label="Show next image"
-              className="builder-carousel-arrow builder-carousel-arrow-next"
-              onClick={showNextSlide}
-              type="button"
-            >
-              <ChevronRight size={20} aria-hidden={true} />
-            </button>
-            <div className="builder-carousel-caption-overlay">
-              <p className="type-body-small builder-carousel-caption">
-                <strong>{slide.title}</strong>
-                <span>{slide.caption}</span>
-              </p>
-              <div className="builder-carousel-dots" aria-label="Carousel position">
-                {project.modal.slides.map((item, index) => (
-                  <button
-                    aria-label={`Show ${item.title}`}
-                    aria-pressed={activeSlide === index}
-                    className="builder-carousel-dot"
-                    key={item.title}
-                    onClick={() => setActiveSlide(index)}
-                    type="button"
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="builder-modal-footer">
-            <div className="builder-modal-title-row">
+          <header className="builder-modal-header">
+            <div className="builder-modal-heading">
               <h2 className="type-display" id="builder-project-modal-title">
                 {project.title}
               </h2>
+              <p className="type-body-large builder-modal-summary">{project.summary}</p>
               {links.length > 0 ? (
                 <div className="builder-modal-links">
                   {links.map((link, index) => (
@@ -298,27 +260,76 @@ function BuilderProjectModal({
                 </div>
               ) : null}
             </div>
-            <hr className="case-rule" />
-            <div className="builder-modal-sections">
-              <section>
-                <SectionLabel variant="accent">About</SectionLabel>
-                <p className="type-body builder-modal-description">{project.summary}</p>
-              </section>
-              <section>
-                <SectionLabel variant="accent">The Story</SectionLabel>
-                <p className="type-body builder-modal-description">{project.modal.description}</p>
-              </section>
-              <section>
-                <SectionLabel variant="accent">Why It Belongs Here</SectionLabel>
-                <ul className="builder-modal-list">
-                  {project.modal.relevance.map((point) => (
-                    <li className="type-body-small" key={point}>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </section>
+            <button
+              aria-label="Close project details"
+              className="builder-modal-close"
+              onClick={onClose}
+              ref={closeButtonRef}
+              type="button"
+            >
+              <X size={18} aria-hidden={true} />
+            </button>
+          </header>
+
+          <div className="builder-carousel-frame">
+            <div className="builder-carousel-stage">
+              <ProductVisual project={project} slide={slide} />
             </div>
+            <div className="builder-carousel-meta">
+              <p className="builder-carousel-caption">
+                <strong>{slide.title}</strong>
+                <span className="type-body-small">{slide.caption}</span>
+              </p>
+              {slideCount > 1 ? (
+                <div className="builder-carousel-controls">
+                  <button
+                    aria-label="Show previous image"
+                    className="builder-modal-arrow"
+                    onClick={showPreviousSlide}
+                    type="button"
+                  >
+                    <ChevronLeft size={18} aria-hidden={true} />
+                  </button>
+                  <div className="builder-modal-dots" aria-label="Carousel position">
+                    {project.modal.slides.map((item, index) => (
+                      <button
+                        aria-label={`Show ${item.title}`}
+                        aria-pressed={activeSlide === index}
+                        className="builder-modal-dot"
+                        key={item.title}
+                        onClick={() => setActiveSlide(index)}
+                        type="button"
+                      />
+                    ))}
+                  </div>
+                  <button
+                    aria-label="Show next image"
+                    className="builder-modal-arrow"
+                    onClick={showNextSlide}
+                    type="button"
+                  >
+                    <ChevronRight size={18} aria-hidden={true} />
+                  </button>
+                </div>
+              ) : null}
+            </div>
+          </div>
+
+          <div className="builder-modal-sections">
+            <section>
+              <SectionLabel variant="accent">The Story</SectionLabel>
+              <p className="type-body builder-modal-description">{project.modal.description}</p>
+            </section>
+            <section>
+              <SectionLabel variant="accent">Why It Belongs Here</SectionLabel>
+              <ul className="builder-modal-list">
+                {project.modal.relevance.map((point) => (
+                  <li className="type-body-small" key={point}>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </section>
           </div>
         </div>
       </motion.section>
