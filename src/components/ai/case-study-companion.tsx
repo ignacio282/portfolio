@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowLeft, Loader2, Send, Sparkles, X } from "lucide-react";
+import { ArrowLeft, Loader2, MessageCircleQuestion, Send, Sparkles, X } from "lucide-react";
 import { motionDistances, motionPresets } from "@/components/motion/presets";
 import { companionPrompts, type CompanionMessage, type CompanionPromptId } from "@/lib/portfolio-companion-types";
 import { cn } from "@/lib/cn";
@@ -208,8 +208,8 @@ export function CaseStudyCompanion({ slug }: { slug: string }) {
         aria-controls="case-study-companion"
         onClick={() => setOpen(true)}
       >
-        <Sparkles aria-hidden="true" size={20} />
-        <span>Ask About This Case</span>
+        <MessageCircleQuestion aria-hidden="true" size={20} />
+        <span>Ask about this case</span>
       </button>
 
       <AnimatePresence>
