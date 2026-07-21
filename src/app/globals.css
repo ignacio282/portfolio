@@ -442,6 +442,10 @@ img {
     box-shadow: inset 0 0 0 1px rgba(36, 37, 38, 0.06);
   }
 
+  .builder-showcase-video {
+    @apply absolute inset-0 h-full w-full object-cover;
+  }
+
   .builder-showcase-hover {
     @apply absolute inset-0 flex flex-col items-start justify-start gap-2 p-5 opacity-0 transition-opacity duration-200 md:p-6;
     background: linear-gradient(180deg, rgba(20, 18, 16, 0.72) 0%, rgba(20, 18, 16, 0.28) 45%, transparent 75%);

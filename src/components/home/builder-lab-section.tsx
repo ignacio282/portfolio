@@ -32,6 +32,7 @@ function BuilderShowcaseVisual({
   const slide = slides[slideIndex] ?? slides[0];
   const src = slide?.src ?? project.image;
   const alt = slide?.alt ?? project.imageAlt ?? project.title;
+  const hasVideo = Boolean(project.video);
 
   return (
     <div className="builder-showcase-visual-wrap">
@@ -42,7 +43,23 @@ function BuilderShowcaseVisual({
         style={style}
         type="button"
       >
-        {src ? (
+        {hasVideo ? (
+          <video
+            aria-label={project.imageAlt ?? project.title}
+            autoPlay
+            className="builder-showcase-video"
+            loop
+            muted
+            onLoadedMetadata={(event) => {
+              event.currentTarget.playbackRate = 1.25;
+            }}
+            playsInline
+            poster={project.videoPoster}
+            preload="metadata"
+            src={project.video}
+            suppressHydrationWarning
+          />
+        ) : src ? (
           <MediaFrame
             alt={alt}
             className="absolute inset-0"
@@ -62,7 +79,7 @@ function BuilderShowcaseVisual({
           <p className="builder-showcase-hover-summary">{project.summary}</p>
         </div>
       </button>
-      {slides.length > 1 ? (
+      {!hasVideo && slides.length > 1 ? (
         <>
           <button
             aria-label={`Show previous image for ${project.title}`}
