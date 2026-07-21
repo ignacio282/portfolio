@@ -54,6 +54,9 @@ export async function POST(request: Request) {
     new ReadableStream({
       async start(controller) {
         if (!apiKey) {
+          logCompanionFailure(
+            "ANTHROPIC_API_KEY is not set, so the companion served the guided fallback."
+          );
           streamFallback(controller, context.promptLabel, context.sources, promptId);
           return;
         }
@@ -97,7 +100,14 @@ export async function POST(request: Request) {
 
           controller.enqueue(encodeEvent("done", {}));
           controller.close();
-        } catch {
+        } catch (liveError) {
+          logCompanionFailure(
+            hasLiveDelta
+              ? "The companion stream stopped after it had already started."
+              : "The companion could not reach the Anthropic API, so it served the guided fallback.",
+            { model, slug, promptId, error: liveError }
+          );
+
           if (hasLiveDelta) {
             controller.enqueue(
               encodeEvent("error", {
@@ -168,6 +178,32 @@ function normalizeMessages(value: unknown): CompanionMessage[] {
       content: message.content.slice(0, 1200)
     }))
     .slice(-6);
+}
+
+function logCompanionFailure(
+  reason: string,
+  detail?: {
+    model: string;
+    slug: string;
+    promptId?: CompanionPromptId;
+    error: unknown;
+  }
+) {
+  if (!detail) {
+    console.error(`[portfolio-companion] ${reason}`);
+    return;
+  }
+
+  const { error } = detail;
+  const status = error instanceof Anthropic.APIError ? error.status : undefined;
+
+  console.error(`[portfolio-companion] ${reason}`, {
+    model: detail.model,
+    slug: detail.slug,
+    promptId: detail.promptId,
+    status,
+    message: error instanceof Error ? error.message : String(error)
+  });
 }
 
 function streamFallback(
