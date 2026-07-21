@@ -47,8 +47,8 @@ export async function POST(request: Request) {
     return createErrorStream("This case study is not available to the companion.");
   }
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  const model = process.env.ANTHROPIC_MODEL || defaultModel;
+  const apiKey = readEnvSecret(process.env.ANTHROPIC_API_KEY);
+  const model = readEnvSecret(process.env.ANTHROPIC_MODEL) || defaultModel;
 
   return new Response(
     new ReadableStream({
@@ -178,6 +178,16 @@ function normalizeMessages(value: unknown): CompanionMessage[] {
       content: message.content.slice(0, 1200)
     }))
     .slice(-6);
+}
+
+// Dashboard-pasted env values often carry a trailing newline or wrapping
+// quotes. Those survive the empty check but fail auth, so normalize them here.
+function readEnvSecret(value: string | undefined) {
+  if (!value) {
+    return undefined;
+  }
+
+  return value.trim().replace(/^['"]|['"]$/g, "").trim() || undefined;
 }
 
 function logCompanionFailure(
