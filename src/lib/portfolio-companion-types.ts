@@ -10,11 +10,6 @@ export type CompanionMessage = {
   content: string;
 };
 
-export type CompanionSource = {
-  label: string;
-  href: string;
-};
-
 export type CompanionPrompt = {
   id: CompanionPromptId;
   label: string;

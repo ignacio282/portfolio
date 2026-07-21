@@ -5,15 +5,13 @@ import type { CaseSection, CaseStudy } from "@/content/types";
 import {
   companionPrompts,
   type CompanionMessage,
-  type CompanionPromptId,
-  type CompanionSource
+  type CompanionPromptId
 } from "@/lib/portfolio-companion-types";
 
 export type CompanionRequestContext = {
   project: CaseStudy;
   question: string;
   promptLabel: string;
-  sources: CompanionSource[];
   context: string;
 };
 
@@ -88,7 +86,6 @@ export function buildCompanionContext({
     project,
     question: resolvedQuestion,
     promptLabel: prompt?.label ?? "Custom Question",
-    sources: getCompanionSources(project, promptId),
     context: [
       buildProfileContext(),
       buildProjectContext(project),
@@ -161,53 +158,4 @@ function formatCaseSection(section: CaseSection) {
   }
 
   return `- ${section.eyebrow}: ${section.title}. ${section.body.join(" ")}`;
-}
-
-function getCompanionSources(project: CaseStudy, promptId?: CompanionPromptId): CompanionSource[] {
-  const baseHref = `/projects/${project.slug}`;
-  const hasCustomAnchors = project.slug === "portal" || project.slug === "reading" || project.slug === "qr";
-  const overviewHref = hasCustomAnchors ? `${baseHref}#overview` : baseHref;
-
-  if (promptId === "role") {
-    return [
-      { label: "My Role", href: project.slug === "portal" ? `${baseHref}#role` : overviewHref },
-      { label: project.title, href: baseHref }
-    ];
-  }
-
-  if (promptId === "decisions" || promptId === "tradeoffs") {
-    if (project.slug === "reading") {
-      return [
-        { label: "AI Behavior", href: `${baseHref}#ai-behavior` },
-        { label: "Testing", href: `${baseHref}#testing` }
-      ];
-    }
-
-    if (project.slug === "qr") {
-      return [
-        { label: "Key Decisions", href: `${baseHref}#key-decisions` },
-        { label: "The Real Challenge", href: `${baseHref}#real-challenge` }
-      ];
-    }
-
-    return [
-      { label: "Key Decisions", href: project.slug === "portal" ? `${baseHref}#decisions` : baseHref },
-      { label: "UI Strategy", href: project.slug === "portal" ? `${baseHref}#strategy` : baseHref }
-    ];
-  }
-
-  return [
-    { label: "Overview", href: overviewHref },
-    {
-      label: "Outcomes",
-      href:
-        project.slug === "portal"
-          ? `${baseHref}#changed`
-          : project.slug === "reading"
-            ? `${baseHref}#testing`
-            : project.slug === "qr"
-              ? `${baseHref}#outcome`
-              : baseHref
-    }
-  ];
 }

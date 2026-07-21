@@ -6,8 +6,7 @@ import {
 import {
   isCompanionPromptId,
   type CompanionMessage,
-  type CompanionPromptId,
-  type CompanionSource
+  type CompanionPromptId
 } from "@/lib/portfolio-companion-types";
 
 const encoder = new TextEncoder();
@@ -57,7 +56,7 @@ export async function POST(request: Request) {
           logCompanionFailure(
             "ANTHROPIC_API_KEY is not set, so the companion served the guided fallback."
           );
-          streamFallback(controller, context.promptLabel, context.sources, promptId);
+          streamFallback(controller, context.promptLabel, promptId);
           return;
         }
 
@@ -67,7 +66,6 @@ export async function POST(request: Request) {
           controller.enqueue(
             encodeEvent("meta", {
               promptLabel: context.promptLabel,
-              sources: context.sources,
               fallback: false
             })
           );
@@ -75,7 +73,7 @@ export async function POST(request: Request) {
           const client = new Anthropic({ apiKey });
           const stream = client.messages.stream({
             model,
-            system: buildInstructions(context.sources),
+            system: buildInstructions(),
             messages: [
               {
                 role: "user",
@@ -119,7 +117,7 @@ export async function POST(request: Request) {
             return;
           }
 
-          streamFallback(controller, context.promptLabel, context.sources, promptId);
+          streamFallback(controller, context.promptLabel, promptId);
         }
       }
     }),
@@ -133,9 +131,7 @@ export async function POST(request: Request) {
   );
 }
 
-function buildInstructions(sources: CompanionSource[]) {
-  const sourceLabels = sources.map((source) => source.label).join(", ");
-
+function buildInstructions() {
   return [
     "You are Ignacio Vergara's AI case study companion for a portfolio website.",
     "Answer only from the portfolio context provided in the request.",
@@ -147,13 +143,8 @@ function buildInstructions(sources: CompanionSource[]) {
     "Start with one short sentence (max ~20 words) that directly answers the question - the headline takeaway.",
     "Then add a blank line, followed by 2-3 short sentences of supporting detail, one per line. Each line should stand on its own as a scannable point.",
     "Keep the whole answer under 110 words total.",
-    "Write in plain prose with no markdown formatting (no asterisks, bullet points, or headers).",
-    sources.length > 0
-      ? `Required: pick a short phrase (2-5 words) already in your answer that points to one of these portfolio sections: ${sourceLabels}. Mark that phrase, in place, using this exact format: [[the phrase|Section Label]] - e.g. [[the reusable component system|Outcomes]]. This double-bracket markup is not markdown and is the one exception to the no-formatting rule - your response is incomplete without it. Use only the exact section labels listed after the pipe, and keep the phrase itself natural prose that fits the sentence.`
-      : ""
-  ]
-    .filter(Boolean)
-    .join("\n");
+    "Write in plain prose with no markdown formatting (no asterisks, bullet points, or headers)."
+  ].join("\n");
 }
 
 function normalizeMessages(value: unknown): CompanionMessage[] {
@@ -209,13 +200,11 @@ function logCompanionFailure(
 function streamFallback(
   controller: ReadableStreamDefaultController<Uint8Array>,
   promptLabel: string,
-  sources: CompanionSource[],
   promptId?: CompanionPromptId
 ) {
   controller.enqueue(
     encodeEvent("meta", {
       promptLabel,
-      sources,
       fallback: true
     })
   );
