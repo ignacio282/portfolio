@@ -750,7 +750,7 @@ img {
   }
 
   .companion-trigger {
-    @apply fixed bottom-5 left-1/2 z-40 inline-flex min-h-12 -translate-x-1/2 items-center justify-center gap-2.5 rounded-full bg-teal-dark px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(0,109,104,0.28)] hover:bg-[#005a56] hover:shadow-[0_14px_36px_rgba(0,109,104,0.38)] md:bottom-8 md:left-auto md:right-8 md:translate-x-0;
+    @apply fixed bottom-5 left-1/2 z-40 inline-flex min-h-12 -translate-x-1/2 items-center justify-center gap-2.5 rounded-full bg-teal-dark px-5 py-3 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(36,37,38,0.10)] hover:bg-[#005a56] hover:shadow-[0_6px_18px_rgba(36,37,38,0.14)] md:bottom-8 md:left-auto md:right-8 md:translate-x-0;
     transition-duration: 180ms;
     transition-property: background-color, box-shadow, transform;
     transition-timing-function: var(--ease-standard);
