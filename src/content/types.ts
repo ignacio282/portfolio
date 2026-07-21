@@ -24,6 +24,8 @@ export type BuilderLabProject = {
   accent: string;
   image?: string;
   imageAlt?: string;
+  video?: string;
+  videoPoster?: string;
   demoUrl?: string;
   repoUrl?: string;
   caseUrl?: string;

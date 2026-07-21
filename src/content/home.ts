@@ -47,6 +47,8 @@ export const homeContent = {
         accent: "#d36f42",
         image: "/images/builder/meal-prep-assistant/card.png",
         imageAlt: "Meal Prep Assistant recipe dashboard",
+        video: "/images/builder/meal-prep-assistant/MealCompressed.mp4",
+        videoPoster: "/images/builder/meal-prep-assistant/slide-1.png",
         modal: {
           description:
             "A personal meal-planning product that keeps recipes, meal rotations, and weekly planning in one dashboard so cooking decisions do not restart from zero every week.",
