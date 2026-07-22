@@ -797,7 +797,7 @@ img {
   }
 
   .companion-message.is-user {
-    @apply ml-auto bg-teal text-white shadow-[0_12px_26px_rgba(0,135,127,0.18)];
+    @apply ml-auto bg-teal-dark text-white shadow-none;
   }
 
   .companion-message.is-user .type-companion-answer {

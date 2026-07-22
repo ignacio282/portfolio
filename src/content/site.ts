@@ -7,7 +7,7 @@ export const siteConfig = {
     "UX/UI designer crafting intuitive web and mobile experiences. Explore projects for Banco Pichincha and more.",
   url: "https://ignaciovergara.me",
   resumeUrl:
-    "https://drive.google.com/file/d/19mo0l8AQ4QqmCIZoCKmM4r1PNTuitb8a/view?usp=sharing",
+    "https://drive.google.com/file/d/1xigL8vO2x6H0eIgNPHIhuby91b5f9QEn/view?usp=sharing",
   linkedinUrl: "https://www.linkedin.com/in/ignaciovergara282",
   contactUrl: "mailto:ignacio.vergara282@gmail.com",
   footer: "© 2026. Designed by Ignacio Vergara"
