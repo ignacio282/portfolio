@@ -69,7 +69,7 @@ export function CaseStudyPage({ project }: { project: CaseStudy }) {
   return (
     <main>
       <ScrollProgress />
-      <CaseStudyCompanion slug={project.slug} projectTitle={project.title} />
+      <CaseStudyCompanion slug={project.slug} />
       <PageSection spacing="hero">
         <CaseHero project={project} />
       </PageSection>
@@ -104,7 +104,7 @@ function QrCaseStudyPage({
     <main>
       <ScrollProgress />
       <CaseStudyNavigation sections={qrSectionLinks} />
-      <CaseStudyCompanion slug={project.slug} projectTitle={project.title} />
+      <CaseStudyCompanion slug={project.slug} />
       <PageSection spacing="hero">
         <QrHero />
       </PageSection>
@@ -444,7 +444,7 @@ function ReadingCaseStudyPage({
     <main>
       <ScrollProgress />
       <CaseStudyNavigation sections={readingSectionLinks} />
-      <CaseStudyCompanion slug={project.slug} projectTitle={project.title} />
+      <CaseStudyCompanion slug={project.slug} />
       <PageSection spacing="hero">
         <ReadingHero />
       </PageSection>
@@ -950,7 +950,7 @@ function PortalCaseStudyPage({
     <main>
       <ScrollProgress />
       <CaseStudyNavigation sections={portalSectionLinks} />
-      <CaseStudyCompanion slug={project.slug} projectTitle={project.title} />
+      <CaseStudyCompanion slug={project.slug} />
       <PageSection spacing="hero">
         <PortalHero />
       </PageSection>
