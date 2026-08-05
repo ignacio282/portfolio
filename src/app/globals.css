@@ -69,6 +69,11 @@ body {
   }
 }
 
+body:has(.landing-page-root) header,
+body:has(.landing-page-root) footer {
+  display: none;
+}
+
 .case-study-side-nav {
   display: none;
 }
