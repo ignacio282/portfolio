@@ -4,7 +4,7 @@ import { siteConfig } from "@/content/site";
 
 const title = "Design Help for Early-Stage Founders";
 const description =
-  "Your product works, but the interface was never designed. Product design audits and interface redesign for early-stage startups, built around what your team already shipped.";
+  "Products built fast tend to end up with the same interface. Product design audits and interface redesign for early-stage startups, built around what your team already shipped.";
 
 export const metadata: Metadata = {
   title,

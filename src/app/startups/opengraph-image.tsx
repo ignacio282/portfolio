@@ -45,7 +45,7 @@ export default async function OpengraphImage() {
             color: "#242526"
           }}
         >
-          Your product works. The interface was never designed.
+          You built something real. The interface is underselling it.
         </div>
         <div
           style={{

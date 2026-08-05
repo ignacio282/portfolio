@@ -8,45 +8,61 @@ export const SHOW_TESTIMONIALS = false;
 export const startupsContent = {
   hero: {
     label: "For Founders",
-    title: "Your product works. The interface was never designed.",
+    title: "You built something real. The interface is underselling it.",
     body:
-      "You shipped with a small dev team, or with AI tools doing a lot of the lifting. The logic holds up and people can technically do what they came for. But the screens grew one feature at a time, and now the product is harder to use than it should be. That part I can fix, without slowing your team down.",
+      "Getting a working product out is the hard part, and you did it. What usually lags behind is the surface: the screens people actually meet, which tend to end up wherever the tooling and the schedule left them. That part I can take off your hands.",
     primaryCta: "Book a Call",
     secondaryCta: "Email Me"
   },
   problem: {
-    label: "The Situation",
-    title: "Software built this way works. It just doesn't guide anyone.",
+    label: "What I Keep Seeing",
+    title: "AI can build your product. It hands everyone the same interface.",
     paragraphs: [
-      "Engineers make interface decisions every day because someone has to. A field goes where there is room for it. A new feature gets its own tab. AI tools produce a layout that looks reasonable on its own. Each of those calls is sensible in isolation, and none of them were made with the whole product in view.",
-      "What you end up with is a product that demos as a list of features instead of a story, and asks new users to work out for themselves what you already know by heart. That gap is a design problem, and closing it does not mean rewriting what your team built."
+      "Open five products built with the same tools in the same year and you will meet the same sidebar, the same card grid, the same empty state with a centered icon. The output is competent. It is also interchangeable, which is awkward when the product is the thing that has to stand out.",
+      "The bigger cost is quieter. Those defaults are shaped by what is easy to generate, not by what your users are trying to do, so the screens carry no sense of priority. Everything is the same size and the same weight, and people have to work out on their own what matters.",
+      "This may not be happening to you. The only way to know is to look at the product with someone whose job is noticing it."
     ]
+  },
+  comparison: {
+    label: "Sameness",
+    title: "Different companies, same product",
+    caption:
+      "Four dashboards from four unrelated products, all built fast with the same generation of tools.",
+    // TODO(images): drop screenshots into public/images/startups/ and list them here.
+    // Shape: { src: "/images/startups/sameness-1.png", alt: "…" }
+    // Around 16/10 works best. The section stays hidden while this array is empty.
+    images: [] as { src: string; alt: string }[]
   },
   costs: {
     label: "Why It Matters",
-    title: "What an undesigned interface costs you",
+    title: "What a default interface quietly costs you",
     items: [
       {
+        icon: "presentation",
         title: "Demos that need narration",
         body:
           "You talk over your own product, explaining what each screen is for. People remember the explanation and not the product."
       },
       {
+        icon: "route",
         title: "Users who never reach the good part",
         body:
           "Signup, setup, and first real use are where people decide. If the path there has friction, they leave before your product gets a chance to be useful."
       },
       {
+        icon: "trending-up",
         title: "Investors reading the surface",
         body:
-          "Polish is the fastest proxy investors have for how carefully a team works. A rough interface makes a serious product look early."
+          "Polish is the fastest proxy investors have for how carefully a team works. A generic interface makes a serious product look early."
       },
       {
+        icon: "life-buoy",
         title: "Support answering the same question",
         body:
           "Every unclear screen becomes a message someone on your team has to answer, again, for the rest of the product's life."
       },
       {
+        icon: "repeat",
         title: "Engineering rebuilding the same screen",
         body:
           "With no shared patterns, the same component gets built slightly differently each time. You pay for that in review cycles and in every change that comes after."
@@ -59,6 +75,7 @@ export const startupsContent = {
     // TODO(confirm): offering names, what is included, and both timelines.
     items: [
       {
+        icon: "search",
         name: "Product Design Audit",
         description:
           "A structured review of your product the way your users meet it, from the first visit to the moment it becomes useful. You get specific problems, ranked by what they cost you, and a sensible order to fix them in.",
@@ -72,6 +89,7 @@ export const startupsContent = {
         timeline: "Usually one to two weeks"
       },
       {
+        icon: "pen-tool",
         name: "Interface Redesign",
         description:
           "Hands-on design work on the parts of your product that carry the most weight, like onboarding, the core flow, and the screens you put in front of investors. You get designs your team can build from and the patterns to stay consistent as you add more.",
@@ -195,3 +213,13 @@ export const startupsContent = {
     secondaryCta: "Email Me"
   }
 };
+
+export const startupsSections = [
+  { label: "The Pattern", href: "#pattern" },
+  { label: "What It Costs", href: "#costs" },
+  { label: "What I Do", href: "#offerings" },
+  { label: "How We'd Work", href: "#process" },
+  { label: "Selected Work", href: "#work" },
+  { label: "Who I Am", href: "#about" },
+  { label: "Questions", href: "#faq" }
+] as const;
