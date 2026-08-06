@@ -40,8 +40,18 @@ For Founders
 **field: hero.title**
 You built with AI and now you have a working product. That's real progress.
 
-**field: hero.body**
-Getting a first version working and deployed used to take months and a full team. You did it faster than that, more efficiently, and it runs “just fine.” The thing with AI is that it doesn't think about the part that usually comes next: what happens once people start using it? Real people, not friends and family, not your team.
+**field: hero.body** — the part in `**bold**` is set in semibold with a
+hand-drawn teal underline under it.
+Getting a first version working and deployed used to take months and a full team. You did it faster than that, more efficiently, and it runs “just fine.” The thing with AI is that it doesn't think about the part that usually comes next: **what happens once people start using it? Real people, not friends and family, not your team.**
+
+**field: hero.help** — sits under the paragraph inside a hand-drawn bracket, so
+the page says what you do before anyone scrolls. `TODO(copy)`.
+
+- **help.lead** — That part I can help with.
+- **help.items**
+  - Learning what you're actually trying to solve
+  - Analyzing how usable your product is today
+  - Designing on years of practice, not on defaults
 
 **field: hero.primaryCta**
 Book a call
@@ -63,7 +73,16 @@ It works. But somehow it doesn't feel right.
 AI got you here fast, and I get it, that's great for the business. We all want that. A year ago you would have needed developers, a designer, and a few months to make it real. Now you can have something in a matter of weeks.
 
 **field: sameness.body[1]**
-The problem is that everyone in your position does the same thing, and every first version ends up looking just like yours. Tools like Claude Code or OpenAI Codex were trained on the same patterns, so they reach for the same defaults if nobody tells them otherwise. Same layout. Same colors. Same text. *Same experience.*
+The problem is that everyone in your position does the same thing, and every first version ends up looking just like yours. Tools like Claude Code or OpenAI Codex were trained on the same patterns, so they reach for the same defaults if nobody tells them otherwise.
+
+**field: sameness.defaults** — the staccato line is now drawn, not written. Three
+panels sit under the paragraph above: a violet blob, an Inter specimen, and a
+circle → triangle → square flow. These label them.
+
+- **defaults.colors** — Same colors
+- **defaults.type** — Same text
+- **defaults.layout** — Same layout
+- **defaults.footer** — *Same experience.* (sits under the strip, at heading size)
 
 **field: sameness.body[2]**
 Think of it as a hotel room. Everything is there, nice and tidy, everything works and is where it should be, but somehow it doesn't feel like a house. It's not yours. And it's hard to build a company on something that doesn't feel like it belongs to you.
@@ -96,6 +115,18 @@ Real people don't stay on that path. They paste the wrong thing, they show up on
 **field: edgecases.body[2]**
 It doesn't show up on launch day. It shows up three weeks later, in a support inbox, one confused message at a time. Nothing breaks loud enough to file a bug over. It just quietly costs you people, and you won't always know why.
 
+**field: edgecases.journey** — a chart sits between body[1] and body[2]. Two
+lines across five stages: a flat dashed one for the path AI assumes, a solid
+teal one that dips where real people struggle. `TODO(copy)` on all of it.
+
+- **stages** — Lands · Signs up · Sets it up · First real use · Comes back
+- **legend.assumed** — How AI assumes people use your product
+- **legend.real** — How people actually use it
+- **notes** (drawn under the dips, taken from your body[1])
+  - at Signs up: on a bad connection
+  - at Sets it up: pasted the wrong thing
+  - at First real use: used it for something else
+
 **field: edgecases.body[3]**
 And here's the part that's easy to ignore when you're moving fast: catching this before it ships is cheap. Catching it after, in front of users who already made up their mind about you, isn't.
 
@@ -109,8 +140,19 @@ Where I Come In
 **field: bridge.title**
 I can tailor your solution to *real people.* AI designs for everyone, not your user.
 
-**field: bridge.body[0]**
-AI is trained on every product that came before yours, so it designs for an average user, and that person doesn't exist. Not the one actually opening your product for the first time, with their own impatience, their own context, their own reason for being there at all.
+**field: bridge.body[0]** — shortened. The list of traits that used to end this
+sentence is now drawn as labels on a figure, so the paragraph stops earlier.
+AI is trained on every product that came before yours, so it designs for an average user, and that person doesn't exist. Not the one actually opening your product for the first time.
+
+**field: bridge.person.labels** — six pills orbiting a line-art figure. Short
+words work best, long ones crowd the ring. `TODO(copy)`.
+
+- Preferences
+- Emotions
+- Reasons
+- Motivations
+- Goals
+- Limitations
 
 **field: bridge.body[1]**
 I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.
@@ -316,10 +358,10 @@ In their words
 Next Step
 
 **field: finalCta.title**
-Show me what you built.
+Let's talk.
 
 **field: finalCta.body**
-Thirty minutes, your screen shared, nothing to prepare. If design isn't what your product needs right now, I'll say so on the call.
+You show me what you have and I'll tell you what I think. If there's an opportunity to improve the design, the usability, or the overall experience, I'll say so on the call. Looking forward to making awesome things with you :)
 
 **field: finalCta.primaryCta**
 Book a call
@@ -331,9 +373,10 @@ Email me
 
 ## Section nav labels
 
-Left rail, `startupsSections`.
+Left rail, `startupsSections`. These say what is in each section rather than
+naming it in the abstract. `TODO(copy)`, drafts.
 
-What's Happening · What Comes Next · Where I Come In · What I Do · How We'd Work · Selected Work · Who I Am · Questions
+Why it looks generic · What breaks with real users · How I help · Services · Process · Case studies · About me · FAQ
 
 ---
 

@@ -1,6 +1,5 @@
 import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
 import { Card } from "@/components/visual/card";
-import { SectionLabel } from "@/components/visual/section-label";
 import { SHOW_TESTIMONIALS, startupsContent } from "@/content/startups";
 
 const { testimonials } = startupsContent;
@@ -13,8 +12,7 @@ export function StartupsTestimonials() {
   return (
     <section className="layout-section-lg">
       <AnimatedSection>
-        <SectionLabel>{testimonials.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6">{testimonials.title}</h2>
+        <h2 className="type-impact-heading landing-heading-wrap">{testimonials.title}</h2>
       </AnimatedSection>
 
       <StaggerGroup className="mt-8 grid gap-5 md:grid-cols-2">

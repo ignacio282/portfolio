@@ -347,10 +347,6 @@ img {
     @apply grid gap-12 md:grid-cols-[1fr_0.95fr] md:items-center;
   }
 
-  .layout-section-intro {
-    @apply grid gap-8 md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] md:items-start md:gap-16;
-  }
-
   .layout-metric-text-pair {
     @apply grid gap-8 md:grid-cols-[240px_1fr] md:items-center;
   }
@@ -952,6 +948,191 @@ img {
     box-shadow: inset 0 0 0 1px var(--color-line);
   }
 
+  .landing-strip {
+    @apply grid overflow-hidden border border-line md:grid-cols-3;
+    border-radius: var(--radius-card);
+  }
+
+  .landing-strip-cell {
+    @apply flex flex-col items-center justify-center gap-6 border-line px-6 py-12;
+  }
+
+  .landing-strip-cell + .landing-strip-cell {
+    @apply border-t md:border-l md:border-t-0;
+  }
+
+  .landing-strip-label {
+    @apply text-muted;
+  }
+
+  .landing-specimen {
+    @apply flex h-24 w-full flex-col items-center justify-center gap-2;
+  }
+
+  .landing-specimen-blob {
+    @apply block size-20;
+    background: radial-gradient(circle at 32% 28%, #b06ef5, #7c3aed 72%);
+    border-radius: 22px;
+  }
+
+  .landing-specimen-type {
+    font-family: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+    @apply text-6xl font-medium leading-none text-ink;
+  }
+
+  .landing-specimen-type-name {
+    font-family: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
+    @apply text-sm font-normal text-muted;
+  }
+
+  .landing-specimen-flow {
+    @apply h-12 w-full max-w-[232px];
+  }
+
+  /* Headings on the landing run the full measure. The shared type classes are
+     in the text-wrap: balance group, and pretty still evens out short headings,
+     so this falls back to greedy wrapping the way .type-case-display-title does. */
+  .landing-heading-wrap {
+    text-wrap: wrap;
+  }
+
+  /* Annotation marks: an uneven stroke drawn under the emphasised sentence and
+     a bracket down the side of the block, as if the page had been marked up.
+     Both tile or stretch, so they survive any line count or block height. */
+  .landing-marked strong {
+    @apply font-semibold;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='8' viewBox='0 0 60 8'%3E%3Cpath d='M0 5c7-3 13 3 20 0s13-3 20 0s13 3 20 0' fill='none' stroke='%2300877f' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 60px 8px;
+    padding-bottom: 7px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .landing-note {
+    @apply relative pl-8;
+  }
+
+  .landing-note::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='100' viewBox='0 0 14 100' preserveAspectRatio='none'%3E%3Cpath d='M11 2C5 5 7 12 5 22 3 34 6 42 4 50 6 58 3 66 5 78 7 88 5 95 11 98' fill='none' stroke='%2300877f' stroke-opacity='0.5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+  }
+
+  .landing-final-cta {
+    @apply relative overflow-hidden p-8 md:p-12 lg:p-16;
+    background-color: #005c57;
+    border-radius: var(--radius-card);
+  }
+
+  /* The same 32px grid the site background draws, in paper, even across the
+     panel. No mask: a fading overlay on a flat colour reads as a gradient. */
+  .landing-final-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        to right,
+        rgba(249, 244, 237, 0.09) 0 1px,
+        transparent 1px 32px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        rgba(249, 244, 237, 0.09) 0 1px,
+        transparent 1px 32px
+      );
+    pointer-events: none;
+  }
+
+  .landing-final-cta > * {
+    @apply relative;
+  }
+
+  .landing-final-cta .type-impact-heading,
+  .landing-final-cta .type-body-large {
+    color: var(--color-paper);
+  }
+
+  .landing-cta-invert {
+    @apply bg-paper text-teal-dark hover:bg-card focus-visible:ring-paper focus-visible:ring-offset-teal;
+  }
+
+  .landing-pill-invert {
+    @apply border-paper/40 text-paper hover:bg-paper/10 focus-visible:ring-paper focus-visible:ring-offset-teal;
+  }
+
+  .landing-orbit-wrap {
+    @apply flex w-full justify-center;
+  }
+
+  /* The pills sit on a ring that turns, each one counter-rotating by the same
+     amount so the words stay upright. Radius is in cqi so the whole thing
+     scales with the container instead of needing breakpoints. */
+  .landing-orbit {
+    @apply relative aspect-square w-full max-w-[560px];
+    container-type: inline-size;
+  }
+
+  .landing-orbit-svg {
+    @apply absolute inset-0 h-full w-full;
+  }
+
+  .landing-orbit-ring {
+    @apply absolute inset-0;
+    animation: landing-orbit-spin 54s linear infinite;
+  }
+
+  .landing-orbit-slot {
+    @apply absolute left-1/2 top-1/2;
+    transform: translate(-50%, -50%) rotate(var(--slot-angle)) translate(37cqi)
+      rotate(calc(var(--slot-angle) * -1));
+  }
+
+  .landing-orbit-pill {
+    @apply inline-block whitespace-nowrap rounded-full border border-ink/15 bg-card px-4 py-2 font-medium text-ink;
+    font-size: clamp(0.75rem, 3.1cqi, 1rem);
+    animation: landing-orbit-spin 54s linear infinite reverse;
+  }
+
+  .landing-figure {
+    @apply w-full overflow-x-auto;
+  }
+
+  .landing-figure-svg {
+    @apply block h-auto w-full min-w-[680px];
+  }
+
+  .landing-figure-stage {
+    font-family: var(--font-sans);
+    fill: var(--color-ink);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .landing-figure-note {
+    font-family: var(--font-sans);
+    fill: var(--color-muted);
+    font-size: 14px;
+  }
+
+  .landing-legend-swatch-assumed {
+    @apply inline-block h-0 w-8 shrink-0 border-t-2 border-dashed border-muted;
+  }
+
+  .landing-legend-swatch-real {
+    @apply inline-block h-0 w-8 shrink-0 border-t-[3px] border-teal;
+  }
+
   .landing-disclosure {
     @apply border-t border-line;
   }
@@ -1018,6 +1199,12 @@ img {
 @keyframes companion-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes landing-orbit-spin {
+  to {
+    rotate: 360deg;
   }
 }
 

@@ -1,9 +1,13 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { Fragment } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, Check, Clock, PenTool, Search } from "lucide-react";
+import { ProjectCardMedia } from "@/components/home/project-card-media";
 import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
+import { StartupsDefaultsStrip } from "@/components/startups/startups-defaults-strip";
+import { StartupsJourneyMap } from "@/components/startups/startups-journey-map";
+import { StartupsPersonDiagram } from "@/components/startups/startups-person-diagram";
 import { StartupsSectionNav } from "@/components/startups/startups-section-nav";
 import { StartupsTestimonials } from "@/components/startups/startups-testimonials";
 import { StartupsTimeline } from "@/components/startups/startups-timeline";
@@ -40,34 +44,67 @@ const icons: Record<string, LucideIcon> = {
   "pen-tool": PenTool
 };
 
-// Content strings mark emphasis with *asterisks* so the copy stays plain text.
+// Content strings mark emphasis inline so the copy stays plain text and keeps
+// round-tripping with startups-copy.md: **bold** and *italic*.
 function withEmphasis(text: string): ReactNode {
-  return text.split(/\*([^*]+)\*/g).map((part, index) =>
-    index % 2 === 1 ? <em key={part}>{part}</em> : <Fragment key={index}>{part}</Fragment>
-  );
+  return text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).map((token, index) => {
+    if (token.startsWith("**") && token.endsWith("**")) {
+      return <strong key={index}>{token.slice(2, -2)}</strong>;
+    }
+
+    if (token.length > 2 && token.startsWith("*") && token.endsWith("*")) {
+      return <em key={index}>{token.slice(1, -1)}</em>;
+    }
+
+    return <Fragment key={index}>{token}</Fragment>;
+  });
 }
 
-function BookingCTA({ label, className }: { label: string; className?: string }) {
+function BookingCTA({
+  label,
+  className,
+  invert = false
+}: {
+  label: string;
+  className?: string;
+  invert?: boolean;
+}) {
   return (
-    <CTAButton className={className} href={BOOKING_URL} rel="noreferrer" target="_blank">
+    <CTAButton
+      className={cn(invert && "landing-cta-invert", className)}
+      href={BOOKING_URL}
+      rel="noreferrer"
+      target="_blank"
+    >
       {label} <ArrowRight aria-hidden="true" size={20} />
     </CTAButton>
   );
 }
 
-function EmailLink({ label }: { label: string }) {
+function EmailLink({ label, invert = false }: { label: string; invert?: boolean }) {
   return (
-    <a className="ui-pill-outline focus-ring" href={EMAIL_URL}>
+    <a
+      className={cn("ui-pill-outline focus-ring", invert && "landing-pill-invert")}
+      href={EMAIL_URL}
+    >
       {label}
     </a>
   );
 }
 
-function CtaRow({ primary, secondary }: { primary: string; secondary: string }) {
+function CtaRow({
+  primary,
+  secondary,
+  invert = false
+}: {
+  primary: string;
+  secondary: string;
+  invert?: boolean;
+}) {
   return (
     <div className="mt-10 flex flex-wrap items-center gap-4">
-      <BookingCTA label={primary} />
-      <EmailLink label={secondary} />
+      <BookingCTA invert={invert} label={primary} />
+      <EmailLink invert={invert} label={secondary} />
     </div>
   );
 }
@@ -88,36 +125,31 @@ function LandingSection({
   );
 }
 
-function TextSection({
-  id,
-  label,
+// Every section runs in a single column: heading, then paragraphs, full width.
+function SectionIntro({
   title,
-  body,
-  children
+  paragraphs
 }: {
-  id: string;
-  label: string;
   title: string;
-  body: string[];
-  children?: ReactNode;
+  paragraphs: string[];
 }) {
   return (
-    <LandingSection id={id}>
-      <AnimatedSection className="layout-section-intro">
-        <div>
-          <SectionLabel>{label}</SectionLabel>
-          <h2 className="type-impact-heading mt-6">{withEmphasis(title)}</h2>
-        </div>
-        <div className="grid gap-5">
-          {body.map((paragraph) => (
-            <p className="type-body-large" key={paragraph}>
-              {withEmphasis(paragraph)}
-            </p>
-          ))}
-        </div>
-      </AnimatedSection>
-      {children}
-    </LandingSection>
+    <AnimatedSection>
+      <h2 className="type-impact-heading landing-heading-wrap">{withEmphasis(title)}</h2>
+      {paragraphs.map((paragraph) => (
+        <p className="type-body-large mt-8" key={paragraph}>
+          {withEmphasis(paragraph)}
+        </p>
+      ))}
+    </AnimatedSection>
+  );
+}
+
+function BodyParagraph({ children }: { children: ReactNode }) {
+  return (
+    <AnimatedSection>
+      <p className="type-body-large mt-8">{children}</p>
+    </AnimatedSection>
   );
 }
 
@@ -129,10 +161,23 @@ function StartupsHero() {
           <SectionLabel variant="accent">{hero.label}</SectionLabel>
         </StaggerItem>
         <StaggerItem>
-          <h1 className="type-display">{hero.title}</h1>
+          <h1 className="type-display landing-heading-wrap">{hero.title}</h1>
         </StaggerItem>
         <StaggerItem>
-          <p className="type-body-large text-muted">{hero.body}</p>
+          <p className="type-body-large landing-marked">{withEmphasis(hero.body)}</p>
+        </StaggerItem>
+        <StaggerItem>
+          <div className="landing-note mt-6">
+            <p className="type-small-title">{hero.help.lead}</p>
+            <ul className="mt-5 grid gap-3">
+              {hero.help.items.map((item) => (
+                <li className="landing-includes-item" key={item}>
+                  <Check aria-hidden="true" className="mt-1 shrink-0 text-teal" size={18} />
+                  <span className="type-body">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </StaggerItem>
         <StaggerItem>
           <CtaRow primary={hero.primaryCta} secondary={hero.secondaryCta} />
@@ -149,7 +194,7 @@ function SamenessVisual() {
 
   return (
     <>
-      <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-3">
+      <StaggerGroup className="mt-16 grid gap-5 md:grid-cols-3">
         {sameness.images.map((image) => (
           <StaggerItem key={image.src}>
             <MediaFrame
@@ -168,16 +213,62 @@ function SamenessVisual() {
   );
 }
 
+function SamenessSection() {
+  return (
+    <LandingSection id="happening">
+      <SectionIntro
+        paragraphs={[sameness.body[0], sameness.body[1]]}
+        title={sameness.title}
+      />
+
+      <div className="mt-12">
+        <StartupsDefaultsStrip />
+      </div>
+
+      <AnimatedSection>
+        <p className="type-section-title mt-8">{withEmphasis(sameness.defaults.footer)}</p>
+      </AnimatedSection>
+
+      <BodyParagraph>{withEmphasis(sameness.body[2])}</BodyParagraph>
+
+      <SamenessVisual />
+    </LandingSection>
+  );
+}
+
+function EdgecasesSection() {
+  return (
+    <LandingSection id="next">
+      <SectionIntro
+        paragraphs={[edgecases.body[0], edgecases.body[1]]}
+        title={edgecases.title}
+      />
+
+      <StartupsJourneyMap />
+
+      <BodyParagraph>{withEmphasis(edgecases.body[2])}</BodyParagraph>
+      <BodyParagraph>{withEmphasis(edgecases.body[3])}</BodyParagraph>
+    </LandingSection>
+  );
+}
+
+function BridgeSection() {
+  return (
+    <LandingSection id="approach">
+      <SectionIntro paragraphs={[bridge.body[0]]} title={bridge.title} />
+
+      <StartupsPersonDiagram />
+
+      <BodyParagraph>{withEmphasis(bridge.body[1])}</BodyParagraph>
+      <BodyParagraph>{withEmphasis(bridge.body[2])}</BodyParagraph>
+    </LandingSection>
+  );
+}
+
 function OfferingGrid() {
   return (
     <LandingSection id="offerings">
-      <AnimatedSection className="layout-section-intro">
-        <div>
-          <SectionLabel>{offerings.label}</SectionLabel>
-          <h2 className="type-impact-heading mt-6">{offerings.title}</h2>
-        </div>
-        <p className="type-body-large">{offerings.intro}</p>
-      </AnimatedSection>
+      <SectionIntro paragraphs={[offerings.intro]} title={offerings.title} />
 
       <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2">
         {offerings.items.map((item) => {
@@ -230,8 +321,7 @@ function ProcessSteps() {
   return (
     <LandingSection id="process">
       <AnimatedSection>
-        <SectionLabel>{process.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6">{process.title}</h2>
+        <h2 className="type-impact-heading landing-heading-wrap">{process.title}</h2>
       </AnimatedSection>
       <div className="mt-12">
         <StartupsTimeline steps={process.steps} />
@@ -244,26 +334,26 @@ function SelectedWork() {
   return (
     <LandingSection id="work">
       <AnimatedSection>
-        <SectionLabel>{work.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6">{work.title}</h2>
+        <h2 className="type-impact-heading landing-heading-wrap">{work.title}</h2>
       </AnimatedSection>
 
       <StaggerGroup className="mt-10 grid gap-8">
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <StaggerItem key={project.slug}>
             <Link
-              className="surface-link-card group grid gap-8 p-4 md:grid-cols-[420px_1fr] md:items-center md:p-6"
+              className="surface-link-card project-card group grid gap-5 p-4 md:grid-cols-[420px_1fr] md:items-center md:gap-6 md:p-5"
               href={`/projects/${project.slug}`}
+              style={
+                {
+                  "--project-hover-tint": project.hoverTint ?? "#f4f0ea",
+                  "--project-accent": project.accent
+                } as CSSProperties
+              }
             >
-              <MediaFrame
-                alt={project.imageAlt}
-                className="aspect-[1.5/1]"
-                sizes="(max-width: 768px) 92vw, 420px"
-                src={project.image}
-              />
-              <div className="p-2 md:p-6">
-                <h3 className="type-card-title">{project.title}</h3>
-                <p className="type-body-large mt-5">
+              <ProjectCardMedia priority={index === 0} project={project} />
+              <div className="px-1 py-4 md:px-4">
+                <h3 className="type-home-title">{project.title}</h3>
+                <p className="type-body-large mt-6">
                   {work.framings[project.slug] || project.summary}
                 </p>
                 <InlineCTA>{work.cta}</InlineCTA>
@@ -280,11 +370,10 @@ function BioSection() {
   return (
     <LandingSection id="about">
       <AnimatedSection>
-        <SectionLabel>{bio.label}</SectionLabel>
-        <div className="layout-text-pair-balanced mt-6">
+        <div className="layout-text-pair-balanced">
           <div>
-            <h2 className="type-impact-heading">{bio.title}</h2>
-            <div className="mt-6 grid gap-5">
+            <h2 className="type-impact-heading landing-heading-wrap">{bio.title}</h2>
+            <div className="mt-8 grid gap-5">
               {bio.body.map((paragraph) => (
                 <p className="type-body-large" key={paragraph}>
                   {paragraph}
@@ -307,12 +396,9 @@ function BioSection() {
 function FaqList() {
   return (
     <LandingSection id="faq">
-      <AnimatedSection className="layout-section-intro">
-        <div>
-          <SectionLabel>{faq.label}</SectionLabel>
-          <h2 className="type-impact-heading mt-6">{faq.title}</h2>
-        </div>
-        <div>
+      <AnimatedSection>
+        <h2 className="type-impact-heading landing-heading-wrap">{faq.title}</h2>
+        <div className="mt-10">
           {faq.items.map((item, index) => (
             <Disclosure
               defaultOpen={index === 0}
@@ -331,11 +417,14 @@ function FaqList() {
 function FinalCta() {
   return (
     <section className="layout-section-lg">
-      <AnimatedSection>
-        <SectionLabel>{finalCta.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6">{finalCta.title}</h2>
-        <p className="type-body-large mt-6 text-muted">{finalCta.body}</p>
-        <CtaRow primary={finalCta.primaryCta} secondary={finalCta.secondaryCta} />
+      <AnimatedSection className="landing-final-cta">
+        <h2 className="type-impact-heading landing-heading-wrap">{finalCta.title}</h2>
+        <p className="type-body-large mt-8">{finalCta.body}</p>
+        <CtaRow
+          invert
+          primary={finalCta.primaryCta}
+          secondary={finalCta.secondaryCta}
+        />
       </AnimatedSection>
     </section>
   );
@@ -348,26 +437,9 @@ export function StartupsPage() {
         <StartupsSectionNav sections={startupsSections} />
         <div>
           <StartupsHero />
-          <TextSection
-            body={sameness.body}
-            id="happening"
-            label={sameness.label}
-            title={sameness.title}
-          >
-            <SamenessVisual />
-          </TextSection>
-          <TextSection
-            body={edgecases.body}
-            id="next"
-            label={edgecases.label}
-            title={edgecases.title}
-          />
-          <TextSection
-            body={bridge.body}
-            id="approach"
-            label={bridge.label}
-            title={bridge.title}
-          />
+          <SamenessSection />
+          <EdgecasesSection />
+          <BridgeSection />
           <OfferingGrid />
           <ProcessSteps />
           <SelectedWork />

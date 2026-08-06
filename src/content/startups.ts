@@ -11,7 +11,17 @@ export const startupsContent = {
     label: "For Founders",
     title: "You built with AI and now you have a working product. That's real progress.",
     body:
-      "Getting a first version working and deployed used to take months and a full team. You did it faster than that, more efficiently, and it runs “just fine.” The thing with AI is that it doesn't think about the part that usually comes next: what happens once people start using it? Real people, not friends and family, not your team.",
+      "Getting a first version working and deployed used to take months and a full team. You did it faster than that, more efficiently, and it runs “just fine.” The thing with AI is that it doesn't think about the part that usually comes next: **what happens once people start using it? Real people, not friends and family, not your team.**",
+    // TODO(copy): your wording. This is the "so what do you actually do" answer,
+    // up front, before anyone has to scroll.
+    help: {
+      lead: "That part I can help with.",
+      items: [
+        "Learning what you're actually trying to solve",
+        "Analyzing how usable your product is today",
+        "Designing on years of practice, not on defaults"
+      ]
+    },
     primaryCta: "Book a call",
     secondaryCta: "Email me"
   },
@@ -20,9 +30,17 @@ export const startupsContent = {
     title: "It works. But somehow it doesn't feel right.",
     body: [
       "AI got you here fast, and I get it, that's great for the business. We all want that. A year ago you would have needed developers, a designer, and a few months to make it real. Now you can have something in a matter of weeks.",
-      "The problem is that everyone in your position does the same thing, and every first version ends up looking just like yours. Tools like Claude Code or OpenAI Codex were trained on the same patterns, so they reach for the same defaults if nobody tells them otherwise. Same layout. Same colors. Same text. *Same experience.*",
+      "The problem is that everyone in your position does the same thing, and every first version ends up looking just like yours. Tools like Claude Code or OpenAI Codex were trained on the same patterns, so they reach for the same defaults if nobody tells them otherwise.",
       "Think of it as a hotel room. Everything is there, nice and tidy, everything works and is where it should be, but somehow it doesn't feel like a house. It's not yours. And it's hard to build a company on something that doesn't feel like it belongs to you."
     ],
+    // The staccato line from body[1] now labels the three panels of the
+    // defaults strip, and the last beat closes it.
+    defaults: {
+      colors: "Same colors",
+      type: "Same text",
+      layout: "Same layout",
+      footer: "*Same experience.*"
+    },
     caption:
       "Three products, three founders, three different problems being solved. Same page.",
     // TODO(images): 3-up comparison of AI-generated interfaces.
@@ -39,13 +57,46 @@ export const startupsContent = {
       "Real people don't stay on that path. They paste the wrong thing, they show up on a bad connection, they use the product for something you didn't build it for. AI can't design for that, because that part isn't generic, it's *yours*, it depends on your users and your data and the thing someone tries on day one that nobody thought to test. No model knows that yet. You only find out by watching real people use the thing.",
       "It doesn't show up on launch day. It shows up three weeks later, in a support inbox, one confused message at a time. Nothing breaks loud enough to file a bug over. It just quietly costs you people, and you won't always know why.",
       "And here's the part that's easy to ignore when you're moving fast: catching this before it ships is cheap. Catching it after, in front of users who already made up their mind about you, isn't."
-    ]
+    ],
+    // TODO(copy): stage names, the three notes, and both legend lines.
+    journey: {
+      title: "How people move through a product",
+      description:
+        "A chart comparing two paths through five stages. The path AI assumes is flat and even. The path real people take dips at setup and first use before recovering.",
+      stages: ["Lands", "Signs up", "Sets it up", "First real use", "Comes back"],
+      legend: {
+        assumed: "How AI assumes people use your product",
+        real: "How people actually use it"
+      },
+      // Anchored to a stage index, drawn under the dip.
+      notes: [
+        { stage: 1, text: "on a bad connection" },
+        { stage: 2, text: "pasted the wrong thing" },
+        { stage: 3, text: "used it for something else" }
+      ]
+    }
   },
   bridge: {
     label: "Where I Come In",
     title: "I can tailor your solution to *real people.* AI designs for everyone, not your user.",
+    // TODO(copy): the three traits are now labels on the diagram, so body[0]
+    // stops where the list used to start.
+    person: {
+      title: "One real person, not an average",
+      description:
+        "A figure at the centre of a ring, orbited by the things a real user brings with them: preferences, emotions, reasons, motivations, goals and limitations.",
+      // TODO(copy): your six words. Short ones orbit best.
+      labels: [
+        "Preferences",
+        "Emotions",
+        "Reasons",
+        "Motivations",
+        "Goals",
+        "Limitations"
+      ]
+    },
     body: [
-      "AI is trained on every product that came before yours, so it designs for an average user, and that person doesn't exist. Not the one actually opening your product for the first time, with their own impatience, their own context, their own reason for being there at all.",
+      "AI is trained on every product that came before yours, so it designs for an average user, and that person doesn't exist. Not the one actually opening your product for the first time.",
       "I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.",
       "So I go through your product the way a new user would, not the way you already know it. I write down what's actually in the way, ranked by what it costs you. Then, if it makes sense, I fix it, hand your team something they can build from, and stick around while it ships."
     ]
@@ -118,7 +169,8 @@ export const startupsContent = {
   },
   work: {
     label: "Selected Work",
-    title: "Where the interface had to carry real weight",
+    // TODO(copy): your wording.
+    title: "Some examples of the work I've done",
     // Keyed by project slug. Founder-facing framing, not the recruiter-facing summary.
     // An empty string falls back to the case study's own summary.
     // TODO(copy): qr needs a real one-liner. The old one was invented, so it is
@@ -195,21 +247,23 @@ export const startupsContent = {
   },
   finalCta: {
     label: "Next Step",
-    title: "Show me what you built.",
+    title: "Let's talk.",
     body:
-      "Thirty minutes, your screen shared, nothing to prepare. If design isn't what your product needs right now, I'll say so on the call.",
+      "You show me what you have and I'll tell you what I think. If there's an opportunity to improve the design, the usability, or the overall experience, I'll say so on the call. Looking forward to making awesome things with you :)",
     primaryCta: "Book a call",
     secondaryCta: "Email me"
   }
 };
 
+// Rail labels say what is in each section. Section headings stay as written.
+// TODO(copy): your wording, these are drafts.
 export const startupsSections = [
-  { label: "What's Happening", href: "#happening" },
-  { label: "What Comes Next", href: "#next" },
-  { label: "Where I Come In", href: "#approach" },
-  { label: "What I Do", href: "#offerings" },
-  { label: "How We'd Work", href: "#process" },
-  { label: "Selected Work", href: "#work" },
-  { label: "Who I Am", href: "#about" },
-  { label: "Questions", href: "#faq" }
+  { label: "Why it looks generic", href: "#happening" },
+  { label: "What breaks with real users", href: "#next" },
+  { label: "How I help", href: "#approach" },
+  { label: "Services", href: "#offerings" },
+  { label: "Process", href: "#process" },
+  { label: "Case studies", href: "#work" },
+  { label: "About me", href: "#about" },
+  { label: "FAQ", href: "#faq" }
 ] as const;

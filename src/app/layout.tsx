@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans } from "next/font/google";
+import { IBM_Plex_Sans, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Footer } from "@/components/shell/footer";
@@ -12,6 +12,15 @@ const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-ibm-plex-sans",
+  display: "swap"
+});
+
+// Used only by the type specimen on /startups, which points at the typeface
+// every generated interface reaches for.
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-inter",
   display: "swap"
 });
 
@@ -37,7 +46,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={ibmPlexSans.variable} data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      className={`${ibmPlexSans.variable} ${inter.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <body>
         <SiteBackground />
         <Header />
