@@ -233,9 +233,9 @@ export const startupsContent = {
   },
   finalCta: {
     label: "Next Step",
-    title: "Show me what you built.",
+    title: "Let's talk.",
     body:
-      "Thirty minutes, your screen shared, nothing to prepare. If design isn't what your product needs right now, I'll say so on the call.",
+      "You show me what you have and I'll tell you what I think. If there's an opportunity to improve the design, the usability, or the overall experience, I'll say so on the call. Looking forward to making awesome things with you :)",
     primaryCta: "Book a call",
     secondaryCta: "Email me"
   }
