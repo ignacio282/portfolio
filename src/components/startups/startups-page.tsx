@@ -37,6 +37,27 @@ const {
   finalCta
 } = startupsContent;
 
+// Reveals default to needing 26% of the element in view at once. On a phone a
+// stacked block can be taller than the viewport, so that threshold is never met
+// and the content stays at opacity 0. Everything here reveals on a sliver.
+const REVEAL_AMOUNT = 0.03;
+
+function Reveal({ children, className }: { children: ReactNode; className?: string }) {
+  return (
+    <AnimatedSection amount={REVEAL_AMOUNT} className={className}>
+      {children}
+    </AnimatedSection>
+  );
+}
+
+function RevealGroup({ children, className }: { children: ReactNode; className?: string }) {
+  return (
+    <StaggerGroup amount={REVEAL_AMOUNT} className={className}>
+      {children}
+    </StaggerGroup>
+  );
+}
+
 // Content strings mark emphasis inline so the copy stays plain text and keeps
 // round-tripping with startups-copy.md: **bold** and *italic*.
 function withEmphasis(text: string): ReactNode {
@@ -127,22 +148,22 @@ function SectionIntro({
   paragraphs: string[];
 }) {
   return (
-    <AnimatedSection>
+    <Reveal>
       <h2 className="type-impact-heading landing-heading-wrap">{withEmphasis(title)}</h2>
       {paragraphs.map((paragraph) => (
         <p className="type-body-large mt-8" key={paragraph}>
           {withEmphasis(paragraph)}
         </p>
       ))}
-    </AnimatedSection>
+    </Reveal>
   );
 }
 
 function BodyParagraph({ children }: { children: ReactNode }) {
   return (
-    <AnimatedSection>
+    <Reveal>
       <p className="type-body-large mt-8">{children}</p>
-    </AnimatedSection>
+    </Reveal>
   );
 }
 
@@ -187,7 +208,7 @@ function SamenessVisual() {
 
   return (
     <>
-      <StaggerGroup className="mt-16 grid gap-5 md:grid-cols-3">
+      <RevealGroup className="mt-16 grid gap-5 md:grid-cols-3">
         {sameness.images.map((image) => (
           <StaggerItem key={image.src}>
             <MediaFrame
@@ -198,10 +219,10 @@ function SamenessVisual() {
             />
           </StaggerItem>
         ))}
-      </StaggerGroup>
-      <AnimatedSection>
+      </RevealGroup>
+      <Reveal>
         <p className="type-body-small mt-6 text-muted">{sameness.caption}</p>
-      </AnimatedSection>
+      </Reveal>
     </>
   );
 }
@@ -218,9 +239,9 @@ function SamenessSection() {
         <StartupsDefaultsStrip />
       </div>
 
-      <AnimatedSection>
+      <Reveal>
         <p className="type-section-title mt-8">{withEmphasis(sameness.defaults.footer)}</p>
-      </AnimatedSection>
+      </Reveal>
 
       <BodyParagraph>{withEmphasis(sameness.body[2])}</BodyParagraph>
 
@@ -263,7 +284,7 @@ function OfferingGrid() {
     <LandingSection id="offerings">
       <SectionIntro paragraphs={[offerings.intro]} title={offerings.title} />
 
-      <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <RevealGroup className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {offerings.items.map((item) => (
           <StaggerItem className="h-full" key={item.name}>
             <article className="landing-offering-card surface-card">
@@ -306,12 +327,12 @@ function OfferingGrid() {
             </article>
           </StaggerItem>
         ))}
-      </StaggerGroup>
+      </RevealGroup>
 
-      <AnimatedSection>
+      <Reveal>
         <p className="type-body-small mt-8 text-muted">{offerings.scopeNote}</p>
         <BookingCTA className="mt-8" label={offerings.cta} />
-      </AnimatedSection>
+      </Reveal>
     </LandingSection>
   );
 }
@@ -319,9 +340,9 @@ function OfferingGrid() {
 function ProcessSteps() {
   return (
     <LandingSection id="process">
-      <AnimatedSection>
+      <Reveal>
         <h2 className="type-impact-heading landing-heading-wrap">{process.title}</h2>
-      </AnimatedSection>
+      </Reveal>
       <div className="mt-12">
         <StartupsTimeline steps={process.steps} />
       </div>
@@ -332,11 +353,11 @@ function ProcessSteps() {
 function SelectedWork() {
   return (
     <LandingSection id="work">
-      <AnimatedSection>
+      <Reveal>
         <h2 className="type-impact-heading landing-heading-wrap">{work.title}</h2>
-      </AnimatedSection>
+      </Reveal>
 
-      <StaggerGroup className="mt-10 grid gap-8">
+      <RevealGroup className="mt-10 grid gap-8">
         {projects.map((project, index) => (
           <StaggerItem key={project.slug}>
             <Link
@@ -360,7 +381,7 @@ function SelectedWork() {
             </Link>
           </StaggerItem>
         ))}
-      </StaggerGroup>
+      </RevealGroup>
     </LandingSection>
   );
 }
@@ -368,7 +389,7 @@ function SelectedWork() {
 function BioSection() {
   return (
     <LandingSection id="about">
-      <AnimatedSection>
+      <Reveal>
         <div className="layout-text-pair-balanced">
           <div>
             <h2 className="type-impact-heading landing-heading-wrap">{bio.title}</h2>
@@ -387,7 +408,7 @@ function BioSection() {
             src={bio.image}
           />
         </div>
-      </AnimatedSection>
+      </Reveal>
     </LandingSection>
   );
 }
@@ -395,7 +416,7 @@ function BioSection() {
 function FaqList() {
   return (
     <LandingSection id="faq">
-      <AnimatedSection>
+      <Reveal>
         <h2 className="type-impact-heading landing-heading-wrap">{faq.title}</h2>
         <div className="mt-10">
           {faq.items.map((item, index) => (
@@ -408,7 +429,7 @@ function FaqList() {
             </Disclosure>
           ))}
         </div>
-      </AnimatedSection>
+      </Reveal>
     </LandingSection>
   );
 }
@@ -416,7 +437,7 @@ function FaqList() {
 function FinalCta() {
   return (
     <section className="layout-section-lg">
-      <AnimatedSection className="landing-final-cta">
+      <Reveal className="landing-final-cta">
         <h2 className="type-impact-heading landing-heading-wrap">{finalCta.title}</h2>
         <p className="type-body-large mt-8">{finalCta.body}</p>
         <CtaRow
@@ -424,7 +445,7 @@ function FinalCta() {
           primary={finalCta.primaryCta}
           secondary={finalCta.secondaryCta}
         />
-      </AnimatedSection>
+      </Reveal>
     </section>
   );
 }
