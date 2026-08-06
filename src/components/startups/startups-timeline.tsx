@@ -35,7 +35,7 @@ export function StartupsTimeline({ steps }: { steps: TimelineStep[] }) {
               {index + 1}
             </span>
             <h3 className="type-card-title">{step.title}</h3>
-            <p className="type-body mt-3 max-w-2xl">{step.body}</p>
+            <p className="type-body mt-3">{step.body}</p>
           </li>
         ))}
       </ol>

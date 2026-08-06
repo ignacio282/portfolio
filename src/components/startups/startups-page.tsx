@@ -103,10 +103,10 @@ function StartupsHero() {
           <SectionLabel variant="accent">{hero.label}</SectionLabel>
         </StaggerItem>
         <StaggerItem>
-          <h1 className="type-display max-w-4xl">{hero.title}</h1>
+          <h1 className="type-display">{hero.title}</h1>
         </StaggerItem>
         <StaggerItem>
-          <p className="type-body-large max-w-3xl text-muted">{hero.body}</p>
+          <p className="type-body-large text-muted">{hero.body}</p>
         </StaggerItem>
         <StaggerItem>
           <CtaRow primary={hero.primaryCta} secondary={hero.secondaryCta} />
@@ -145,7 +145,7 @@ function ComparisonStrip() {
     <LandingSection id="sameness">
       <AnimatedSection>
         <SectionLabel>{comparison.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6 max-w-4xl">{comparison.title}</h2>
+        <h2 className="type-impact-heading mt-6">{comparison.title}</h2>
       </AnimatedSection>
       <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {comparison.images.map((image) => (
@@ -160,7 +160,7 @@ function ComparisonStrip() {
         ))}
       </StaggerGroup>
       <AnimatedSection>
-        <p className="type-body-small mt-6 max-w-2xl text-muted">{comparison.caption}</p>
+        <p className="type-body-small mt-6 text-muted">{comparison.caption}</p>
       </AnimatedSection>
     </LandingSection>
   );
@@ -171,7 +171,7 @@ function CostGrid() {
     <LandingSection id="costs">
       <AnimatedSection>
         <SectionLabel>{costs.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6 max-w-4xl">{costs.title}</h2>
+        <h2 className="type-impact-heading mt-6">{costs.title}</h2>
       </AnimatedSection>
 
       <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -200,7 +200,7 @@ function OfferingGrid() {
     <LandingSection id="offerings">
       <AnimatedSection>
         <SectionLabel>{offerings.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6 max-w-4xl">{offerings.title}</h2>
+        <h2 className="type-impact-heading mt-6">{offerings.title}</h2>
       </AnimatedSection>
 
       <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2">
@@ -243,7 +243,7 @@ function OfferingGrid() {
       </StaggerGroup>
 
       <AnimatedSection>
-        <p className="type-body-small mt-8 max-w-3xl text-muted">{offerings.scopeNote}</p>
+        <p className="type-body-small mt-8 text-muted">{offerings.scopeNote}</p>
         <BookingCTA className="mt-8" label={offerings.cta} />
       </AnimatedSection>
     </LandingSection>
@@ -255,7 +255,7 @@ function ProcessSteps() {
     <LandingSection id="process">
       <AnimatedSection>
         <SectionLabel>{process.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6 max-w-4xl">{process.title}</h2>
+        <h2 className="type-impact-heading mt-6">{process.title}</h2>
       </AnimatedSection>
       <div className="mt-12">
         <StartupsTimeline steps={process.steps} />
@@ -269,7 +269,7 @@ function SelectedWork() {
     <LandingSection id="work">
       <AnimatedSection>
         <SectionLabel>{work.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6 max-w-4xl">{work.title}</h2>
+        <h2 className="type-impact-heading mt-6">{work.title}</h2>
       </AnimatedSection>
 
       <StaggerGroup className="mt-10 grid gap-8">
@@ -344,7 +344,7 @@ function FaqList() {
               key={item.question}
               title={item.question}
             >
-              <p className="type-body max-w-2xl text-muted">{item.answer}</p>
+              <p className="type-body text-muted">{item.answer}</p>
             </Disclosure>
           ))}
         </div>
@@ -358,8 +358,8 @@ function FinalCta() {
     <section className="layout-section-lg">
       <AnimatedSection>
         <SectionLabel>{finalCta.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6 max-w-4xl">{finalCta.title}</h2>
-        <p className="type-body-large mt-6 max-w-3xl text-muted">{finalCta.body}</p>
+        <h2 className="type-impact-heading mt-6">{finalCta.title}</h2>
+        <p className="type-body-large mt-6 text-muted">{finalCta.body}</p>
         <CtaRow primary={finalCta.primaryCta} secondary={finalCta.secondaryCta} />
       </AnimatedSection>
     </section>
