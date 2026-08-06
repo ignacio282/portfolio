@@ -44,11 +44,20 @@ const icons: Record<string, LucideIcon> = {
   "pen-tool": PenTool
 };
 
-// Content strings mark emphasis with *asterisks* so the copy stays plain text.
+// Content strings mark emphasis inline so the copy stays plain text and keeps
+// round-tripping with startups-copy.md: **bold** and *italic*.
 function withEmphasis(text: string): ReactNode {
-  return text.split(/\*([^*]+)\*/g).map((part, index) =>
-    index % 2 === 1 ? <em key={part}>{part}</em> : <Fragment key={index}>{part}</Fragment>
-  );
+  return text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).map((token, index) => {
+    if (token.startsWith("**") && token.endsWith("**")) {
+      return <strong key={index}>{token.slice(2, -2)}</strong>;
+    }
+
+    if (token.length > 2 && token.startsWith("*") && token.endsWith("*")) {
+      return <em key={index}>{token.slice(1, -1)}</em>;
+    }
+
+    return <Fragment key={index}>{token}</Fragment>;
+  });
 }
 
 function BookingCTA({
@@ -155,7 +164,20 @@ function StartupsHero() {
           <h1 className="type-display landing-heading-wrap">{hero.title}</h1>
         </StaggerItem>
         <StaggerItem>
-          <p className="type-body-large text-muted">{hero.body}</p>
+          <p className="type-body-large landing-marked">{withEmphasis(hero.body)}</p>
+        </StaggerItem>
+        <StaggerItem>
+          <div className="landing-note mt-6">
+            <p className="type-small-title">{hero.help.lead}</p>
+            <ul className="mt-5 grid gap-3">
+              {hero.help.items.map((item) => (
+                <li className="landing-includes-item" key={item}>
+                  <Check aria-hidden="true" className="mt-1 shrink-0 text-teal" size={18} />
+                  <span className="type-body">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </StaggerItem>
         <StaggerItem>
           <CtaRow primary={hero.primaryCta} secondary={hero.secondaryCta} />

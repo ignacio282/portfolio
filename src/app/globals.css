@@ -996,6 +996,36 @@ img {
     text-wrap: wrap;
   }
 
+  /* Annotation marks: an uneven stroke drawn under the emphasised sentence and
+     a bracket down the side of the block, as if the page had been marked up.
+     Both tile or stretch, so they survive any line count or block height. */
+  .landing-marked strong {
+    @apply font-semibold;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='8' viewBox='0 0 60 8'%3E%3Cpath d='M0 5c7-3 13 3 20 0s13-3 20 0s13 3 20 0' fill='none' stroke='%2300877f' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 60px 8px;
+    padding-bottom: 7px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .landing-note {
+    @apply relative pl-8;
+  }
+
+  .landing-note::before {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='100' viewBox='0 0 14 100' preserveAspectRatio='none'%3E%3Cpath d='M11 2C5 5 7 12 5 22 3 34 6 42 4 50 6 58 3 66 5 78 7 88 5 95 11 98' fill='none' stroke='%2300877f' stroke-opacity='0.5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+  }
+
   .landing-final-cta {
     @apply relative overflow-hidden p-8 md:p-12 lg:p-16;
     background-color: #005c57;

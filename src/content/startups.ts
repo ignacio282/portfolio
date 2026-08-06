@@ -11,7 +11,17 @@ export const startupsContent = {
     label: "For Founders",
     title: "You built with AI and now you have a working product. That's real progress.",
     body:
-      "Getting a first version working and deployed used to take months and a full team. You did it faster than that, more efficiently, and it runs “just fine.” The thing with AI is that it doesn't think about the part that usually comes next: what happens once people start using it? Real people, not friends and family, not your team.",
+      "Getting a first version working and deployed used to take months and a full team. You did it faster than that, more efficiently, and it runs “just fine.” The thing with AI is that it doesn't think about the part that usually comes next: **what happens once people start using it? Real people, not friends and family, not your team.**",
+    // TODO(copy): your wording. This is the "so what do you actually do" answer,
+    // up front, before anyone has to scroll.
+    help: {
+      lead: "That part I can help with.",
+      items: [
+        "Learning what you're actually trying to solve",
+        "Analyzing how usable your product is today",
+        "Designing on years of practice, not on defaults"
+      ]
+    },
     primaryCta: "Book a call",
     secondaryCta: "Email me"
   },

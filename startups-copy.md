@@ -40,8 +40,18 @@ For Founders
 **field: hero.title**
 You built with AI and now you have a working product. That's real progress.
 
-**field: hero.body**
-Getting a first version working and deployed used to take months and a full team. You did it faster than that, more efficiently, and it runs “just fine.” The thing with AI is that it doesn't think about the part that usually comes next: what happens once people start using it? Real people, not friends and family, not your team.
+**field: hero.body** — the part in `**bold**` is set in semibold with a
+hand-drawn teal underline under it.
+Getting a first version working and deployed used to take months and a full team. You did it faster than that, more efficiently, and it runs “just fine.” The thing with AI is that it doesn't think about the part that usually comes next: **what happens once people start using it? Real people, not friends and family, not your team.**
+
+**field: hero.help** — sits under the paragraph inside a hand-drawn bracket, so
+the page says what you do before anyone scrolls. `TODO(copy)`.
+
+- **help.lead** — That part I can help with.
+- **help.items**
+  - Learning what you're actually trying to solve
+  - Analyzing how usable your product is today
+  - Designing on years of practice, not on defaults
 
 **field: hero.primaryCta**
 Book a call
