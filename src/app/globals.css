@@ -1002,7 +1002,8 @@ img {
     border-radius: var(--radius-card);
   }
 
-  /* The same 32px grid the site background draws, in paper, faded out. */
+  /* The same 32px grid the site background draws, in paper, even across the
+     panel. No mask: a fading overlay on a flat colour reads as a gradient. */
   .landing-final-cta::before {
     content: "";
     position: absolute;
@@ -1018,7 +1019,6 @@ img {
         rgba(249, 244, 237, 0.09) 0 1px,
         transparent 1px 32px
       );
-    mask-image: linear-gradient(to bottom right, black 0%, transparent 76%);
     pointer-events: none;
   }
 
