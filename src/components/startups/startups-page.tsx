@@ -435,7 +435,7 @@ export function StartupsPage() {
     <main className="landing-page-root">
       <div className="landing-shell">
         <StartupsSectionNav sections={startupsSections} />
-        <div>
+        <div className="min-w-0">
           <StartupsHero />
           <SamenessSection />
           <EdgecasesSection />
