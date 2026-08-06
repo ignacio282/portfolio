@@ -74,7 +74,7 @@ circle → triangle → square flow. These label them.
 - **defaults.layout** — Same layout
 - **defaults.footer** — *Same experience.* (sits under the strip, at heading size)
 
-**field: sameness.body[2]** (rendered as a callout, teal rule on the left)
+**field: sameness.body[2]**
 Think of it as a hotel room. Everything is there, nice and tidy, everything works and is where it should be, but somehow it doesn't feel like a house. It's not yours. And it's hard to build a company on something that doesn't feel like it belongs to you.
 
 **field: sameness.images**
@@ -105,8 +105,17 @@ Real people don't stay on that path. They paste the wrong thing, they show up on
 **field: edgecases.body[2]**
 It doesn't show up on launch day. It shows up three weeks later, in a support inbox, one confused message at a time. Nothing breaks loud enough to file a bug over. It just quietly costs you people, and you won't always know why.
 
-Layout note: body[1] and body[2] sit side by side in two columns, and body[3]
-is a callout.
+**field: edgecases.journey** — a chart sits between body[1] and body[2]. Two
+lines across five stages: a flat dashed one for the path AI assumes, a solid
+teal one that dips where real people struggle. `TODO(copy)` on all of it.
+
+- **stages** — Lands · Signs up · Sets it up · First real use · Comes back
+- **legend.assumed** — How AI assumes people use your product
+- **legend.real** — How people actually use it
+- **notes** (drawn under the dips, taken from your body[1])
+  - at Signs up: on a bad connection
+  - at Sets it up: pasted the wrong thing
+  - at First real use: used it for something else
 
 **field: edgecases.body[3]**
 And here's the part that's easy to ignore when you're moving fast: catching this before it ships is cheap. Catching it after, in front of users who already made up their mind about you, isn't.
@@ -121,11 +130,18 @@ Where I Come In
 **field: bridge.title**
 I can tailor your solution to *real people.* AI designs for everyone, not your user.
 
-**field: bridge.body[0]**
-AI is trained on every product that came before yours, so it designs for an average user, and that person doesn't exist. Not the one actually opening your product for the first time, with their own impatience, their own context, their own reason for being there at all.
+**field: bridge.body[0]** — shortened. The list of traits that used to end this
+sentence is now drawn as labels on a figure, so the paragraph stops earlier.
+AI is trained on every product that came before yours, so it designs for an average user, and that person doesn't exist. Not the one actually opening your product for the first time.
 
-**field: bridge.body[1]** (callout, followed by the three impact numbers already
-on the home page: 12%, 4M+ users, 21 to 7 days)
+**field: bridge.person.labels** — three labels pointing at a single silhouette.
+`TODO(copy)`, these are your words moved out of the paragraph above.
+
+- their own impatience
+- their own context
+- their own reason for being there at all
+
+**field: bridge.body[1]**
 I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.
 
 **field: bridge.body[2]**
@@ -344,9 +360,10 @@ Email me
 
 ## Section nav labels
 
-Left rail, `startupsSections`.
+Left rail, `startupsSections`. These say what is in each section rather than
+naming it in the abstract. `TODO(copy)`, drafts.
 
-What's Happening · What Comes Next · Where I Come In · What I Do · How We'd Work · Selected Work · Who I Am · Questions
+Why it looks generic · What breaks with real users · How I help · Services · Process · Case studies · About me · FAQ
 
 ---
 

@@ -12,7 +12,7 @@ export function StartupsTestimonials() {
   return (
     <section className="layout-section-lg">
       <AnimatedSection>
-        <h2 className="type-impact-heading">{testimonials.title}</h2>
+        <h2 className="type-impact-heading landing-heading-wrap">{testimonials.title}</h2>
       </AnimatedSection>
 
       <StaggerGroup className="mt-8 grid gap-5 md:grid-cols-2">

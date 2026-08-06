@@ -989,8 +989,47 @@ img {
     @apply h-12 w-full max-w-[232px];
   }
 
-  .landing-callout {
-    @apply border-l-2 border-teal py-1 pl-6;
+  /* Headings on the landing run the full measure. The shared type classes are
+     in the text-wrap: balance group, which breaks them early in a wide column. */
+  .landing-heading-wrap {
+    text-wrap: pretty;
+  }
+
+  .landing-figure {
+    @apply w-full overflow-x-auto;
+  }
+
+  .landing-figure-svg {
+    @apply block h-auto w-full min-w-[680px];
+  }
+
+  .landing-figure-stage {
+    font-family: var(--font-sans);
+    fill: var(--color-ink);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .landing-figure-note {
+    font-family: var(--font-sans);
+    fill: var(--color-muted);
+    font-size: 14px;
+  }
+
+  .landing-figure-label {
+    font-family: var(--font-sans);
+    fill: var(--color-ink);
+    font-size: 17px;
+  }
+
+  .landing-legend-swatch-assumed {
+    @apply inline-block h-0 w-8 shrink-0 border-t-2 border-dashed border-muted;
+  }
+
+  .landing-legend-swatch-real {
+    @apply inline-block h-0 w-8 shrink-0 border-t-[3px] border-teal;
   }
 
   .landing-disclosure {

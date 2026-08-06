@@ -16,31 +16,71 @@ const cellVariants = {
   show: { opacity: 1, y: 0, transition: motionPresets.staggerItemSpring }
 };
 
+const TYPE_NAME = "Inter";
+
 // A stand-in for what generation tools reach for by default: the same violet,
 // the same typeface, the same three blocks in the same order.
 function ColorPanel({ reducedMotion }: { reducedMotion: boolean | null }) {
   return (
     <div className="landing-specimen">
       <motion.span
-        animate={reducedMotion ? undefined : { scale: [1, 1.04, 1] }}
+        animate={
+          reducedMotion
+            ? undefined
+            : {
+                borderRadius: ["22px", "50%", "16px", "22px"],
+                rotate: [0, 8, -6, 0],
+                scale: [1, 1.12, 0.96, 1]
+              }
+        }
         className="landing-specimen-blob"
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        transition={{
+          duration: LOOP_MS / 1000,
+          repeat: Infinity,
+          ease: "easeInOut",
+          times: [0, 0.34, 0.68, 1]
+        }}
       />
     </div>
   );
 }
 
+// The name types itself on each cycle, so the panel shows a default being
+// produced rather than sitting there as a caption.
+// Remounted on each cycle by its key, so the count restarts without the
+// effect having to reset state.
 function TypePanel({ reducedMotion }: { reducedMotion: boolean | null }) {
+  const [typed, setTyped] = useState(0);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setTyped((count) => {
+        if (count >= TYPE_NAME.length) {
+          window.clearInterval(timer);
+
+          return count;
+        }
+
+        return count + 1;
+      });
+    }, 170);
+
+    return () => window.clearInterval(timer);
+  }, [reducedMotion]);
+
   return (
     <div className="landing-specimen">
-      <motion.span
-        animate={reducedMotion ? undefined : { scale: [1, 1.03, 1] }}
-        className="landing-specimen-type"
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        Aa
-      </motion.span>
-      <span className="landing-specimen-type-name">Inter</span>
+      <span className="landing-specimen-type">Aa</span>
+      <span className="landing-specimen-type-name">
+        {reducedMotion ? TYPE_NAME : TYPE_NAME.slice(0, typed)}
+        {reducedMotion ? null : (
+          <span aria-hidden="true" className="companion-caret" />
+        )}
+      </span>
     </div>
   );
 }
@@ -153,7 +193,7 @@ export function StartupsDefaultsStrip() {
         <p className="type-body-small landing-strip-label">{defaults.colors}</p>
       </motion.div>
       <motion.div className="landing-strip-cell" variants={cellVariants}>
-        <TypePanel reducedMotion={reducedMotion} />
+        <TypePanel key={cycle} reducedMotion={reducedMotion} />
         <p className="type-body-small landing-strip-label">{defaults.type}</p>
       </motion.div>
       <motion.div className="landing-strip-cell" variants={cellVariants}>

@@ -47,13 +47,42 @@ export const startupsContent = {
       "Real people don't stay on that path. They paste the wrong thing, they show up on a bad connection, they use the product for something you didn't build it for. AI can't design for that, because that part isn't generic, it's *yours*, it depends on your users and your data and the thing someone tries on day one that nobody thought to test. No model knows that yet. You only find out by watching real people use the thing.",
       "It doesn't show up on launch day. It shows up three weeks later, in a support inbox, one confused message at a time. Nothing breaks loud enough to file a bug over. It just quietly costs you people, and you won't always know why.",
       "And here's the part that's easy to ignore when you're moving fast: catching this before it ships is cheap. Catching it after, in front of users who already made up their mind about you, isn't."
-    ]
+    ],
+    // TODO(copy): stage names, the three notes, and both legend lines.
+    journey: {
+      title: "How people move through a product",
+      description:
+        "A chart comparing two paths through five stages. The path AI assumes is flat and even. The path real people take dips at setup and first use before recovering.",
+      stages: ["Lands", "Signs up", "Sets it up", "First real use", "Comes back"],
+      legend: {
+        assumed: "How AI assumes people use your product",
+        real: "How people actually use it"
+      },
+      // Anchored to a stage index, drawn under the dip.
+      notes: [
+        { stage: 1, text: "on a bad connection" },
+        { stage: 2, text: "pasted the wrong thing" },
+        { stage: 3, text: "used it for something else" }
+      ]
+    }
   },
   bridge: {
     label: "Where I Come In",
     title: "I can tailor your solution to *real people.* AI designs for everyone, not your user.",
+    // TODO(copy): the three traits are now labels on the diagram, so body[0]
+    // stops where the list used to start.
+    person: {
+      title: "One real person, not an average",
+      description:
+        "A single figure with three labels pointing at it: their own impatience, their own context, their own reason for being there at all.",
+      labels: [
+        "their own impatience",
+        "their own context",
+        "their own reason for being there at all"
+      ]
+    },
     body: [
-      "AI is trained on every product that came before yours, so it designs for an average user, and that person doesn't exist. Not the one actually opening your product for the first time, with their own impatience, their own context, their own reason for being there at all.",
+      "AI is trained on every product that came before yours, so it designs for an average user, and that person doesn't exist. Not the one actually opening your product for the first time.",
       "I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.",
       "So I go through your product the way a new user would, not the way you already know it. I write down what's actually in the way, ranked by what it costs you. Then, if it makes sense, I fix it, hand your team something they can build from, and stick around while it ships."
     ]
@@ -211,13 +240,15 @@ export const startupsContent = {
   }
 };
 
+// Rail labels say what is in each section. Section headings stay as written.
+// TODO(copy): your wording, these are drafts.
 export const startupsSections = [
-  { label: "What's Happening", href: "#happening" },
-  { label: "What Comes Next", href: "#next" },
-  { label: "Where I Come In", href: "#approach" },
-  { label: "What I Do", href: "#offerings" },
-  { label: "How We'd Work", href: "#process" },
-  { label: "Selected Work", href: "#work" },
-  { label: "Who I Am", href: "#about" },
-  { label: "Questions", href: "#faq" }
+  { label: "Why it looks generic", href: "#happening" },
+  { label: "What breaks with real users", href: "#next" },
+  { label: "How I help", href: "#approach" },
+  { label: "Services", href: "#offerings" },
+  { label: "Process", href: "#process" },
+  { label: "Case studies", href: "#work" },
+  { label: "About me", href: "#about" },
+  { label: "FAQ", href: "#faq" }
 ] as const;
