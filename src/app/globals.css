@@ -865,7 +865,10 @@ img {
   }
 
   .landing-shell {
-    @apply mx-auto grid w-full max-w-[1420px] px-5 md:px-8 xl:grid-cols-[190px_minmax(0,1fr)] xl:gap-14;
+    /* minmax(0,…) on both tracks: without it the column inherits min-width auto
+       and any wide child, like the journey chart, stretches the whole page
+       instead of scrolling inside its own container. */
+    @apply mx-auto grid w-full max-w-[1420px] grid-cols-[minmax(0,1fr)] px-5 md:px-8 xl:grid-cols-[190px_minmax(0,1fr)] xl:gap-14;
   }
 
   .landing-side-nav {
@@ -1100,6 +1103,27 @@ img {
     @apply inline-block whitespace-nowrap rounded-full border border-ink/15 bg-card px-4 py-2 font-medium text-ink;
     font-size: clamp(0.75rem, 3.1cqi, 1rem);
     animation: landing-orbit-spin 54s linear infinite reverse;
+  }
+
+  .landing-orbit-guide {
+    r: 37;
+  }
+
+  /* On a narrow ring the pills are wide relative to the radius, so they would
+     hang past the edge. Pull them in and tighten them. */
+  @container (max-width: 430px) {
+    .landing-orbit-slot {
+      transform: translate(-50%, -50%) rotate(var(--slot-angle)) translate(30cqi)
+        rotate(calc(var(--slot-angle) * -1));
+    }
+
+    .landing-orbit-pill {
+      @apply px-3 py-1;
+    }
+
+    .landing-orbit-guide {
+      r: 30;
+    }
   }
 
   .landing-figure {

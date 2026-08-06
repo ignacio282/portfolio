@@ -57,6 +57,7 @@ export function StartupsPersonDiagram() {
           <desc>{person.description}</desc>
 
           <motion.circle
+            className="landing-orbit-guide"
             cx="50"
             cy="50"
             fill="none"
