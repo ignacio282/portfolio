@@ -990,9 +990,28 @@ img {
   }
 
   /* Headings on the landing run the full measure. The shared type classes are
-     in the text-wrap: balance group, which breaks them early in a wide column. */
+     in the text-wrap: balance group, and pretty still evens out short headings,
+     so this falls back to greedy wrapping the way .type-case-display-title does. */
   .landing-heading-wrap {
-    text-wrap: pretty;
+    text-wrap: wrap;
+  }
+
+  .landing-final-cta {
+    @apply bg-teal p-8 md:p-12;
+    border-radius: var(--radius-card);
+  }
+
+  .landing-final-cta .type-impact-heading,
+  .landing-final-cta .type-body-large {
+    color: var(--color-paper);
+  }
+
+  .landing-cta-invert {
+    @apply bg-paper text-teal-dark hover:bg-card focus-visible:ring-paper focus-visible:ring-offset-teal;
+  }
+
+  .landing-pill-invert {
+    @apply border-paper/40 text-paper hover:bg-paper/10 focus-visible:ring-paper focus-visible:ring-offset-teal;
   }
 
   .landing-figure {

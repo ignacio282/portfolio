@@ -51,27 +51,51 @@ function withEmphasis(text: string): ReactNode {
   );
 }
 
-function BookingCTA({ label, className }: { label: string; className?: string }) {
+function BookingCTA({
+  label,
+  className,
+  invert = false
+}: {
+  label: string;
+  className?: string;
+  invert?: boolean;
+}) {
   return (
-    <CTAButton className={className} href={BOOKING_URL} rel="noreferrer" target="_blank">
+    <CTAButton
+      className={cn(invert && "landing-cta-invert", className)}
+      href={BOOKING_URL}
+      rel="noreferrer"
+      target="_blank"
+    >
       {label} <ArrowRight aria-hidden="true" size={20} />
     </CTAButton>
   );
 }
 
-function EmailLink({ label }: { label: string }) {
+function EmailLink({ label, invert = false }: { label: string; invert?: boolean }) {
   return (
-    <a className="ui-pill-outline focus-ring" href={EMAIL_URL}>
+    <a
+      className={cn("ui-pill-outline focus-ring", invert && "landing-pill-invert")}
+      href={EMAIL_URL}
+    >
       {label}
     </a>
   );
 }
 
-function CtaRow({ primary, secondary }: { primary: string; secondary: string }) {
+function CtaRow({
+  primary,
+  secondary,
+  invert = false
+}: {
+  primary: string;
+  secondary: string;
+  invert?: boolean;
+}) {
   return (
     <div className="mt-10 flex flex-wrap items-center gap-4">
-      <BookingCTA label={primary} />
-      <EmailLink label={secondary} />
+      <BookingCTA invert={invert} label={primary} />
+      <EmailLink invert={invert} label={secondary} />
     </div>
   );
 }
@@ -371,10 +395,14 @@ function FaqList() {
 function FinalCta() {
   return (
     <section className="layout-section-lg">
-      <AnimatedSection>
+      <AnimatedSection className="landing-final-cta">
         <h2 className="type-impact-heading landing-heading-wrap">{finalCta.title}</h2>
-        <p className="type-body-large mt-8 text-muted">{finalCta.body}</p>
-        <CtaRow primary={finalCta.primaryCta} secondary={finalCta.secondaryCta} />
+        <p className="type-body-large mt-8">{finalCta.body}</p>
+        <CtaRow
+          invert
+          primary={finalCta.primaryCta}
+          secondary={finalCta.secondaryCta}
+        />
       </AnimatedSection>
     </section>
   );
