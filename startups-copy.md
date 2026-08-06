@@ -167,11 +167,11 @@ So I go through your product the way a new user would, not the way you already k
 **field: offerings.label**
 What I Do
 
-**field: offerings.title**
-Two ways to start
+**field: offerings.title** — `TODO(copy)`: updated for three offerings.
+Three ways to work together
 
 **field: offerings.intro**
-Every product is at a different point. These are the two shapes the work usually takes, but the call is where we figure out which one, if either, actually fits.
+Every product is at a different point. These are the shapes the work usually takes, but the call is where we figure out which one, if any, actually fits.
 
 **field: offerings.labels** — the four headings inside every card.
 What it is · What's included · What you get · Timeline
@@ -219,6 +219,27 @@ A Figma file your team can build directly from, with the tokens already structur
 
 **field: offerings.items[1].timeline**
 Two to three weeks
+
+### Offering 3
+
+**field: offerings.items[2].name**
+Design Foundation
+
+**field: offerings.items[2].about**
+Ongoing design work plus the system underneath it. Your AI tools stop guessing at your interface and start building from your actual design structure.
+
+**field: offerings.items[2].includes**
+- Component library and design tokens in Figma
+- Connection between your design files and your coding agents, so they build from real structure instead of screenshots
+- Written rules and context files that keep AI output consistent across your team
+- Design review on what your team ships
+- Documentation so your team can extend the system without me
+
+**field: offerings.items[2].outcome**
+A design system your team owns, wired into your AI workflow, with documentation to extend it.
+
+**field: offerings.items[2].timeline** — `TODO(confirm)`: how many days.
+Monthly, [X] days per month
 
 **field: offerings.scopeNote**
 Some teams need one flow fixed before a launch. Some want someone around every week. If neither of these is the right shape, say so on the call and we'll work out something that fits.

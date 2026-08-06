@@ -69,8 +69,10 @@ body {
   }
 }
 
-body:has(.landing-page-root) header,
-body:has(.landing-page-root) footer {
+/* Direct children only: the site chrome. Without the child combinator this
+   also hides any header or footer element inside the page content. */
+body:has(.landing-page-root) > header,
+body:has(.landing-page-root) > footer {
   display: none;
 }
 
@@ -926,8 +928,10 @@ img {
     color: var(--color-paper);
   }
 
+  /* Flex column rather than grid, so the timeline block can push itself to the
+     bottom with mt-auto and line up across cards of different lengths. */
   .landing-offering-body {
-    @apply grid flex-1 content-start gap-8 p-6 md:p-8;
+    @apply flex flex-1 flex-col gap-8 p-6 md:p-8;
   }
 
   .landing-offering-card:hover {

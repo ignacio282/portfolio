@@ -263,7 +263,7 @@ function OfferingGrid() {
     <LandingSection id="offerings">
       <SectionIntro paragraphs={[offerings.intro]} title={offerings.title} />
 
-      <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2">
+      <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {offerings.items.map((item) => (
           <StaggerItem className="h-full" key={item.name}>
             <article className="landing-offering-card surface-card">

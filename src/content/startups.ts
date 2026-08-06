@@ -103,9 +103,10 @@ export const startupsContent = {
   },
   offerings: {
     label: "What I Do",
-    title: "Two ways to start",
+    // TODO(copy): title and intro updated for three offerings, your wording.
+    title: "Three ways to work together",
     intro:
-      "Every product is at a different point. These are the two shapes the work usually takes, but the call is where we figure out which one, if either, actually fits.",
+      "Every product is at a different point. These are the shapes the work usually takes, but the call is where we figure out which one, if any, actually fits.",
     // Section labels, the same on every card.
     labels: {
       about: "What it is",
@@ -145,10 +146,26 @@ export const startupsContent = {
         outcome:
           "A Figma file your team can build directly from, with the tokens already structured for your AI tooling.",
         timeline: "Two to three weeks"
+      },
+      {
+        name: "Design Foundation",
+        about:
+          "Ongoing design work plus the system underneath it. Your AI tools stop guessing at your interface and start building from your actual design structure.",
+        includes: [
+          "Component library and design tokens in Figma",
+          "Connection between your design files and your coding agents, so they build from real structure instead of screenshots",
+          "Written rules and context files that keep AI output consistent across your team",
+          "Design review on what your team ships",
+          "Documentation so your team can extend the system without me"
+        ],
+        outcome:
+          "A design system your team owns, wired into your AI workflow, with documentation to extend it.",
+        // TODO(confirm): how many days per month.
+        timeline: "Monthly, [X] days per month"
       }
     ],
     scopeNote:
-      "Some teams need one flow fixed before a launch. Some want someone around every week. If neither of these is the right shape, say so on the call and we'll work out something that fits.",
+      "Some teams need one flow fixed before a launch. Some want someone around every week. If none of these is the right shape, say so on the call and we'll work out something that fits.",
     cta: "Book a call"
   },
   process: {
