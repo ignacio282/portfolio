@@ -179,7 +179,7 @@ What it is · What's included · What you get · Timeline
 ### Offering 1
 
 **field: offerings.items[0].name**
-Product Design Review
+Design Review
 
 **field: offerings.items[0].about**
 A structured review of your product against usability heuristics, from first visit to the point where it becomes useful. I use it the way a new user would, not the way you already know it works.

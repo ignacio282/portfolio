@@ -926,6 +926,7 @@ img {
 
   .landing-offering-header .type-section-title {
     color: var(--color-paper);
+    font-weight: 500;
   }
 
   /* Flex column rather than grid, so the timeline block can push itself to the

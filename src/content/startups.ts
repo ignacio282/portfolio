@@ -116,7 +116,7 @@ export const startupsContent = {
     },
     items: [
       {
-        name: "Product Design Review",
+        name: "Design Review",
         about:
           "A structured review of your product against usability heuristics, from first visit to the point where it becomes useful. I use it the way a new user would, not the way you already know it works.",
         includes: [
