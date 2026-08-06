@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { siteConfig } from "@/content/site";
 
 export const alt =
-  "Product design for early-stage founders, by Ignacio Vergara";
+  "Product design for founders who already shipped, by Ignacio Vergara";
 export const size = {
   width: 1200,
   height: 630
@@ -45,7 +45,7 @@ export default async function OpengraphImage() {
             color: "#242526"
           }}
         >
-          You built something real. The interface is underselling it.
+          {"You built with AI. That's real progress."}
         </div>
         <div
           style={{

@@ -1,17 +1,8 @@
-import type { LucideIcon } from "lucide-react";
+import type { ReactNode } from "react";
+import { Fragment } from "react";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Check,
-  Clock,
-  LifeBuoy,
-  PenTool,
-  Presentation,
-  Repeat,
-  Route,
-  Search,
-  TrendingUp
-} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { ArrowRight, Check, Clock, PenTool, Search } from "lucide-react";
 import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
 import { StartupsSectionNav } from "@/components/startups/startups-section-nav";
 import { StartupsTestimonials } from "@/components/startups/startups-testimonials";
@@ -33,9 +24,9 @@ import { cn } from "@/lib/cn";
 
 const {
   hero,
-  problem,
-  comparison,
-  costs,
+  sameness,
+  edgecases,
+  bridge,
   offerings,
   process,
   work,
@@ -45,14 +36,16 @@ const {
 } = startupsContent;
 
 const icons: Record<string, LucideIcon> = {
-  presentation: Presentation,
-  route: Route,
-  "trending-up": TrendingUp,
-  "life-buoy": LifeBuoy,
-  repeat: Repeat,
   search: Search,
   "pen-tool": PenTool
 };
+
+// Content strings mark emphasis with *asterisks* so the copy stays plain text.
+function withEmphasis(text: string): ReactNode {
+  return text.split(/\*([^*]+)\*/g).map((part, index) =>
+    index % 2 === 1 ? <em key={part}>{part}</em> : <Fragment key={index}>{part}</Fragment>
+  );
+}
 
 function BookingCTA({ label, className }: { label: string; className?: string }) {
   return (
@@ -85,13 +78,46 @@ function LandingSection({
   className
 }: {
   id: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }) {
   return (
     <section className={cn("layout-section-lg scroll-mt-24", className)} id={id}>
       {children}
     </section>
+  );
+}
+
+function TextSection({
+  id,
+  label,
+  title,
+  body,
+  children
+}: {
+  id: string;
+  label: string;
+  title: string;
+  body: string[];
+  children?: ReactNode;
+}) {
+  return (
+    <LandingSection id={id}>
+      <AnimatedSection className="layout-section-intro">
+        <div>
+          <SectionLabel>{label}</SectionLabel>
+          <h2 className="type-impact-heading mt-6">{withEmphasis(title)}</h2>
+        </div>
+        <div className="grid gap-5">
+          {body.map((paragraph) => (
+            <p className="type-body-large" key={paragraph}>
+              {withEmphasis(paragraph)}
+            </p>
+          ))}
+        </div>
+      </AnimatedSection>
+      {children}
+    </LandingSection>
   );
 }
 
@@ -116,91 +142,41 @@ function StartupsHero() {
   );
 }
 
-function ProblemSection() {
-  return (
-    <LandingSection id="pattern">
-      <AnimatedSection className="layout-section-intro">
-        <div>
-          <SectionLabel>{problem.label}</SectionLabel>
-          <h2 className="type-impact-heading mt-6">{problem.title}</h2>
-        </div>
-        <div className="grid gap-5">
-          {problem.paragraphs.map((paragraph) => (
-            <p className="type-body-large" key={paragraph}>
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </AnimatedSection>
-    </LandingSection>
-  );
-}
-
-function ComparisonStrip() {
-  if (comparison.images.length === 0) {
+function SamenessVisual() {
+  if (sameness.images.length === 0) {
     return null;
   }
 
   return (
-    <LandingSection id="sameness">
-      <AnimatedSection>
-        <SectionLabel>{comparison.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6">{comparison.title}</h2>
-      </AnimatedSection>
-      <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        {comparison.images.map((image) => (
+    <>
+      <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-3">
+        {sameness.images.map((image) => (
           <StaggerItem key={image.src}>
             <MediaFrame
               alt={image.alt}
               className="aspect-[16/10] w-full"
-              sizes="(max-width: 768px) 92vw, (max-width: 1280px) 45vw, 24vw"
+              sizes="(max-width: 768px) 92vw, 33vw"
               src={image.src}
             />
           </StaggerItem>
         ))}
       </StaggerGroup>
       <AnimatedSection>
-        <p className="type-body-small mt-6 text-muted">{comparison.caption}</p>
+        <p className="type-body-small mt-6 text-muted">{sameness.caption}</p>
       </AnimatedSection>
-    </LandingSection>
-  );
-}
-
-function CostGrid() {
-  return (
-    <LandingSection id="costs">
-      <AnimatedSection>
-        <SectionLabel>{costs.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6">{costs.title}</h2>
-      </AnimatedSection>
-
-      <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {costs.items.map((item) => {
-          const Icon = icons[item.icon];
-
-          return (
-            <StaggerItem className="h-full" key={item.title}>
-              <Card className="h-full" padding="md">
-                <span className="landing-icon-badge">
-                  <Icon aria-hidden="true" size={20} />
-                </span>
-                <h3 className="type-small-title mt-6">{item.title}</h3>
-                <p className="type-body mt-3">{item.body}</p>
-              </Card>
-            </StaggerItem>
-          );
-        })}
-      </StaggerGroup>
-    </LandingSection>
+    </>
   );
 }
 
 function OfferingGrid() {
   return (
     <LandingSection id="offerings">
-      <AnimatedSection>
-        <SectionLabel>{offerings.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6">{offerings.title}</h2>
+      <AnimatedSection className="layout-section-intro">
+        <div>
+          <SectionLabel>{offerings.label}</SectionLabel>
+          <h2 className="type-impact-heading mt-6">{offerings.title}</h2>
+        </div>
+        <p className="type-body-large">{offerings.intro}</p>
       </AnimatedSection>
 
       <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2">
@@ -288,7 +264,7 @@ function SelectedWork() {
               <div className="p-2 md:p-6">
                 <h3 className="type-card-title">{project.title}</h3>
                 <p className="type-body-large mt-5">
-                  {work.framings[project.slug] ?? project.summary}
+                  {work.framings[project.slug] || project.summary}
                 </p>
                 <InlineCTA>{work.cta}</InlineCTA>
               </div>
@@ -309,13 +285,12 @@ function BioSection() {
           <div>
             <h2 className="type-impact-heading">{bio.title}</h2>
             <div className="mt-6 grid gap-5">
-              {bio.paragraphs.map((paragraph) => (
+              {bio.body.map((paragraph) => (
                 <p className="type-body-large" key={paragraph}>
                   {paragraph}
                 </p>
               ))}
             </div>
-            <p className="type-body mt-6 text-muted">{bio.personalNote}</p>
           </div>
           <MediaFrame
             alt={bio.imageAlt}
@@ -373,9 +348,26 @@ export function StartupsPage() {
         <StartupsSectionNav sections={startupsSections} />
         <div>
           <StartupsHero />
-          <ProblemSection />
-          <ComparisonStrip />
-          <CostGrid />
+          <TextSection
+            body={sameness.body}
+            id="happening"
+            label={sameness.label}
+            title={sameness.title}
+          >
+            <SamenessVisual />
+          </TextSection>
+          <TextSection
+            body={edgecases.body}
+            id="next"
+            label={edgecases.label}
+            title={edgecases.title}
+          />
+          <TextSection
+            body={bridge.body}
+            id="approach"
+            label={bridge.label}
+            title={bridge.title}
+          />
           <OfferingGrid />
           <ProcessSteps />
           <SelectedWork />

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { StartupsPage } from "@/components/startups/startups-page";
 import { siteConfig } from "@/content/site";
 
-const title = "Design Help for Early-Stage Founders";
+const title = "Product design for founders who already shipped";
 const description =
-  "Products built fast tend to end up with the same interface. Product design audits and interface redesign for early-stage startups, built around what your team already shipped.";
+  "You built it with AI and it works. Here's what usually needs a second look before real users arrive.";
 
 export const metadata: Metadata = {
   title,
