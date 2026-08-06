@@ -182,7 +182,7 @@ What it is · What's included · What you get · Timeline
 Design Review
 
 **field: offerings.items[0].about**
-A structured review of your product against usability heuristics, from first visit to the point where it becomes useful. I use it the way a new user would, not the way you already know it works.
+A structured review of your product against usability heuristics, from the first screen to the last. Each flow is tested against real use cases built from your user profiles, so the issues found are the ones your actual users will hit.
 
 **field: offerings.items[0].includes**
 - Full walkthrough of your live product
@@ -204,7 +204,7 @@ One to two weeks
 Core Flow Design
 
 **field: offerings.items[1].about**
-Design work on one flow that matters. Onboarding, your main task, the screens you show investors. Includes the states that break, not just the path where everything goes right.
+Full design of one flow, end to end. Every screen in the flow, plus the states most first versions skip: empty, loading, error, and the edge cases specific to your product and users.
 
 **field: offerings.items[1].includes**
 - Build-ready screens in Figma
@@ -226,7 +226,7 @@ Two to three weeks
 Design Foundation
 
 **field: offerings.items[2].about**
-Ongoing design work plus the system underneath it. Your AI tools stop guessing at your interface and start building from your actual design structure.
+Design system built and documented in Figma, then connected to your coding agents so they build from your real design structure. Ongoing design work and review on top of it.
 
 **field: offerings.items[2].includes**
 - Component library and design tokens in Figma
