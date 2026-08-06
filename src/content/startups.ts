@@ -103,42 +103,69 @@ export const startupsContent = {
   },
   offerings: {
     label: "What I Do",
-    title: "Two ways to start",
+    // TODO(copy): title and intro updated for three offerings, your wording.
+    title: "Three ways to work together",
     intro:
-      "Every product is at a different point. These are the two shapes the work usually takes, but the call is where we figure out which one, if either, actually fits.",
+      "Every product is at a different point. These are the shapes the work usually takes, but the call is where we figure out which one, if any, actually fits.",
+    // Section labels, the same on every card.
+    labels: {
+      about: "What it is",
+      includes: "What's included",
+      outcome: "What you get",
+      timeline: "Timeline"
+    },
     items: [
       {
-        icon: "search",
-        name: "Product Design Audit",
-        description:
-          "I use your product the way your users meet it, from first visit to the moment it becomes useful. You get the specific problems, ranked by what they cost you, and an order to fix them in.",
-        includesLabel: "What's included",
+        name: "Design Review",
+        about:
+          "A structured review of your product against usability heuristics, from the first screen to the last. Each flow is tested against real use cases built from your user profiles, so the issues found are the ones your actual users will hit.",
         includes: [
-          "A full walkthrough of your live product",
-          "A written list of what's in the way, prioritized",
-          "Annotated screens showing what to change",
-          "A working session to go through it with your team"
+          "Full walkthrough of your live product",
+          "Heuristic evaluation across your main flows",
+          "Annotated screens marking each issue where it happens",
+          "Issues ranked by what they cost you",
+          "A note on where problems are likely to surface next, as more people use it",
+          "Recorded walkthrough or working session with your team"
         ],
+        outcome:
+          "A written report with annotated screens, a prioritized list of issues, and a recommended fix order with rough effort for each.",
         timeline: "One to two weeks"
       },
       {
-        icon: "pen-tool",
-        name: "Interface Redesign",
-        description:
-          "Design work on the parts of your product carrying the most weight. Onboarding, your core flow, the screens you put in front of investors. You get designs your team can build from and the patterns to stay consistent as you add more.",
-        includesLabel: "What's included",
+        name: "Core Flow Design",
+        about:
+          "Full design of one flow, end to end. Every screen in the flow, plus the states most first versions skip: empty, loading, error, and the edge cases specific to your product and users.",
         includes: [
-          "Everything in the audit",
-          "Redesigned flows for the areas we agree matter most",
-          "Build-ready screens in Figma, responsive states included",
-          "A small set of reusable components and the rules for using them",
-          "Time with your engineers while it gets built"
+          "Build-ready screens in Figma",
+          "Responsive states",
+          "Empty, loading, error, and edge case states for that flow",
+          "Design tokens for the flow, set up so your coding agents use them",
+          "Handoff session with your engineers",
+          "Availability for questions while it gets built"
         ],
-        timeline: "Three to six weeks, depending on scope"
+        outcome:
+          "A Figma file your team can build directly from, with the tokens already structured for your AI tooling.",
+        timeline: "Two to three weeks"
+      },
+      {
+        name: "Design Foundation",
+        about:
+          "Design system built and documented in Figma, then connected to your coding agents so they build from your real design structure. Ongoing design work and review on top of it.",
+        includes: [
+          "Component library and design tokens in Figma",
+          "Connection between your design files and your coding agents, so they build from real structure instead of screenshots",
+          "Written rules and context files that keep AI output consistent across your team",
+          "Design review on what your team ships",
+          "Documentation so your team can extend the system without me"
+        ],
+        outcome:
+          "A design system your team owns, wired into your AI workflow, with documentation to extend it.",
+        // TODO(confirm): how many days per month.
+        timeline: "Monthly, [X] days per month"
       }
     ],
     scopeNote:
-      "Some teams need one flow fixed before a launch. Some want someone around every week. If neither of these is the right shape, say so on the call and we'll work out something that fits.",
+      "Some teams need one flow fixed before a launch. Some want someone around every week. If none of these is the right shape, say so on the call and we'll work out something that fits.",
     cta: "Book a call"
   },
   process: {
@@ -258,8 +285,8 @@ export const startupsContent = {
 // Rail labels say what is in each section. Section headings stay as written.
 // TODO(copy): your wording, these are drafts.
 export const startupsSections = [
-  { label: "Why it looks generic", href: "#happening" },
-  { label: "What breaks with real users", href: "#next" },
+  { label: "Why does this matter?", href: "#happening" },
+  { label: "The problem", href: "#next" },
   { label: "How I help", href: "#approach" },
   { label: "Services", href: "#offerings" },
   { label: "Process", href: "#process" },
