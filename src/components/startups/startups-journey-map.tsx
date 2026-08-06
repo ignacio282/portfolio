@@ -1,9 +1,14 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { startupsContent } from "@/content/startups";
 
 const { journey } = startupsContent.edgecases;
+
+// The full sequence takes about 4.5s, so the rest of the beat is stillness
+// before it draws itself again.
+const LOOP_MS = 9500;
 
 // Chart geometry. The viewBox is fixed and the container scrolls on small
 // screens, so these numbers never have to respond to anything.
@@ -36,6 +41,21 @@ const assumedPath = `M ${FIRST_X} ${ASSUMED_Y} L ${LAST_X} ${ASSUMED_Y}`;
 
 export function StartupsJourneyMap() {
   const reducedMotion = useReducedMotion();
+  const figureRef = useRef<HTMLElement>(null);
+  const isInView = useInView(figureRef, { amount: 0.35 });
+  const [cycle, setCycle] = useState(0);
+
+  useEffect(() => {
+    if (reducedMotion || !isInView) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setCycle((current) => current + 1);
+    }, LOOP_MS);
+
+    return () => window.clearInterval(timer);
+  }, [isInView, reducedMotion]);
 
   const draw = reducedMotion
     ? { hidden: { pathLength: 1 }, show: { pathLength: 1 } }
@@ -43,19 +63,20 @@ export function StartupsJourneyMap() {
         hidden: { pathLength: 0 },
         show: {
           pathLength: 1,
-          transition: { duration: 0.9, ease: [0.2, 0, 0, 1] as const }
+          transition: { duration: 1.7, ease: [0.3, 0, 0.2, 1] as const }
         }
       };
 
-  const fade = reducedMotion
-    ? { hidden: { opacity: 1 }, show: { opacity: 1 } }
-    : {
-        hidden: { opacity: 0 },
-        show: { opacity: 1, transition: { duration: 0.35 } }
-      };
+  const fadeAt = (delay: number) =>
+    reducedMotion
+      ? { hidden: { opacity: 1 }, show: { opacity: 1 } }
+      : {
+          hidden: { opacity: 0 },
+          show: { opacity: 1, transition: { duration: 0.5, delay } }
+        };
 
   return (
-    <figure className="mt-12">
+    <figure className="mt-12" ref={figureRef}>
       <figcaption className="flex flex-wrap items-center gap-x-8 gap-y-3">
         <span className="type-body-small flex items-center gap-3 text-muted">
           <span aria-hidden="true" className="landing-legend-swatch-assumed" />
@@ -69,12 +90,12 @@ export function StartupsJourneyMap() {
 
       <div className="landing-figure mt-8">
         <motion.svg
+          animate={isInView ? "show" : "hidden"}
           className="landing-figure-svg"
           initial="hidden"
+          key={cycle}
           role="img"
           viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-          viewport={{ once: true, amount: 0.3 }}
-          whileInView="show"
         >
           <title>{journey.title}</title>
           <desc>{journey.description}</desc>
@@ -116,12 +137,12 @@ export function StartupsJourneyMap() {
                 ...draw.show,
                 transition: reducedMotion
                   ? { duration: 0 }
-                  : { duration: 1.1, delay: 0.5, ease: [0.2, 0, 0, 1] as const }
+                  : { duration: 2.4, delay: 1.4, ease: [0.3, 0, 0.2, 1] as const }
               }
             }}
           />
 
-          <motion.g variants={fade}>
+          <motion.g variants={fadeAt(3.7)}>
             {stageX.map((x, index) => (
               <g key={`dots-${journey.stages[index]}`}>
                 <circle cx={x} cy={ASSUMED_Y} fill="var(--color-muted)" r="4" />
@@ -130,7 +151,7 @@ export function StartupsJourneyMap() {
             ))}
           </motion.g>
 
-          <motion.g variants={fade}>
+          <motion.g variants={fadeAt(4.1)}>
             {journey.notes.map((note) => (
               <g key={note.text}>
                 <line
