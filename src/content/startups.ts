@@ -155,7 +155,8 @@ export const startupsContent = {
   },
   work: {
     label: "Selected Work",
-    title: "Where the interface had to carry real weight",
+    // TODO(copy): your wording.
+    title: "Some examples of the work I've done",
     // Keyed by project slug. Founder-facing framing, not the recruiter-facing summary.
     // An empty string falls back to the case study's own summary.
     // TODO(copy): qr needs a real one-liner. The old one was invented, so it is

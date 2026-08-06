@@ -1,8 +1,9 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { Fragment } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, Check, Clock, PenTool, Search } from "lucide-react";
+import { ProjectCardMedia } from "@/components/home/project-card-media";
 import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
 import { StartupsDefaultsStrip } from "@/components/startups/startups-defaults-strip";
 import { StartupsJourneyMap } from "@/components/startups/startups-journey-map";
@@ -291,21 +292,22 @@ function SelectedWork() {
       </AnimatedSection>
 
       <StaggerGroup className="mt-10 grid gap-8">
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <StaggerItem key={project.slug}>
             <Link
-              className="surface-link-card group grid gap-8 p-4 md:grid-cols-[420px_1fr] md:items-center md:p-6"
+              className="surface-link-card project-card group grid gap-5 p-4 md:grid-cols-[420px_1fr] md:items-center md:gap-6 md:p-5"
               href={`/projects/${project.slug}`}
+              style={
+                {
+                  "--project-hover-tint": project.hoverTint ?? "#f4f0ea",
+                  "--project-accent": project.accent
+                } as CSSProperties
+              }
             >
-              <MediaFrame
-                alt={project.imageAlt}
-                className="aspect-[1.5/1]"
-                sizes="(max-width: 768px) 92vw, 420px"
-                src={project.image}
-              />
-              <div className="p-2 md:p-6">
-                <h3 className="type-card-title">{project.title}</h3>
-                <p className="type-body-large mt-5">
+              <ProjectCardMedia priority={index === 0} project={project} />
+              <div className="px-1 py-4 md:px-4">
+                <h3 className="type-home-title">{project.title}</h3>
+                <p className="type-body-large mt-6">
                   {work.framings[project.slug] || project.summary}
                 </p>
                 <InlineCTA>{work.cta}</InlineCTA>
