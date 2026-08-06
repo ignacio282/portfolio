@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight, Check, Clock, PenTool, Search } from "lucide-react";
 import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
+import { StartupsDefaultsStrip } from "@/components/startups/startups-defaults-strip";
 import { StartupsSectionNav } from "@/components/startups/startups-section-nav";
 import { StartupsTestimonials } from "@/components/startups/startups-testimonials";
 import { StartupsTimeline } from "@/components/startups/startups-timeline";
@@ -13,6 +14,7 @@ import { Disclosure } from "@/components/visual/disclosure";
 import { InlineCTA } from "@/components/visual/inline-cta";
 import { MediaFrame } from "@/components/visual/media-frame";
 import { SectionLabel } from "@/components/visual/section-label";
+import { homeContent } from "@/content/home";
 import { projects } from "@/content/projects";
 import {
   BOOKING_URL,
@@ -88,36 +90,33 @@ function LandingSection({
   );
 }
 
-function TextSection({
-  id,
+// Heading and eyebrow on the left, the paragraph that sets up the section on
+// the right. Everything after that is laid out per section.
+function SectionIntro({
   label,
   title,
-  body,
-  children
+  lead
 }: {
-  id: string;
   label: string;
   title: string;
-  body: string[];
-  children?: ReactNode;
+  lead: string;
 }) {
   return (
-    <LandingSection id={id}>
-      <AnimatedSection className="layout-section-intro">
-        <div>
-          <SectionLabel>{label}</SectionLabel>
-          <h2 className="type-impact-heading mt-6">{withEmphasis(title)}</h2>
-        </div>
-        <div className="grid gap-5">
-          {body.map((paragraph) => (
-            <p className="type-body-large" key={paragraph}>
-              {withEmphasis(paragraph)}
-            </p>
-          ))}
-        </div>
-      </AnimatedSection>
-      {children}
-    </LandingSection>
+    <AnimatedSection className="layout-section-intro">
+      <div>
+        <SectionLabel>{label}</SectionLabel>
+        <h2 className="type-impact-heading mt-6">{withEmphasis(title)}</h2>
+      </div>
+      <p className="type-body-large">{withEmphasis(lead)}</p>
+    </AnimatedSection>
+  );
+}
+
+function Callout({ children }: { children: ReactNode }) {
+  return (
+    <AnimatedSection>
+      <p className="type-body-large landing-callout mt-12">{children}</p>
+    </AnimatedSection>
   );
 }
 
@@ -149,7 +148,7 @@ function SamenessVisual() {
 
   return (
     <>
-      <StaggerGroup className="mt-12 grid gap-5 md:grid-cols-3">
+      <StaggerGroup className="mt-16 grid gap-5 md:grid-cols-3">
         {sameness.images.map((image) => (
           <StaggerItem key={image.src}>
             <MediaFrame
@@ -165,6 +164,74 @@ function SamenessVisual() {
         <p className="type-body-small mt-6 text-muted">{sameness.caption}</p>
       </AnimatedSection>
     </>
+  );
+}
+
+function SamenessSection() {
+  return (
+    <LandingSection id="happening">
+      <SectionIntro label={sameness.label} lead={sameness.body[0]} title={sameness.title} />
+
+      <AnimatedSection>
+        <p className="type-body-large mt-16">{withEmphasis(sameness.body[1])}</p>
+      </AnimatedSection>
+
+      <div className="mt-10">
+        <StartupsDefaultsStrip />
+      </div>
+
+      <AnimatedSection>
+        <p className="type-section-title mt-8">{withEmphasis(sameness.defaults.footer)}</p>
+      </AnimatedSection>
+
+      <Callout>{withEmphasis(sameness.body[2])}</Callout>
+
+      <SamenessVisual />
+    </LandingSection>
+  );
+}
+
+function EdgecasesSection() {
+  return (
+    <LandingSection id="next">
+      <SectionIntro
+        label={edgecases.label}
+        lead={edgecases.body[0]}
+        title={edgecases.title}
+      />
+
+      <AnimatedSection className="mt-16 grid gap-8 md:grid-cols-2">
+        <p className="type-body-large">{withEmphasis(edgecases.body[1])}</p>
+        <p className="type-body-large">{withEmphasis(edgecases.body[2])}</p>
+      </AnimatedSection>
+
+      <Callout>{withEmphasis(edgecases.body[3])}</Callout>
+    </LandingSection>
+  );
+}
+
+function BridgeSection() {
+  return (
+    <LandingSection id="approach">
+      <SectionIntro label={bridge.label} lead={bridge.body[0]} title={bridge.title} />
+
+      <Callout>{withEmphasis(bridge.body[1])}</Callout>
+
+      <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-3">
+        {homeContent.impact.map((item) => (
+          <StaggerItem className="h-full" key={item.value}>
+            <Card className="h-full" padding="md">
+              <p className="type-impact-metric">{item.value}</p>
+              <p className="type-body mt-4">{item.label}</p>
+            </Card>
+          </StaggerItem>
+        ))}
+      </StaggerGroup>
+
+      <AnimatedSection>
+        <p className="type-body-large mt-12">{withEmphasis(bridge.body[2])}</p>
+      </AnimatedSection>
+    </LandingSection>
   );
 }
 
@@ -348,26 +415,9 @@ export function StartupsPage() {
         <StartupsSectionNav sections={startupsSections} />
         <div>
           <StartupsHero />
-          <TextSection
-            body={sameness.body}
-            id="happening"
-            label={sameness.label}
-            title={sameness.title}
-          >
-            <SamenessVisual />
-          </TextSection>
-          <TextSection
-            body={edgecases.body}
-            id="next"
-            label={edgecases.label}
-            title={edgecases.title}
-          />
-          <TextSection
-            body={bridge.body}
-            id="approach"
-            label={bridge.label}
-            title={bridge.title}
-          />
+          <SamenessSection />
+          <EdgecasesSection />
+          <BridgeSection />
           <OfferingGrid />
           <ProcessSteps />
           <SelectedWork />

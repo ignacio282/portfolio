@@ -20,9 +20,17 @@ export const startupsContent = {
     title: "It works. But somehow it doesn't feel right.",
     body: [
       "AI got you here fast, and I get it, that's great for the business. We all want that. A year ago you would have needed developers, a designer, and a few months to make it real. Now you can have something in a matter of weeks.",
-      "The problem is that everyone in your position does the same thing, and every first version ends up looking just like yours. Tools like Claude Code or OpenAI Codex were trained on the same patterns, so they reach for the same defaults if nobody tells them otherwise. Same layout. Same colors. Same text. *Same experience.*",
+      "The problem is that everyone in your position does the same thing, and every first version ends up looking just like yours. Tools like Claude Code or OpenAI Codex were trained on the same patterns, so they reach for the same defaults if nobody tells them otherwise.",
       "Think of it as a hotel room. Everything is there, nice and tidy, everything works and is where it should be, but somehow it doesn't feel like a house. It's not yours. And it's hard to build a company on something that doesn't feel like it belongs to you."
     ],
+    // The staccato line from body[1] now labels the three panels of the
+    // defaults strip, and the last beat closes it.
+    defaults: {
+      colors: "Same colors",
+      type: "Same text",
+      layout: "Same layout",
+      footer: "*Same experience.*"
+    },
     caption:
       "Three products, three founders, three different problems being solved. Same page.",
     // TODO(images): 3-up comparison of AI-generated interfaces.
