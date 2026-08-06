@@ -997,8 +997,33 @@ img {
   }
 
   .landing-final-cta {
-    @apply bg-teal p-8 md:p-12;
+    @apply relative overflow-hidden p-8 md:p-12 lg:p-16;
+    background-image: linear-gradient(142deg, #00756e 0%, #004b48 100%);
     border-radius: var(--radius-card);
+  }
+
+  /* The same 32px grid the site background draws, in paper, faded out. */
+  .landing-final-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        to right,
+        rgba(249, 244, 237, 0.09) 0 1px,
+        transparent 1px 32px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        rgba(249, 244, 237, 0.09) 0 1px,
+        transparent 1px 32px
+      );
+    mask-image: linear-gradient(to bottom right, black 0%, transparent 76%);
+    pointer-events: none;
+  }
+
+  .landing-final-cta > * {
+    @apply relative;
   }
 
   .landing-final-cta .type-impact-heading,
