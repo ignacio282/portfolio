@@ -1,10 +1,15 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 import { motionPresets } from "@/components/motion/presets";
 import { startupsContent } from "@/content/startups";
 
 const { defaults } = startupsContent.sameness;
+
+// The flow replays on this beat, matching the blob's breathing loop, so the
+// three panels feel like one thing rather than three separate effects.
+const LOOP_MS = 6000;
 
 const cellVariants = {
   hidden: { opacity: 0, y: 16 },
@@ -25,16 +30,28 @@ function ColorPanel({ reducedMotion }: { reducedMotion: boolean | null }) {
   );
 }
 
-function TypePanel() {
+function TypePanel({ reducedMotion }: { reducedMotion: boolean | null }) {
   return (
     <div className="landing-specimen">
-      <span className="landing-specimen-type">Aa</span>
+      <motion.span
+        animate={reducedMotion ? undefined : { scale: [1, 1.03, 1] }}
+        className="landing-specimen-type"
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        Aa
+      </motion.span>
       <span className="landing-specimen-type-name">Inter</span>
     </div>
   );
 }
 
-function LayoutPanel({ reducedMotion }: { reducedMotion: boolean | null }) {
+function LayoutPanel({
+  cycle,
+  reducedMotion
+}: {
+  cycle: number;
+  reducedMotion: boolean | null;
+}) {
   const shape = reducedMotion
     ? { hidden: { opacity: 1, scale: 1 }, show: { opacity: 1, scale: 1 } }
     : {
@@ -56,13 +73,13 @@ function LayoutPanel({ reducedMotion }: { reducedMotion: boolean | null }) {
   return (
     <div className="landing-specimen">
       <motion.svg
+        animate="show"
         aria-hidden="true"
         className="landing-specimen-flow"
         initial="hidden"
+        key={cycle}
         transition={{ staggerChildren: reducedMotion ? 0 : 0.12 }}
         viewBox="0 0 232 48"
-        viewport={{ once: true, amount: 0.6 }}
-        whileInView="show"
       >
         <motion.circle cx="20" cy="24" fill="#c07a72" r="14" variants={shape} />
         <motion.path
@@ -106,11 +123,27 @@ function LayoutPanel({ reducedMotion }: { reducedMotion: boolean | null }) {
 
 export function StartupsDefaultsStrip() {
   const reducedMotion = useReducedMotion();
+  const stripRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(stripRef, { amount: 0.4 });
+  const [cycle, setCycle] = useState(0);
+
+  useEffect(() => {
+    if (reducedMotion || !isInView) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setCycle((current) => current + 1);
+    }, LOOP_MS);
+
+    return () => window.clearInterval(timer);
+  }, [isInView, reducedMotion]);
 
   return (
     <motion.div
       className="landing-strip"
       initial="hidden"
+      ref={stripRef}
       transition={{ staggerChildren: reducedMotion ? 0 : 0.14 }}
       viewport={{ once: true, amount: 0.35 }}
       whileInView="show"
@@ -120,11 +153,11 @@ export function StartupsDefaultsStrip() {
         <p className="type-body-small landing-strip-label">{defaults.colors}</p>
       </motion.div>
       <motion.div className="landing-strip-cell" variants={cellVariants}>
-        <TypePanel />
+        <TypePanel reducedMotion={reducedMotion} />
         <p className="type-body-small landing-strip-label">{defaults.type}</p>
       </motion.div>
       <motion.div className="landing-strip-cell" variants={cellVariants}>
-        <LayoutPanel reducedMotion={reducedMotion} />
+        <LayoutPanel cycle={cycle} reducedMotion={reducedMotion} />
         <p className="type-body-small landing-strip-label">{defaults.layout}</p>
       </motion.div>
     </motion.div>

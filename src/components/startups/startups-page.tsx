@@ -90,24 +90,22 @@ function LandingSection({
   );
 }
 
-// Heading and eyebrow on the left, the paragraph that sets up the section on
-// the right. Everything after that is laid out per section.
+// Every section runs in a single column: heading, then paragraphs, full width.
 function SectionIntro({
-  label,
   title,
-  lead
+  paragraphs
 }: {
-  label: string;
   title: string;
-  lead: string;
+  paragraphs: string[];
 }) {
   return (
-    <AnimatedSection className="layout-section-intro">
-      <div>
-        <SectionLabel>{label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6">{withEmphasis(title)}</h2>
-      </div>
-      <p className="type-body-large">{withEmphasis(lead)}</p>
+    <AnimatedSection>
+      <h2 className="type-impact-heading">{withEmphasis(title)}</h2>
+      {paragraphs.map((paragraph) => (
+        <p className="type-body-large mt-8" key={paragraph}>
+          {withEmphasis(paragraph)}
+        </p>
+      ))}
     </AnimatedSection>
   );
 }
@@ -170,13 +168,12 @@ function SamenessVisual() {
 function SamenessSection() {
   return (
     <LandingSection id="happening">
-      <SectionIntro label={sameness.label} lead={sameness.body[0]} title={sameness.title} />
+      <SectionIntro
+        paragraphs={[sameness.body[0], sameness.body[1]]}
+        title={sameness.title}
+      />
 
-      <AnimatedSection>
-        <p className="type-body-large mt-16">{withEmphasis(sameness.body[1])}</p>
-      </AnimatedSection>
-
-      <div className="mt-10">
+      <div className="mt-12">
         <StartupsDefaultsStrip />
       </div>
 
@@ -195,15 +192,9 @@ function EdgecasesSection() {
   return (
     <LandingSection id="next">
       <SectionIntro
-        label={edgecases.label}
-        lead={edgecases.body[0]}
+        paragraphs={[edgecases.body[0], edgecases.body[1], edgecases.body[2]]}
         title={edgecases.title}
       />
-
-      <AnimatedSection className="mt-16 grid gap-8 md:grid-cols-2">
-        <p className="type-body-large">{withEmphasis(edgecases.body[1])}</p>
-        <p className="type-body-large">{withEmphasis(edgecases.body[2])}</p>
-      </AnimatedSection>
 
       <Callout>{withEmphasis(edgecases.body[3])}</Callout>
     </LandingSection>
@@ -213,7 +204,7 @@ function EdgecasesSection() {
 function BridgeSection() {
   return (
     <LandingSection id="approach">
-      <SectionIntro label={bridge.label} lead={bridge.body[0]} title={bridge.title} />
+      <SectionIntro paragraphs={[bridge.body[0]]} title={bridge.title} />
 
       <Callout>{withEmphasis(bridge.body[1])}</Callout>
 
@@ -238,13 +229,7 @@ function BridgeSection() {
 function OfferingGrid() {
   return (
     <LandingSection id="offerings">
-      <AnimatedSection className="layout-section-intro">
-        <div>
-          <SectionLabel>{offerings.label}</SectionLabel>
-          <h2 className="type-impact-heading mt-6">{offerings.title}</h2>
-        </div>
-        <p className="type-body-large">{offerings.intro}</p>
-      </AnimatedSection>
+      <SectionIntro paragraphs={[offerings.intro]} title={offerings.title} />
 
       <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2">
         {offerings.items.map((item) => {
@@ -297,8 +282,7 @@ function ProcessSteps() {
   return (
     <LandingSection id="process">
       <AnimatedSection>
-        <SectionLabel>{process.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6">{process.title}</h2>
+        <h2 className="type-impact-heading">{process.title}</h2>
       </AnimatedSection>
       <div className="mt-12">
         <StartupsTimeline steps={process.steps} />
@@ -311,8 +295,7 @@ function SelectedWork() {
   return (
     <LandingSection id="work">
       <AnimatedSection>
-        <SectionLabel>{work.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6">{work.title}</h2>
+        <h2 className="type-impact-heading">{work.title}</h2>
       </AnimatedSection>
 
       <StaggerGroup className="mt-10 grid gap-8">
@@ -347,11 +330,10 @@ function BioSection() {
   return (
     <LandingSection id="about">
       <AnimatedSection>
-        <SectionLabel>{bio.label}</SectionLabel>
-        <div className="layout-text-pair-balanced mt-6">
+        <div className="layout-text-pair-balanced">
           <div>
             <h2 className="type-impact-heading">{bio.title}</h2>
-            <div className="mt-6 grid gap-5">
+            <div className="mt-8 grid gap-5">
               {bio.body.map((paragraph) => (
                 <p className="type-body-large" key={paragraph}>
                   {paragraph}
@@ -374,12 +356,9 @@ function BioSection() {
 function FaqList() {
   return (
     <LandingSection id="faq">
-      <AnimatedSection className="layout-section-intro">
-        <div>
-          <SectionLabel>{faq.label}</SectionLabel>
-          <h2 className="type-impact-heading mt-6">{faq.title}</h2>
-        </div>
-        <div>
+      <AnimatedSection>
+        <h2 className="type-impact-heading">{faq.title}</h2>
+        <div className="mt-10">
           {faq.items.map((item, index) => (
             <Disclosure
               defaultOpen={index === 0}
@@ -399,9 +378,8 @@ function FinalCta() {
   return (
     <section className="layout-section-lg">
       <AnimatedSection>
-        <SectionLabel>{finalCta.label}</SectionLabel>
-        <h2 className="type-impact-heading mt-6">{finalCta.title}</h2>
-        <p className="type-body-large mt-6 text-muted">{finalCta.body}</p>
+        <h2 className="type-impact-heading">{finalCta.title}</h2>
+        <p className="type-body-large mt-8 text-muted">{finalCta.body}</p>
         <CtaRow primary={finalCta.primaryCta} secondary={finalCta.secondaryCta} />
       </AnimatedSection>
     </section>
