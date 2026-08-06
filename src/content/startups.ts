@@ -84,11 +84,15 @@ export const startupsContent = {
     person: {
       title: "One real person, not an average",
       description:
-        "A single figure with three labels pointing at it: their own impatience, their own context, their own reason for being there at all.",
+        "A figure at the centre of a ring, orbited by the things a real user brings with them: preferences, emotions, reasons, motivations, goals and limitations.",
+      // TODO(copy): your six words. Short ones orbit best.
       labels: [
-        "their own impatience",
-        "their own context",
-        "their own reason for being there at all"
+        "Preferences",
+        "Emotions",
+        "Reasons",
+        "Motivations",
+        "Goals",
+        "Limitations"
       ]
     },
     body: [

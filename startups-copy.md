@@ -144,12 +144,15 @@ I can tailor your solution to *real people.* AI designs for everyone, not your u
 sentence is now drawn as labels on a figure, so the paragraph stops earlier.
 AI is trained on every product that came before yours, so it designs for an average user, and that person doesn't exist. Not the one actually opening your product for the first time.
 
-**field: bridge.person.labels** — three labels pointing at a single silhouette.
-`TODO(copy)`, these are your words moved out of the paragraph above.
+**field: bridge.person.labels** — six pills orbiting a line-art figure. Short
+words work best, long ones crowd the ring. `TODO(copy)`.
 
-- their own impatience
-- their own context
-- their own reason for being there at all
+- Preferences
+- Emotions
+- Reasons
+- Motivations
+- Goals
+- Limitations
 
 **field: bridge.body[1]**
 I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.

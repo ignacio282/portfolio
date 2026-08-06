@@ -1069,6 +1069,39 @@ img {
     @apply border-paper/40 text-paper hover:bg-paper/10 focus-visible:ring-paper focus-visible:ring-offset-teal;
   }
 
+  .landing-orbit-wrap {
+    @apply flex w-full justify-center;
+  }
+
+  /* The pills sit on a ring that turns, each one counter-rotating by the same
+     amount so the words stay upright. Radius is in cqi so the whole thing
+     scales with the container instead of needing breakpoints. */
+  .landing-orbit {
+    @apply relative aspect-square w-full max-w-[560px];
+    container-type: inline-size;
+  }
+
+  .landing-orbit-svg {
+    @apply absolute inset-0 h-full w-full;
+  }
+
+  .landing-orbit-ring {
+    @apply absolute inset-0;
+    animation: landing-orbit-spin 54s linear infinite;
+  }
+
+  .landing-orbit-slot {
+    @apply absolute left-1/2 top-1/2;
+    transform: translate(-50%, -50%) rotate(var(--slot-angle)) translate(37cqi)
+      rotate(calc(var(--slot-angle) * -1));
+  }
+
+  .landing-orbit-pill {
+    @apply inline-block whitespace-nowrap rounded-full border border-ink/15 bg-card px-4 py-2 font-medium text-ink;
+    font-size: clamp(0.75rem, 3.1cqi, 1rem);
+    animation: landing-orbit-spin 54s linear infinite reverse;
+  }
+
   .landing-figure {
     @apply w-full overflow-x-auto;
   }
@@ -1090,12 +1123,6 @@ img {
     font-family: var(--font-sans);
     fill: var(--color-muted);
     font-size: 14px;
-  }
-
-  .landing-figure-label {
-    font-family: var(--font-sans);
-    fill: var(--color-ink);
-    font-size: 17px;
   }
 
   .landing-legend-swatch-assumed {
@@ -1172,6 +1199,12 @@ img {
 @keyframes companion-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes landing-orbit-spin {
+  to {
+    rotate: 360deg;
   }
 }
 
