@@ -409,7 +409,7 @@ Email me
 Left rail, `startupsSections`. These say what is in each section rather than
 naming it in the abstract. `TODO(copy)`, drafts.
 
-Why it looks generic · What breaks with real users · How I help · Services · Process · Case studies · About me · FAQ
+Why does this matter? · The problem · How I help · Services · Process · Case studies · About me · FAQ
 
 ---
 

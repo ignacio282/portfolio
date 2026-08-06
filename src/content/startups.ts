@@ -285,8 +285,8 @@ export const startupsContent = {
 // Rail labels say what is in each section. Section headings stay as written.
 // TODO(copy): your wording, these are drafts.
 export const startupsSections = [
-  { label: "Why it looks generic", href: "#happening" },
-  { label: "What breaks with real users", href: "#next" },
+  { label: "Why does this matter?", href: "#happening" },
+  { label: "The problem", href: "#next" },
   { label: "How I help", href: "#approach" },
   { label: "Services", href: "#offerings" },
   { label: "Process", href: "#process" },
