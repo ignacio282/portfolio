@@ -1,8 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { Fragment } from "react";
 import Link from "next/link";
-import type { LucideIcon } from "lucide-react";
-import { ArrowRight, Check, Clock, PenTool, Search } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { ProjectCardMedia } from "@/components/home/project-card-media";
 import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
 import { StartupsDefaultsStrip } from "@/components/startups/startups-defaults-strip";
@@ -11,7 +10,6 @@ import { StartupsPersonDiagram } from "@/components/startups/startups-person-dia
 import { StartupsSectionNav } from "@/components/startups/startups-section-nav";
 import { StartupsTestimonials } from "@/components/startups/startups-testimonials";
 import { StartupsTimeline } from "@/components/startups/startups-timeline";
-import { Card } from "@/components/visual/card";
 import { CTAButton } from "@/components/visual/cta-button";
 import { Disclosure } from "@/components/visual/disclosure";
 import { InlineCTA } from "@/components/visual/inline-cta";
@@ -38,11 +36,6 @@ const {
   faq,
   finalCta
 } = startupsContent;
-
-const icons: Record<string, LucideIcon> = {
-  search: Search,
-  "pen-tool": PenTool
-};
 
 // Content strings mark emphasis inline so the copy stays plain text and keeps
 // round-tripping with startups-copy.md: **bold** and *italic*.
@@ -271,21 +264,22 @@ function OfferingGrid() {
       <SectionIntro paragraphs={[offerings.intro]} title={offerings.title} />
 
       <StaggerGroup className="mt-10 grid gap-5 md:grid-cols-2">
-        {offerings.items.map((item) => {
-          const Icon = icons[item.icon];
+        {offerings.items.map((item) => (
+          <StaggerItem className="h-full" key={item.name}>
+            <article className="landing-offering-card surface-card">
+              <header className="landing-offering-header">
+                <h3 className="type-section-title">{item.name}</h3>
+              </header>
 
-          return (
-            <StaggerItem className="h-full" key={item.name}>
-              <Card className="landing-offering-card" padding="lg">
-                <span className="landing-icon-badge landing-icon-badge-lg">
-                  <Icon aria-hidden="true" size={24} />
-                </span>
-                <h3 className="type-section-title mt-8">{item.name}</h3>
-                <p className="type-body mt-4">{item.description}</p>
+              <div className="landing-offering-body">
+                <div>
+                  <SectionLabel>{offerings.labels.about}</SectionLabel>
+                  <p className="type-body mt-3">{item.about}</p>
+                </div>
 
-                <div className="case-rule mt-8 pt-8">
-                  <SectionLabel>{item.includesLabel}</SectionLabel>
-                  <ul className="mt-5 grid gap-3">
+                <div>
+                  <SectionLabel>{offerings.labels.includes}</SectionLabel>
+                  <ul className="mt-4 grid gap-3">
                     {item.includes.map((entry) => (
                       <li className="landing-includes-item" key={entry}>
                         <Check
@@ -299,14 +293,19 @@ function OfferingGrid() {
                   </ul>
                 </div>
 
-                <p className="type-body-small mt-auto flex items-center gap-2 pt-8 text-muted">
-                  <Clock aria-hidden="true" size={16} />
-                  {item.timeline}
-                </p>
-              </Card>
-            </StaggerItem>
-          );
-        })}
+                <div>
+                  <SectionLabel>{offerings.labels.outcome}</SectionLabel>
+                  <p className="type-body mt-3">{item.outcome}</p>
+                </div>
+
+                <div className="case-rule mt-auto pt-6">
+                  <SectionLabel>{offerings.labels.timeline}</SectionLabel>
+                  <p className="type-body mt-3">{item.timeline}</p>
+                </div>
+              </div>
+            </article>
+          </StaggerItem>
+        ))}
       </StaggerGroup>
 
       <AnimatedSection>

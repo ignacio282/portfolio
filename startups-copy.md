@@ -173,19 +173,27 @@ Two ways to start
 **field: offerings.intro**
 Every product is at a different point. These are the two shapes the work usually takes, but the call is where we figure out which one, if either, actually fits.
 
+**field: offerings.labels** — the four headings inside every card.
+What it is · What's included · What you get · Timeline
+
 ### Offering 1
 
 **field: offerings.items[0].name**
-Product Design Audit
+Product Design Review
 
-**field: offerings.items[0].description**
-I use your product the way your users meet it, from first visit to the moment it becomes useful. You get the specific problems, ranked by what they cost you, and an order to fix them in.
+**field: offerings.items[0].about**
+A structured review of your product against usability heuristics, from first visit to the point where it becomes useful. I use it the way a new user would, not the way you already know it works.
 
 **field: offerings.items[0].includes**
-- A full walkthrough of your live product
-- A written list of what's in the way, prioritized
-- Annotated screens showing what to change
-- A working session to go through it with your team
+- Full walkthrough of your live product
+- Heuristic evaluation across your main flows
+- Annotated screens marking each issue where it happens
+- Issues ranked by what they cost you
+- A note on where problems are likely to surface next, as more people use it
+- Recorded walkthrough or working session with your team
+
+**field: offerings.items[0].outcome**
+A written report with annotated screens, a prioritized list of issues, and a recommended fix order with rough effort for each.
 
 **field: offerings.items[0].timeline**
 One to two weeks
@@ -193,20 +201,24 @@ One to two weeks
 ### Offering 2
 
 **field: offerings.items[1].name**
-Interface Redesign
+Core Flow Design
 
-**field: offerings.items[1].description**
-Design work on the parts of your product carrying the most weight. Onboarding, your core flow, the screens you put in front of investors. You get designs your team can build from and the patterns to stay consistent as you add more.
+**field: offerings.items[1].about**
+Design work on one flow that matters. Onboarding, your main task, the screens you show investors. Includes the states that break, not just the path where everything goes right.
 
 **field: offerings.items[1].includes**
-- Everything in the audit
-- Redesigned flows for the areas we agree matter most
-- Build-ready screens in Figma, responsive states included
-- A small set of reusable components and the rules for using them
-- Time with your engineers while it gets built
+- Build-ready screens in Figma
+- Responsive states
+- Empty, loading, error, and edge case states for that flow
+- Design tokens for the flow, set up so your coding agents use them
+- Handoff session with your engineers
+- Availability for questions while it gets built
+
+**field: offerings.items[1].outcome**
+A Figma file your team can build directly from, with the tokens already structured for your AI tooling.
 
 **field: offerings.items[1].timeline**
-Three to six weeks, depending on scope
+Two to three weeks
 
 **field: offerings.scopeNote**
 Some teams need one flow fixed before a launch. Some want someone around every week. If neither of these is the right shape, say so on the call and we'll work out something that fits.

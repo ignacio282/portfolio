@@ -912,10 +912,22 @@ img {
   }
 
   .landing-offering-card {
-    @apply flex h-full flex-col;
+    @apply flex h-full flex-col overflow-hidden;
     transition-duration: 200ms;
     transition-property: transform;
     transition-timing-function: var(--ease-standard);
+  }
+
+  .landing-offering-header {
+    @apply bg-teal px-6 py-6 text-center md:px-8;
+  }
+
+  .landing-offering-header .type-section-title {
+    color: var(--color-paper);
+  }
+
+  .landing-offering-body {
+    @apply grid flex-1 content-start gap-8 p-6 md:p-8;
   }
 
   .landing-offering-card:hover {
