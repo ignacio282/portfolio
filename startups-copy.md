@@ -58,7 +58,7 @@ to believe the claim above sits in the hero. Rendered on a teal tint.
 I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.
 
 **field: hero.primaryCta**
-Book a call
+Book a free call
 
 **field: hero.secondaryCta**
 Email me
@@ -239,8 +239,8 @@ Design system built and documented in Figma, then connected to your coding agent
 **field: offerings.items[2].outcome**
 A design system your team owns, wired into your AI workflow, with documentation to extend it.
 
-**field: offerings.items[2].timeline** — `TODO(confirm)`: how many days.
-Monthly, [X] days per month
+**field: offerings.items[2].timeline**
+Flexible
 
 **field: offerings.scopeNote**
 Some teams need one flow fixed before a launch. Some want someone around every week. If neither of these is the right shape, say so on the call and we'll work out something that fits.
@@ -398,7 +398,7 @@ Let's talk.
 You show me what you have and I'll tell you what I think. If there's an opportunity to improve the design, the usability, or the overall experience, I'll say so on the call. Looking forward to making awesome things with you :)
 
 **field: finalCta.primaryCta**
-Book a call
+Book a free call
 
 **field: finalCta.secondaryCta**
 Email me
@@ -419,7 +419,7 @@ Why does this matter? · The problem · How I help · Services · Process · Cas
 1. QR case study one-liner. Blank on the page until written.
 2. FAQ pricing answer. Placeholder in place.
 3. Comparison screenshots for section 2.
-4. Design Foundation timeline still reads `Monthly, [X] days per month`.
-5. “Just fine” and *Same experience* sitting close together.
+4. “Just fine” and *Same experience* sitting close together.
 
-Done: booking URL is live at `cal.com/juanignacio/intro-call`.
+Done: booking URL is live at `cal.com/juanignacio/intro-call`, email goes to
+juan@ignaciovergara.me, and the Design Foundation timeline reads Flexible.
