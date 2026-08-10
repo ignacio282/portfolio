@@ -22,6 +22,10 @@ export const startupsContent = {
         "Designing on years of practice, not on defaults"
       ]
     },
+    // The reason to believe any of the above, kept in the hero so nobody has to
+    // scroll for it.
+    credential:
+      "I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.",
     primaryCta: "Book a call",
     secondaryCta: "Email me"
   },
@@ -97,7 +101,6 @@ export const startupsContent = {
     },
     body: [
       "AI is trained on every product that came before yours, so it designs for an average user, and that person doesn't exist. Not the one actually opening your product for the first time.",
-      "I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.",
       "So I go through your product the way a new user would, not the way you already know it. I write down what's actually in the way, ranked by what it costs you. Then, if it makes sense, I fix it, hand your team something they can build from, and stick around while it ships."
     ]
   },

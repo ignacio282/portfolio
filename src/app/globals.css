@@ -1030,6 +1030,14 @@ img {
     box-decoration-break: clone;
   }
 
+  /* The proof line in the hero. Tinted rather than ruled, so it reads as its
+     own thing next to the bracketed list above it. */
+  .landing-credential {
+    @apply bg-teal/10 p-5 text-lg font-medium leading-[1.55] text-ink md:p-6;
+    border-radius: var(--radius-card);
+    text-wrap: pretty;
+  }
+
   .landing-note {
     @apply relative pl-8;
   }
