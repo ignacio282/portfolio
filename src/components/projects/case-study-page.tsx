@@ -6,6 +6,9 @@ import { BottomNav } from "@/components/shell/bottom-nav";
 import { CaseStudyNavigation, type CaseStudySectionLink } from "@/components/shell/case-study-navigation";
 import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
+import { PortalCmsFunnel } from "@/components/projects/portal/portal-cms-funnel";
+import { PortalComponentReuse } from "@/components/projects/portal/portal-component-reuse";
+import { PortalRoleVenn } from "@/components/projects/portal/portal-role-venn";
 import { Card } from "@/components/visual/card";
 import { InlineCTA } from "@/components/visual/inline-cta";
 import { MediaFrame } from "@/components/visual/media-frame";
@@ -1056,7 +1059,7 @@ function PortalStarted() {
             The CMS migration made the problem visible. If we migrated every page without changing the structure, the bank would keep the same usability problems and make them harder to fix later.
           </p>
         </div>
-        <CaseImage src="/images/projects/portal/Case/2.avif" alt="Diagram showing the old CMS structure as a funnel for different departments." aspect="aspect-[1/1]" compact maxWidth="max-w-[420px]" />
+        <PortalCmsFunnel />
       </div>
     </AnimatedSection>
   );
@@ -1133,7 +1136,7 @@ function PortalRole() {
         I worked at the intersection of structure, business needs, and design execution.
       </p>
       <div className="mt-10 grid gap-12 md:grid-cols-[1fr_1fr] md:items-center">
-        <CaseImage src="/images/projects/portal/Case/4.avif" alt="Venn diagram showing structure, business, and design with me in the middle." aspect="aspect-[1/1]" compact maxWidth="max-w-[560px]" transparent />
+        <PortalRoleVenn />
         <div>
           <h3 className="type-case-subtitle">My responsibilities included:</h3>
           <ul className="type-body mt-5 list-disc space-y-2 pl-5">
@@ -1181,7 +1184,7 @@ function PortalStrategy() {
             This gave teams enough flexibility to publish different types of content while keeping the overall website consistent.
           </p>
         </div>
-        <CaseImage src="/images/projects/portal/Case/5.avif" alt="Diagram explaining reusable page components across page A and page B." aspect="aspect-[1/1]" compact maxWidth="max-w-[420px]" />
+        <PortalComponentReuse />
       </div>
       <CaseImage src="/images/projects/portal/Case/6.avif" alt="Annotated reusable components example for a banking product page." aspect="aspect-[2.04/1]" fit="contain" />
     </AnimatedSection>
