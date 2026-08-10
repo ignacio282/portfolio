@@ -1,5 +1,5 @@
 export const BOOKING_URL = "https://cal.com/juanignacio/intro-call";
-export const EMAIL_URL = "mailto:ignacio.vergara282@gmail.com";
+export const EMAIL_URL = "mailto:juan@ignaciovergara.me";
 
 // Testimonials stay off until there are real ones. Never fill this with samples.
 export const SHOW_TESTIMONIALS = false;
