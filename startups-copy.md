@@ -419,5 +419,7 @@ Why does this matter? · The problem · How I help · Services · Process · Cas
 1. QR case study one-liner. Blank on the page until written.
 2. FAQ pricing answer. Placeholder in place.
 3. Comparison screenshots for section 2.
-4. Booking URL. Still the placeholder `cal.com/ignaciovergara/intro`.
+4. Design Foundation timeline still reads `Monthly, [X] days per month`.
 5. “Just fine” and *Same experience* sitting close together.
+
+Done: booking URL is live at `cal.com/juanignacio/intro-call`.

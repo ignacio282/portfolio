@@ -1,5 +1,4 @@
-// TODO(confirm): replace with the real booking link before sharing this page.
-export const BOOKING_URL = "https://cal.com/ignaciovergara/intro";
+export const BOOKING_URL = "https://cal.com/juanignacio/intro-call";
 export const EMAIL_URL = "mailto:ignacio.vergara282@gmail.com";
 
 // Testimonials stay off until there are real ones. Never fill this with samples.
