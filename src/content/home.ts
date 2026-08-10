@@ -202,6 +202,13 @@ export const homeContent = {
       }
     ] satisfies BuilderLabProject[]
   },
+  startupsBanner: {
+    title: "I also work with early-stage teams on product design",
+    body:
+      "From early ideas to products already in use, bringing a designer's perspective to what you're building.",
+    cta: "Learn more",
+    href: "/startups"
+  },
   process: {
     title: "See how I work",
     body: "My design approach and how I solve real problems."

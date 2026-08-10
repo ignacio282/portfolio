@@ -79,19 +79,19 @@ export function StartupsJourneyMap() {
     <figure className="mt-12" ref={figureRef}>
       <figcaption className="flex flex-wrap items-center gap-x-8 gap-y-3">
         <span className="type-body-small flex items-center gap-3 text-muted">
-          <span aria-hidden="true" className="landing-legend-swatch-assumed" />
+          <span aria-hidden="true" className="legend-swatch-assumed" />
           {journey.legend.assumed}
         </span>
         <span className="type-body-small flex items-center gap-3 text-ink">
-          <span aria-hidden="true" className="landing-legend-swatch-real" />
+          <span aria-hidden="true" className="legend-swatch-real" />
           {journey.legend.real}
         </span>
       </figcaption>
 
-      <div className="landing-figure mt-8">
+      <div className="figure-scroll mt-8">
         <motion.svg
           animate={isInView ? "show" : "hidden"}
-          className="landing-figure-svg"
+          className="figure-svg-wide"
           initial="hidden"
           key={cycle}
           role="img"
@@ -102,7 +102,7 @@ export function StartupsJourneyMap() {
 
           {stageX.map((x, index) => (
             <g key={journey.stages[index]}>
-              <text className="landing-figure-stage" textAnchor="middle" x={x} y={32}>
+              <text className="figure-stage" textAnchor="middle" x={x} y={32}>
                 {journey.stages[index]}
               </text>
               <line
@@ -163,7 +163,7 @@ export function StartupsJourneyMap() {
                   y2={realY[note.stage] + 42}
                 />
                 <text
-                  className="landing-figure-note"
+                  className="figure-note"
                   textAnchor="middle"
                   x={stageX[note.stage]}
                   y={realY[note.stage] + 62}
