@@ -194,6 +194,9 @@ function StartupsHero() {
           </div>
         </StaggerItem>
         <StaggerItem>
+          <p className="landing-credential mt-2">{hero.credential}</p>
+        </StaggerItem>
+        <StaggerItem>
           <CtaRow primary={hero.primaryCta} secondary={hero.secondaryCta} />
         </StaggerItem>
       </StaggerGroup>
@@ -274,7 +277,6 @@ function BridgeSection() {
       <StartupsPersonDiagram />
 
       <BodyParagraph>{withEmphasis(bridge.body[1])}</BodyParagraph>
-      <BodyParagraph>{withEmphasis(bridge.body[2])}</BodyParagraph>
     </LandingSection>
   );
 }

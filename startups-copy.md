@@ -53,6 +53,10 @@ the page says what you do before anyone scrolls. `TODO(copy)`.
   - Analyzing how usable your product is today
   - Designing on years of practice, not on defaults
 
+**field: hero.credential** — moved up from the "How I help" section so the reason
+to believe the claim above sits in the hero. Rendered on a teal tint.
+I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.
+
 **field: hero.primaryCta**
 Book a call
 
@@ -155,9 +159,6 @@ words work best, long ones crowd the ring. `TODO(copy)`.
 - Limitations
 
 **field: bridge.body[1]**
-I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.
-
-**field: bridge.body[2]**
 So I go through your product the way a new user would, not the way you already know it. I write down what's actually in the way, ranked by what it costs you. Then, if it makes sense, I fix it, hand your team something they can build from, and stick around while it ships.
 
 ---
@@ -418,5 +419,7 @@ Why does this matter? · The problem · How I help · Services · Process · Cas
 1. QR case study one-liner. Blank on the page until written.
 2. FAQ pricing answer. Placeholder in place.
 3. Comparison screenshots for section 2.
-4. Booking URL. Still the placeholder `cal.com/ignaciovergara/intro`.
+4. Design Foundation timeline still reads `Monthly, [X] days per month`.
 5. “Just fine” and *Same experience* sitting close together.
+
+Done: booking URL is live at `cal.com/juanignacio/intro-call`.
