@@ -25,7 +25,7 @@ export const startupsContent = {
     // scroll for it.
     credential:
       "I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.",
-    primaryCta: "Book a call",
+    primaryCta: "Book a free call",
     secondaryCta: "Email me"
   },
   sameness: {
@@ -162,13 +162,12 @@ export const startupsContent = {
         ],
         outcome:
           "A design system your team owns, wired into your AI workflow, with documentation to extend it.",
-        // TODO(confirm): how many days per month.
-        timeline: "Monthly, [X] days per month"
+        timeline: "Flexible"
       }
     ],
     scopeNote:
       "Some teams need one flow fixed before a launch. Some want someone around every week. If none of these is the right shape, say so on the call and we'll work out something that fits.",
-    cta: "Book a call"
+    cta: "Book a free call"
   },
   process: {
     label: "How We'd Work",
@@ -279,7 +278,7 @@ export const startupsContent = {
     title: "Let's talk.",
     body:
       "You show me what you have and I'll tell you what I think. If there's an opportunity to improve the design, the usability, or the overall experience, I'll say so on the call. Looking forward to making awesome things with you :)",
-    primaryCta: "Book a call",
+    primaryCta: "Book a free call",
     secondaryCta: "Email me"
   }
 };
