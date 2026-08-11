@@ -147,7 +147,7 @@ export const caseStudies: CaseStudy[] = [
       "I was 1 of 3 UX/UI designers in the project. I served as the main point of contact with stakeholders, and owned the new CMS component system, development handoff, and UI quality checks.",
     outcomes: [
       {
-        value: "100+ Pages",
+        value: "250+ Pages",
         label: "Audited, removing outdated content and organizing architecture."
       },
       {
@@ -199,7 +199,7 @@ export const caseStudies: CaseStudy[] = [
         quote:
           "It's really difficult to find anything on the website, I prefer calling the call center, it's quicker",
         body: [
-          "Users felt overwhelmed, and many preferred calling instead of browsing the site. We conducted nearly 50 interviews with customers.",
+          "Users felt overwhelmed, and many preferred calling instead of browsing the site. We conducted 20 interviews with customers.",
           "Users were not reading because the content was not designed for them; it was designed to satisfy internal teams."
         ]
       },
