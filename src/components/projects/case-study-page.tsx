@@ -1359,7 +1359,7 @@ function OutcomeGrid({ outcomes }: { outcomes: CaseStudy["outcomes"] }) {
   return (
     <div>
       <h2 className="type-section-title text-center">Outcomes</h2>
-      <StaggerGroup className="mt-6 grid gap-4 md:grid-cols-4">
+      <StaggerGroup className="mt-6 grid gap-4 md:grid-cols-4" amount="some">
         {outcomes.map((outcome) => (
           <StaggerItem key={outcome.value}>
             <Card className="min-h-32" padding="sm" tone="paper">

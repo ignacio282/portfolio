@@ -16,7 +16,7 @@ export function ProjectIndex() {
             Case studies about product design in real systems.
           </h1>
         </AnimatedSection>
-        <StaggerGroup className="mt-12 grid gap-8">
+        <StaggerGroup className="mt-12 grid gap-8" amount="some" margin="0px 0px -10% 0px">
           {projects.map((project) => (
             <StaggerItem key={project.slug}>
               <Link

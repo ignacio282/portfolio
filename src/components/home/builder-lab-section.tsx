@@ -124,6 +124,28 @@ function ProductVisual({
 }) {
   const style: BuilderAccentStyle = { "--builder-accent": project.accent };
 
+  if (!slide.src && project.video) {
+    return (
+      <div className="builder-modal-visual" data-variant={slide.variant} style={style}>
+        <video
+          aria-label={project.imageAlt ?? project.title}
+          autoPlay
+          className="builder-modal-visual-img"
+          loop
+          muted
+          onLoadedMetadata={(event) => {
+            event.currentTarget.playbackRate = 1.25;
+          }}
+          playsInline
+          poster={project.videoPoster}
+          preload="metadata"
+          src={project.video}
+          suppressHydrationWarning
+        />
+      </div>
+    );
+  }
+
   if (slide.src) {
     return (
       <div className="builder-modal-visual" data-variant={slide.variant} style={style}>
@@ -364,14 +386,10 @@ export function BuilderLabSection() {
   const { builderLab } = homeContent;
   const [activeProject, setActiveProject] = useState<BuilderLabProject | null>(null);
   const [modalInitialSlide, setModalInitialSlide] = useState(0);
-  const projectsBySlug = useMemo(
-    () => new Map(builderLab.projects.map((project) => [project.slug, project])),
+  const featuredProjects = useMemo(
+    () => builderLab.projects.slice(0, 3),
     [builderLab.projects]
   );
-  const mealPrep = projectsBySlug.get("meal-prep-assistant") ?? builderLab.projects[0];
-  const game = projectsBySlug.get("survivor-style-game") ?? builderLab.projects[1];
-  const rfid = projectsBySlug.get("rfid-productivity-device") ?? builderLab.projects[2];
-  const featuredProjects = useMemo(() => [mealPrep, game, rfid], [mealPrep, game, rfid]);
   const [activeSlug, setActiveSlug] = useState(featuredProjects[0].slug);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const activeTabProject =

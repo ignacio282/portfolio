@@ -60,7 +60,7 @@ export function StaggerGroup({
   delayChildren?: number;
   trigger?: "view" | "load";
   margin?: string;
-  amount?: number;
+  amount?: number | "some" | "all";
 }) {
   const reducedMotion = useReducedMotion();
   const isLoadTriggered = trigger === "load";
