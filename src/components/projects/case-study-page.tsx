@@ -8,6 +8,7 @@ import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { PortalCmsFunnel } from "@/components/projects/portal/portal-cms-funnel";
 import { PortalComponentReuse } from "@/components/projects/portal/portal-component-reuse";
+import { PortalPagePerformance } from "@/components/projects/portal/portal-page-performance";
 import { PortalRoleVenn } from "@/components/projects/portal/portal-role-venn";
 import { Card } from "@/components/visual/card";
 import { InlineCTA } from "@/components/visual/inline-cta";
@@ -1114,6 +1115,8 @@ function PortalApproach() {
           One of the clearest findings was that some high-priority pages were receiving far less traffic than expected. That pointed to a navigation and information architecture issue, not just a content issue.
         </p>
       </div>
+
+      <PortalPagePerformance />
       <p className="type-case-subtitle mt-12">
         We also used customer interviews to understand how people experienced the site.
       </p>

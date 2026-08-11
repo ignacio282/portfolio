@@ -47,24 +47,31 @@ export const portalFigures = {
     ]
   },
 
-  // 03. My approach — the finding that was prose-only: business priority and
-  // actual traffic pointed in opposite directions. Illustrative, not a plot of
-  // real analytics, so the figure is labelled as a schematic.
-  trafficPriority: {
-    title: "Business priority against actual traffic",
+  // 03. My approach — the finding that was prose-only. A high-priority page
+  // was meant to build traffic organically after launch. It never did: the
+  // only time anyone arrived was when a campaign pointed them at it, which is
+  // what made this a navigation problem rather than a content one.
+  pagePerformance: {
+    title: "Expected against actual visits after launch",
     description:
-      "A schematic comparing where pages ranked on business priority with the traffic they actually received. The two lines diverge at the highest-priority pages.",
+      "A schematic line chart of visits over the months after a page launched. The expected line climbs steadily from zero as traffic builds. The actual line stays flat and low, apart from one sharp peak when a campaign pointed people directly at the page, after which it falls back.",
     legend: {
-      priority: "Business priority",
-      traffic: "Actual traffic"
+      expected: "How the business expected a new page to perform",
+      actual: "How the page actually performed"
     },
-    caption: "Schematic. Shapes reflect the pattern we found in the audit, not raw analytics values.",
-    // Page groups, ordered from highest business priority to lowest.
-    groups: ["Products", "Rates & fees", "Support", "Campaigns", "News"],
-    // 0–100. Priority is the ranking we assigned; traffic is what those pages
-    // actually got. The gap at the left is the finding.
-    priority: [95, 82, 64, 45, 22],
-    traffic: [31, 48, 70, 66, 58],
-    note: "High-priority pages, far less traffic than expected"
+    axisLabels: { x: "Months since launch", y: "Visits" },
+    // Both series are 0–100 on the same visits scale, sampled monthly from
+    // launch. The values carry the shape of the finding; they are not measured
+    // analytics, which is what the caption says out loud.
+    caption:
+      "Schematic. The shape is the pattern the audit surfaced, not raw analytics values.",
+    months: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+    // Only these month indices get a gridline and a label, so the axis stays
+    // readable at nine sample points.
+    ticks: [0, 2, 4, 6, 8],
+    expected: [0, 22, 40, 55, 66, 74, 81, 86, 90],
+    actual: [0, 8, 12, 14, 13, 62, 30, 17, 15],
+    // The spike, anchored to a month index.
+    peak: { month: 5, note: "A campaign sent people straight here" }
   }
 };
