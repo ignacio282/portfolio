@@ -47,6 +47,34 @@ export const homeContent = {
       "I like to make a lot of things for myself to make my life easier or because it's interesting. I love making things.",
     projects: [
       {
+        slug: "household-finance-tracker",
+        title: "Household Finance Tracker",
+        summary:
+          "A finance dashboard that reads our bank statements and sorts every transaction on its own.",
+        tags: ["Web Dev"],
+        accent: "#2f7d63",
+        demoUrl: "https://finance-tool-red.vercel.app/demo",
+        video: "/images/builder/household-finance-tracker/FinanceCompressed.mp4",
+        imageAlt: "Household finance tracker dashboard",
+        modal: {
+          description:
+            "A household finance tracker built because categorizing a month of spending by hand never survives contact with real life. Statements from several cards and accounts go in, the Claude API sorts each transaction into a category, and the dashboard shows net cash flow, spending by category, and how the budget period is actually going.",
+          relevance: [
+            "Shows how I use an LLM as a working part of a product, not a bolt-on feature.",
+            "Turns a tedious household chore into a clear, budget-aware view of where money goes.",
+            "Covers the full path from data import and modeling to the dashboard and its charts."
+          ],
+          slides: [
+            {
+              title: "Walkthrough",
+              caption:
+                "Statements come in and get categorized, then the dashboard shows net cash flow, spending by category, and budget status across every card and account.",
+              variant: "dashboard"
+            }
+          ]
+        }
+      },
+      {
         slug: "meal-prep-assistant",
         title: "MealPrep Buddy",
         summary:
@@ -88,40 +116,6 @@ export const homeContent = {
               variant: "workflow",
               src: "/images/builder/meal-prep-assistant/slide-3.png",
               alt: "Recipe randomizer suggesting three meals from the library"
-            }
-          ]
-        }
-      },
-      {
-        slug: "personal-operating-dashboard",
-        title: "Personal Operating Dashboard",
-        summary:
-          "A daily workspace for goals, pomodoro sessions, notes, reminders, job hunting, and the small signals that keep work moving.",
-        tags: ["Web Dev"],
-        accent: "#00877f",
-        modal: {
-          description:
-            "A planned daily operating system for my own work, combining focus sessions, goals, job-search tracking, reminders, and lightweight stats into one personal dashboard.",
-          relevance: [
-            "Shows how I think through messy personal workflows and turn them into usable product structure.",
-            "Gives me a living testbed for dashboard design, information hierarchy, and habit-forming tools.",
-            "Demonstrates the type of internal-tool thinking I can bring to teams and operations products."
-          ],
-          slides: [
-            {
-              title: "Daily Command Center",
-              caption: "Goals, focus state, and reminders organized for the day.",
-              variant: "dashboard"
-            },
-            {
-              title: "Focus Modes",
-              caption: "Pomodoro sessions and ambient work controls in one surface.",
-              variant: "workflow"
-            },
-            {
-              title: "Progress Signals",
-              caption: "Weekly stats and job-search tracking for long-running goals.",
-              variant: "planner"
             }
           ]
         }
@@ -169,41 +163,35 @@ export const homeContent = {
         }
       },
       {
-        slug: "rfid-productivity-device",
-        title: "Productivity Pal",
+        slug: "personal-operating-dashboard",
+        title: "Personal Operating Dashboard",
         summary:
-          "An Arduino device that triggers quick productivity routines with a tap of a tag.",
-        tags: ["Physical Computing"],
-        accent: "#5c6f82",
+          "A daily workspace for goals, pomodoro sessions, notes, reminders, job hunting, and the small signals that keep work moving.",
+        tags: ["Web Dev"],
+        accent: "#00877f",
         modal: {
           description:
-            "A physical productivity prototype built with Arduino, an LCD screen, and an RFID reader. The routines it triggers matter less than what it shows: that the same AI-assisted coding workflow I use for web products extends to physical computing.",
+            "A planned daily operating system for my own work, combining focus sessions, goals, job-search tracking, reminders, and lightweight stats into one personal dashboard.",
           relevance: [
-            "Shows comfort prototyping outside the screen and working with real-world constraints.",
-            "Connects product thinking to tangible interaction design and low-fidelity hardware.",
-            "Demonstrates that my AI-assisted workflow isn't limited to one stack or medium."
+            "Shows how I think through messy personal workflows and turn them into usable product structure.",
+            "Gives me a living testbed for dashboard design, information hierarchy, and habit-forming tools.",
+            "Demonstrates the type of internal-tool thinking I can bring to teams and operations products."
           ],
           slides: [
             {
-              title: "Arduino Code",
-              caption: "The Arduino sketch that reads RFID tags and drives the LCD display.",
-              variant: "hardware",
-              src: "/images/builder/rfid-productivity-device/slide-1.png",
-              alt: "Arduino IDE showing the device's code"
+              title: "Daily Command Center",
+              caption: "Goals, focus state, and reminders organized for the day.",
+              variant: "dashboard"
             },
             {
-              title: "Tag Reader",
-              caption: "Tapping a tag on the reader shows its routine on the small LCD screen.",
-              variant: "workflow",
-              src: "/images/builder/rfid-productivity-device/slide-2.jpg",
-              alt: "The device with an RFID tag held over the reader and the LCD lit up"
+              title: "Focus Modes",
+              caption: "Pomodoro sessions and ambient work controls in one surface.",
+              variant: "workflow"
             },
             {
-              title: "Wiring",
-              caption: "The physical connections between the Arduino, the LCD, the RFID reader, and the rest of the components.",
-              variant: "hardware",
-              src: "/images/builder/rfid-productivity-device/slide-3.jpg",
-              alt: "Wiring between the Arduino board and its components"
+              title: "Progress Signals",
+              caption: "Weekly stats and job-search tracking for long-running goals.",
+              variant: "planner"
             }
           ]
         }

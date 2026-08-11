@@ -10,7 +10,7 @@ const { startupsBanner } = homeContent;
 export function StartupsBanner() {
   return (
     <PageSection spacing="lg">
-      <AnimatedSection amount={0.08} className="landing-final-cta">
+      <AnimatedSection className="landing-final-cta">
         <h2 className="type-impact-heading landing-heading-wrap">
           {startupsBanner.title}
         </h2>

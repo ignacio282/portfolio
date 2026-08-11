@@ -5,12 +5,25 @@ import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/cn";
 import { motionDistances, motionPresets } from "./presets";
 
+/**
+ * Reveals trigger on "some" (a 0 intersection threshold) rather than a
+ * fraction of the element. A fractional threshold is measured against the
+ * element's own height, so anything taller than the viewport — a stacked
+ * grid on a phone, a long case study section — can never satisfy it, and
+ * the content stays at opacity 0 forever. "some" is independent of both
+ * element and viewport size, so it behaves the same on every device.
+ */
+const REVEAL_AMOUNT = "some" as const;
+const REVEAL_MARGIN = "0px 0px -10% 0px";
+
+type RevealAmount = number | "some" | "all";
+
 type AnimatedSectionProps = {
   children: ReactNode;
   id?: string;
   className?: string;
   delay?: number;
-  amount?: number;
+  amount?: RevealAmount;
 };
 
 export function AnimatedSection({
@@ -18,7 +31,7 @@ export function AnimatedSection({
   id,
   className,
   delay = 0,
-  amount = 0.28
+  amount = REVEAL_AMOUNT
 }: AnimatedSectionProps) {
   const reducedMotion = useReducedMotion();
 
@@ -34,7 +47,7 @@ export function AnimatedSection({
         opacity: 1,
         y: 0
       }}
-      viewport={{ once: true, margin: "-8% 0px -14% 0px", amount }}
+      viewport={{ once: true, margin: REVEAL_MARGIN, amount }}
       transition={{
         ...motionPresets.sectionSpring,
         delay: reducedMotion ? 0 : delay
@@ -51,8 +64,8 @@ export function StaggerGroup({
   stagger = 0.1,
   delayChildren = 0.04,
   trigger = "view",
-  margin = "-8% 0px -14% 0px",
-  amount = 0.26
+  margin = REVEAL_MARGIN,
+  amount = REVEAL_AMOUNT
 }: {
   children: ReactNode;
   className?: string;
@@ -60,7 +73,7 @@ export function StaggerGroup({
   delayChildren?: number;
   trigger?: "view" | "load";
   margin?: string;
-  amount?: number;
+  amount?: RevealAmount;
 }) {
   const reducedMotion = useReducedMotion();
   const isLoadTriggered = trigger === "load";

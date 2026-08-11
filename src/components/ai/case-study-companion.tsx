@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowLeft, Loader2, MessageCircleQuestion, Send, Sparkles, X } from "lucide-react";
 import { motionDistances, motionPresets } from "@/components/motion/presets";
@@ -22,6 +23,9 @@ const maxQuestionLength = 500;
 export function CaseStudyCompanion({ slug }: { slug: string }) {
   const reducedMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
+  // The overlay portals to <body>. Rendered in place it sits inside sections
+  // that animate with transforms, and a transform creates a stacking context
+  // that traps the panel's z-index below the fixed header.
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<DisplayMessage[]>([]);
   const [status, setStatus] = useState<"idle" | "streaming" | "error">("idle");
@@ -198,21 +202,8 @@ export function CaseStudyCompanion({ slug }: { slug: string }) {
     setStatus("idle");
   }, []);
 
-  return (
-    <>
-      <button
-        ref={triggerRef}
-        type="button"
-        className="companion-trigger focus-ring"
-        aria-expanded={open}
-        aria-controls="case-study-companion"
-        onClick={() => setOpen(true)}
-      >
-        <MessageCircleQuestion aria-hidden="true" size={20} />
-        <span>Ask about this case</span>
-      </button>
-
-      <AnimatePresence>
+  const overlay = (
+    <AnimatePresence>
         {open ? (
           <>
             <motion.button
@@ -336,7 +327,24 @@ export function CaseStudyCompanion({ slug }: { slug: string }) {
             </motion.aside>
           </>
         ) : null}
-      </AnimatePresence>
+    </AnimatePresence>
+  );
+
+  return (
+    <>
+      <button
+        ref={triggerRef}
+        type="button"
+        className="companion-trigger focus-ring"
+        aria-expanded={open}
+        aria-controls="case-study-companion"
+        onClick={() => setOpen(true)}
+      >
+        <MessageCircleQuestion aria-hidden="true" className="shrink-0" size={20} />
+        <span>Ask about this case</span>
+      </button>
+
+      {typeof document === "undefined" ? null : createPortal(overlay, document.body)}
     </>
   );
 }
