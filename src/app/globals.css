@@ -1203,6 +1203,11 @@ img {
     text-transform: uppercase;
   }
 
+  .figure-caption {
+    font-size: 0.9375rem;
+    @apply mt-5 font-normal leading-[1.55] text-muted;
+  }
+
   .legend-swatch-assumed {
     @apply inline-block h-0 w-8 shrink-0 border-t-2 border-dashed border-muted;
   }
