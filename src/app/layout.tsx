@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans, Inter } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Footer } from "@/components/shell/footer";
@@ -52,6 +53,16 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-TLHFE84TBK"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-TLHFE84TBK');`}
+        </Script>
         <SiteBackground />
         <Header />
         <PageFade>{children}</PageFade>
