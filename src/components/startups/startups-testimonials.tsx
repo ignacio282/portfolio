@@ -11,11 +11,11 @@ export function StartupsTestimonials() {
 
   return (
     <section className="layout-section-lg">
-      <AnimatedSection amount={0.03}>
+      <AnimatedSection>
         <h2 className="type-impact-heading landing-heading-wrap">{testimonials.title}</h2>
       </AnimatedSection>
 
-      <StaggerGroup amount={0.03} className="mt-8 grid gap-5 md:grid-cols-2">
+      <StaggerGroup className="mt-8 grid gap-5 md:grid-cols-2">
         {testimonials.items.map((item) => (
           <StaggerItem key={item.name} className="h-full">
             <Card className="flex h-full flex-col" padding="lg">

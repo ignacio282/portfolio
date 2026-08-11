@@ -50,7 +50,7 @@ export function AboutPage() {
           <h2 className="type-section-title">{aboutContent.beyond.title}</h2>
           <p className="type-body-large mt-4 max-w-5xl">{aboutContent.beyond.body}</p>
         </AnimatedSection>
-        <StaggerGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" amount="some">
+        <StaggerGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {aboutContent.gallery.map((image) => (
             <StaggerItem key={image.src}>
               <MediaFrame

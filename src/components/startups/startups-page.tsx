@@ -37,25 +37,12 @@ const {
   finalCta
 } = startupsContent;
 
-// Reveals default to needing 26% of the element in view at once. On a phone a
-// stacked block can be taller than the viewport, so that threshold is never met
-// and the content stays at opacity 0. Everything here reveals on a sliver.
-const REVEAL_AMOUNT = 0.03;
-
 function Reveal({ children, className }: { children: ReactNode; className?: string }) {
-  return (
-    <AnimatedSection amount={REVEAL_AMOUNT} className={className}>
-      {children}
-    </AnimatedSection>
-  );
+  return <AnimatedSection className={className}>{children}</AnimatedSection>;
 }
 
 function RevealGroup({ children, className }: { children: ReactNode; className?: string }) {
-  return (
-    <StaggerGroup amount={REVEAL_AMOUNT} className={className}>
-      {children}
-    </StaggerGroup>
-  );
+  return <StaggerGroup className={className}>{children}</StaggerGroup>;
 }
 
 // Content strings mark emphasis inline so the copy stays plain text and keeps

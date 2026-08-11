@@ -9,7 +9,7 @@ import { ProjectCardMedia } from "./project-card-media";
 export function ProjectCardList() {
   return (
     <PageSection id="case-studies" spacing="lg">
-      <StaggerGroup stagger={0.12} amount="some" margin="0px 0px -10% 0px">
+      <StaggerGroup stagger={0.12}>
         <StaggerItem>
           <SectionLabel variant="home">Case studies</SectionLabel>
         </StaggerItem>

@@ -407,7 +407,7 @@ export function BuilderLabSection() {
 
   return (
     <PageSection id="builder-lab" spacing="lg">
-      <StaggerGroup className="builder-lab" stagger={0.1} margin="0px 0px -15% 0px" amount={0.1}>
+      <StaggerGroup className="builder-lab" stagger={0.1}>
         <StaggerItem>
           <SectionLabel variant="home">{builderLab.label}</SectionLabel>
           <p className="type-body-large builder-lab-body">{builderLab.body}</p>

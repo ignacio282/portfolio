@@ -18,7 +18,7 @@ export function ImpactGrid() {
         </p>
       </AnimatedSection>
 
-      <StaggerGroup className="mt-10 grid gap-10 md:grid-cols-3 md:gap-0" stagger={0.12} amount="some">
+      <StaggerGroup className="mt-10 grid gap-10 md:grid-cols-3 md:gap-0" stagger={0.12}>
         {homeContent.impact.map((item, index) => (
           <StaggerItem
             key={item.metric}
