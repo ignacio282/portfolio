@@ -147,7 +147,7 @@ export const caseStudies: CaseStudy[] = [
       "I was 1 of 3 UX/UI designers in the project. I served as the main point of contact with stakeholders, and owned the new CMS component system, development handoff, and UI quality checks.",
     outcomes: [
       {
-        value: "100+ Pages",
+        value: "250+ Pages",
         label: "Audited, removing outdated content and organizing architecture."
       },
       {
@@ -163,6 +163,10 @@ export const caseStudies: CaseStudy[] = [
         label: "Reusable templates reduced publishing time-to-task across teams."
       }
     ],
+    // The portal case study renders through PortalCaseStudyPage, not the
+    // generic section renderer, so these sections exist only to give the AI
+    // companion something to read. It uses the text and nothing else, which is
+    // why there are no media entries here.
     sections: [
       {
         type: "text",
@@ -171,13 +175,6 @@ export const caseStudies: CaseStudy[] = [
         body: [
           "A technical migration uncovered deeper UX problems hidden in the site's structure. The original business goal was to move all pages to a new CMS and refresh the UI.",
           "We pushed to shift the scope from moving everything over to understanding what should exist."
-        ],
-        media: [
-          {
-            src: "/images/projects/portal/Case/2.avif",
-            alt: "Audit and migration planning visual for the banking website redesign.",
-            aspect: "aspect-[1/1]"
-          }
         ]
       },
       {
@@ -202,15 +199,8 @@ export const caseStudies: CaseStudy[] = [
         quote:
           "It's really difficult to find anything on the website, I prefer calling the call center, it's quicker",
         body: [
-          "Users felt overwhelmed, and many preferred calling instead of browsing the site. We conducted nearly 50 interviews with customers.",
+          "Users felt overwhelmed, and many preferred calling instead of browsing the site. We conducted 20 interviews with customers.",
           "Users were not reading because the content was not designed for them; it was designed to satisfy internal teams."
-        ],
-        media: [
-          {
-            src: "/images/projects/portal/Case/3.avif",
-            alt: "Research findings and customer interview insights for the banking website redesign.",
-            aspect: "aspect-[2.04/1]"
-          }
         ]
       },
       {
@@ -236,18 +226,6 @@ export const caseStudies: CaseStudy[] = [
         body: [
           "Reusable components allowed us to scale, but only by rejecting one-off requests.",
           "Components were designed to solve the needs of about 80% of pages. The remaining 20% were edge cases and handled separately."
-        ],
-        media: [
-          {
-            src: "/images/projects/portal/Case/4.avif",
-            alt: "Reusable UI component strategy for the redesigned banking website.",
-            aspect: "aspect-[1/1]"
-          },
-          {
-            src: "/images/projects/portal/Case/5.avif",
-            alt: "80/20 scalability principle applied to the banking website component system.",
-            aspect: "aspect-[2.04/1]"
-          }
         ]
       },
       {
@@ -266,13 +244,6 @@ export const caseStudies: CaseStudy[] = [
         body: [
           "A new information architecture, based on real user needs, brought clarity, consistency, and scalability.",
           "The final redesign introduced a clearer site structure, predictable navigation, a simplified mega-menu, reusable CMS components, and a unified design system."
-        ],
-        media: [
-          {
-            src: "/images/projects/portal/Case/6.avif",
-            alt: "Final architecture and template system for the redesigned banking website.",
-            aspect: "aspect-[1.33/1]"
-          }
         ]
       },
       {

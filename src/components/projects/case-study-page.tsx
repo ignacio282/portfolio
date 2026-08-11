@@ -995,7 +995,7 @@ function PortalHero() {
 
 function PortalOverview() {
   const outcomes = [
-    ["500+ pages analyzed", "using analytics, dashboards, funnels, and stakeholder input"],
+    ["250+ pages analyzed", "using analytics, dashboards, funnels, and stakeholder input"],
     ["12% lower bounce rate", "After improving navigation clarity and reducing low-value content"],
     ["Higher engagement", "Priority pages became easier to reach through a clearer site structure"],
     ["Reusable components", "standardized how teams created and maintained pages"]
@@ -1008,7 +1008,7 @@ function PortalOverview() {
           <div>
             <h2 className="type-section-title">The problem</h2>
             <p className="type-body mt-3">
-              Banco Pichincha&apos;s public website had grown into a fragmented system of more than 500 pages. Different teams had created and managed content over time, which led to inconsistent navigation, duplicated pages, and important information becoming harder to find.
+              Banco Pichincha&apos;s public website had grown into a fragmented system of more than 250 pages. Different teams had created and managed content over time, which led to inconsistent navigation, duplicated pages, and important information becoming harder to find.
             </p>
           </div>
           <div>
@@ -1100,7 +1100,7 @@ function PortalApproach() {
       </p>
       <div className="layout-metric-text-pair mt-12">
         <div>
-          <p className="type-case-display-metric">500 pages</p>
+          <p className="type-case-display-metric">250 pages</p>
           <p className="type-case-metric-label mt-3">Analyzed Using Data</p>
         </div>
         <p className="type-body">
@@ -1197,7 +1197,7 @@ function PortalStrategy() {
 function PortalDecisions() {
   const decisions = [
     ["Treat the migration as a chance to fix the structure", "The CMS migration could have become a simple content transfer. Instead, we used it to question what should stay, what should be merged, and what needed a clearer path."],
-    ["Use data to decide what deserved attention", "With more than 500 pages, we could not redesign everything with the same level of effort. Analytics helped us prioritize the pages that mattered most, find underperforming content, and support decisions with evidence instead of internal preference."],
+    ["Use data to decide what deserved attention", "With more than 250 pages, we could not redesign everything with the same level of effort. Analytics helped us prioritize the pages that mattered most, find underperforming content, and support decisions with evidence instead of internal preference."],
     ["Standardize around one master structure", "We moved away from every team creating pages in their own way. The new model used one master page structure supported by flexible components. That meant giving up some visual variety, but the tradeoff was worth it: clearer navigation, more consistent pages, and a system that could be maintained over time."],
     ["Design for the people publishing the content", "The component system was not only for users visiting the website. It also helped internal teams understand what content they needed to provide, where it belonged, and how each page should be assembled."]
   ];

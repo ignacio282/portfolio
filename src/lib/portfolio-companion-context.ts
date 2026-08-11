@@ -17,12 +17,12 @@ export type CompanionRequestContext = {
 
 const portalNarrative = [
   "Portal-specific rendered case narrative:",
-  "The Banco Pichincha public website had grown into more than 500 pages owned by different teams. Different departments created content over time, causing inconsistent navigation, duplicated pages, and buried information.",
+  "The Banco Pichincha public website had grown into more than 250 pages owned by different teams. Different departments created content over time, causing inconsistent navigation, duplicated pages, and buried information.",
   "Ignacio led the information architecture and UI redesign, created the reusable CMS component system, and aligned brand, content, product, and engineering stakeholders.",
   "The team used Google Analytics, internal dashboards, custom funnels, and customer interviews to rank pages by traffic, business importance, and customer journey role.",
   "Customer research showed users felt overwhelmed and often preferred calling the call center instead of browsing the website.",
   "Ignacio defended the scalability of the system using the 80/20 principle: reusable components should cover most page needs, while edge cases should be handled only when justified.",
-  "Outcomes shown in the rendered case include 500+ pages analyzed, 12% lower bounce rate, higher engagement, and reusable components for a more maintainable CMS publishing model."
+  "Outcomes shown in the rendered case include 250+ pages analyzed, 12% lower bounce rate, higher engagement, and reusable components for a more maintainable CMS publishing model."
 ].join("\n");
 
 const readingNarrative = [

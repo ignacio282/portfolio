@@ -1,6 +1,6 @@
 The problem
 
-Banco Pichincha’s public website had grown into a fragmented system of more than 500 pages. Different teams had created and managed content over time, which led to inconsistent navigation, duplicated pages, and important information becoming harder to find.
+Banco Pichincha’s public website had grown into a fragmented system of more than 250 pages. Different teams had created and managed content over time, which led to inconsistent navigation, duplicated pages, and important information becoming harder to find.
 Why this mattered
 
 The website served more than 2M users and was one of the main entry points to the bank’s products and services. Migrating the site as-is would have moved years of UX debt into the new CMS.
@@ -9,7 +9,7 @@ My role
 I led the information architecture and UI redesign, created the reusable CMS component system, and worked with brand, content, product, and engineering teams to align the new structure.
 Outcomes
 
-500+ pages analyzed
+250+ pages analyzed
 
 using analytics, dashboards, funnels, and stakeholder input
 
@@ -57,7 +57,7 @@ The challenge was balancing user clarity, business priorities, brand standards, 
 03. MY APPROACH
 
 We audited the site from both a user and business perspective.
-500 pages
+250 pages
 
 Analyzed using data 
 
@@ -116,7 +116,7 @@ The CMS migration could have become a simple content transfer. Instead, we used 
 
 Use data to decide what deserved attention
 
-With more than 500 pages, we could not redesign everything with the same level of effort. Analytics helped us prioritize the pages that mattered most, find underperforming content, and support decisions with evidence instead of internal preference.
+With more than 250 pages, we could not redesign everything with the same level of effort. Analytics helped us prioritize the pages that mattered most, find underperforming content, and support decisions with evidence instead of internal preference.
 
 3
 
