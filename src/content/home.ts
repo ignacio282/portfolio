@@ -1,5 +1,5 @@
 import { projects } from "./projects";
-import type { BuilderLabProject } from "./types";
+import type { BuilderLabProject, ImpactStat } from "./types";
 
 export const homeContent = {
   hero: {
@@ -18,18 +18,26 @@ export const homeContent = {
   ],
   impact: [
     {
-      value: "12%",
-      label: "Bounce rate reduction on a 2M+ user banking website"
+      metric: "4M users",
+      body: "Designed features for the mobile banking app as part of the product team.",
+      product: "Banco Pichincha · Mobile banking app",
+      count: { from: 0, to: 4_000_000, format: "compact", suffix: " users" }
     },
     {
-      value: "4M+ users",
-      label: "Served with features designed for consumer facing products."
+      metric: "−12% bounce",
+      body:
+        "Redesigned the bank's website with a small team. Improved the information architecture, content, and built a UI component library.",
+      product: "Banco Pichincha · Public website",
+      count: { from: 0, to: 12, prefix: "−", suffix: "% bounce" }
     },
     {
-      value: "21 to 7 days",
-      label: "Reduction in corporate account opening time."
+      metric: "21 → 7 days",
+      body:
+        "Consolidated forms in the corporate checking account opening flow, cutting opening time during a pilot.",
+      product: "Banco Pichincha · Corporate onboarding",
+      count: { from: 21, to: 7, prefix: "21 → ", suffix: " days", delay: 0.25 }
     }
-  ],
+  ] satisfies ImpactStat[],
   caseIntro:
     "These case studies show how I design products in complex, real-world systems, from products used by millions in banking to AI-powered tools, focusing on decisions, trade-offs, and impact.",
   projects,

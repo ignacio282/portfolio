@@ -522,6 +522,24 @@ img {
     @apply inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-transparent px-5 py-2 text-sm font-medium text-ink transition-colors duration-150 hover:bg-paper md:text-base;
   }
 
+  /* Non-interactive metadata inside a clickable card: no hover affordance.
+     Inherits the card's --project-accent so tags match their eyebrow. */
+  .ui-tag {
+    @apply inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium;
+    border-color: var(--project-accent, var(--color-ink));
+    background-color: transparent;
+    color: var(--project-accent, var(--color-muted));
+  }
+
+  /* Softened border + faint wash where supported; the rule above is the
+     legible fallback, since an auto-generated one would fill the tag solid. */
+  @supports (color: color-mix(in srgb, red, red)) {
+    .ui-tag {
+      border-color: color-mix(in srgb, var(--project-accent, #242526) 40%, transparent);
+      background-color: color-mix(in srgb, var(--project-accent, #ffffff) 8%, transparent);
+    }
+  }
+
   .builder-modal-sections {
     @apply grid gap-6;
   }

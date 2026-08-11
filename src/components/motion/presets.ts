@@ -36,6 +36,10 @@ export const motionPresets = {
     type: "spring" as const,
     duration: 0.3,
     bounce: 0
+  },
+  countUp: {
+    duration: 1.2,
+    ease: [0.2, 0, 0, 1] as const
   }
 };
 

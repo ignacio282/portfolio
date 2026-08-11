@@ -1,3 +1,13 @@
+import type { CountSpec } from "@/components/motion/count-up";
+
+export type ImpactStat = {
+  /** Final value, rendered verbatim under reduced motion. */
+  metric: string;
+  body: string;
+  product: string;
+  count: CountSpec;
+};
+
 export type NavItem = {
   label: string;
   href: string;
@@ -9,6 +19,8 @@ export type ProjectMeta = {
   title: string;
   shortTitle: string;
   summary: string;
+  context: { company: string; product: string };
+  tags: string[];
   image: string;
   imageAlt: string;
   accent: string;
