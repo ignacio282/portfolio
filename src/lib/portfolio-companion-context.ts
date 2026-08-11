@@ -114,8 +114,8 @@ function buildProfileContext() {
     `About: ${aboutContent.hero.body}`,
     `Designer summary: ${aboutContent.designer.body}`,
     `Work areas: ${homeContent.workOn.join("; ")}`,
-    `Impact highlights: ${homeContent.impact.map((item) => `${item.value} ${item.label}`).join("; ")}`,
-    `Project list: ${homeContent.projects.map((project) => `${project.title}: ${project.summary}`).join("; ")}`
+    `Impact highlights: ${homeContent.impact.map((item) => `${item.metric} (${item.product}) ${item.body}`).join("; ")}`,
+    `Project list: ${homeContent.projects.map((project) => `${project.title} [${project.context.company} - ${project.context.product}; ${project.tags.join(", ")}]: ${project.summary}`).join("; ")}`
   ].join("\n");
 }
 

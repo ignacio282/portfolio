@@ -6,16 +6,10 @@ import { SectionLabel } from "@/components/visual/section-label";
 import { homeContent } from "@/content/home";
 import { ProjectCardMedia } from "./project-card-media";
 
-const projectSectionDelay = 1.95;
-
 export function ProjectCardList() {
   return (
     <PageSection id="case-studies" spacing="lg">
-      <StaggerGroup
-        delayChildren={projectSectionDelay}
-        stagger={0.12}
-        trigger="load"
-      >
+      <StaggerGroup stagger={0.12}>
         <StaggerItem>
           <SectionLabel variant="home">Case studies</SectionLabel>
         </StaggerItem>
@@ -32,10 +26,25 @@ export function ProjectCardList() {
               >
                 <ProjectCardMedia project={project} priority={index === 0} />
                 <div className="px-1 py-4 md:px-4">
+                  <p
+                    className="type-eyebrow-accent mb-2"
+                    style={{ color: "var(--project-accent)" }}
+                  >
+                    {project.context.company}
+                    <span aria-hidden="true"> · </span>
+                    {project.context.product}
+                  </p>
                   <h3 className="type-home-title">
                     {project.title}
                   </h3>
-                  <p className="type-body-large mt-6 max-w-2xl">{project.summary}</p>
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <li key={tag} className="ui-tag">
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="type-body-large mt-8 max-w-2xl">{project.summary}</p>
                   <InlineCTA>Read Case Study</InlineCTA>
                 </div>
               </Link>

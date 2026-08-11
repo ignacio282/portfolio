@@ -14,7 +14,9 @@ export const projects: ProjectMeta[] = [
     title: "Banking website redesign",
     shortTitle: "Banking website redesign",
     summary:
-      "A full redesign that reduced bounce rate and improved navigation of a 4 million-user banking website.",
+      "A full redesign that reduced bounce rate and improved navigation of a banking website with 2 million monthly views.",
+    context: { company: "Banco Pichincha", product: "Public website" },
+    tags: ["Information architecture", "Cross-functional collab.", "Design systems"],
     image: imageFallbacks.portal,
     imageAlt: "Laptop and phone mockups showing the redesigned banking website.",
     accent: "#8b5558",
@@ -55,6 +57,8 @@ export const projects: ProjectMeta[] = [
     shortTitle: "AI Reading Assistant",
     summary:
       "Designing an AI-assisted app that puts the person first by supporting cognition without replacing it.",
+    context: { company: "Master's capstone", product: "Reading assistant" },
+    tags: ["AI workflows", "0→1", "Mobile"],
     image: imageFallbacks.reading,
     imageAlt: "Three mobile screens showing an AI reading assistant app.",
     accent: "#497d76",
@@ -100,6 +104,8 @@ export const projects: ProjectMeta[] = [
     shortTitle: "QR Code Money Requests",
     summary:
       "A 1-screen flow that enabled instant money transfers in a regulated and security-aware market.",
+    context: { company: "Banco Pichincha", product: "Mobile banking app" },
+    tags: ["Accessibility", "B2C", "Tradeoffs"],
     image: imageFallbacks.qr,
     imageAlt: "A mobile phone showing a QR code money request flow.",
     accent: "#596083",
