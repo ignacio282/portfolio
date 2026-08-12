@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowLeft, Loader2, MessageCircleQuestion, Send, Sparkles, X } from "lucide-react";
@@ -20,12 +20,18 @@ type StreamMeta = {
 
 const maxQuestionLength = 500;
 
+const neverChanges = () => () => {};
+
 export function CaseStudyCompanion({ slug }: { slug: string }) {
   const reducedMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
-  // The overlay portals to <body>. Rendered in place it sits inside sections
-  // that animate with transforms, and a transform creates a stacking context
-  // that traps the panel's z-index below the fixed header.
+  // Trigger and overlay both portal to <body>. Rendered in place they sit
+  // inside PageFade, whose motion transform makes it the containing block for
+  // position: fixed — so the trigger scrolled away with the page instead of
+  // staying pinned, and its z-index was trapped below the fixed header.
+  // Gated on hydration rather than `typeof document` so the server and the
+  // first client render agree; the button does nothing without JS anyway.
+  const mounted = useSyncExternalStore(neverChanges, () => true, () => false);
   const [question, setQuestion] = useState("");
   const [messages, setMessages] = useState<DisplayMessage[]>([]);
   const [status, setStatus] = useState<"idle" | "streaming" | "error">("idle");
@@ -48,9 +54,15 @@ export function CaseStudyCompanion({ slug }: { slug: string }) {
       }
     }
 
+    // Freezing the page underneath keeps the panel put: letting it scroll also
+    // animates the mobile URL bar, which resizes the viewport under the panel.
+    // Same lock the builder-lab modal uses.
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
+      document.body.style.overflow = previousOverflow;
       window.clearTimeout(timeout);
       window.removeEventListener("keydown", handleKeyDown);
     };
@@ -203,7 +215,20 @@ export function CaseStudyCompanion({ slug }: { slug: string }) {
   }, []);
 
   const overlay = (
-    <AnimatePresence>
+    <>
+      <button
+        ref={triggerRef}
+        type="button"
+        className="companion-trigger focus-ring"
+        aria-expanded={open}
+        aria-controls="case-study-companion"
+        onClick={() => setOpen(true)}
+      >
+        <MessageCircleQuestion aria-hidden="true" className="shrink-0" size={20} />
+        <span>Ask about this case</span>
+      </button>
+
+      <AnimatePresence>
         {open ? (
           <>
             <motion.button
@@ -327,26 +352,11 @@ export function CaseStudyCompanion({ slug }: { slug: string }) {
             </motion.aside>
           </>
         ) : null}
-    </AnimatePresence>
-  );
-
-  return (
-    <>
-      <button
-        ref={triggerRef}
-        type="button"
-        className="companion-trigger focus-ring"
-        aria-expanded={open}
-        aria-controls="case-study-companion"
-        onClick={() => setOpen(true)}
-      >
-        <MessageCircleQuestion aria-hidden="true" className="shrink-0" size={20} />
-        <span>Ask about this case</span>
-      </button>
-
-      {typeof document === "undefined" ? null : createPortal(overlay, document.body)}
+      </AnimatePresence>
     </>
   );
+
+  return mounted ? createPortal(overlay, document.body) : null;
 }
 
 function CompanionEmptyState({

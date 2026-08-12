@@ -818,10 +818,18 @@ img {
   }
 
   .companion-trigger {
-    @apply fixed bottom-5 left-1/2 z-40 inline-flex min-h-12 max-w-[calc(100vw-24px)] -translate-x-1/2 flex-nowrap items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-teal-dark px-5 py-3 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(36,37,38,0.10)] hover:bg-[#005a56] hover:shadow-[0_6px_18px_rgba(36,37,38,0.14)] md:bottom-8 md:left-auto md:right-8 md:translate-x-0;
+    @apply fixed left-1/2 z-40 inline-flex min-h-12 max-w-[calc(100vw-24px)] -translate-x-1/2 flex-nowrap items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-teal-dark px-5 py-3 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(36,37,38,0.10)] hover:bg-[#005a56] hover:shadow-[0_6px_18px_rgba(36,37,38,0.14)] md:left-auto md:right-8 md:translate-x-0;
+    /* Clears the iOS home indicator, which otherwise sits over the button. */
+    bottom: calc(1.25rem + env(safe-area-inset-bottom));
     transition-duration: 180ms;
     transition-property: background-color, box-shadow, transform;
     transition-timing-function: var(--ease-standard);
+  }
+
+  @media (min-width: 768px) {
+    .companion-trigger {
+      bottom: 2rem;
+    }
   }
 
   .companion-trigger:active {
@@ -832,8 +840,18 @@ img {
     @apply fixed inset-0 z-60 bg-ink/15 backdrop-blur-[1px];
   }
 
+  /* svh, not dvh: the dynamic unit tracks the mobile URL bar, so the panel
+     resized and slid every time the bar animated. The small viewport is the
+     one measurement that holds still for as long as the panel is open. */
   .companion-panel {
-    @apply fixed inset-x-3 bottom-3 z-60 flex max-h-[calc(100dvh-24px)] min-h-[min(680px,calc(100dvh-24px))] flex-col overflow-hidden rounded-[18px] bg-card shadow-[0_26px_80px_rgba(36,37,38,0.2),0_2px_12px_rgba(36,37,38,0.08)] md:inset-x-auto md:bottom-8 md:right-8 md:h-[min(780px,calc(100dvh-64px))] md:w-[560px];
+    @apply fixed inset-x-3 z-60 flex h-[min(680px,calc(100svh-24px))] flex-col overflow-hidden rounded-[18px] bg-card shadow-[0_26px_80px_rgba(36,37,38,0.2),0_2px_12px_rgba(36,37,38,0.08)] md:inset-x-auto md:right-8 md:h-[min(780px,calc(100svh-64px))] md:w-[560px];
+    bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  }
+
+  @media (min-width: 768px) {
+    .companion-panel {
+      bottom: 2rem;
+    }
   }
 
   .companion-panel-header {
