@@ -8,6 +8,10 @@ export const siteConfig = {
   url: "https://ignaciovergara.me",
   resumeUrl:
     "https://drive.google.com/file/d/1xigL8vO2x6H0eIgNPHIhuby91b5f9QEn/view?usp=sharing",
+  /* Same file as resumeUrl, but Drive's direct-download form, so a button
+     labelled "download" actually downloads instead of opening the preview. */
+  resumeDownloadUrl:
+    "https://drive.google.com/uc?export=download&id=1xigL8vO2x6H0eIgNPHIhuby91b5f9QEn",
   linkedinUrl: "https://www.linkedin.com/in/ignaciovergara282",
   contactUrl: "mailto:ignacio.vergara282@gmail.com",
   footer: "© 2026. Designed by Ignacio Vergara"

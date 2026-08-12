@@ -436,6 +436,19 @@ img {
     scale: 0.96;
   }
 
+  /* The quieter half of a button pair: same geometry as .ui-button so the two
+     sit level, but outlined so the primary action still leads. */
+  .ui-button-outline {
+    @apply inline-flex min-h-11 items-center justify-center gap-3 rounded-[8px] border border-ink/20 bg-transparent px-5 py-3 text-sm font-semibold text-ink hover:border-teal hover:text-teal focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+    transition-duration: 150ms;
+    transition-property: background-color, border-color, color, scale;
+    transition-timing-function: var(--ease-standard);
+  }
+
+  .ui-button-outline:active {
+    scale: 0.96;
+  }
+
   .ui-pill {
     @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-teal px-5 py-2 text-sm font-medium text-white md:text-base;
   }
@@ -1316,6 +1329,200 @@ img {
   .landing-disclosure-panel {
     @apply overflow-hidden;
   }
+
+  /* ---- About: experience rail ----
+     Phone first: the rail is a plain list of buttons, each expanding to its
+     own detail — an accordion. Everything that makes it a timeline — the
+     absolute bars, the year axis, the detail as a floating bubble — switches
+     on at md, where there is room for it. Both breakpoints render the same
+     markup and the same detail element, so there is one source of content. */
+
+  .about-rail-wrap {
+    @apply grid;
+  }
+
+  .about-rail {
+    @apply relative;
+  }
+
+  .about-rail-items {
+    @apply flex list-none flex-col gap-3 p-0;
+  }
+
+  .about-rail-item {
+    @apply relative;
+  }
+
+  .about-rail-axis {
+    @apply hidden;
+  }
+
+  .about-bar {
+    @apply flex min-h-12 w-full items-center gap-3 border border-line bg-card px-4 py-3 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+    border-radius: var(--radius-card);
+    transform-origin: left center;
+    transition-duration: 150ms;
+    transition-property: background-color, border-color, color;
+    transition-timing-function: var(--ease-standard);
+  }
+
+  .about-bar:hover,
+  .about-bar[aria-expanded="true"] {
+    @apply border-teal;
+  }
+
+  .about-bar[aria-expanded="true"] {
+    background: color-mix(in srgb, var(--color-teal) 12%, var(--color-card));
+  }
+
+  .about-bar-text {
+    @apply grid min-w-0;
+  }
+
+  .about-bar-label {
+    font-size: clamp(0.875rem, 0.823rem + 0.221vw, 1rem); /* 14 → 16 */
+    @apply truncate font-semibold text-ink;
+  }
+
+  .about-bar-role {
+    @apply truncate text-xs font-medium text-muted;
+  }
+
+  .about-bar-range {
+    @apply ml-auto shrink-0 self-start text-xs font-medium text-muted;
+    font-variant-numeric: tabular-nums;
+    margin-top: 0.2em;
+  }
+
+  /* Marks a range that has not ended. The bar can only draw a hard right edge,
+     so the arrow is what says "still going"; the detail says "Present" in
+     words for anything not reading the shape. */
+  .about-bar-ongoing {
+    @apply ml-1 shrink-0 self-start text-teal;
+    margin-top: 0.1em;
+  }
+
+  .about-detail {
+    @apply hidden border border-line bg-card p-5;
+    border-radius: var(--radius-card);
+  }
+
+  .about-rail-item[data-open="true"] .about-detail {
+    @apply mt-3 block;
+  }
+
+  .about-detail-meta {
+    @apply mt-1 flex flex-wrap items-center gap-x-3 gap-y-1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---- About: values ---- */
+
+  .about-value-row {
+    @apply grid gap-4 py-8 md:grid-cols-[0.8fr_1.2fr] md:gap-12;
+  }
+
+  /* ---- About: process ---- */
+
+  .about-process {
+    @apply mx-auto grid w-full max-w-[540px] list-none p-0;
+  }
+
+  .about-process-step {
+    @apply flex flex-col items-center text-center;
+  }
+
+  .about-process-circle {
+    @apply flex size-16 items-center justify-center rounded-full border border-line bg-card text-teal md:size-20;
+  }
+
+  .about-process-connector {
+    @apply block h-14 w-4 md:h-16;
+  }
+
+  @media (min-width: 768px) {
+    .about-rail-items {
+      @apply relative block;
+      height: 72px;
+    }
+
+    .about-rail-item {
+      @apply absolute top-0;
+      /* The 6px inset is the visual gutter between two ranges that meet end to
+         start, so consecutive roles read as separate stretches. */
+      left: var(--bar-left);
+      width: calc(var(--bar-width) - 6px);
+      height: 100%;
+    }
+
+    /* A revealed bubble has to paint over its neighbours, and each item is a
+       positioned box, so lifting the item is what sorts them. */
+    .about-rail-item:hover,
+    .about-rail-item:focus-within,
+    .about-rail-item[data-open="true"] {
+      @apply z-20;
+    }
+
+    .about-bar {
+      @apply h-full min-h-0 justify-start;
+    }
+
+    .about-bar-range {
+      @apply hidden;
+    }
+
+    .about-bar-ongoing {
+      @apply ml-auto;
+    }
+
+    .about-rail-axis {
+      @apply relative block pt-4;
+      height: 44px;
+    }
+
+    .about-rail-line {
+      @apply absolute inset-x-0 top-4 block h-px origin-left bg-line;
+    }
+
+    .about-rail-tick {
+      @apply absolute top-4 flex flex-col items-start gap-1;
+      left: var(--tick-left);
+    }
+
+    .about-rail-tick::before {
+      @apply block h-2 w-px bg-line;
+      content: "";
+    }
+
+    /* From md up the detail stops being an accordion panel and becomes a
+       bubble floating above its bar. Same element, same content — only the
+       presentation changes, so nothing has to be duplicated or re-announced. */
+    .about-detail {
+      @apply pointer-events-none invisible absolute bottom-full left-1/2 mb-3 block w-[320px] -translate-x-1/2 translate-y-1 p-5 opacity-0 shadow-[0_10px_30px_rgba(36,37,38,0.1)];
+      transition-duration: 180ms;
+      transition-property: opacity, transform;
+      transition-timing-function: var(--ease-standard);
+    }
+
+    /* Bars near either end of the rail would push a centred bubble off the
+       page, so the ends anchor their bubble to the nearer edge instead. */
+    .about-detail[data-align="start"] {
+      @apply left-0 translate-x-0;
+    }
+
+    .about-detail[data-align="end"] {
+      @apply left-auto right-0 translate-x-0;
+    }
+
+    /* Only translate-y moves on reveal, so each alignment keeps the
+       translate-x set above. The mt-0 undoes the accordion's spacing rule,
+       which is more specific than the base .about-detail block. */
+    .about-rail-item:hover .about-detail,
+    .about-rail-item:focus-within .about-detail,
+    .about-rail-item[data-open="true"] .about-detail {
+      @apply visible mt-0 translate-y-0 opacity-100;
+    }
+  }
 }
 
 .background-grid-canvas {
@@ -1396,7 +1603,8 @@ img {
     transform: none !important;
   }
 
-  .ui-button:active {
+  .ui-button:active,
+  .ui-button-outline:active {
     scale: 1;
   }
 
