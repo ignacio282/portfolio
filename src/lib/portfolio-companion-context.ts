@@ -111,8 +111,11 @@ function buildProfileContext() {
   return [
     "Ignacio profile context:",
     `Hero: ${homeContent.hero.lines.join(" ")}`,
-    `About: ${aboutContent.hero.body}`,
-    `Designer summary: ${aboutContent.designer.body}`,
+    `About: ${aboutContent.story.beats.map((beat) => beat.body).join(" ")}`,
+    `Education: ${aboutContent.education.items.map((item) => `${item.degree} - ${item.school}${item.year ? ` (${item.year})` : ""}`).join("; ")}`,
+    `Experience: ${aboutContent.experience.entries.map((entry) => `${entry.role} at ${entry.org} (${entry.rangeLabel}): ${entry.summary}`).join("\n")}`,
+    `Design philosophy: ${aboutContent.values.items.map((item) => `${item.title} — ${item.body.map((segment) => (typeof segment === "string" ? segment : segment.strong)).join("")}`).join("; ")}`,
+    `Design process: ${aboutContent.process.steps.map((step) => `${step.title}: ${step.lines.join(" ")}`).join("; ")}`,
     `Work areas: ${homeContent.workOn.join("; ")}`,
     `Impact highlights: ${homeContent.impact.map((item) => `${item.metric} (${item.product}) ${item.body}`).join("; ")}`,
     `Project list: ${homeContent.projects.map((project) => `${project.title} [${project.context.company} - ${project.context.product}; ${project.tags.join(", ")}]: ${project.summary}`).join("; ")}`
