@@ -418,7 +418,7 @@ img {
   }
 
   .ui-pill {
-    @apply rounded-full bg-teal px-5 py-2 text-sm font-medium text-white md:text-base;
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-teal px-5 py-2 text-sm font-medium text-white md:text-base;
   }
 
   .builder-lab {
@@ -519,7 +519,7 @@ img {
   }
 
   .ui-pill-outline {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-transparent px-5 py-2 text-sm font-medium text-ink transition-colors duration-150 hover:bg-paper md:text-base;
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-ink/15 bg-transparent px-5 py-2 text-sm font-medium text-ink transition-colors duration-150 hover:bg-paper md:text-base;
   }
 
   /* Non-interactive metadata inside a clickable card: no hover affordance.
@@ -615,6 +615,17 @@ img {
 
   .builder-modal-visual-img {
     @apply absolute inset-0;
+  }
+
+  /* A video slide fills the frame instead of sitting in it: match the clip's
+     own 16/9 so nothing letterboxes below it, and drop the mock-window padding. */
+  .builder-modal-visual[data-media="video"] {
+    @apply p-0;
+    aspect-ratio: 16 / 9;
+  }
+
+  video.builder-modal-visual-img {
+    @apply h-full w-full object-cover;
   }
 
   .builder-modal-visual-header {

@@ -126,7 +126,7 @@ function ProductVisual({
 
   if (!slide.src && project.video) {
     return (
-      <div className="builder-modal-visual" data-variant={slide.variant} style={style}>
+      <div className="builder-modal-visual" data-media="video" data-variant={slide.variant} style={style}>
         <video
           aria-label={project.imageAlt ?? project.title}
           autoPlay
