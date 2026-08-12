@@ -1,10 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { ArrowRight } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { motionDistances, motionPresets } from "@/components/motion/presets";
+import { CTAButton } from "@/components/visual/cta-button";
+import { LinkedInIcon } from "@/components/visual/linkedin-icon";
 import { PageSection } from "@/components/visual/page-section";
 import type { homeContent } from "@/content/home";
+import { siteConfig } from "@/content/site";
 
 type HomeHeroMotionProps = {
   content: typeof homeContent;
@@ -72,6 +76,30 @@ export function HomeHeroMotion({ content }: HomeHeroMotionProps) {
             </motion.p>
           ))}
         </div>
+
+        {/* The case studies sit below a tall hero, so on a short laptop screen
+            they can fall entirely out of view. This is the way in. */}
+        <motion.div
+          animate={{ opacity: 1, y: 0 }}
+          className="mt-10 flex flex-wrap items-center gap-4"
+          initial={{ opacity: reducedMotion ? 1 : 0, y: hiddenY }}
+          transition={{
+            ...motionPresets.heroFollowSpring,
+            delay: reducedMotion ? 0 : 0.74
+          }}
+        >
+          <CTAButton href="#case-studies">
+            View Case Studies <ArrowRight aria-hidden="true" size={20} />
+          </CTAButton>
+          <CTAButton
+            href={siteConfig.linkedinUrl}
+            rel="noreferrer"
+            target="_blank"
+            variant="outline"
+          >
+            Let&rsquo;s Connect <LinkedInIcon />
+          </CTAButton>
+        </motion.div>
       </div>
 
       <div className="mt-20">
@@ -81,7 +109,7 @@ export function HomeHeroMotion({ content }: HomeHeroMotionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{
             ...motionPresets.heroFollowSpring,
-            delay: reducedMotion ? 0 : 0.74
+            delay: reducedMotion ? 0 : 0.86
           }}
         >
           What I work on
@@ -92,7 +120,7 @@ export function HomeHeroMotion({ content }: HomeHeroMotionProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{
             ...motionPresets.heroFollowSpring,
-            delay: reducedMotion ? 0 : 0.86
+            delay: reducedMotion ? 0 : 0.98
           }}
         >
           <div className="ticker-track flex w-max gap-4 pr-4">
