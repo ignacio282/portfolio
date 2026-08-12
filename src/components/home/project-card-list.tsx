@@ -8,7 +8,9 @@ import { ProjectCardMedia } from "./project-card-media";
 
 export function ProjectCardList() {
   return (
-    <PageSection id="case-studies" spacing="lg">
+    // scroll-mt keeps the section label clear of the fixed header when the
+    // hero CTA jumps here, matching the case study sections.
+    <PageSection className="scroll-mt-32" id="case-studies" spacing="lg">
       <StaggerGroup stagger={0.12}>
         <StaggerItem>
           <SectionLabel variant="home">Case studies</SectionLabel>
