@@ -25,7 +25,7 @@ export function ProjectCardList() {
                 } as React.CSSProperties}
               >
                 <ProjectCardMedia project={project} priority={index === 0} />
-                <div className="px-1 py-4 md:px-4">
+                <div className="project-card-copy px-1 py-3 md:px-4 md:py-4">
                   <p
                     className="type-eyebrow-accent mb-2"
                     style={{ color: "var(--project-accent)" }}
@@ -37,14 +37,14 @@ export function ProjectCardList() {
                   <h3 className="type-home-title">
                     {project.title}
                   </h3>
-                  <ul className="mt-3 flex flex-wrap gap-2">
+                  <ul className="mt-2.5 flex flex-wrap gap-1.5 md:mt-3 md:gap-2">
                     {project.tags.map((tag) => (
                       <li key={tag} className="ui-tag">
                         {tag}
                       </li>
                     ))}
                   </ul>
-                  <p className="type-body-large mt-8 max-w-2xl">{project.summary}</p>
+                  <p className="type-body-large mt-5 max-w-2xl md:mt-8">{project.summary}</p>
                   <InlineCTA>Read Case Study</InlineCTA>
                 </div>
               </Link>

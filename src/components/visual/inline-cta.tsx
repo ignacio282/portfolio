@@ -10,7 +10,7 @@ export function InlineCTA({
   className?: string;
 }) {
   return (
-    <span className={cn("ui-button mt-6", className)}>
+    <span className={cn("ui-button mt-5 md:mt-6", className)}>
       {children}
       <ArrowRight aria-hidden="true" size={20} />
     </span>
