@@ -10,17 +10,29 @@
   --color-teal: #00877f;
   --color-teal-dark: #006d68;
   --color-line: #d8d4cc;
-  --text-xs: 0.9375rem;
-  --text-sm: 1.09375rem;
-  --text-base: 1.25rem;
-  --text-lg: 1.40625rem;
-  --text-xl: 1.5625rem;
-  --text-2xl: 1.875rem;
-  --text-3xl: 2.34375rem;
-  --text-4xl: 2.8125rem;
-  --text-5xl: 3.75rem;
-  --text-6xl: 4.6875rem;
-  --text-7xl: 5.625rem;
+  /* Fluid ramp: each token hits its min at 375px and its max — the value this
+     scale has always used — at 1280px, so the desktop design is unchanged and
+     only phones and small tablets scale down. The rem addend is what keeps
+     browser font-size settings working; a vw-only clamp ignores them. */
+  --text-xs: clamp(0.8125rem, 0.761rem + 0.221vw, 0.9375rem); /* 13 → 15 */
+  --text-sm: clamp(0.9375rem, 0.873rem + 0.276vw, 1.09375rem); /* 15 → 17.5 */
+  --text-base: clamp(1.0625rem, 0.985rem + 0.331vw, 1.25rem); /* 17 → 20 */
+  --text-lg: clamp(1.15625rem, 1.053rem + 0.442vw, 1.40625rem); /* 18.5 → 22.5 */
+  --text-xl: clamp(1.25rem, 1.121rem + 0.552vw, 1.5625rem); /* 20 → 25 */
+  --text-2xl: clamp(1.4375rem, 1.256rem + 0.773vw, 1.875rem); /* 23 → 30 */
+  --text-3xl: clamp(1.6875rem, 1.416rem + 1.16vw, 2.34375rem); /* 27 → 37.5 */
+  --text-4xl: clamp(1.875rem, 1.487rem + 1.657vw, 2.8125rem); /* 30 → 45 */
+  --text-5xl: clamp(2.25rem, 1.628rem + 2.652vw, 3.75rem); /* 36 → 60 */
+  --text-6xl: clamp(2.5rem, 1.594rem + 3.867vw, 4.6875rem); /* 40 → 75 */
+  --text-7xl: clamp(2.75rem, 1.559rem + 5.083vw, 5.625rem); /* 44 → 90 */
+
+  /* Span tokens for type that used to jump at the md: breakpoint. One clamp
+     across the whole range replaces the two-step pair, so nothing snaps. */
+  --text-fluid-hero: clamp(2.25rem, 0.852rem + 5.967vw, 5.625rem); /* 36 → 90 */
+  --text-fluid-display: clamp(1.875rem, 1.098rem + 3.315vw, 3.75rem); /* 30 → 60 */
+  --text-fluid-title: clamp(1.6875rem, 1.221rem + 1.989vw, 2.8125rem); /* 27 → 45 */
+  --text-fluid-lead: clamp(1.0625rem, 0.92rem + 0.608vw, 1.40625rem); /* 17 → 22.5 */
+  --text-fluid-label: clamp(0.9375rem, 0.808rem + 0.552vw, 1.25rem); /* 15 → 20 */
 }
 
 :root {
@@ -121,7 +133,7 @@ img {
   }
 
   .type-footer {
-    @apply text-sm font-normal leading-[1.6] text-muted md:text-base;
+    @apply text-fluid-label font-normal leading-[1.6] text-muted;
   }
 
   .type-companion-title {
@@ -134,11 +146,11 @@ img {
 
   .type-companion-answer {
     white-space: pre-line;
-    @apply text-sm font-normal leading-[1.55] text-ink md:text-base;
+    @apply text-fluid-label font-normal leading-[1.55] text-ink;
   }
 
   .type-eyebrow {
-    @apply text-sm font-bold uppercase tracking-[0.14em] text-ink/70 md:text-base;
+    @apply text-fluid-label font-bold uppercase tracking-[0.14em] text-ink/70;
   }
 
   .type-eyebrow-accent {
@@ -146,18 +158,18 @@ img {
   }
 
   .type-case-section-label {
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 0.823rem + 0.221vw, 1rem); /* 14 → 16 */
     @apply font-semibold uppercase leading-tight tracking-[0.06em] text-teal;
   }
 
   .type-case-display-title,
   .type-case-display-metric {
-    font-size: clamp(2rem, 3.2vw, 2.75rem);
+    font-size: clamp(1.75rem, 1.336rem + 1.768vw, 2.75rem); /* 28 → 44 */
     @apply font-semibold leading-[1.16] text-ink;
   }
 
   .type-case-subtitle {
-    font-size: clamp(1.375rem, 1.8vw, 1.5rem);
+    font-size: clamp(1.1875rem, 1.058rem + 0.552vw, 1.5rem); /* 19 → 24 */
     @apply font-semibold leading-[1.3] text-ink;
   }
 
@@ -174,7 +186,7 @@ img {
   }
 
   .type-hero-hand {
-    @apply text-3xl leading-none md:text-4xl;
+    @apply text-fluid-title leading-none;
   }
 
   .type-kicker {
@@ -183,72 +195,60 @@ img {
 
   .type-hero {
     font-family: var(--font-display);
-    @apply text-5xl font-semibold leading-[0.98] text-ink md:text-7xl;
+    @apply text-fluid-hero font-semibold leading-[0.98] text-ink;
   }
 
   .type-home-intro {
-    @apply text-base font-normal leading-[1.45] text-ink md:text-lg;
+    @apply text-fluid-lead font-normal leading-[1.45] text-ink;
   }
 
   .type-home-title {
     font-family: var(--font-display);
-    @apply text-3xl font-semibold leading-tight text-ink md:text-4xl;
+    @apply text-fluid-title font-semibold leading-tight text-ink;
   }
 
   .type-case-hero {
     font-family: var(--font-display);
-    @apply text-4xl font-semibold leading-tight md:text-5xl;
+    @apply text-fluid-display font-semibold leading-tight;
   }
 
   .type-display {
     font-family: var(--font-display);
-    @apply text-4xl font-semibold leading-tight text-ink md:text-5xl;
+    @apply text-fluid-display font-semibold leading-tight text-ink;
   }
 
   .type-section-title {
-    font-size: clamp(1.75rem, 2.2vw, 2rem);
+    font-size: clamp(1.375rem, 1.116rem + 1.105vw, 2rem); /* 22 → 32 */
     @apply font-semibold leading-tight text-ink;
   }
 
   .type-impact-heading {
-    @apply text-3xl font-semibold leading-tight text-ink md:text-4xl;
+    @apply text-fluid-title font-semibold leading-tight text-ink;
   }
 
   .type-card-title {
-    font-size: 1.25rem;
+    font-size: clamp(1.0625rem, 0.985rem + 0.331vw, 1.25rem); /* 17 → 20 */
     @apply font-semibold leading-tight text-ink;
   }
 
   .type-small-title {
-    font-size: 1.25rem;
+    font-size: clamp(1.0625rem, 0.985rem + 0.331vw, 1.25rem); /* 17 → 20 */
     @apply font-semibold leading-6 text-ink;
   }
 
   .type-body-large {
-    font-size: clamp(1.125rem, 1.45vw, 1.25rem);
+    font-size: clamp(1.03125rem, 0.941rem + 0.387vw, 1.25rem); /* 16.5 → 20 */
     @apply font-normal leading-[1.6] text-ink;
   }
 
   .type-body {
-    font-size: 1.0625rem;
+    font-size: clamp(1rem, 0.948rem + 0.221vw, 1.125rem); /* 16 → 18 */
     @apply font-normal leading-[1.6] text-ink;
   }
 
-  @media (min-width: 768px) {
-    .type-body {
-      font-size: 1.125rem;
-    }
-  }
-
   .type-body-small {
-    font-size: 0.9375rem;
+    font-size: clamp(0.875rem, 0.823rem + 0.221vw, 1rem); /* 14 → 16 */
     @apply font-normal leading-[1.55] text-ink;
-  }
-
-  @media (min-width: 768px) {
-    .type-body-small {
-      font-size: 1rem;
-    }
   }
 
   .type-metric {
@@ -256,7 +256,7 @@ img {
   }
 
   .type-impact-metric {
-    @apply text-3xl font-semibold leading-none text-teal md:text-4xl;
+    @apply text-fluid-title font-semibold leading-none text-teal;
   }
 
   .type-quote {
@@ -358,6 +358,25 @@ img {
     border-radius: var(--radius-media);
   }
 
+  .project-card-copy {
+    container-type: inline-size;
+  }
+
+  /* The eyebrow is one fixed string that must not wrap, so size it against the
+     card column rather than the viewport — same trick as .landing-orbit-pill.
+     Longest string is "Master's capstone · Reading assistant" (37 chars). */
+  .project-card-copy .type-eyebrow-accent {
+    white-space: nowrap;
+    letter-spacing: 0.1em;
+    font-size: clamp(0.5625rem, 3.8cqi, 0.9375rem);
+  }
+
+  @media (min-width: 768px) {
+    .project-card-copy .type-eyebrow-accent {
+      letter-spacing: 0.14em;
+    }
+  }
+
   .project-card {
     @apply relative;
     box-shadow: inset 0 0 0 1px rgba(36, 37, 38, 0.06);
@@ -418,7 +437,7 @@ img {
   }
 
   .ui-pill {
-    @apply rounded-full bg-teal px-5 py-2 text-sm font-medium text-white md:text-base;
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-teal px-5 py-2 text-sm font-medium text-white md:text-base;
   }
 
   .builder-lab {
@@ -493,16 +512,24 @@ img {
   }
 
   .builder-showcase-tabs {
-    @apply grid grid-cols-3;
+    @apply grid grid-cols-1 md:grid-cols-3;
     border-top: 1px solid rgba(36, 37, 38, 0.08);
   }
 
   .builder-showcase-tab {
-    @apply inline-flex min-h-14 items-center justify-center border-0 bg-transparent px-3 text-center text-sm font-semibold text-ink/70 transition-[background-color,color] duration-150;
+    @apply inline-flex min-h-12 items-center justify-center border-0 bg-transparent px-3 text-center text-sm font-semibold text-ink/70 transition-[background-color,color] duration-150 md:min-h-14;
   }
 
+  /* Stacked on mobile, so the divider has to move from the side to the bottom. */
   .builder-showcase-tab:not(:last-child) {
-    border-right: 1px solid rgba(36, 37, 38, 0.08);
+    border-bottom: 1px solid rgba(36, 37, 38, 0.08);
+  }
+
+  @media (min-width: 768px) {
+    .builder-showcase-tab:not(:last-child) {
+      border-bottom: 0;
+      border-right: 1px solid rgba(36, 37, 38, 0.08);
+    }
   }
 
   .builder-showcase-tab:hover {
@@ -519,13 +546,16 @@ img {
   }
 
   .ui-pill-outline {
-    @apply inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-transparent px-5 py-2 text-sm font-medium text-ink transition-colors duration-150 hover:bg-paper md:text-base;
+    @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-ink/15 bg-transparent px-5 py-2 text-sm font-medium text-ink transition-colors duration-150 hover:bg-paper md:text-base;
   }
 
   /* Non-interactive metadata inside a clickable card: no hover affordance.
      Inherits the card's --project-accent so tags match their eyebrow. */
   .ui-tag {
-    @apply inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium;
+    /* A notch below text-xs on mobile: at 13px the two 24-char tags in the
+       portal card need 301px in a 295px column and spill to a third row. */
+    font-size: clamp(0.75rem, 0.672rem + 0.331vw, 0.9375rem); /* 12 → 15 */
+    @apply inline-flex items-center whitespace-nowrap rounded-full border px-2 py-0.5 font-medium md:px-3 md:py-1;
     border-color: var(--project-accent, var(--color-ink));
     background-color: transparent;
     color: var(--project-accent, var(--color-muted));
@@ -615,6 +645,17 @@ img {
 
   .builder-modal-visual-img {
     @apply absolute inset-0;
+  }
+
+  /* A video slide fills the frame instead of sitting in it: match the clip's
+     own 16/9 so nothing letterboxes below it, and drop the mock-window padding. */
+  .builder-modal-visual[data-media="video"] {
+    @apply p-0;
+    aspect-ratio: 16 / 9;
+  }
+
+  video.builder-modal-visual-img {
+    @apply h-full w-full object-cover;
   }
 
   .builder-modal-visual-header {
@@ -777,10 +818,18 @@ img {
   }
 
   .companion-trigger {
-    @apply fixed bottom-5 left-1/2 z-40 inline-flex min-h-12 max-w-[calc(100vw-24px)] -translate-x-1/2 flex-nowrap items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-teal-dark px-5 py-3 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(36,37,38,0.10)] hover:bg-[#005a56] hover:shadow-[0_6px_18px_rgba(36,37,38,0.14)] md:bottom-8 md:left-auto md:right-8 md:translate-x-0;
+    @apply fixed left-1/2 z-40 inline-flex min-h-12 max-w-[calc(100vw-24px)] -translate-x-1/2 flex-nowrap items-center justify-center gap-2.5 whitespace-nowrap rounded-full bg-teal-dark px-5 py-3 text-sm font-semibold text-white shadow-[0_4px_14px_rgba(36,37,38,0.10)] hover:bg-[#005a56] hover:shadow-[0_6px_18px_rgba(36,37,38,0.14)] md:left-auto md:right-8 md:translate-x-0;
+    /* Clears the iOS home indicator, which otherwise sits over the button. */
+    bottom: calc(1.25rem + env(safe-area-inset-bottom));
     transition-duration: 180ms;
     transition-property: background-color, box-shadow, transform;
     transition-timing-function: var(--ease-standard);
+  }
+
+  @media (min-width: 768px) {
+    .companion-trigger {
+      bottom: 2rem;
+    }
   }
 
   .companion-trigger:active {
@@ -791,8 +840,18 @@ img {
     @apply fixed inset-0 z-60 bg-ink/15 backdrop-blur-[1px];
   }
 
+  /* svh, not dvh: the dynamic unit tracks the mobile URL bar, so the panel
+     resized and slid every time the bar animated. The small viewport is the
+     one measurement that holds still for as long as the panel is open. */
   .companion-panel {
-    @apply fixed inset-x-3 bottom-3 z-60 flex max-h-[calc(100dvh-24px)] min-h-[min(680px,calc(100dvh-24px))] flex-col overflow-hidden rounded-[18px] bg-card shadow-[0_26px_80px_rgba(36,37,38,0.2),0_2px_12px_rgba(36,37,38,0.08)] md:inset-x-auto md:bottom-8 md:right-8 md:h-[min(780px,calc(100dvh-64px))] md:w-[560px];
+    @apply fixed inset-x-3 z-60 flex h-[min(680px,calc(100svh-24px))] flex-col overflow-hidden rounded-[18px] bg-card shadow-[0_26px_80px_rgba(36,37,38,0.2),0_2px_12px_rgba(36,37,38,0.08)] md:inset-x-auto md:right-8 md:h-[min(780px,calc(100svh-64px))] md:w-[560px];
+    bottom: calc(0.75rem + env(safe-area-inset-bottom));
+  }
+
+  @media (min-width: 768px) {
+    .companion-panel {
+      bottom: 2rem;
+    }
   }
 
   .companion-panel-header {
