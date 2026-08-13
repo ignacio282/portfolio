@@ -10,6 +10,9 @@ import { PortalCmsFunnel } from "@/components/projects/portal/portal-cms-funnel"
 import { PortalComponentReuse } from "@/components/projects/portal/portal-component-reuse";
 import { PortalPagePerformance } from "@/components/projects/portal/portal-page-performance";
 import { PortalRoleVenn } from "@/components/projects/portal/portal-role-venn";
+import { ReadingBuildLayers } from "@/components/projects/reading/reading-build-layers";
+import { ReadingCoreIdeaFlow } from "@/components/projects/reading/reading-core-idea-flow";
+import { ReadingReflectionCycle } from "@/components/projects/reading/reading-reflection-cycle";
 import { Card } from "@/components/visual/card";
 import { InlineCTA } from "@/components/visual/inline-cta";
 import { MediaFrame } from "@/components/visual/media-frame";
@@ -618,7 +621,9 @@ function ReadingCoreIdea() {
     <AnimatedSection id="core-idea" className="case-rule scroll-mt-32 pt-20">
       <CaseSectionLabel>03. The Core Idea</CaseSectionLabel>
       <p className="type-case-subtitle mt-7">The mental model was simple:</p>
-      <p className="type-section-title mt-4">capture &rarr; structure &rarr; reflect &rarr; retrieve</p>
+      <div className="mt-8">
+        <ReadingCoreIdeaFlow />
+      </div>
       <div className="layout-text-pair mt-10">
         <h2 className="type-case-display-title">
           A reading assistant that thinks <span className="text-teal">with you, not for you.</span>
@@ -693,14 +698,7 @@ function ReadingAILayering() {
             </p>
           </div>
         </div>
-        <CaseImage
-          src="/images/projects/reading/case/ImageSection5.webp"
-          alt="Reflection cycle architecture diagram showing journal and reflection modes."
-          aspect="aspect-[0.79/1]"
-          compact
-          fit="contain"
-          maxWidth="max-w-[620px]"
-        />
+        <ReadingReflectionCycle />
       </div>
     </AnimatedSection>
   );
@@ -721,12 +719,7 @@ function ReadingDesignerBuilder() {
       <h2 className="type-case-display-title mt-8">
         AI did not replace product thinking. It accelerated execution <span className="text-teal">after</span> the structure was clear.
       </h2>
-      <CaseImage
-        src="/images/projects/reading/case/ImageSection6.webp"
-        alt="Three-column diagram showing system design, interface design, and AI behavior design."
-        aspect="aspect-[1.88/1]"
-        fit="contain"
-      />
+      <ReadingBuildLayers />
       <p className="type-body mt-8 max-w-6xl">
         That became even more obvious when I connected the coding agent to Figma through MCP. Instead of asking the agent to guess from screenshots, I gave it access to the actual design definitions through a Figma-generated JSON structure. That improved fidelity and sped up the workflow substantially.
       </p>
