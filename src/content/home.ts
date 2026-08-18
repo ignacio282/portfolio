@@ -96,20 +96,20 @@ export const homeContent = {
           ],
           shots: [
             {
-              title: "Smart Recipe Intake",
+              title: "Smart recipe intake",
               caption:
                 "Paste a recipe or a rough note and the assistant, connected to OpenAI's API, pulls out the ingredients, fills in the recipe form, and asks a follow-up if something's unclear.",
               src: "/images/builder/meal-prep-assistant/slide-1.png",
               alt: "Smart recipe intake form prefilled from a pasted recipe"
             },
             {
-              title: "Weekly Rotation",
+              title: "Weekly rotation",
               caption: "A planning surface for choosing meals across the week.",
               src: "/images/builder/meal-prep-assistant/slide-2.png",
               alt: "Weekly meal rotation planner"
             },
             {
-              title: "Recipe Randomizer",
+              title: "Recipe randomizer",
               caption:
                 "When nothing sounds good, the app pulls three options at random from the saved recipe library.",
               src: "/images/builder/meal-prep-assistant/slide-3.png",
@@ -137,13 +137,13 @@ export const homeContent = {
           ],
           shots: [
             {
-              title: "In-Game View",
+              title: "In-game view",
               caption: "Polygon-based characters and enemies, with score, time survived, and HP tracked on screen.",
               src: "/images/builder/survivor-style-game/slide-1.png",
               alt: "Gameplay screenshot showing polygon characters, score, time, and HP"
             },
             {
-              title: "Enemy Types",
+              title: "Enemy types",
               caption: "A look at the different enemy types and how they read at a glance during a run.",
               src: "/images/builder/survivor-style-game/slide-2.png",
               alt: "The different enemy types in the game"
@@ -153,37 +153,6 @@ export const homeContent = {
               caption: "The project in the Godot editor, where the scenes, scripts, and game logic come together.",
               src: "/images/builder/survivor-style-game/slide-3.png",
               alt: "The game open in the Godot editor"
-            }
-          ]
-        }
-      },
-      {
-        slug: "personal-operating-dashboard",
-        title: "Personal Operating Dashboard",
-        summary:
-          "A daily workspace for goals, pomodoro sessions, notes, reminders, job hunting, and the small signals that keep work moving.",
-        tags: ["Web Dev"],
-        accent: "#00877f",
-        details: {
-          description:
-            "A planned daily operating system for my own work, combining focus sessions, goals, job-search tracking, reminders, and lightweight stats into one personal dashboard.",
-          relevance: [
-            "Shows how I think through messy personal workflows and turn them into usable product structure.",
-            "Gives me a living testbed for dashboard design, information hierarchy, and habit-forming tools.",
-            "Demonstrates the type of internal-tool thinking I can bring to teams and operations products."
-          ],
-          shots: [
-            {
-              title: "Daily Command Center",
-              caption: "Goals, focus state, and reminders organized for the day.",
-            },
-            {
-              title: "Focus Modes",
-              caption: "Pomodoro sessions and ambient work controls in one surface.",
-            },
-            {
-              title: "Progress Signals",
-              caption: "Weekly stats and job-search tracking for long-running goals.",
             }
           ]
         }

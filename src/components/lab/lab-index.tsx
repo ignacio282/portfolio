@@ -1,4 +1,5 @@
-import { ExternalLink } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
 import { MediaFrame } from "@/components/visual/media-frame";
 import { PageSection } from "@/components/visual/page-section";
@@ -22,7 +23,22 @@ export function LabIndex() {
     <main>
       <PageSection spacing="hero">
         <AnimatedSection>
-          <SectionLabel variant="accent">Lab</SectionLabel>
+          {/* Same back affordance as the case studies: this page is only
+              reached from the home section, so it needs a way out. */}
+          <Link
+            className="type-body-small group inline-flex min-h-10 items-center gap-3 text-muted transition-colors hover:text-ink focus-ring"
+            href="/#builder-lab"
+          >
+            <ArrowLeft
+              aria-hidden="true"
+              className="transition-transform duration-200 group-hover:-translate-x-1"
+              size={18}
+            />
+            Back
+          </Link>
+          <SectionLabel className="mt-6" variant="accent">
+            Lab
+          </SectionLabel>
           <h1 className="type-display mt-6 max-w-4xl">{builderLab.label}</h1>
           <p className="type-body-large mt-6 max-w-3xl">{builderLab.body}</p>
         </AnimatedSection>
@@ -120,8 +136,8 @@ function LabProject({
   );
 }
 
-/* The lead visual is whatever the project has: a looping clip, a still, or
-   nothing at all for the ones that are still only planned. */
+/* The lead visual is whatever the project has: a looping clip or a still. A
+   project with neither renders copy only rather than a broken frame. */
 function LabProjectMedia({
   project,
   priority
@@ -131,7 +147,7 @@ function LabProjectMedia({
 }) {
   if (project.video) {
     return (
-      <div className="media-frame aspect-[16/9] w-full">
+      <div className="media-frame aspect-video w-full">
         <video
           aria-label={project.imageAlt ?? project.title}
           autoPlay
@@ -151,7 +167,7 @@ function LabProjectMedia({
     return (
       <MediaFrame
         alt={project.imageAlt ?? project.title}
-        className="aspect-[16/9] w-full"
+        className="aspect-video w-full"
         priority={priority}
         sizes="(max-width: 768px) 92vw, 1280px"
         src={project.image}
