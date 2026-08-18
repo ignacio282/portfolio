@@ -3,12 +3,14 @@
 @theme {
   --font-sans: var(--font-ibm-plex-sans), "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-ibm-plex-sans), "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --color-paper: #f9f4ed;
+  /* Still beige, just less yellow than it was: the red/blue spread comes down
+     from 12 to 7, which cools the ground without leaving the family. */
+  --color-paper: #f6f4ef;
   --color-ink: #242526;
   --color-muted: #5f625f;
-  /* Warmer and a shade lighter than the paper it sits on, rather than the near
-     white it used to be — surfaces should lift off the page without going cold. */
-  --color-card: #fff7eb;
+  /* Near white, a touch warm. The lift off the page comes from the gap to the
+     paper below it, not from tinting the surface itself. */
+  --color-card: #fffdf6;
   --color-teal: #00877f;
   --color-teal-dark: #006d68;
   --color-line: #d8d4cc;
@@ -38,7 +40,7 @@
 }
 
 :root {
-  --background: #f9f4ed;
+  --background: #f6f4ef;
   --foreground: #242526;
   --page-max: 1280px;
   --radius-card: 8px;
