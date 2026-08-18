@@ -163,7 +163,7 @@ export function PortalCmsFunnel() {
                     height={PILL_HEIGHT}
                     rx={PILL_HEIGHT / 2}
                     stroke="var(--color-ink)"
-                    strokeWidth="1.5"
+                    strokeWidth="1"
                     width={width}
                     x={dropX - width / 2}
                     y={dropY - PILL_HEIGHT / 2}
@@ -210,7 +210,7 @@ export function PortalCmsFunnel() {
           fill="none"
           stroke="var(--color-ink)"
           strokeLinejoin="round"
-          strokeWidth="2"
+          strokeWidth="1.25"
           variants={drawAt(0, FUNNEL_DRAW)}
         />
 
@@ -231,7 +231,7 @@ export function PortalCmsFunnel() {
             height={OUTPUT_BAR.height}
             rx={OUTPUT_BAR.radius}
             stroke="var(--color-line)"
-            strokeWidth="1.5"
+            strokeWidth="1"
             width={OUTPUT_BAR.width}
             x={OUTPUT_BAR.x}
             y={OUTPUT_BAR.y}

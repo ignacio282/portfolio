@@ -177,7 +177,7 @@ export function PortalComponentReuse() {
                 rx="6"
                 stroke="var(--color-line)"
                 strokeDasharray="5 5"
-                strokeWidth="1.5"
+                strokeWidth="1.25"
                 width={box.width}
                 x={box.x}
                 y={box.y}
@@ -205,7 +205,7 @@ export function PortalComponentReuse() {
                 height={PAGE.height}
                 rx="8"
                 stroke="var(--color-ink)"
-                strokeWidth="1.5"
+                strokeWidth="1.25"
                 width={PAGE.width}
                 x={PAGE_LEFT}
                 y={PAGE.top}
@@ -221,7 +221,7 @@ export function PortalComponentReuse() {
                     rx="6"
                     stroke="var(--color-line)"
                     strokeDasharray="4 4"
-                    strokeWidth="1.25"
+                    strokeWidth="1"
                     width={box.width}
                     x={box.x}
                     y={box.y}
@@ -243,7 +243,7 @@ export function PortalComponentReuse() {
                     height={box.height}
                     rx="6"
                     stroke="var(--color-ink)"
-                    strokeWidth="1.5"
+                    strokeWidth="1.25"
                     width={box.width}
                     x={box.x}
                     y={box.y}
