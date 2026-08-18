@@ -112,7 +112,7 @@ export function PortalPagePerformance() {
 
             <line
               stroke="var(--color-line)"
-              strokeWidth="1.5"
+              strokeWidth="1"
               x1={PLOT_LEFT}
               x2={PLOT_LEFT}
               y1={PLOT_TOP - 20}
@@ -120,7 +120,7 @@ export function PortalPagePerformance() {
             />
             <line
               stroke="var(--color-line)"
-              strokeWidth="1.5"
+              strokeWidth="1"
               x1={PLOT_LEFT}
               x2={PLOT_RIGHT + 20}
               y1={BASE_Y}
@@ -159,7 +159,7 @@ export function PortalPagePerformance() {
             stroke="var(--color-muted)"
             strokeDasharray="7 7"
             strokeLinecap="round"
-            strokeWidth="2"
+            strokeWidth="1.5"
             variants={drawAt(EXPECTED_AT, EXPECTED_RUN)}
           />
 
@@ -187,7 +187,7 @@ export function PortalPagePerformance() {
             <line
               stroke="var(--color-ink)"
               strokeDasharray="2 4"
-              strokeWidth="1.5"
+              strokeWidth="1.25"
               x1={PEAK_X}
               x2={PEAK_X}
               y1={PEAK_Y - 12}

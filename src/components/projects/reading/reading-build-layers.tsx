@@ -103,7 +103,7 @@ export function ReadingBuildLayers() {
               key={panel.name}
               stroke="var(--color-line)"
               strokeDasharray="5 5"
-              strokeWidth="1.5"
+              strokeWidth="1"
             />
           ))}
         </motion.g>
@@ -120,7 +120,7 @@ export function ReadingBuildLayers() {
                   d={panelPath(index)}
                   fill="var(--color-card)"
                   stroke="var(--color-ink)"
-                  strokeWidth="1.75"
+                  strokeWidth="1.25"
                 />
                 <text
                   className="figure-label"

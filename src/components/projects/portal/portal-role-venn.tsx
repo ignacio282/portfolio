@@ -152,7 +152,7 @@ export function PortalRoleVenn() {
               d={circlePath(circle)}
               fill="none"
               stroke="var(--color-ink)"
-              strokeWidth="2"
+              strokeWidth="1.25"
               variants={drawAt(circleAt(index), CIRCLE_DURATION)}
             />
             <motion.text

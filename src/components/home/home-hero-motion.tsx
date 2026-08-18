@@ -101,37 +101,6 @@ export function HomeHeroMotion({ content }: HomeHeroMotionProps) {
           </CTAButton>
         </motion.div>
       </div>
-
-      <div className="mt-20">
-        <motion.h2
-          className="type-section-title mb-8"
-          initial={{ opacity: reducedMotion ? 1 : 0, y: hiddenY }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            ...motionPresets.heroFollowSpring,
-            delay: reducedMotion ? 0 : 0.86
-          }}
-        >
-          What I work on
-        </motion.h2>
-        <motion.div
-          className="overflow-hidden py-2"
-          initial={{ opacity: reducedMotion ? 1 : 0, y: hiddenY }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            ...motionPresets.heroFollowSpring,
-            delay: reducedMotion ? 0 : 0.98
-          }}
-        >
-          <div className="ticker-track flex w-max gap-4 pr-4">
-            {[...content.workOn, ...content.workOn, ...content.workOn].map((item, index) => (
-              <span key={`${item}-${index}`} className="ui-pill">
-                {item}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      </div>
     </PageSection>
   );
 }

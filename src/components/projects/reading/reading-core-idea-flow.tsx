@@ -61,7 +61,7 @@ export function ReadingCoreIdeaFlow() {
                 rx={NODE.radius}
                 stroke="var(--color-line)"
                 strokeDasharray="5 5"
-                strokeWidth="1.5"
+                strokeWidth="1"
                 width={box.width}
                 x={box.x}
                 y={box.y}
@@ -91,7 +91,7 @@ export function ReadingCoreIdeaFlow() {
                   height={box.height}
                   rx={NODE.radius}
                   stroke="var(--color-ink)"
-                  strokeWidth="1.5"
+                  strokeWidth="1.25"
                   width={box.width}
                   x={box.x}
                   y={box.y}
@@ -110,7 +110,7 @@ export function ReadingCoreIdeaFlow() {
                     d={`M ${shaftStart} ${arrowY} H ${shaftEnd}`}
                     fill="none"
                     stroke="var(--color-line)"
-                    strokeWidth="2"
+                    strokeWidth="1.5"
                     variants={drawAt(ARROW_AT(index), 0.4)}
                   />
                   <motion.path
@@ -119,7 +119,7 @@ export function ReadingCoreIdeaFlow() {
                     stroke="var(--color-teal)"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth="2"
+                    strokeWidth="1.5"
                     variants={fadeAt(ARROW_AT(index) + 0.35, { duration: 0.25 })}
                   />
                 </g>

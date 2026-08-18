@@ -105,7 +105,7 @@ export function ReadingReflectionCycle() {
               key={top}
               rx={CARD.radius}
               strokeDasharray="5 5"
-              strokeWidth="1.5"
+              strokeWidth="1"
               width={CARD.width}
               x={CARD.x}
               y={top}
@@ -116,10 +116,10 @@ export function ReadingReflectionCycle() {
               d={connectorPath(connector.from, connector.to)}
               key={connector.from}
               strokeDasharray="5 5"
-              strokeWidth="2"
+              strokeWidth="1.5"
             />
           ))}
-          <path d={RETURN_PATH} strokeDasharray="5 5" strokeWidth="2" />
+          <path d={RETURN_PATH} strokeDasharray="5 5" strokeWidth="1.5" />
         </motion.g>
 
         <motion.g variants={popAt(PILL_AT)}>
@@ -128,7 +128,7 @@ export function ReadingReflectionCycle() {
             height={PILL.height}
             rx={PILL.radius}
             stroke="var(--color-ink)"
-            strokeWidth="1.5"
+            strokeWidth="1.25"
             width={PILL.width}
             x={PILL.x}
             y={PILL.y}
@@ -149,7 +149,7 @@ export function ReadingReflectionCycle() {
           height={PILL.height + 12}
           rx={PILL.radius + 4}
           stroke="var(--color-teal)"
-          strokeWidth="2"
+          strokeWidth="1.5"
           variants={pulseAt(PULSE_AT)}
           width={PILL.width + 12}
           x={PILL.x - 6}
@@ -164,7 +164,7 @@ export function ReadingReflectionCycle() {
             fill="none"
             key={connector.from}
             stroke={reflectionCycle.modes[index].accent}
-            strokeWidth="2"
+            strokeWidth="1.5"
             variants={drawAt(CONNECTOR_AT[index], 0.35)}
           />
         ))}
@@ -204,7 +204,7 @@ export function ReadingReflectionCycle() {
                   height={CARD.height}
                   rx={CARD.radius}
                   stroke="var(--color-ink)"
-                  strokeWidth="1.75"
+                  strokeWidth="1.25"
                   width={CARD.width}
                   x={CARD.x}
                   y={top}
