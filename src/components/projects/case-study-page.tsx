@@ -174,13 +174,13 @@ function QrOverview() {
       <Card padding="lg">
         <div className="space-y-7">
           <div>
-            <h2 className="type-section-title">The Problem</h2>
+            <h2 className="type-section-title">The problem</h2>
             <p className="type-body mt-3">
               What started as a business push for QR money requests exposed a broader product challenge. Users were unfamiliar with QR transfers, worried about security, and the app had no clear place for a new money-receiving flow without disrupting its most used actions.
             </p>
           </div>
           <div>
-            <h2 className="type-section-title">Why This Mattered</h2>
+            <h2 className="type-section-title">Why this mattered</h2>
             <ul className="type-body mt-3 list-disc space-y-1 pl-5">
               <li>The request came from business, not from a clearly validated user need.</li>
               <li>In a high-traffic banking app, even a small homepage change could create confusion.</li>
@@ -188,7 +188,7 @@ function QrOverview() {
             </ul>
           </div>
           <div>
-            <h2 className="type-section-title">My Role</h2>
+            <h2 className="type-section-title">My role</h2>
             <p className="type-body mt-3">
               I turned a <strong>vague business request into a shippable product</strong> concept. I defined the final flow and entry point, <strong>led the UI design</strong>, and <strong>worked across product, brand, engineering, and the sibling payments team</strong> to make the feature clear, trustworthy, and compatible with the app&apos;s existing architecture.
             </p>
@@ -214,7 +214,7 @@ function QrOverview() {
 function QrBusinessContext() {
   return (
     <AnimatedSection id="business-context" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>01. Business Context</CaseSectionLabel>
+      <CaseSectionLabel>01. Business context</CaseSectionLabel>
       <h2 className="type-case-display-title mt-7">
         Leadership wanted to <span className="text-teal">move faster</span> than other banks and increase transactions.
       </h2>
@@ -231,10 +231,10 @@ function QrBusinessContext() {
 }
 
 function QrWhatLearned() {
-  const methods = ["Interviews", "5-Second Test", "A/B Tests", "Card Sorting"];
+  const methods = ["Interviews", "5-second test", "A/B tests", "Card sorting"];
   const findings = [
     {
-      title: "Security Concerns",
+      title: "Security concerns",
       body: (
         <>
           Many people did not understand QR as a safe way to move money and were afraid someone could misuse it. <strong>That meant trust had to be designed into the feature</strong> from the beginning.
@@ -243,10 +243,10 @@ function QrWhatLearned() {
       icon: ShieldCheck
     },
     {
-      title: "Language Mattered",
+      title: "Language mattered",
       body: (
         <>
-          We tested different labels in Spanish, including versions closer to &ldquo;request&rdquo; or &ldquo;ask for money,&rdquo; but those created confusion and sometimes made users think the feature was related to loans. <strong>&ldquo;Receive Money&rdquo; was the clearest and most natural option.</strong>
+          We tested different labels in Spanish, including versions closer to &ldquo;request&rdquo; or &ldquo;ask for money,&rdquo; but those created confusion and sometimes made users think the feature was related to loans. <strong>&ldquo;Receive money&rdquo; was the clearest and most natural option.</strong>
         </>
       ),
       icon: Type
@@ -264,14 +264,14 @@ function QrWhatLearned() {
 
   return (
     <AnimatedSection id="what-we-learned" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>02. What We Learned</CaseSectionLabel>
+      <CaseSectionLabel>02. What we learned</CaseSectionLabel>
       <p className="type-body mt-7 max-w-6xl">
         We relied heavily on existing research from the sibling company that powered the QR engine, since they had already studied how QR payments worked in the Ecuadorian market and the project had limited time. That gave us a head start, but we still needed to validate how this feature should appear inside Banco Pichincha&apos;s app.
       </p>
       <div className="mt-10 grid gap-10 md:grid-cols-[200px_1fr] md:items-center">
         <div>
-          <p className="type-case-display-metric">21 Users</p>
-          <p className="type-case-metric-label mt-3">Interviewed And Tested</p>
+          <p className="type-case-display-metric">21 users</p>
+          <p className="type-case-metric-label mt-3">Interviewed and tested</p>
         </div>
         <div>
           <p className="type-body">We ran a full round of preliminary interviews and usability testing with lo-fi prototypes.</p>
@@ -309,7 +309,7 @@ function QrWhatLearned() {
 function QrRealChallenge() {
   return (
     <AnimatedSection id="real-challenge" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>03. The Real Challenge</CaseSectionLabel>
+      <CaseSectionLabel>03. The real challenge</CaseSectionLabel>
       <div className="mt-8 grid gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-center">
         <CaseImage
           src="/images/projects/qr/case/Section3Imagewebp.webp"
@@ -333,7 +333,7 @@ function QrRealChallenge() {
 function QrKeyDecisions() {
   const decisions = [
     [
-      "Entry Point",
+      "Entry point",
       "Instead of adding more actions to the homepage, I grouped the available options under one Receive Money entry point. This let us introduce the feature without disrupting the flows people already used most."
     ],
     [
@@ -352,7 +352,7 @@ function QrKeyDecisions() {
 
   return (
     <AnimatedSection id="key-decisions" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>04. Key Decisions</CaseSectionLabel>
+      <CaseSectionLabel>04. Key decisions</CaseSectionLabel>
       <div className="mt-8 grid gap-5 md:grid-cols-2">
         {decisions.map(([title, body], index) => (
           <Card key={title} padding="md" className="min-h-56">
@@ -372,22 +372,22 @@ function QrKeyDecisions() {
 
 function QrAccessibility() {
   const categories = [
-    ["Contextual Labels", "Provide users with an overview of the screen's purpose and what they are about to do."],
-    ["Event Labels", "Give feedback on user interactions with interactive elements, such as buttons, selectors, or input fields."],
-    ["Descriptive Labels", "Read out important screen elements like headings, descriptions, or available actions."],
-    ["Omission Labels", "Tell the screen reader to skip elements that do not add value, such as decorative images, to reduce confusion."]
+    ["Contextual labels", "Provide users with an overview of the screen's purpose and what they are about to do."],
+    ["Event labels", "Give feedback on user interactions with interactive elements, such as buttons, selectors, or input fields."],
+    ["Descriptive labels", "Read out important screen elements like headings, descriptions, or available actions."],
+    ["Omission labels", "Tell the screen reader to skip elements that do not add value, such as decorative images, to reduce confusion."]
   ];
 
   return (
     <AnimatedSection id="accessibility" className="case-rule scroll-mt-32 pt-20">
       <CaseSectionLabel>05. Accessibility</CaseSectionLabel>
-      <h2 className="type-case-display-title mt-7">Transactions For Everyone</h2>
+      <h2 className="type-case-display-title mt-7">Transactions for everyone</h2>
       <div className="type-body mt-5 max-w-6xl space-y-7">
         <p>
           This project was not only about getting the feature out quickly. It also needed to be usable by a wide range of users in a high-stakes context. Beyond screen-reader labels, I kept the interaction intentionally simple, used strong contrast to protect QR readability, reduced unnecessary decoration, and kept the flow short so users could understand what was happening without overload.
         </p>
         <div>
-          <h3 className="type-case-subtitle">The Labels Were Organized Into Four Categories:</h3>
+          <h3 className="type-case-subtitle">The labels were organized into four categories:</h3>
           <ol className="mt-5 space-y-4">
             {categories.map(([title, body], index) => (
               <li key={title}>
@@ -424,7 +424,7 @@ function QrOutcome() {
 function QrMatters({ nextProject }: { nextProject: CaseStudy }) {
   return (
     <AnimatedSection id="matters" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>07. Why This Case Matters</CaseSectionLabel>
+      <CaseSectionLabel>07. Why this case matters</CaseSectionLabel>
       <div className="layout-text-pair-balanced mt-7">
         <h2 className="type-case-display-title">
           This project shows <span className="text-teal">how I work</span> when the request is vague, the timeline is short, and the stakes are high.
@@ -516,13 +516,13 @@ function ReadingOverview() {
       <Card padding="lg">
         <div className="space-y-7">
           <div>
-            <h2 className="type-section-title">The Problem</h2>
+            <h2 className="type-section-title">The problem</h2>
             <p className="type-body mt-3">
               Most AI reading tools either over-summarize or act like generic chatbots. I wanted to explore a more useful model: an AI-assisted workflow that helps readers capture messy notes, turn them into structured memory, reflect on what matters, and retrieve it later without spoilers or invented facts.
             </p>
           </div>
           <div>
-            <h2 className="type-section-title">Why This Mattered</h2>
+            <h2 className="type-section-title">Why this mattered</h2>
             <ul className="type-body mt-3 list-disc space-y-1 pl-5">
               <li>The challenge was not just adding AI to a product. It was making AI helpful without taking over the user&apos;s thinking.</li>
               <li>I wanted to test how far a product designer with coding knowledge could go in building a real AI product, not just designing screens for one.</li>
@@ -530,7 +530,7 @@ function ReadingOverview() {
             </ul>
           </div>
           <div>
-            <h2 className="type-section-title">My Role</h2>
+            <h2 className="type-section-title">My role</h2>
             <p className="type-body mt-3">
               I was the sole designer and builder. I defined the workflow, wrote the prompt logic and behavioral rules for each AI feature, designed the interface in Figma, and used AI coding tools to build the product.
             </p>
@@ -575,7 +575,7 @@ function ReadingOpportunity() {
     <AnimatedSection id="opportunity" className="case-rule scroll-mt-32 pt-20">
       <div className="layout-text-pair-balanced">
         <div>
-          <CaseSectionLabel>02. The Opportunity</CaseSectionLabel>
+          <CaseSectionLabel>02. The opportunity</CaseSectionLabel>
           <h2 className="type-case-display-title mt-7">
             Most AI tools are good at sounding smart. Very few help people actually <span className="text-teal">learn</span>
           </h2>
@@ -590,7 +590,7 @@ function ReadingOpportunity() {
         </div>
         <div>
           <ReadingVideo />
-          <p className="type-small-title mt-5 text-center">Scriba In Action</p>
+          <p className="type-small-title mt-5 text-center">Scriba in action</p>
         </div>
       </div>
     </AnimatedSection>
@@ -619,7 +619,7 @@ function ReadingVideo() {
 function ReadingCoreIdea() {
   return (
     <AnimatedSection id="core-idea" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>03. The Core Idea</CaseSectionLabel>
+      <CaseSectionLabel>03. The core idea</CaseSectionLabel>
       <p className="type-case-subtitle mt-7">The mental model was simple:</p>
       <div className="mt-8">
         <ReadingCoreIdeaFlow />
@@ -643,7 +643,7 @@ function ReadingCoreIdea() {
 function ReadingAIBehavior() {
   return (
     <AnimatedSection id="ai-behavior" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>04. Designing The AI Behavior</CaseSectionLabel>
+      <CaseSectionLabel>04. Designing the AI behavior</CaseSectionLabel>
       <h2 className="type-case-display-title mt-7">
         What AI could NOT do <span className="text-teal">&gt;</span> What the AI could do
       </h2>
@@ -667,20 +667,20 @@ function ReadingAIBehavior() {
 function ReadingAILayering() {
   return (
     <AnimatedSection id="ai-layering" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>05. AI Layering In Action</CaseSectionLabel>
+      <CaseSectionLabel>05. AI layering in action</CaseSectionLabel>
       <p className="type-body mt-7">
         At a product level, Scriba is not built around one all-knowing assistant. It is built around a small set of focused AI behaviors.
       </p>
       <div className="mt-12 grid gap-12 md:grid-cols-[0.9fr_1fr] md:items-center">
         <div className="type-body space-y-7">
           <div>
-            <h3 className="type-case-subtitle">The Silent Organizer</h3>
+            <h3 className="type-case-subtitle">The silent organizer</h3>
             <p className="mt-3">
               AI turns messy notes into structured memory: summary, characters, setting, relationships, and reflections. It mostly stays invisible unless a missing detail is important enough to ask about.
             </p>
           </div>
           <div>
-            <h3 className="type-case-subtitle">The Reflection Coach</h3>
+            <h3 className="type-case-subtitle">The reflection coach</h3>
             <p className="mt-3">
               It does not summarize. It asks the next useful question based on what the user already wrote, helping deepen recall and interpretation.
             </p>
@@ -707,7 +707,7 @@ function ReadingAILayering() {
 function ReadingDesignerBuilder() {
   return (
     <AnimatedSection id="designer-to-builder" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>06. From Designer To Builder</CaseSectionLabel>
+      <CaseSectionLabel>06. From designer to builder</CaseSectionLabel>
       <div className="type-body mt-7 max-w-6xl space-y-5">
         <p>
           A big reason this project matters is that I did not stop at defining the experience in Figma. <strong>I built it.</strong>
@@ -730,14 +730,14 @@ function ReadingDesignerBuilder() {
 function ReadingProduct() {
   return (
     <AnimatedSection id="product" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>07. The Product</CaseSectionLabel>
+      <CaseSectionLabel>07. The product</CaseSectionLabel>
       <p className="type-body mt-5 max-w-6xl">
         All the designs for this prototype were made using Figma, going from a low-fidelity idea to a high-fidelity prototype with its own mini design system after multiple rounds of feedback and iterations. The following screens show the key interactions and visual elements.
       </p>
       <ProductScreenRow
         image="/images/projects/reading/case/Image1Section7.avif"
         alt="Scriba home screen showing a current book, story progress, and activity."
-        title="Home: A Quick Snapshot Of Your Reading Activity"
+        title="Home: a quick snapshot of your reading activity"
         reverse={false}
       >
         <p>
@@ -750,7 +750,7 @@ function ReadingProduct() {
       <ProductScreenRow
         image="/images/projects/reading/case/Image2Section7.avif"
         alt="Scriba journal mode screen for capturing thoughts while reading."
-        title="Journal Mode: Write Freely While You Read"
+        title="Journal mode: write freely while you read"
         reverse
       >
         <p>
@@ -763,7 +763,7 @@ function ReadingProduct() {
       <ProductScreenRow
         image="/images/projects/reading/case/Image3Section7.avif"
         alt="Scriba session summary screen with organized notes, characters, and themes."
-        title="Session Summary: Your Notes Organized Automatically"
+        title="Session summary: your notes organized automatically"
         reverse={false}
       >
         <p>
@@ -809,18 +809,18 @@ function ProductScreenRow({
 function ReadingTesting() {
   const findings = [
     [
-      "Book-Creation Flow",
+      "Book-creation flow",
       "Manual entry was functional, but slower than it needed to be, so I replaced it with Google Books search to make onboarding more natural."
     ],
     [
-      "AI's Interpretation",
+      "AI's interpretation",
       "Early behavior assumed characters were always human, which broke down in fantasy and non-human narratives. I updated the prompt logic so the system could handle characters more flexibly."
     ]
   ];
 
   return (
     <AnimatedSection id="testing" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>08. Testing And Iteration</CaseSectionLabel>
+      <CaseSectionLabel>08. Testing and iteration</CaseSectionLabel>
       <p className="type-body mt-7 max-w-6xl">
         I ran lightweight usability sessions with classmates, where users were asked to add a book, create a note, and interact with the AI assistant. Everyone completed the tasks successfully, but the real value came from what needed improvement.
       </p>
@@ -833,7 +833,7 @@ function ReadingTesting() {
         ))}
       </div>
       <div className="type-body mt-10 max-w-6xl">
-        <h3 className="type-case-subtitle">Tested In Real Scenarios</h3>
+        <h3 className="type-case-subtitle">Tested in real scenarios</h3>
         <p className="mt-5">
           I also tested the system on myself over multiple weeks with real books I was reading. That was essential. <strong>AI can generate outputs that look polished on the surface while still being shallow, generic, or slightly wrong.</strong> Repeated usage helped me identify weak patterns, reduce hallucination risk, and make sure the output was actually useful for future recall rather than just cosmetically impressive.
         </p>
@@ -845,26 +845,26 @@ function ReadingTesting() {
 function ReadingLearnings() {
   const learnings = [
     [
-      "AI Design Is Mostly About Boundaries",
+      "AI design is mostly about boundaries",
       "The hardest decision was not what the AI should do, but what it should not do. By preventing the assistant from summarizing or inventing story details, the system keeps the reader responsible for generating knowledge."
     ],
     [
-      "AI Should Work The Way People Think",
+      "AI should work the way people think",
       "I designed three layers aligned with how memory works: Capture -> Reflect -> Retrieve. Each stage supports a different cognitive moment during reading."
     ],
     [
-      "Better Structure, Better Output",
+      "Better structure, better output",
       "Working with coding agents taught me that AI works best when the system is well structured. An AGENTS.md file defines context and rules for the coding agent, while the Figma MCP connection lets the agent read real design structure instead of guessing from screenshots."
     ],
     [
-      "AI Did Not Replace Design Decisions",
+      "AI did not replace design decisions",
       "AI helped write code faster, but the real work remained designing the system the AI operates within. Deciding when the assistant should speak, organize, question, or stay silent became the most important experience design challenge."
     ]
   ];
 
   return (
     <AnimatedSection id="learnings" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>09. Learnings So Far</CaseSectionLabel>
+      <CaseSectionLabel>09. Learnings so far</CaseSectionLabel>
       <div className="mt-7 grid gap-5 md:grid-cols-2">
         {learnings.map(([title, body], index) => (
           <Card key={title} padding="md" className="min-h-72">
@@ -885,7 +885,7 @@ function ReadingLearnings() {
 function ReadingMatters({ nextProject }: { nextProject: CaseStudy }) {
   return (
     <AnimatedSection id="matters" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>10. Why This Case Matters</CaseSectionLabel>
+      <CaseSectionLabel>10. Why this case matters</CaseSectionLabel>
       <div className="layout-text-pair-balanced mt-7">
         <h2 className="type-case-display-title">
           This project shows <span className="text-teal">how I design with AI-powered workflows</span> from product ideas to deployment.

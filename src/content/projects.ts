@@ -310,7 +310,7 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         type: "text",
-        eyebrow: "02. The Opportunity",
+        eyebrow: "02. The opportunity",
         title: "Most AI tools are good at sounding smart. Very few help people actually learn",
         body: [
           "Readers often highlight passages or take notes, but these notes get lost and rarely lead to deeper understanding. Most reading apps track progress, and most AI tools summarize content for the user instead of supporting personal insight.",
@@ -319,7 +319,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "split",
-        eyebrow: "03. The Core Idea",
+        eyebrow: "03. The core idea",
         title: "A reading assistant that thinks with you, not for you.",
         body: [
           "The mental model was simple: capture, structure, reflect, retrieve. Scriba supports the reader through each moment without replacing their interpretation."
@@ -335,7 +335,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "split",
-        eyebrow: "04. Designing The AI Behavior",
+        eyebrow: "04. Designing the AI behavior",
         title: "What AI could not do mattered more than what it could do",
         body: [
           "I wanted the AI to be helpful, but not overbearing. Supportive, but not dominant. Smart, but not performative. That meant creating explicit behavioral boundaries for each AI role."
@@ -351,7 +351,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "text",
-        eyebrow: "05. AI Layering In Action",
+        eyebrow: "05. AI layering in action",
         title: "Scriba is built around focused AI behaviors",
         body: [
           "At a product level, Scriba is not built around one all-knowing assistant. It is built around a small set of focused AI behaviors: the silent organizer, the reflection coach, the scribe, and the knowledge layer.",
@@ -360,7 +360,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "text",
-        eyebrow: "06. From Designer To Builder",
+        eyebrow: "06. From designer to builder",
         title: "AI accelerated execution after the product structure was clear",
         body: [
           "I used OpenAI's coding assistant Codex to create the Next.js project, implement the AI model endpoints, set up the front end, and scaffold the database structure.",
@@ -369,7 +369,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "text",
-        eyebrow: "07. The Product",
+        eyebrow: "07. The product",
         title: "A focused mobile reading workflow",
         body: [
           "The home screen gives readers a quick snapshot of their current book, recent notes, and weekly reading stats.",
@@ -378,7 +378,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "decisions",
-        eyebrow: "08. Testing And Iteration",
+        eyebrow: "08. Testing and iteration",
         title: "Testing exposed where the workflow and AI behavior needed to get sharper",
         decisions: [
           {
@@ -395,7 +395,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "decisions",
-        eyebrow: "09. Learnings So Far",
+        eyebrow: "09. Learnings so far",
         title: "The project clarified how I think about AI product design",
         decisions: [
           {
@@ -461,7 +461,7 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         type: "text",
-        eyebrow: "01. Business Context",
+        eyebrow: "01. Business context",
         title: "Leadership wanted to move faster than other banks and increase transactions",
         body: [
           "The expectation was that QR would feel modern and attractive, especially for younger users. But before moving forward, we needed to understand whether customers actually understood what this feature was, how they would use it, and where it could live in the app without creating confusion.",
@@ -470,7 +470,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "split",
-        eyebrow: "02. What We Learned",
+        eyebrow: "02. What we learned",
         title: "Fast and modern became simple, safe, and reliable",
         body: [
           "We relied on existing research from the sibling company that powered the QR engine, then validated how this feature should appear inside Banco Pichincha's app.",
@@ -485,7 +485,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "split",
-        eyebrow: "03. The Real Challenge",
+        eyebrow: "03. The real challenge",
         title: "Users needed something simple and trustworthy, not flashy",
         body: [
           "The product needed a new entry point that did not damage established navigation patterns.",
@@ -501,11 +501,11 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "decisions",
-        eyebrow: "04. Key Decisions",
+        eyebrow: "04. Key decisions",
         title: "The design decisions focused on entry point, naming, simplicity, and branding",
         decisions: [
           {
-            title: "Entry Point",
+            title: "Entry point",
             body:
               "I grouped the available options under one Receive Money entry point so the feature could be introduced without disrupting the flows people already used most."
           },
@@ -545,7 +545,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "text",
-        eyebrow: "07. Why This Case Matters",
+        eyebrow: "07. Why this case matters",
         title: "This project shows how I work when the request is vague, the timeline is short, and the stakes are high",
         body: [
           "I can take a loosely defined business idea, find the real product problem underneath it, test the parts that matter most, and shape a solution that respects both user trust and product architecture."

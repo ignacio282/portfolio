@@ -7,7 +7,7 @@ export const SHOW_TESTIMONIALS = false;
 // Text wrapped in *asterisks* renders as <em>. Used sparingly, once per section.
 export const startupsContent = {
   hero: {
-    label: "For Founders",
+    label: "For founders",
     title: "You built with AI and now you have a working product. That's real progress.",
     body:
       "Getting a first version working and deployed used to take months and a full team. You did it faster than that, more efficiently, and it runs “just fine.” The thing with AI is that it doesn't think about the part that usually comes next: **what happens once people start using it? Real people, not friends and family, not your team.**",
@@ -53,7 +53,7 @@ export const startupsContent = {
     images: [] as { src: string; alt: string }[]
   },
   edgecases: {
-    label: "What Comes Next",
+    label: "What comes next",
     title: "People can use it. What happens when complaints come?",
     body: [
       "AI is good at the version of your product where nothing goes wrong. The signup that completes. The empty state before anyone has touched it. The form filled in the way it's supposed to be filled in. That version is easy, and it's the one you see in every demo.",
@@ -196,7 +196,7 @@ export const startupsContent = {
     ]
   },
   work: {
-    label: "Selected Work",
+    label: "Selected work",
     // TODO(copy): your wording.
     title: "Some examples of the work I've done",
     // Keyed by project slug. Founder-facing framing, not the recruiter-facing summary.
@@ -267,14 +267,14 @@ export const startupsContent = {
     ]
   },
   testimonials: {
-    label: "What Founders Say",
+    label: "What founders say",
     title: "In their words",
     // Real quotes only. Shape:
     // { quote: "…", name: "…", role: "…" }
     items: [] as { quote: string; name: string; role: string }[]
   },
   finalCta: {
-    label: "Next Step",
+    label: "Next step",
     title: "Let's talk.",
     body:
       "You show me what you have and I'll tell you what I think. If there's an opportunity to improve the design, the usability, or the overall experience, I'll say so on the call. Looking forward to making awesome things with you :)",

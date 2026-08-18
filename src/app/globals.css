@@ -151,17 +151,19 @@ img {
     @apply text-fluid-label font-normal leading-[1.55] text-ink;
   }
 
+  /* Eyebrows are sentence case, not caps. The wide tracking that made caps
+     legible only makes lowercase look loose, so it comes down with them. */
   .type-eyebrow {
-    @apply text-fluid-label font-bold uppercase tracking-[0.14em] text-ink/70;
+    @apply text-fluid-label font-bold tracking-[0.02em] text-ink/70;
   }
 
   .type-eyebrow-accent {
-    @apply text-xs font-semibold uppercase tracking-[0.14em] text-teal;
+    @apply text-xs font-semibold tracking-[0.02em] text-teal;
   }
 
   .type-case-section-label {
     font-size: clamp(0.875rem, 0.823rem + 0.221vw, 1rem); /* 14 → 16 */
-    @apply font-semibold uppercase leading-tight tracking-[0.06em] text-teal;
+    @apply font-semibold leading-tight tracking-[0.02em] text-teal;
   }
 
   .type-case-display-title,
@@ -366,17 +368,12 @@ img {
 
   /* The eyebrow is one fixed string that must not wrap, so size it against the
      card column rather than the viewport — same trick as .landing-orbit-pill.
-     Longest string is "Master's capstone · Reading assistant" (37 chars). */
+     Longest string is "Master's capstone · Reading assistant" (37 chars).
+     Sentence case buys back width, so the floor can sit higher than it did
+     when this string was set in caps. */
   .project-card-copy .type-eyebrow-accent {
     white-space: nowrap;
-    letter-spacing: 0.1em;
-    font-size: clamp(0.5625rem, 3.8cqi, 0.9375rem);
-  }
-
-  @media (min-width: 768px) {
-    .project-card-copy .type-eyebrow-accent {
-      letter-spacing: 0.14em;
-    }
+    font-size: clamp(0.6875rem, 3.4cqi, 0.9375rem);
   }
 
   .project-card {
