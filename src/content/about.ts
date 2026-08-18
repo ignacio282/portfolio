@@ -164,7 +164,7 @@ export const aboutContent = {
       },
       {
         id: "people",
-        title: "I design for people, not users",
+        title: "I design for people",
         body: [
           "Everything we ship ends up in the hands of a person with their own desires, needs, and limits. I work to give those people a genuinely good experience, I avoid dark patterns wherever I can, and I keep talking with the business so everyone stays clear on who we're designing for and what they actually need."
         ]
