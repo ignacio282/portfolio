@@ -41,13 +41,14 @@ export type BuilderLabProject = {
   demoUrl?: string;
   repoUrl?: string;
   caseUrl?: string;
-  modal: {
+  details: {
     description: string;
+    /** Why this personal project earns a place in a design portfolio. */
     relevance: string[];
-    slides: {
+    /** Ordered walkthrough of the project; each shot stands on its own. */
+    shots: {
       title: string;
       caption: string;
-      variant: "dashboard" | "planner" | "game" | "hardware" | "workflow";
       src?: string;
       alt?: string;
     }[];

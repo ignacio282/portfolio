@@ -56,7 +56,7 @@ export function CaseStudyCompanion({ slug }: { slug: string }) {
 
     // Freezing the page underneath keeps the panel put: letting it scroll also
     // animates the mobile URL bar, which resizes the viewport under the panel.
-    // Same lock the builder-lab modal uses.
+    // Lock the page behind the panel so the background does not scroll.
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
