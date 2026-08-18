@@ -41,16 +41,12 @@ export type BuilderLabProject = {
   demoUrl?: string;
   repoUrl?: string;
   caseUrl?: string;
-  modal: {
+  details: {
     description: string;
-    relevance: string[];
-    slides: {
-      title: string;
-      caption: string;
-      variant: "dashboard" | "planner" | "game" | "hardware" | "workflow";
-      src?: string;
-      alt?: string;
-    }[];
+    /** What the thing actually does — the work, not the pitch. */
+    features: string[];
+    /** Tools it was built with, rendered as one dot-separated line. */
+    stack: string[];
   };
 };
 

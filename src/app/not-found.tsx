@@ -9,10 +9,10 @@ export default function NotFound() {
     <main>
       <PageSection className="min-h-[70vh] justify-center pt-36">
         <SectionLabel variant="accent">404</SectionLabel>
-        <h1 className="type-display mt-6 max-w-3xl">
+        <h1 className="type-display mt-6">
           This page is not in the portfolio yet.
         </h1>
-        <p className="type-body-large mt-6 max-w-xl text-muted">
+        <p className="type-body-large mt-6 text-muted">
           The case study or page may still be part of the migration.
         </p>
         <CTAButton asChild className="mt-8">

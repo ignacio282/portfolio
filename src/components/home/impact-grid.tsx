@@ -14,7 +14,7 @@ export function ImpactGrid() {
     <PageSection spacing="md">
       <AnimatedSection>
         <SectionLabel>{"Impact I've made"}</SectionLabel>
-        <p className="type-body-large mt-6 max-w-2xl">
+        <p className="type-body-large mt-6">
           {"Results from products I've worked on in enterprise settings."}
         </p>
       </AnimatedSection>

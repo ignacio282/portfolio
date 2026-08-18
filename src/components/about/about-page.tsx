@@ -19,7 +19,7 @@ export function AboutPage() {
         <AnimatedSection>
           <SectionLabel variant="accent">{experience.label}</SectionLabel>
           <h2 className="type-section-title mt-3">{experience.title}</h2>
-          <p className="type-body-large mt-4 max-w-2xl">{experience.intro}</p>
+          <p className="type-body-large mt-4">{experience.intro}</p>
         </AnimatedSection>
         <AnimatedSection className="mt-10">
           <ExperienceTimeline entries={experience.entries} />
@@ -48,7 +48,7 @@ export function AboutPage() {
       <PageSection className="pb-24" spacing="lg">
         <AnimatedSection>
           <h2 className="type-section-title">{beyond.title}</h2>
-          <p className="type-body-large mt-4 max-w-5xl">{beyond.body}</p>
+          <p className="type-body-large mt-4">{beyond.body}</p>
         </AnimatedSection>
         <StaggerGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {gallery.map((image) => (

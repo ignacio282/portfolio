@@ -44,7 +44,9 @@ export const homeContent = {
   builderLab: {
     label: "Things I've built",
     body:
-      "I like to make a lot of things for myself to make my life easier or because it's interesting. I love making things.",
+      "Personal projects and experiments to hone my code and craft skills. See how I turn my ideas into products through hands-on exploration.",
+    cta: "See What I've Built",
+    href: "/lab",
     projects: [
       {
         slug: "household-finance-tracker",
@@ -56,22 +58,17 @@ export const homeContent = {
         demoUrl: "https://finance-tool-red.vercel.app/demo",
         video: "/images/builder/household-finance-tracker/FinanceCompressed.mp4",
         imageAlt: "Household finance tracker dashboard",
-        modal: {
+        details: {
           description:
             "A household finance tracker built because categorizing a month of spending by hand never survives contact with real life. Statements from several cards and accounts go in, the Claude API sorts each transaction into a category, and the dashboard shows net cash flow, spending by category, and how the budget period is actually going.",
-          relevance: [
-            "Shows how I use an LLM as a working part of a product, not a bolt-on feature.",
-            "Turns a tedious household chore into a clear, budget-aware view of where money goes.",
-            "Covers the full path from data import and modeling to the dashboard and its charts."
+          features: [
+            "Imports statements from several cards and accounts in one pass.",
+            "Categorizes every transaction through the Claude API instead of by hand.",
+            "Tracks net cash flow and spending by category across the budget period.",
+            "Flags how the period is actually going against the budget that was set."
           ],
-          slides: [
-            {
-              title: "Walkthrough",
-              caption:
-                "Statements come in and get categorized, then the dashboard shows net cash flow, spending by category, and budget status across every card and account.",
-              variant: "dashboard"
-            }
-          ]
+          /* TODO(ignacio): confirm — inferred from the Vercel demo URL. */
+          stack: ["Next.js", "React", "TypeScript", "Claude API", "Vercel"]
         }
       },
       {
@@ -85,39 +82,17 @@ export const homeContent = {
         imageAlt: "Meal Prep Assistant recipe dashboard",
         video: "/images/builder/meal-prep-assistant/MealCompressed.mp4",
         videoPoster: "/images/builder/meal-prep-assistant/slide-1.png",
-        modal: {
+        details: {
           description:
             "A personal meal-planning product that keeps recipes, meal rotations, and weekly planning in one dashboard so cooking decisions do not restart from zero every week.",
-          relevance: [
-            "Shows I can turn a common personal workflow into a structured product system.",
-            "Connects design, database-backed UI, and deployment-ready web development.",
-            "Makes my AI-assisted programming workflow visible through a practical shipped tool."
+          features: [
+            "Turns a pasted recipe or a rough note into a filled-in recipe form, asking a follow-up when something is unclear.",
+            "Plans the week in one rotation view instead of deciding meal by meal.",
+            "Pulls three options at random from the saved library when nothing sounds good.",
+            "Keeps every recipe in one place so the week does not restart from zero."
           ],
-          slides: [
-            {
-              title: "Smart Recipe Intake",
-              caption:
-                "Paste a recipe or a rough note and the assistant, connected to OpenAI's API, pulls out the ingredients, fills in the recipe form, and asks a follow-up if something's unclear.",
-              variant: "dashboard",
-              src: "/images/builder/meal-prep-assistant/slide-1.png",
-              alt: "Smart recipe intake form prefilled from a pasted recipe"
-            },
-            {
-              title: "Weekly Rotation",
-              caption: "A planning surface for choosing meals across the week.",
-              variant: "planner",
-              src: "/images/builder/meal-prep-assistant/slide-2.png",
-              alt: "Weekly meal rotation planner"
-            },
-            {
-              title: "Recipe Randomizer",
-              caption:
-                "When nothing sounds good, the app pulls three options at random from the saved recipe library.",
-              variant: "workflow",
-              src: "/images/builder/meal-prep-assistant/slide-3.png",
-              alt: "Recipe randomizer suggesting three meals from the library"
-            }
-          ]
+          /* TODO(ignacio): confirm the database and host. */
+          stack: ["Next.js", "TypeScript", "Supabase", "OpenAI API", "Vercel"]
         }
       },
       {
@@ -129,71 +104,16 @@ export const homeContent = {
         accent: "#7d5bb8",
         image: "/images/builder/survivor-style-game/card.png",
         imageAlt: "Survivor-style arcade game screenshot",
-        modal: {
+        details: {
           description:
             "A small arcade game inspired by survival wave mechanics, built to explore player feedback, upgrade loops, pacing, and the feeling of pressure over time.",
-          relevance: [
-            "Shows interaction design beyond conventional product screens.",
-            "Highlights systems thinking through balancing, progression, and feedback loops.",
-            "Extends my AI-assisted programming workflow into game logic and a real engine, not just web interfaces."
+          features: [
+            "A wave survival loop that ramps pressure the longer a run lasts.",
+            "Upgrades between waves that change how the rest of the run plays.",
+            "Distinct enemy types built to read at a glance under pressure.",
+            "Score, time survived, and HP tracked on screen throughout."
           ],
-          slides: [
-            {
-              title: "In-Game View",
-              caption: "Polygon-based characters and enemies, with score, time survived, and HP tracked on screen.",
-              variant: "game",
-              src: "/images/builder/survivor-style-game/slide-1.png",
-              alt: "Gameplay screenshot showing polygon characters, score, time, and HP"
-            },
-            {
-              title: "Enemy Types",
-              caption: "A look at the different enemy types and how they read at a glance during a run.",
-              variant: "workflow",
-              src: "/images/builder/survivor-style-game/slide-2.png",
-              alt: "The different enemy types in the game"
-            },
-            {
-              title: "Built in Godot",
-              caption: "The project in the Godot editor, where the scenes, scripts, and game logic come together.",
-              variant: "game",
-              src: "/images/builder/survivor-style-game/slide-3.png",
-              alt: "The game open in the Godot editor"
-            }
-          ]
-        }
-      },
-      {
-        slug: "personal-operating-dashboard",
-        title: "Personal Operating Dashboard",
-        summary:
-          "A daily workspace for goals, pomodoro sessions, notes, reminders, job hunting, and the small signals that keep work moving.",
-        tags: ["Web Dev"],
-        accent: "#00877f",
-        modal: {
-          description:
-            "A planned daily operating system for my own work, combining focus sessions, goals, job-search tracking, reminders, and lightweight stats into one personal dashboard.",
-          relevance: [
-            "Shows how I think through messy personal workflows and turn them into usable product structure.",
-            "Gives me a living testbed for dashboard design, information hierarchy, and habit-forming tools.",
-            "Demonstrates the type of internal-tool thinking I can bring to teams and operations products."
-          ],
-          slides: [
-            {
-              title: "Daily Command Center",
-              caption: "Goals, focus state, and reminders organized for the day.",
-              variant: "dashboard"
-            },
-            {
-              title: "Focus Modes",
-              caption: "Pomodoro sessions and ambient work controls in one surface.",
-              variant: "workflow"
-            },
-            {
-              title: "Progress Signals",
-              caption: "Weekly stats and job-search tracking for long-running goals.",
-              variant: "planner"
-            }
-          ]
+          stack: ["Godot", "GDScript"]
         }
       }
     ] satisfies BuilderLabProject[]

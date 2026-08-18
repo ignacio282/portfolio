@@ -12,7 +12,7 @@ export function ProjectIndex() {
       <PageSection spacing="hero">
         <AnimatedSection>
           <SectionLabel variant="accent">Work / Projects</SectionLabel>
-          <h1 className="type-display mt-6 max-w-5xl">
+          <h1 className="type-display mt-6">
             Case studies about product design in real systems.
           </h1>
         </AnimatedSection>
