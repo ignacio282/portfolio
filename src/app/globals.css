@@ -6,7 +6,9 @@
   --color-paper: #f9f4ed;
   --color-ink: #242526;
   --color-muted: #5f625f;
-  --color-card: #fffdfa;
+  /* Warmer and a shade lighter than the paper it sits on, rather than the near
+     white it used to be — surfaces should lift off the page without going cold. */
+  --color-card: #fff7eb;
   --color-teal: #00877f;
   --color-teal-dark: #006d68;
   --color-line: #d8d4cc;

@@ -197,7 +197,7 @@ function QrOverview() {
             <h2 className="type-section-title text-center">Outcomes</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-4">
               {outcomes.map(([value, label]) => (
-                <div key={value} className="min-h-40 rounded-[8px] border border-teal p-5">
+                <div key={value} className="min-h-40 surface-card border border-teal p-5">
                   <p className="type-small-title">{value}</p>
                   <p className="type-body-small mt-3">{label}</p>
                 </div>
@@ -289,7 +289,7 @@ function QrWhatLearned() {
         {findings.map((finding) => {
           const Icon = finding.icon;
           return (
-            <div key={finding.title} className="rounded-[8px] border border-teal p-5">
+            <div key={finding.title} className="surface-card border border-teal p-5">
               <div className="flex items-center gap-3">
                 <Icon aria-hidden="true" className="text-teal" size={25} />
                 <h4 className="type-case-subtitle">{finding.title}</h4>
@@ -539,7 +539,7 @@ function ReadingOverview() {
             <h2 className="type-section-title text-center">Outcomes</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-4">
               {outcomes.map(([value, label]) => (
-                <div key={value} className="min-h-40 rounded-[8px] border border-teal p-5">
+                <div key={value} className="min-h-40 surface-card border border-teal p-5">
                   <p className="type-small-title">{value}</p>
                   <p className="type-body-small mt-3">{label}</p>
                 </div>
@@ -826,7 +826,7 @@ function ReadingTesting() {
       </p>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         {findings.map(([title, body]) => (
-          <div key={title} className="rounded-[8px] border border-teal p-5">
+          <div key={title} className="surface-card border border-teal p-5">
             <h3 className="type-case-subtitle">{title}</h3>
             <p className="type-body-small mt-4">{body}</p>
           </div>
@@ -1020,7 +1020,7 @@ function PortalOverview() {
             <h2 className="type-section-title text-center">Outcomes</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-4">
               {outcomes.map(([value, label]) => (
-                <div key={value} className="min-h-40 rounded-[8px] border border-teal p-5">
+                <div key={value} className="min-h-40 surface-card border border-teal p-5">
                   <p className="type-small-title">{value}</p>
                   <p className="type-body-small mt-3">{label}</p>
                 </div>
@@ -1220,13 +1220,13 @@ function PortalChanged() {
     <AnimatedSection id="changed" className="case-rule scroll-mt-32 pt-20">
       <CaseSectionLabel>07. What changed</CaseSectionLabel>
       <div className="mt-7 grid gap-5 md:grid-cols-2">
-        <div className="rounded-[8px] border border-teal p-8">
+        <div className="surface-card border border-teal p-8">
           <h3 className="type-case-subtitle">User side</h3>
           <p className="type-body mt-5">
             The website became easier to navigate because priority pages had clearer paths and page layouts became more consistent. Users could reach important information with fewer steps, and the overall experience felt less fragmented. <strong>After launch, bounce rate dropped by 12%.</strong>
           </p>
         </div>
-        <div className="rounded-[8px] border border-teal p-8">
+        <div className="surface-card border border-teal p-8">
           <h3 className="type-case-subtitle">Business side</h3>
           <p className="type-body mt-5">
             The redesign reduced duplicated and outdated content, standardized product pages through reusable CMS components, and gave teams a clearer governance model for future publishing.
