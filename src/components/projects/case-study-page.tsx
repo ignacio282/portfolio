@@ -30,7 +30,7 @@ const portalSectionLinks: CaseStudySectionLink[] = [
   { label: "UI strategy", href: "#strategy" },
   { label: "Key decisions", href: "#decisions" },
   { label: "What changed", href: "#changed" },
-  { label: "Why this matters", href: "#matters" }
+  { label: "What I learned", href: "#matters" }
 ];
 
 const readingSectionLinks: CaseStudySectionLink[] = [
@@ -42,8 +42,7 @@ const readingSectionLinks: CaseStudySectionLink[] = [
   { label: "Designer to builder", href: "#designer-to-builder" },
   { label: "Product", href: "#product" },
   { label: "Testing", href: "#testing" },
-  { label: "Learnings", href: "#learnings" },
-  { label: "Why this matters", href: "#matters" }
+  { label: "What I learned", href: "#learnings" }
 ];
 
 const qrSectionLinks: CaseStudySectionLink[] = [
@@ -54,7 +53,7 @@ const qrSectionLinks: CaseStudySectionLink[] = [
   { label: "Key decisions", href: "#key-decisions" },
   { label: "Accessibility", href: "#accessibility" },
   { label: "Outcome", href: "#outcome" },
-  { label: "Why this matters", href: "#matters" }
+  { label: "What I learned", href: "#matters" }
 ];
 
 export function CaseStudyPage({ project }: { project: CaseStudy }) {
@@ -127,7 +126,7 @@ function QrCaseStudyPage({
         <QrKeyDecisions />
         <QrAccessibility />
         <QrOutcome />
-        <QrMatters nextProject={nextProject} />
+        <QrLearned nextProject={nextProject} />
       </PageSection>
     </main>
   );
@@ -421,10 +420,10 @@ function QrOutcome() {
   );
 }
 
-function QrMatters({ nextProject }: { nextProject: CaseStudy }) {
+function QrLearned({ nextProject }: { nextProject: CaseStudy }) {
   return (
     <AnimatedSection id="matters" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>07. Why this case matters</CaseSectionLabel>
+      <CaseSectionLabel>07. What I learned</CaseSectionLabel>
       <div className="layout-text-pair-balanced mt-7">
         <h2 className="type-case-display-title">
           This project shows <span className="text-teal">how I work</span> when the request is vague, the timeline is short, and the stakes are high.
@@ -468,8 +467,7 @@ function ReadingCaseStudyPage({
         <ReadingDesignerBuilder />
         <ReadingProduct />
         <ReadingTesting />
-        <ReadingLearnings />
-        <ReadingMatters nextProject={nextProject} />
+        <ReadingLearnings nextProject={nextProject} />
       </PageSection>
     </main>
   );
@@ -842,7 +840,7 @@ function ReadingTesting() {
   );
 }
 
-function ReadingLearnings() {
+function ReadingLearnings({ nextProject }: { nextProject: CaseStudy }) {
   const learnings = [
     [
       "AI design is mostly about boundaries",
@@ -864,7 +862,7 @@ function ReadingLearnings() {
 
   return (
     <AnimatedSection id="learnings" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>09. Learnings so far</CaseSectionLabel>
+      <CaseSectionLabel>09. What I learned</CaseSectionLabel>
       <div className="mt-7 grid gap-5 md:grid-cols-2">
         {learnings.map(([title, body], index) => (
           <Card key={title} padding="md" className="min-h-72">
@@ -878,15 +876,7 @@ function ReadingLearnings() {
           </Card>
         ))}
       </div>
-    </AnimatedSection>
-  );
-}
-
-function ReadingMatters({ nextProject }: { nextProject: CaseStudy }) {
-  return (
-    <AnimatedSection id="matters" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>10. Why this case matters</CaseSectionLabel>
-      <div className="layout-text-pair-balanced mt-7">
+      <div className="layout-text-pair-balanced mt-16">
         <h2 className="type-case-display-title">
           This project shows <span className="text-teal">how I design with AI-powered workflows</span> from product ideas to deployment.
         </h2>
@@ -964,7 +954,7 @@ function PortalCaseStudyPage({
         <PortalStrategy />
         <PortalDecisions />
         <PortalChanged />
-        <PortalMatters nextProject={nextProject} />
+        <PortalLearned nextProject={nextProject} />
       </PageSection>
     </main>
   );
@@ -1240,10 +1230,10 @@ function PortalChanged() {
   );
 }
 
-function PortalMatters({ nextProject }: { nextProject: CaseStudy }) {
+function PortalLearned({ nextProject }: { nextProject: CaseStudy }) {
   return (
     <AnimatedSection id="matters" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>08. Why this case matters</CaseSectionLabel>
+      <CaseSectionLabel>08. What I learned</CaseSectionLabel>
       <div className="layout-text-pair-balanced mt-7">
         <h2 className="type-case-display-title">
           This project shows <span className="text-teal">how I work</span> when the problem is bigger than the screen.

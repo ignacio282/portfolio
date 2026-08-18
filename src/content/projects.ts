@@ -545,7 +545,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         type: "text",
-        eyebrow: "07. Why this case matters",
+        eyebrow: "07. What I learned",
         title: "This project shows how I work when the request is vague, the timeline is short, and the stakes are high",
         body: [
           "I can take a loosely defined business idea, find the real product problem underneath it, test the parts that matter most, and shape a solution that respects both user trust and product architecture."
