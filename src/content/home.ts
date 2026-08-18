@@ -42,7 +42,7 @@ export const homeContent = {
     "These case studies show how I design products in complex, real-world systems, from products used by millions in banking to AI-powered tools, focusing on decisions, trade-offs, and impact.",
   projects,
   builderLab: {
-    label: "Things I Build",
+    label: "Things I've built",
     body:
       "I like to make a lot of things for myself to make my life easier or because it's interesting. I love making things.",
     projects: [

@@ -3,10 +3,14 @@
 @theme {
   --font-sans: var(--font-ibm-plex-sans), "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-ibm-plex-sans), "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --color-paper: #f9f4ed;
+  /* Still beige, just less yellow than it was: the red/blue spread comes down
+     from 12 to 7, which cools the ground without leaving the family. */
+  --color-paper: #f6f4ef;
   --color-ink: #242526;
   --color-muted: #5f625f;
-  --color-card: #fffdfa;
+  /* Near white, a touch warm. The lift off the page comes from the gap to the
+     paper below it, not from tinting the surface itself. */
+  --color-card: #fffdf6;
   --color-teal: #00877f;
   --color-teal-dark: #006d68;
   --color-line: #d8d4cc;
@@ -36,7 +40,7 @@
 }
 
 :root {
-  --background: #f9f4ed;
+  --background: #f6f4ef;
   --foreground: #242526;
   --page-max: 1280px;
   --radius-card: 8px;
@@ -121,7 +125,7 @@ img {
   }
 
   .type-nav {
-    @apply text-sm font-semibold transition-colors hover:text-teal;
+    @apply text-xs font-medium transition-colors hover:text-teal;
   }
 
   .type-nav-compact {
@@ -149,17 +153,19 @@ img {
     @apply text-fluid-label font-normal leading-[1.55] text-ink;
   }
 
+  /* Eyebrows are sentence case, not caps. The wide tracking that made caps
+     legible only makes lowercase look loose, so it comes down with them. */
   .type-eyebrow {
-    @apply text-fluid-label font-bold uppercase tracking-[0.14em] text-ink/70;
+    @apply text-fluid-label font-bold tracking-[0.02em] text-ink/70;
   }
 
   .type-eyebrow-accent {
-    @apply text-xs font-semibold uppercase tracking-[0.14em] text-teal;
+    @apply text-xs font-semibold tracking-[0.02em] text-teal;
   }
 
   .type-case-section-label {
     font-size: clamp(0.875rem, 0.823rem + 0.221vw, 1rem); /* 14 → 16 */
-    @apply font-semibold uppercase leading-tight tracking-[0.06em] text-teal;
+    @apply font-semibold leading-tight tracking-[0.02em] text-teal;
   }
 
   .type-case-display-title,
@@ -364,17 +370,12 @@ img {
 
   /* The eyebrow is one fixed string that must not wrap, so size it against the
      card column rather than the viewport — same trick as .landing-orbit-pill.
-     Longest string is "Master's capstone · Reading assistant" (37 chars). */
+     Longest string is "Master's capstone · Reading assistant" (37 chars).
+     Sentence case buys back width, so the floor can sit higher than it did
+     when this string was set in caps. */
   .project-card-copy .type-eyebrow-accent {
     white-space: nowrap;
-    letter-spacing: 0.1em;
-    font-size: clamp(0.5625rem, 3.8cqi, 0.9375rem);
-  }
-
-  @media (min-width: 768px) {
-    .project-card-copy .type-eyebrow-accent {
-      letter-spacing: 0.14em;
-    }
+    font-size: clamp(0.6875rem, 3.4cqi, 0.9375rem);
   }
 
   .project-card {

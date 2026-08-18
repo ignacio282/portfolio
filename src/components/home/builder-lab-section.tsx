@@ -356,11 +356,11 @@ function BuilderProjectModal({
 
           <div className="builder-modal-sections">
             <section>
-              <SectionLabel variant="accent">The Story</SectionLabel>
+              <SectionLabel variant="accent">The story</SectionLabel>
               <p className="type-body builder-modal-description">{project.modal.description}</p>
             </section>
             <section>
-              <SectionLabel variant="accent">Why It Belongs Here</SectionLabel>
+              <SectionLabel variant="accent">Why it belongs here</SectionLabel>
               <ul className="builder-modal-list">
                 {project.modal.relevance.map((point) => (
                   <li className="type-body-small" key={point}>
