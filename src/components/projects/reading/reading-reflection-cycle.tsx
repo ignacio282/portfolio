@@ -75,7 +75,7 @@ export function ReadingReflectionCycle() {
   return (
     // Below its minimum width the 14px card copy shrinks under a readable size,
     // so the figure scrolls sideways instead of getting smaller.
-    <div className="figure-scroll max-w-130" ref={figureRef}>
+    <div className="figure-scroll mx-auto max-w-130" ref={figureRef}>
       <motion.svg
         animate={isInView ? "show" : "hidden"}
         className="block h-auto w-full min-w-110"

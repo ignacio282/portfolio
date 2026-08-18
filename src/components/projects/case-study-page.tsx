@@ -4,7 +4,6 @@ import { LayoutGrid, ShieldCheck, Type } from "lucide-react";
 import { CaseStudyCompanion } from "@/components/ai/case-study-companion";
 import { BottomNav } from "@/components/shell/bottom-nav";
 import { CaseStudyNavigation, type CaseStudySectionLink } from "@/components/shell/case-study-navigation";
-import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { PortalCmsFunnel } from "@/components/projects/portal/portal-cms-funnel";
 import { PortalComponentReuse } from "@/components/projects/portal/portal-component-reuse";
@@ -40,7 +39,6 @@ const readingSectionLinks: CaseStudySectionLink[] = [
   { label: "AI behavior", href: "#ai-behavior" },
   { label: "AI layering", href: "#ai-layering" },
   { label: "Designer to builder", href: "#designer-to-builder" },
-  { label: "Product", href: "#product" },
   { label: "Testing", href: "#testing" },
   { label: "What I learned", href: "#learnings" }
 ];
@@ -111,15 +109,15 @@ function QrCaseStudyPage({
       <ScrollProgress />
       <CaseStudyNavigation sections={qrSectionLinks} />
       <CaseStudyCompanion slug={project.slug} />
-      <PageSection spacing="hero">
+      <PageSection spacing="hero" width="reading">
         <QrHero />
       </PageSection>
 
-      <PageSection id="overview" spacing="md" className="scroll-mt-32">
+      <PageSection id="overview" spacing="md" className="scroll-mt-32" width="reading">
         <QrOverview />
       </PageSection>
 
-      <PageSection className="gap-20 py-8">
+      <PageSection className="gap-20 py-8" width="reading">
         <QrBusinessContext />
         <QrWhatLearned />
         <QrRealChallenge />
@@ -134,7 +132,7 @@ function QrCaseStudyPage({
 
 function QrHero() {
   return (
-    <AnimatedSection>
+    <div>
       <MediaFrame
         src="/images/projects/qr/case/HeroImage.avif"
         alt="Hero artwork for the QR money request case study."
@@ -144,7 +142,7 @@ function QrHero() {
         priority
         sizes="(max-width: 768px) 92vw, 1280px"
       />
-    </AnimatedSection>
+    </div>
   );
 }
 
@@ -169,7 +167,7 @@ function QrOverview() {
   ];
 
   return (
-    <AnimatedSection>
+    <div>
       <Card padding="lg">
         <div className="space-y-7">
           <div>
@@ -193,10 +191,10 @@ function QrOverview() {
             </p>
           </div>
           <div>
-            <h2 className="type-section-title text-center">Outcomes</h2>
+            <h2 className="type-section-title">Outcomes</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-4">
               {outcomes.map(([value, label]) => (
-                <div key={value} className="min-h-40 surface-card border border-teal p-5">
+                <div key={value} className="min-h-40 surface-paper rounded-[8px] border border-teal p-5">
                   <p className="type-small-title">{value}</p>
                   <p className="type-body-small mt-3">{label}</p>
                 </div>
@@ -206,13 +204,14 @@ function QrOverview() {
         </div>
       </Card>
 
-    </AnimatedSection>
+    </div>
   );
 }
 
 function QrBusinessContext() {
   return (
-    <AnimatedSection id="business-context" className="case-rule scroll-mt-32 pt-20">
+    <div id="business-context" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>01. Business context</CaseSectionLabel>
       <h2 className="type-case-display-title mt-7">
         Leadership wanted to <span className="text-teal">move faster</span> than other banks and increase transactions.
@@ -225,7 +224,8 @@ function QrBusinessContext() {
           <strong>This mattered because in Ecuador digital maturity levels are not high.</strong> Even small changes in a familiar financial interface can create friction quickly. In that environment, adding a new money movement feature was not just a visual design problem. It was a trust and information-architecture problem.
         </p>
       </div>
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
@@ -262,33 +262,30 @@ function QrWhatLearned() {
   ];
 
   return (
-    <AnimatedSection id="what-we-learned" className="case-rule scroll-mt-32 pt-20">
+    <div id="what-we-learned" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>02. What we learned</CaseSectionLabel>
       <p className="type-body mt-7">
         We relied heavily on existing research from the sibling company that powered the QR engine, since they had already studied how QR payments worked in the Ecuadorian market and the project had limited time. That gave us a head start, but we still needed to validate how this feature should appear inside Banco Pichincha&apos;s app.
       </p>
-      <div className="mt-10 grid gap-10 md:grid-cols-[200px_1fr] md:items-center">
-        <div>
-          <p className="type-case-display-metric">21 users</p>
-          <p className="type-case-metric-label mt-3">Interviewed and tested</p>
-        </div>
-        <div>
-          <p className="type-body">We ran a full round of preliminary interviews and usability testing with lo-fi prototypes.</p>
-          <div className="mt-6 grid gap-4 md:grid-cols-4">
-            {methods.map((method) => (
-              <div key={method} className="surface-card min-h-16 rounded-full px-6 py-5 text-center">
-                <p className="type-small-title">{method}</p>
-              </div>
-            ))}
+      <p className="type-case-display-metric mt-12">21 users</p>
+      <p className="type-case-metric-label mt-3">Interviewed and tested</p>
+      <p className="type-body mt-8">
+        We ran a full round of preliminary interviews and usability testing with lo-fi prototypes.
+      </p>
+      <div className="mt-6 grid gap-4 md:grid-cols-4">
+        {methods.map((method) => (
+          <div key={method} className="surface-paper min-h-16 rounded-full px-6 py-5 text-center">
+            <p className="type-small-title">{method}</p>
           </div>
-        </div>
+        ))}
       </div>
       <h3 className="type-case-subtitle mt-10">Findings</h3>
       <div className="mt-6 grid gap-4 md:grid-cols-3">
         {findings.map((finding) => {
           const Icon = finding.icon;
           return (
-            <div key={finding.title} className="surface-card border border-teal p-5">
+            <div key={finding.title} className="surface-paper rounded-[8px] border border-teal p-5">
               <div className="flex items-center gap-3">
                 <Icon aria-hidden="true" className="text-teal" size={25} />
                 <h4 className="type-case-subtitle">{finding.title}</h4>
@@ -298,34 +295,33 @@ function QrWhatLearned() {
           );
         })}
       </div>
-      <h2 className="type-case-display-title mt-10">
+      <h2 className="type-case-display-title mt-12">
         Fast and modern <span className="text-teal">&rarr;</span> Simple, safe, and reliable
       </h2>
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
 function QrRealChallenge() {
   return (
-    <AnimatedSection id="real-challenge" className="case-rule scroll-mt-32 pt-20">
+    <div id="real-challenge" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>03. The real challenge</CaseSectionLabel>
-      <div className="mt-8 grid gap-12 md:grid-cols-[0.9fr_1.1fr] md:items-center">
-        <CaseImage
-          src="/images/projects/qr/case/Section3Imagewebp.webp"
-          alt="Diagram showing external brand, new features, entry point, and ongoing redesign constraints."
-          aspect="aspect-[1.42/1]"
-          compact
-          fit="contain"
-          maxWidth="max-w-[620px]"
-        />
-        <div className="type-body-large space-y-7">
-          <p>Users needed <strong>something simple</strong> and trustworthy, not flashy.</p>
-          <p>The product needed a <strong>new entry point</strong> that did not damage established navigation patterns.</p>
-          <p><strong>Another internal team</strong> was launching a different &ldquo;receive money&rdquo; feature at the same time and wanted stronger placement on the homepage.</p>
-          <p>And the QR technology came from a <strong>sibling company</strong>, whose brand had to appear inside the flow in a way that did not create suspicion.</p>
-        </div>
+      <div className="type-body-large mt-8 space-y-7">
+        <p>Users needed <strong>something simple</strong> and trustworthy, not flashy.</p>
+        <p>The product needed a <strong>new entry point</strong> that did not damage established navigation patterns.</p>
+        <p><strong>Another internal team</strong> was launching a different &ldquo;receive money&rdquo; feature at the same time and wanted stronger placement on the homepage.</p>
+        <p>And the QR technology came from a <strong>sibling company</strong>, whose brand had to appear inside the flow in a way that did not create suspicion.</p>
       </div>
-    </AnimatedSection>
+      <CaseImage
+        src="/images/projects/qr/case/Section3Imagewebp.webp"
+        alt="Diagram showing external brand, new features, entry point, and ongoing redesign constraints."
+        aspect="aspect-[1.42/1]"
+        fit="contain"
+      />
+      </CaseCard>
+    </div>
   );
 }
 
@@ -350,22 +346,19 @@ function QrKeyDecisions() {
   ];
 
   return (
-    <AnimatedSection id="key-decisions" className="case-rule scroll-mt-32 pt-20">
+    <div id="key-decisions" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>04. Key decisions</CaseSectionLabel>
-      <div className="mt-8 grid gap-5 md:grid-cols-2">
-        {decisions.map(([title, body], index) => (
-          <Card key={title} padding="md" className="min-h-56">
-            <div className="flex gap-6">
-              <p className="type-index-marker">{index + 1}</p>
-              <div>
-                <h3 className="type-case-subtitle">{title}</h3>
-                <p className="type-body mt-5">{body}</p>
-              </div>
-            </div>
-          </Card>
+      <div className="mt-7 grid gap-4 md:grid-cols-2">
+        {decisions.map(([title, body]) => (
+          <div key={title} className="surface-paper rounded-[8px] border border-teal p-5">
+            <h3 className="type-case-subtitle">{title}</h3>
+            <p className="type-body-small mt-4">{body}</p>
+          </div>
         ))}
       </div>
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
@@ -378,7 +371,8 @@ function QrAccessibility() {
   ];
 
   return (
-    <AnimatedSection id="accessibility" className="case-rule scroll-mt-32 pt-20">
+    <div id="accessibility" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>05. Accessibility</CaseSectionLabel>
       <h2 className="type-case-display-title mt-7">Transactions for everyone</h2>
       <div className="type-body mt-5 space-y-7">
@@ -405,37 +399,40 @@ function QrAccessibility() {
         aspect="aspect-[1.3/1]"
         fit="contain"
       />
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
 function QrOutcome() {
   return (
-    <AnimatedSection id="outcome" className="case-rule scroll-mt-32 pt-20">
+    <div id="outcome" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>06. Outcome</CaseSectionLabel>
       <p className="type-body-large mt-7">
         I left the bank before I could track post-launch performance, so I would not invent product metrics here. But the feature shipped, it is still live, and the core structural decision behind it, the &ldquo;Receive Money&rdquo; bottom-sheet entry point, was strong enough to influence later features as well. That matters because it shows the work was not just visually approved, it was durable inside the product.
       </p>
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
 function QrLearned({ nextProject }: { nextProject: CaseStudy }) {
   return (
-    <AnimatedSection id="matters" className="case-rule scroll-mt-32 pt-20">
+    <div id="matters" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>07. What I learned</CaseSectionLabel>
-      <div className="layout-text-pair-balanced mt-7">
-        <h2 className="type-case-display-title">
-          This project shows <span className="text-teal">how I work</span> when the request is vague, the timeline is short, and the stakes are high.
-        </h2>
-        <p className="type-body-large">
-          I can take a loosely defined business idea, find the real product problem underneath it, test the parts that matter most, and shape a solution that respects both user trust and product architecture. In this case, the most important design work was not drawing the QR screen. It was defining where the feature belonged, what it should be called, and how simple it needed to be for people to use it confidently.
-        </p>
-      </div>
-      <div className="mt-16">
+      <h2 className="type-case-display-title mt-7">
+        This project shows <span className="text-teal">how I work</span> when the request is vague, the timeline is short, and the stakes are high.
+      </h2>
+      <p className="type-body mt-8">
+        I can take a loosely defined business idea, find the real product problem underneath it, test the parts that matter most, and shape a solution that respects both user trust and product architecture. In this case, the most important design work was not drawing the QR screen. It was defining where the feature belonged, what it should be called, and how simple it needed to be for people to use it confidently.
+      </p>
+      </CaseCard>
+      <div className="mt-10">
         <NextProjectCard project={nextProject} />
       </div>
-    </AnimatedSection>
+    </div>
   );
 }
 
@@ -451,21 +448,20 @@ function ReadingCaseStudyPage({
       <ScrollProgress />
       <CaseStudyNavigation sections={readingSectionLinks} />
       <CaseStudyCompanion slug={project.slug} />
-      <PageSection spacing="hero">
+      <PageSection spacing="hero" width="reading">
         <ReadingHero />
       </PageSection>
 
-      <PageSection id="overview" spacing="md" className="scroll-mt-32">
+      <PageSection id="overview" spacing="md" className="scroll-mt-32" width="reading">
         <ReadingOverview />
       </PageSection>
 
-      <PageSection className="gap-20 py-8">
+      <PageSection className="gap-20 py-8" width="reading">
         <ReadingOpportunity />
         <ReadingCoreIdea />
         <ReadingAIBehavior />
         <ReadingAILayering />
         <ReadingDesignerBuilder />
-        <ReadingProduct />
         <ReadingTesting />
         <ReadingLearnings nextProject={nextProject} />
       </PageSection>
@@ -475,7 +471,7 @@ function ReadingCaseStudyPage({
 
 function ReadingHero() {
   return (
-    <AnimatedSection>
+    <div>
       <MediaFrame
         src="/images/projects/reading/case/heroImage.avif"
         alt="Hero artwork for the Scriba reading assistant case study."
@@ -485,7 +481,7 @@ function ReadingHero() {
         priority
         sizes="(max-width: 768px) 92vw, 1280px"
       />
-    </AnimatedSection>
+    </div>
   );
 }
 
@@ -510,7 +506,7 @@ function ReadingOverview() {
   ];
 
   return (
-    <AnimatedSection>
+    <div>
       <Card padding="lg">
         <div className="space-y-7">
           <div>
@@ -534,10 +530,10 @@ function ReadingOverview() {
             </p>
           </div>
           <div>
-            <h2 className="type-section-title text-center">Outcomes</h2>
+            <h2 className="type-section-title">Outcomes</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-4">
               {outcomes.map(([value, label]) => (
-                <div key={value} className="min-h-40 surface-card border border-teal p-5">
+                <div key={value} className="min-h-40 surface-paper rounded-[8px] border border-teal p-5">
                   <p className="type-small-title">{value}</p>
                   <p className="type-body-small mt-3">{label}</p>
                 </div>
@@ -548,7 +544,7 @@ function ReadingOverview() {
       </Card>
 
       <YouTubeEmbed />
-    </AnimatedSection>
+    </div>
   );
 }
 
@@ -570,28 +566,26 @@ function YouTubeEmbed() {
 
 function ReadingOpportunity() {
   return (
-    <AnimatedSection id="opportunity" className="case-rule scroll-mt-32 pt-20">
-      <div className="layout-text-pair-balanced">
-        <div>
-          <CaseSectionLabel>02. The opportunity</CaseSectionLabel>
-          <h2 className="type-case-display-title mt-7">
-            Most AI tools are good at sounding smart. Very few help people actually <span className="text-teal">learn</span>
-          </h2>
-          <div className="type-body mt-7 space-y-5">
-            <p>
-              Readers often highlight passages or take notes, but these notes get lost and rarely lead to deeper understanding. Most reading apps track progress, and most AI tools summarize content for the user instead of supporting personal insight.
-            </p>
-            <p>
-              This project aims to help readers remember more of what they read by creating a tool that guides reflection, connects ideas across chapters, and builds a clearer long-term memory of books.
-            </p>
-          </div>
+    <div id="opportunity" className="case-section scroll-mt-32">
+      <CaseCard>
+        <CaseSectionLabel>02. The opportunity</CaseSectionLabel>
+        <h2 className="type-case-display-title mt-7">
+          Most AI tools are good at sounding smart. Very few help people actually <span className="text-teal">learn</span>
+        </h2>
+        <div className="type-body mt-8 space-y-5">
+          <p>
+            Readers often highlight passages or take notes, but these notes get lost and rarely lead to deeper understanding. Most reading apps track progress, and most AI tools summarize content for the user instead of supporting personal insight.
+          </p>
+          <p>
+            This project aims to help readers remember more of what they read by creating a tool that guides reflection, connects ideas across chapters, and builds a clearer long-term memory of books.
+          </p>
         </div>
-        <div>
+        <div className="mt-12">
           <ReadingVideo />
           <p className="type-small-title mt-5 text-center">Scriba in action</p>
         </div>
-      </div>
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
@@ -616,31 +610,32 @@ function ReadingVideo() {
 
 function ReadingCoreIdea() {
   return (
-    <AnimatedSection id="core-idea" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>03. The core idea</CaseSectionLabel>
-      <p className="type-case-subtitle mt-7">The mental model was simple:</p>
-      <div className="mt-8">
-        <ReadingCoreIdeaFlow />
-      </div>
-      <div className="layout-text-pair mt-10">
-        <h2 className="type-case-display-title">
+    <div id="core-idea" className="case-section scroll-mt-32">
+      <CaseCard>
+        <CaseSectionLabel>03. The core idea</CaseSectionLabel>
+        <p className="type-case-subtitle mt-7">The mental model was simple:</p>
+        <div className="mt-8">
+          <ReadingCoreIdeaFlow />
+        </div>
+        <h2 className="type-case-display-title mt-12">
           A reading assistant that thinks <span className="text-teal">with you, not for you.</span>
         </h2>
-        <ul className="type-body list-disc space-y-2 pl-5">
+        <ul className="type-body mt-8 list-disc space-y-2 pl-5">
           <li>Capture reader thoughts while reading.</li>
           <li>Highlight relationships between themes, characters, and ideas.</li>
           <li>Generate summaries based on the reader&apos;s notes, not generic AI text.</li>
           <li>Track story elements through a structured data model.</li>
           <li>Support guided reflection after each chapter.</li>
         </ul>
-      </div>
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
 function ReadingAIBehavior() {
   return (
-    <AnimatedSection id="ai-behavior" className="case-rule scroll-mt-32 pt-20">
+    <div id="ai-behavior" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>04. Designing the AI behavior</CaseSectionLabel>
       <h2 className="type-case-display-title mt-7">
         What AI could NOT do <span className="text-teal">&gt;</span> What the AI could do
@@ -658,18 +653,20 @@ function ReadingAIBehavior() {
           <li>it avoided turning the user&apos;s writing into generic, over-polished AI slop</li>
         </ul>
       </div>
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
 function ReadingAILayering() {
   return (
-    <AnimatedSection id="ai-layering" className="case-rule scroll-mt-32 pt-20">
+    <div id="ai-layering" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>05. AI layering in action</CaseSectionLabel>
       <p className="type-body mt-7">
         At a product level, Scriba is not built around one all-knowing assistant. It is built around a small set of focused AI behaviors.
       </p>
-      <div className="mt-12 grid gap-12 md:grid-cols-[0.9fr_1fr] md:items-center">
+      <div className="mt-10">
         <div className="type-body space-y-7">
           <div>
             <h3 className="type-case-subtitle">The silent organizer</h3>
@@ -698,13 +695,15 @@ function ReadingAILayering() {
         </div>
         <ReadingReflectionCycle />
       </div>
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
 function ReadingDesignerBuilder() {
   return (
-    <AnimatedSection id="designer-to-builder" className="case-rule scroll-mt-32 pt-20">
+    <div id="designer-to-builder" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>06. From designer to builder</CaseSectionLabel>
       <div className="type-body mt-7 space-y-5">
         <p>
@@ -721,85 +720,7 @@ function ReadingDesignerBuilder() {
       <p className="type-body mt-8">
         That became even more obvious when I connected the coding agent to Figma through MCP. Instead of asking the agent to guess from screenshots, I gave it access to the actual design definitions through a Figma-generated JSON structure. That improved fidelity and sped up the workflow substantially.
       </p>
-    </AnimatedSection>
-  );
-}
-
-function ReadingProduct() {
-  return (
-    <AnimatedSection id="product" className="case-rule scroll-mt-32 pt-20">
-      <CaseSectionLabel>07. The product</CaseSectionLabel>
-      <p className="type-body mt-5">
-        All the designs for this prototype were made using Figma, going from a low-fidelity idea to a high-fidelity prototype with its own mini design system after multiple rounds of feedback and iterations. The following screens show the key interactions and visual elements.
-      </p>
-      <ProductScreenRow
-        image="/images/projects/reading/case/Image1Section7.avif"
-        alt="Scriba home screen showing a current book, story progress, and activity."
-        title="Home: a quick snapshot of your reading activity"
-        reverse={false}
-      >
-        <p>
-          The home screen gives readers a <strong>quick snapshot of their current book</strong>, recent notes, and weekly reading stats. The layout uses a lot of white space, soft neutral tones, and clear hierarchy to support long-form reading and reduce cognitive load.
-        </p>
-        <p>
-          This screen also <strong>pulls data from the structured JSON model</strong> built for the project, displaying recent notes, character mentions, and session history. The goal is to offer a lightweight overview without overwhelming the user with options.
-        </p>
-      </ProductScreenRow>
-      <ProductScreenRow
-        image="/images/projects/reading/case/Image2Section7.avif"
-        alt="Scriba journal mode screen for capturing thoughts while reading."
-        title="Journal mode: write freely while you read"
-        reverse
-      >
-        <p>
-          This screen lets readers capture thoughts without breaking their flow. The interface is minimal on purpose: soft colors, clear text hierarchy, and no distractions. These notes later become part of summaries and reflection prompts.
-        </p>
-        <p>
-          The AI takes a listener role in this screen. It never interrupts the user and silently takes note of the input to generate summaries and extract details of the chapter.
-        </p>
-      </ProductScreenRow>
-      <ProductScreenRow
-        image="/images/projects/reading/case/Image3Section7.avif"
-        alt="Scriba session summary screen with organized notes, characters, and themes."
-        title="Session summary: your notes organized automatically"
-        reverse={false}
-      >
-        <p>
-          After a reading session, the system organizes notes into a simple structure like summary, characters, and themes. Nothing here is AI invented; all content comes from what the reader wrote. The layout uses clear sections and neutral backgrounds to keep things easy to scan.
-        </p>
-      </ProductScreenRow>
-    </AnimatedSection>
-  );
-}
-
-function ProductScreenRow({
-  image,
-  alt,
-  title,
-  reverse,
-  children
-}: {
-  image: string;
-  alt: string;
-  title: string;
-  reverse: boolean;
-  children: ReactNode;
-}) {
-  return (
-    <div className={`mt-16 grid gap-12 md:grid-cols-[0.8fr_1.2fr] md:items-center ${reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
-      <CaseImage
-        src={image}
-        alt={alt}
-        aspect="aspect-[0.56/1]"
-        compact
-        fit="contain"
-        transparent
-        maxWidth="max-w-[360px]"
-      />
-      <div className="type-body space-y-5">
-        <h3 className="type-case-subtitle">{title}</h3>
-        {children}
-      </div>
+      </CaseCard>
     </div>
   );
 }
@@ -817,14 +738,15 @@ function ReadingTesting() {
   ];
 
   return (
-    <AnimatedSection id="testing" className="case-rule scroll-mt-32 pt-20">
+    <div id="testing" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>08. Testing and iteration</CaseSectionLabel>
       <p className="type-body mt-7">
         I ran lightweight usability sessions with classmates, where users were asked to add a book, create a note, and interact with the AI assistant. Everyone completed the tasks successfully, but the real value came from what needed improvement.
       </p>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         {findings.map(([title, body]) => (
-          <div key={title} className="surface-card border border-teal p-5">
+          <div key={title} className="surface-paper rounded-[8px] border border-teal p-5">
             <h3 className="type-case-subtitle">{title}</h3>
             <p className="type-body-small mt-4">{body}</p>
           </div>
@@ -836,7 +758,8 @@ function ReadingTesting() {
           I also tested the system on myself over multiple weeks with real books I was reading. That was essential. <strong>AI can generate outputs that look polished on the surface while still being shallow, generic, or slightly wrong.</strong> Repeated usage helped me identify weak patterns, reduce hallucination risk, and make sure the output was actually useful for future recall rather than just cosmetically impressive.
         </p>
       </div>
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
@@ -861,39 +784,28 @@ function ReadingLearnings({ nextProject }: { nextProject: CaseStudy }) {
   ];
 
   return (
-    <AnimatedSection id="learnings" className="case-rule scroll-mt-32 pt-20">
+    <div id="learnings" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>09. What I learned</CaseSectionLabel>
-      <div className="mt-7 grid gap-5 md:grid-cols-2">
-        {learnings.map(([title, body], index) => (
-          <Card key={title} padding="md" className="min-h-72">
-            <div className="flex gap-6">
-              <p className="type-index-marker">{index + 1}</p>
-              <div>
-                <h3 className="type-case-subtitle">{title}</h3>
-                <p className="type-body mt-5">{body}</p>
-              </div>
-            </div>
-          </Card>
+      <div className="mt-7 grid gap-4 md:grid-cols-2">
+        {learnings.map(([title, body]) => (
+          <div key={title} className="surface-paper rounded-[8px] border border-teal p-5">
+            <h3 className="type-case-subtitle">{title}</h3>
+            <p className="type-body-small mt-4">{body}</p>
+          </div>
         ))}
       </div>
-      <div className="layout-text-pair-balanced mt-16">
-        <h2 className="type-case-display-title">
-          This project shows <span className="text-teal">how I design with AI-powered workflows</span> from product ideas to deployment.
-        </h2>
-        <p className="type-body">
-          I am comfortable stepping into ambiguous product spaces, defining the structure that makes AI useful, and translating that structure into working software. In this case, the final output was a functioning reading assistant, but the real work was designing the boundaries, workflows, and product logic that kept the experience grounded in the reader&apos;s own thinking.
-        </p>
-      </div>
-      <div className="mt-16">
+      </CaseCard>
+      <div className="mt-10">
         <NextProjectCard project={nextProject} />
       </div>
-    </AnimatedSection>
+    </div>
   );
 }
 
 function CaseHero({ project }: { project: CaseStudy }) {
   return (
-    <AnimatedSection>
+    <div>
       <div
         className="grid min-h-[520px] overflow-hidden rounded-[18px] p-8 text-white md:grid-cols-[0.9fr_1.1fr] md:p-16"
         style={{
@@ -922,7 +834,7 @@ function CaseHero({ project }: { project: CaseStudy }) {
           sizes="(max-width: 768px) 92vw, 620px"
         />
       </div>
-    </AnimatedSection>
+    </div>
   );
 }
 
@@ -938,15 +850,15 @@ function PortalCaseStudyPage({
       <ScrollProgress />
       <CaseStudyNavigation sections={portalSectionLinks} />
       <CaseStudyCompanion slug={project.slug} />
-      <PageSection spacing="hero">
+      <PageSection spacing="hero" width="reading">
         <PortalHero />
       </PageSection>
 
-      <PageSection id="overview" spacing="md" className="scroll-mt-32">
+      <PageSection id="overview" spacing="md" className="scroll-mt-32" width="reading">
         <PortalOverview />
       </PageSection>
 
-      <PageSection className="gap-20 py-8">
+      <PageSection className="gap-20 py-8" width="reading">
         <PortalStarted />
         <PortalChallenge />
         <PortalApproach />
@@ -962,7 +874,7 @@ function PortalCaseStudyPage({
 
 function PortalHero() {
   return (
-    <AnimatedSection>
+    <div>
       <MediaFrame
         src="/images/projects/portal/Case/1.avif"
         alt="Hero artwork for the banking website redesign case study."
@@ -972,7 +884,7 @@ function PortalHero() {
         priority
         sizes="(max-width: 768px) 92vw, 1280px"
       />
-    </AnimatedSection>
+    </div>
   );
 }
 
@@ -985,7 +897,7 @@ function PortalOverview() {
   ];
 
   return (
-    <AnimatedSection>
+    <div>
       <Card padding="lg">
         <div className="space-y-7">
           <div>
@@ -1007,10 +919,10 @@ function PortalOverview() {
             </p>
           </div>
           <div>
-            <h2 className="type-section-title text-center">Outcomes</h2>
+            <h2 className="type-section-title">Outcomes</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-4">
               {outcomes.map(([value, label]) => (
-                <div key={value} className="min-h-40 surface-card border border-teal p-5">
+                <div key={value} className="min-h-40 surface-paper rounded-[8px] border border-teal p-5">
                   <p className="type-small-title">{value}</p>
                   <p className="type-body-small mt-3">{label}</p>
                 </div>
@@ -1019,78 +931,76 @@ function PortalOverview() {
           </div>
         </div>
       </Card>
-    </AnimatedSection>
+    </div>
   );
 }
 
 
 function PortalStarted() {
   return (
-    <AnimatedSection id="why-started" className="case-rule scroll-mt-32 pt-20">
+    <div id="why-started" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>01. Why we started</CaseSectionLabel>
       <h2 className="type-case-display-title mt-7">
         The problem was <span className="text-teal">bigger</span> than outdated pages. The website lacked structure.
       </h2>
-      <div className="mt-16 grid gap-12 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-        <div className="type-body space-y-5">
-          <p>
-            For many customers, the public website was the first place they went to understand products, compare options, or find the next step. But the site had become difficult to use because it had been built in pieces by different departments over time.
-          </p>
-          <p>
-            Users were not always struggling because the information was missing. In many cases, the information existed, but it was buried, duplicated, or written around internal priorities instead of user needs.
-          </p>
-          <p>
-            The CMS migration made the problem visible. If we migrated every page without changing the structure, the bank would keep the same usability problems and make them harder to fix later.
-          </p>
-        </div>
-        <PortalCmsFunnel />
+      <div className="type-body mt-8 space-y-5">
+            <p>
+              For many customers, the public website was the first place they went to understand products, compare options, or find the next step. But the site had become difficult to use because it had been built in pieces by different departments over time.
+            </p>
+            <p>
+              Users were not always struggling because the information was missing. In many cases, the information existed, but it was buried, duplicated, or written around internal priorities instead of user needs.
+            </p>
+            <p>
+              The CMS migration made the problem visible. If we migrated every page without changing the structure, the bank would keep the same usability problems and make them harder to fix later.
+            </p>
       </div>
-    </AnimatedSection>
+      <PortalCmsFunnel />
+      </CaseCard>
+    </div>
   );
 }
 
 function PortalChallenge() {
   return (
-    <AnimatedSection id="challenge" className="case-rule scroll-mt-32 pt-20">
+    <div id="challenge" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>02. The challenge</CaseSectionLabel>
-      <div className="layout-text-pair mt-8">
-        <h2 className="type-case-display-title">
-          Redesign pages <span className="text-teal">≠</span> improve structure
-        </h2>
-        <div>
-          <h3 className="type-case-subtitle">The main questions were:</h3>
-          <ul className="type-body mt-4 list-disc space-y-1 pl-5">
+      <h2 className="type-case-display-title mt-7">
+        Redesign pages <span className="text-teal">≠</span> improve structure
+      </h2>
+      <p className="type-body mt-8">
+        The challenge was balancing user clarity, business priorities, brand standards, stakeholder needs, and technical constraints at the same time.
+      </p>
+      <h3 className="type-case-subtitle mt-10">The main questions were:</h3>
+      <ul className="type-body mt-4 list-disc space-y-1 pl-5">
             <li>Which pages were critical for users and the business?</li>
             <li>Which pages were outdated, duplicated, or no longer useful?</li>
             <li>How could we make the site more consistent without making every page feel rigid?</li>
-            <li>How could the new CMS support real publishing workflows after launch?</li>
-          </ul>
-        </div>
-      </div>
-      <p className="type-body mt-10">
-        The challenge was balancing user clarity, business priorities, brand standards, stakeholder needs, and technical constraints at the same time.
-      </p>
-    </AnimatedSection>
+        <li>How could the new CMS support real publishing workflows after launch?</li>
+      </ul>
+      </CaseCard>
+    </div>
   );
 }
 
 function PortalApproach() {
   return (
-    <AnimatedSection id="approach" className="case-rule scroll-mt-32 pt-20">
+    <div id="approach" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>03. My approach</CaseSectionLabel>
       <p className="type-case-subtitle mt-7">
         We audited the site from both a user and business perspective.
       </p>
-      <div className="layout-metric-text-pair mt-12">
-        <div>
-          <p className="type-case-display-metric">250 pages</p>
-          <p className="type-case-metric-label mt-3">Analyzed Using Data</p>
-        </div>
-        <p className="type-body">
+      {/* The metric reads as a headline over the paragraph it belongs to,
+          rather than as a column beside it — this section runs in one column
+          from the label all the way down to the closing plate. */}
+      <p className="type-case-display-metric mt-12">250 pages</p>
+      <p className="type-case-metric-label mt-3">Analyzed using data</p>
+      <div className="type-body mt-8 space-y-5">
+        <p>
           I worked with my UX partner to analyze the existing site using Google Analytics, internal dashboards, and custom funnels built with support from data engineers.
         </p>
-      </div>
-      <div className="type-body mt-10 space-y-5">
         <p>
           We ranked pages by traffic, business importance, and role in the customer journey. This helped us see where the site was working, where users were dropping off, and where important pages were underperforming despite their business value.
         </p>
@@ -1098,57 +1008,56 @@ function PortalApproach() {
           One of the clearest findings was that some high-priority pages were receiving far less traffic than expected. That pointed to a navigation and information architecture issue, not just a content issue.
         </p>
       </div>
-
       <PortalPagePerformance />
       <p className="type-case-subtitle mt-12">
         We also used customer interviews to understand how people experienced the site.
       </p>
-      <blockquote className="type-quote surface-card mt-8 border-l-4 border-teal p-8 text-muted">
+      <blockquote className="type-quote surface-paper mt-8 rounded-[8px] border-l-4 border-teal p-8 text-muted">
         &ldquo;It&apos;s really difficult to find anything on the website, I prefer calling the call center, it&apos;s quicker&rdquo;
       </blockquote>
       <p className="type-body mt-8">
         Across 20 customer interviews, we heard similar patterns. Users felt overwhelmed and often preferred calling instead of browsing. The issue was not only the amount of content. Much of the content was written to satisfy internal teams, not to help customers make decisions.
       </p>
       <CaseImage src="/images/projects/portal/Case/3.avif" alt="Customer quote cards from user research interviews." aspect="aspect-[2.05/1]" />
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
 function PortalRole() {
   return (
-    <AnimatedSection id="role" className="case-rule scroll-mt-32 pt-20">
+    <div id="role" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>04. My role</CaseSectionLabel>
       <p className="type-case-subtitle mt-7">
         I worked at the intersection of structure, business needs, and design execution.
       </p>
-      <div className="mt-10 grid gap-12 md:grid-cols-[1fr_1fr] md:items-center">
-        <PortalRoleVenn />
-        <div>
-          <h3 className="type-case-subtitle">My responsibilities included:</h3>
-          <ul className="type-body mt-5 list-disc space-y-2 pl-5">
+      <h3 className="type-case-subtitle mt-10">My responsibilities included:</h3>
+      <ul className="type-body mt-5 list-disc space-y-2 pl-5">
             <li><strong>Analyzing</strong> site data to understand page performance and user behavior</li>
             <li><strong>Defining</strong> the logic for the new information architecture</li>
             <li><strong>Designing</strong> the reusable CMS component system</li>
             <li><strong>Aligning</strong> brand, content, product, and engineering stakeholders</li>
-            <li><strong>Creating</strong> guidelines so teams could use the system after launch</li>
-          </ul>
-          <div className="case-rule mt-8 pt-8">
-            <p className="type-body">
-              Because many departments owned different parts of the website, the design process needed constant alignment. I led recurring working sessions with brand and communications, product stakeholders, the external technical provider, and the internal technical team.
-            </p>
-            <p className="type-body mt-5">
-              Those sessions helped us test early design directions against real content. They also helped me identify where teams needed flexibility, where the system needed stronger rules, and where custom requests would create long-term maintenance problems.
-            </p>
-          </div>
-        </div>
+        <li><strong>Creating</strong> guidelines so teams could use the system after launch</li>
+      </ul>
+      <div className="mt-10">
+        <p className="type-body">
+          Because many departments owned different parts of the website, the design process needed constant alignment. I led recurring working sessions with brand and communications, product stakeholders, the external technical provider, and the internal technical team.
+        </p>
+        <p className="type-body mt-5">
+          Those sessions helped us test early design directions against real content. They also helped me identify where teams needed flexibility, where the system needed stronger rules, and where custom requests would create long-term maintenance problems.
+        </p>
       </div>
-    </AnimatedSection>
+      <PortalRoleVenn />
+      </CaseCard>
+    </div>
   );
 }
 
 function PortalStrategy() {
   return (
-    <AnimatedSection id="strategy" className="case-rule scroll-mt-32 pt-20">
+    <div id="strategy" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>05. UI strategy</CaseSectionLabel>
       <p className="type-case-subtitle mt-7">
         The component system had to be flexible enough for teams, but strict enough to prevent fragmentation.
@@ -1156,24 +1065,21 @@ function PortalStrategy() {
       <p className="type-body mt-7">
         At first, many stakeholders wanted custom layouts for their own product pages. Even when they agreed with the idea of templates, they often asked for exceptions.
       </p>
-      <div className="mt-16 grid gap-12 md:grid-cols-[1.15fr_0.85fr] md:items-center">
-        <div>
-          <h2 className="type-case-display-title">
-            I defended scalability of the system using the <span className="text-teal">80/20</span> principle:
-          </h2>
-          <ul className="type-body mt-8 list-disc space-y-2 pl-5">
-            <li>Components were designed to cover the needs of most pages.</li>
-            <li>Edge cases were handled separately when there was a real reason.</li>
-            <li>We avoided designing around every exception because that would recreate the same fragmented experience.</li>
-          </ul>
-          <p className="type-body mt-8">
-            This gave teams enough flexibility to publish different types of content while keeping the overall website consistent.
-          </p>
-        </div>
-        <PortalComponentReuse />
-      </div>
+      <h2 className="type-case-display-title mt-12">
+        I defended scalability of the system using the <span className="text-teal">80/20</span> principle:
+      </h2>
+      <ul className="type-body mt-8 list-disc space-y-2 pl-5">
+        <li>Components were designed to cover the needs of most pages.</li>
+        <li>Edge cases were handled separately when there was a real reason.</li>
+        <li>We avoided designing around every exception because that would recreate the same fragmented experience.</li>
+      </ul>
+      <p className="type-body mt-8">
+        This gave teams enough flexibility to publish different types of content while keeping the overall website consistent.
+      </p>
+      <PortalComponentReuse />
       <CaseImage src="/images/projects/portal/Case/6.avif" alt="Annotated reusable components example for a banking product page." aspect="aspect-[2.04/1]" fit="contain" />
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
@@ -1186,37 +1092,35 @@ function PortalDecisions() {
   ];
 
   return (
-    <AnimatedSection id="decisions" className="case-rule scroll-mt-32 pt-20">
+    <div id="decisions" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>06. Key decisions and tradeoffs</CaseSectionLabel>
-      <div className="mt-7 grid gap-5 md:grid-cols-2">
-        {decisions.map(([title, body], index) => (
-          <Card key={title} className="min-h-64" padding="md">
-            <div className="flex gap-6">
-              <p className="type-index-marker">{index + 1}</p>
-              <div>
-                <h3 className="type-case-subtitle">{title}</h3>
-                <p className="type-body mt-5">{body}</p>
-              </div>
-            </div>
-          </Card>
+      <div className="mt-7 grid gap-4 md:grid-cols-2">
+        {decisions.map(([title, body]) => (
+          <div key={title} className="surface-paper rounded-[8px] border border-teal p-5">
+            <h3 className="type-case-subtitle">{title}</h3>
+            <p className="type-body-small mt-4">{body}</p>
+          </div>
         ))}
       </div>
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
 function PortalChanged() {
   return (
-    <AnimatedSection id="changed" className="case-rule scroll-mt-32 pt-20">
+    <div id="changed" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>07. What changed</CaseSectionLabel>
-      <div className="mt-7 grid gap-5 md:grid-cols-2">
-        <div className="surface-card border border-teal p-8">
+      <div className="mt-7 grid gap-4 md:grid-cols-2">
+        <div className="surface-paper rounded-[8px] border border-teal p-5">
           <h3 className="type-case-subtitle">User side</h3>
           <p className="type-body mt-5">
             The website became easier to navigate because priority pages had clearer paths and page layouts became more consistent. Users could reach important information with fewer steps, and the overall experience felt less fragmented. <strong>After launch, bounce rate dropped by 12%.</strong>
           </p>
         </div>
-        <div className="surface-card border border-teal p-8">
+        <div className="surface-paper rounded-[8px] border border-teal p-5">
           <h3 className="type-case-subtitle">Business side</h3>
           <p className="type-body mt-5">
             The redesign reduced duplicated and outdated content, standardized product pages through reusable CMS components, and gave teams a clearer governance model for future publishing.
@@ -1226,31 +1130,41 @@ function PortalChanged() {
           </p>
         </div>
       </div>
-    </AnimatedSection>
+      </CaseCard>
+    </div>
   );
 }
 
 function PortalLearned({ nextProject }: { nextProject: CaseStudy }) {
   return (
-    <AnimatedSection id="matters" className="case-rule scroll-mt-32 pt-20">
+    <div id="matters" className="case-section scroll-mt-32">
+      <CaseCard>
       <CaseSectionLabel>08. What I learned</CaseSectionLabel>
-      <div className="layout-text-pair-balanced mt-7">
-        <h2 className="type-case-display-title">
-          This project shows <span className="text-teal">how I work</span> when the problem is bigger than the screen.
-        </h2>
-        <div className="type-body space-y-5">
+      <h2 className="type-case-display-title mt-7">
+        This project shows <span className="text-teal">how I work</span> when the problem is bigger than the screen.
+      </h2>
+      <div className="type-body mt-8 space-y-5">
           <p>
             The value came from identifying the real issue behind the brief, using data to focus the work, aligning teams with different priorities, and designing a system that could scale beyond launch.
           </p>
-          <p>
-            It also reflects the kind of work I enjoy most: making complex digital experiences easier to understand, easier to use, and easier for teams to maintain.
-          </p>
-        </div>
+        <p>
+          It also reflects the kind of work I enjoy most: making complex digital experiences easier to understand, easier to use, and easier for teams to maintain.
+        </p>
       </div>
-      <div className="mt-16">
+      </CaseCard>
+      <div className="mt-10">
         <NextProjectCard project={nextProject} />
       </div>
-    </AnimatedSection>
+    </div>
+  );
+}
+
+/** One section's prose on a surface. Figures stay outside it, on the paper. */
+function CaseCard({ children }: { children: ReactNode }) {
+  return (
+    <Card className="case-card">
+      {children}
+    </Card>
   );
 }
 
@@ -1287,7 +1201,7 @@ function CaseImage({
 
 function OverviewPanel({ project }: { project: CaseStudy }) {
   return (
-    <AnimatedSection>
+    <div>
       <Card padding="lg">
         <div className="grid gap-8">
           <div>
@@ -1309,13 +1223,13 @@ function OverviewPanel({ project }: { project: CaseStudy }) {
           <OutcomeGrid outcomes={project.outcomes} />
         </div>
       </Card>
-    </AnimatedSection>
+    </div>
   );
 }
 
 function NextProjectCard({ project }: { project: CaseStudy }) {
   return (
-    <AnimatedSection>
+    <div>
       <SectionLabel>Read next case study</SectionLabel>
       <Link
         href={`/projects/${project.slug}`}
@@ -1334,24 +1248,24 @@ function NextProjectCard({ project }: { project: CaseStudy }) {
           <InlineCTA>Read case study</InlineCTA>
         </div>
       </Link>
-    </AnimatedSection>
+    </div>
   );
 }
 
 function OutcomeGrid({ outcomes }: { outcomes: CaseStudy["outcomes"] }) {
   return (
     <div>
-      <h2 className="type-section-title text-center">Outcomes</h2>
-      <StaggerGroup className="mt-6 grid gap-4 md:grid-cols-4">
+      <h2 className="type-section-title">Outcomes</h2>
+      <div className="mt-6 grid gap-4 md:grid-cols-4">
         {outcomes.map((outcome) => (
-          <StaggerItem key={outcome.value}>
+          <div key={outcome.value}>
             <Card className="min-h-32" padding="sm" tone="paper">
               <p className="type-small-title">{outcome.value}</p>
               <p className="type-body-small mt-3">{outcome.label}</p>
             </Card>
-          </StaggerItem>
+          </div>
         ))}
-      </StaggerGroup>
+      </div>
     </div>
   );
 }
@@ -1359,7 +1273,7 @@ function OutcomeGrid({ outcomes }: { outcomes: CaseStudy["outcomes"] }) {
 function CaseSectionBlock({ section }: { section: CaseSection }) {
   if (section.type === "quote") {
     return (
-      <AnimatedSection className="case-divider">
+      <div className="case-divider">
         <CaseSectionLabel>{section.eyebrow}</CaseSectionLabel>
         <blockquote className="type-quote surface-card mt-8 p-8">
           &ldquo;{section.quote}&rdquo;
@@ -1370,13 +1284,13 @@ function CaseSectionBlock({ section }: { section: CaseSection }) {
           ))}
         </div>
         <CaseMediaBlock media={section.media} />
-      </AnimatedSection>
+      </div>
     );
   }
 
   if (section.type === "split") {
     return (
-      <AnimatedSection className="case-divider grid gap-10 md:grid-cols-[1fr_420px]">
+      <div className="case-divider grid gap-10 md:grid-cols-[1fr_420px]">
         <div>
           <CaseSectionLabel>{section.eyebrow}</CaseSectionLabel>
           <h2 className="type-section-title mt-8">{section.title}</h2>
@@ -1395,13 +1309,13 @@ function CaseSectionBlock({ section }: { section: CaseSection }) {
           </ul>
         </Card>
         <CaseMediaBlock media={section.media} className="md:col-span-2" />
-      </AnimatedSection>
+      </div>
     );
   }
 
   if (section.type === "decisions") {
     return (
-      <AnimatedSection className="case-divider">
+      <div className="case-divider">
         <CaseSectionLabel>{section.eyebrow}</CaseSectionLabel>
         <h2 className="type-section-title mt-8">
           {section.title}
@@ -1416,12 +1330,12 @@ function CaseSectionBlock({ section }: { section: CaseSection }) {
           ))}
         </div>
         <CaseMediaBlock media={section.media} />
-      </AnimatedSection>
+      </div>
     );
   }
 
   return (
-    <AnimatedSection className="case-divider">
+    <div className="case-divider">
       <CaseSectionLabel>{section.eyebrow}</CaseSectionLabel>
       <h2 className="type-section-title mt-8">
         {section.title}
@@ -1432,7 +1346,7 @@ function CaseSectionBlock({ section }: { section: CaseSection }) {
         ))}
       </div>
       <CaseMediaBlock media={section.media} />
-    </AnimatedSection>
+    </div>
   );
 }
 
