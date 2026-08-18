@@ -8,9 +8,12 @@ type Point = {
 };
 
 const gridSize = 32;
-const sampleSize = 8;
-const warpRadius = 105;
-const warpStrength = 7;
+/* The warp bends a straight grid line, so each line is drawn as a polyline
+   sampled every few pixels rather than as a single segment. A wider warp needs
+   finer sampling or the curve shows its corners. */
+const sampleSize = 6;
+const warpRadius = 170;
+const warpStrength = 14;
 
 export function SiteBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -94,7 +97,7 @@ export function SiteBackground() {
       drawingContext.lineWidth = 1;
       drawingContext.setLineDash([]);
       drawingContext.lineCap = "butt";
-      drawingContext.strokeStyle = "rgba(86, 78, 68, 0.32)";
+      drawingContext.strokeStyle = "rgba(86, 78, 68, 0.4)";
 
       for (let x = -gridSize; x <= width + gridSize; x += gridSize) {
         const points: Point[] = [];
