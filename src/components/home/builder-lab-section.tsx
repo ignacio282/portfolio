@@ -14,7 +14,7 @@ export function BuilderLabSection() {
       <AnimatedSection>
         <Card padding="lg">
           <SectionLabel variant="home">{builderLab.label}</SectionLabel>
-          <p className="type-body-large mt-6">{builderLab.body}</p>
+          <p className="type-body-large mt-3">{builderLab.body}</p>
           {/* A link rather than a button: the solid buttons belong to the case
               studies, and this section should not pull against them. */}
           <div className="mt-8">

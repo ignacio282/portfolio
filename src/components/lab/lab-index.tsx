@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
+import { Card } from "@/components/visual/card";
 import { MediaFrame } from "@/components/visual/media-frame";
 import { PageSection } from "@/components/visual/page-section";
 import { homeContent } from "@/content/home";
@@ -35,15 +36,10 @@ export function LabIndex() {
       </PageSection>
 
       <PageSection className="pb-24 pt-8">
-        <StaggerGroup className="grid gap-24" stagger={0.1}>
+        <StaggerGroup className="grid gap-8" stagger={0.1}>
           {builderLab.projects.map((project, index) => (
-            <StaggerItem
-              key={project.slug}
-              // A rule between entries, not around them: the first row opens
-              // straight after the intro.
-              className={index === 0 ? undefined : "case-rule pt-24"}
-            >
-              <LabProject project={project} priority={index === 0} />
+            <StaggerItem key={project.slug}>
+              <LabProject priority={index === 0} project={project} />
             </StaggerItem>
           ))}
         </StaggerGroup>
@@ -62,12 +58,15 @@ function LabProject({
   const links = projectLinks(project);
 
   return (
-    <article style={{ "--project-accent": project.accent } as React.CSSProperties}>
+    <Card
+      padding="lg"
+      style={{ "--project-accent": project.accent } as React.CSSProperties}
+    >
       <LabProjectMedia priority={priority} project={project} />
 
-      <div className="mt-16">
+      <div className="mt-10">
         <h2 className="type-home-title">{project.title}</h2>
-        <p className="type-body-large mt-6">{project.summary}</p>
+        <p className="type-body mt-6">{project.summary}</p>
         <p className="type-body mt-5">{project.details.description}</p>
 
         <h3 className="type-case-subtitle mt-12">Main features</h3>
@@ -104,12 +103,12 @@ function LabProject({
           </div>
         ) : null}
       </div>
-    </article>
+    </Card>
   );
 }
 
-/* The lead visual is whatever the project has: a clip that opens as you reach
-   it, or a still. A project with neither renders copy only. */
+/* The lead visual is whatever the project has: a clip or a still. A project
+   with neither renders copy only. */
 function LabProjectMedia({
   project,
   priority

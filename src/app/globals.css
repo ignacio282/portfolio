@@ -454,15 +454,9 @@ img {
     @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-teal px-5 py-2 text-sm font-medium text-white md:text-base;
   }
 
-  /* The track holds the clip's full 16:9 height so the page does not reflow
-     while the frame inside it grows. */
-  .lab-video-track {
-    @apply relative w-full;
-    aspect-ratio: 16 / 9;
-  }
-
   .lab-video-frame {
-    @apply absolute inset-x-0 top-0 overflow-hidden bg-ink;
+    @apply relative w-full overflow-hidden bg-ink;
+    aspect-ratio: 16 / 9;
     border-radius: var(--radius-media);
   }
 
@@ -487,7 +481,7 @@ img {
     @apply opacity-0;
   }
 
-  .lab-video-track:hover .lab-video-toggle,
+  .lab-video-frame:hover .lab-video-toggle,
   .lab-video-toggle:focus-visible {
     @apply opacity-100;
   }

@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
 const cardPadding = {
@@ -17,11 +17,14 @@ export function Card({
   children,
   className,
   padding = "none",
+  style,
   tone = "card"
 }: {
   children: ReactNode;
   className?: string;
   padding?: keyof typeof cardPadding;
+  /** For passing custom properties such as --project-accent down to the card. */
+  style?: CSSProperties;
   tone?: keyof typeof cardTone;
 }) {
   return (
@@ -31,6 +34,7 @@ export function Card({
         cardPadding[padding],
         className
       )}
+      style={style}
     >
       {children}
     </div>
