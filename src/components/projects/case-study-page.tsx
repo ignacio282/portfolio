@@ -217,7 +217,7 @@ function QrBusinessContext() {
       <h2 className="type-case-display-title mt-7">
         Leadership wanted to <span className="text-teal">move faster</span> than other banks and increase transactions.
       </h2>
-      <div className="type-body mt-8 max-w-6xl space-y-7">
+      <div className="type-body mt-8 space-y-7">
         <p>
           The expectation was that QR would feel modern and attractive, especially for younger users. But before moving forward, we needed to understand whether customers actually understood what this feature was, how they would use it, and where it could live in the app without creating confusion.
         </p>
@@ -264,7 +264,7 @@ function QrWhatLearned() {
   return (
     <AnimatedSection id="what-we-learned" className="case-rule scroll-mt-32 pt-20">
       <CaseSectionLabel>02. What we learned</CaseSectionLabel>
-      <p className="type-body mt-7 max-w-6xl">
+      <p className="type-body mt-7">
         We relied heavily on existing research from the sibling company that powered the QR engine, since they had already studied how QR payments worked in the Ecuadorian market and the project had limited time. That gave us a head start, but we still needed to validate how this feature should appear inside Banco Pichincha&apos;s app.
       </p>
       <div className="mt-10 grid gap-10 md:grid-cols-[200px_1fr] md:items-center">
@@ -381,7 +381,7 @@ function QrAccessibility() {
     <AnimatedSection id="accessibility" className="case-rule scroll-mt-32 pt-20">
       <CaseSectionLabel>05. Accessibility</CaseSectionLabel>
       <h2 className="type-case-display-title mt-7">Transactions for everyone</h2>
-      <div className="type-body mt-5 max-w-6xl space-y-7">
+      <div className="type-body mt-5 space-y-7">
         <p>
           This project was not only about getting the feature out quickly. It also needed to be usable by a wide range of users in a high-stakes context. Beyond screen-reader labels, I kept the interaction intentionally simple, used strong contrast to protect QR readability, reduced unnecessary decoration, and kept the flow short so users could understand what was happening without overload.
         </p>
@@ -413,7 +413,7 @@ function QrOutcome() {
   return (
     <AnimatedSection id="outcome" className="case-rule scroll-mt-32 pt-20">
       <CaseSectionLabel>06. Outcome</CaseSectionLabel>
-      <p className="type-body-large mt-7 max-w-6xl">
+      <p className="type-body-large mt-7">
         I left the bank before I could track post-launch performance, so I would not invent product metrics here. But the feature shipped, it is still live, and the core structural decision behind it, the &ldquo;Receive Money&rdquo; bottom-sheet entry point, was strong enough to influence later features as well. That matters because it shows the work was not just visually approved, it was durable inside the product.
       </p>
     </AnimatedSection>
@@ -645,7 +645,7 @@ function ReadingAIBehavior() {
       <h2 className="type-case-display-title mt-7">
         What AI could NOT do <span className="text-teal">&gt;</span> What the AI could do
       </h2>
-      <p className="type-body mt-7 max-w-5xl">
+      <p className="type-body mt-7">
         I wanted the AI to be helpful, but not overbearing. Supportive, but not dominant. Smart, but not performative. That meant creating explicit behavioral boundaries for each AI role.
       </p>
       <div className="mt-8">
@@ -706,7 +706,7 @@ function ReadingDesignerBuilder() {
   return (
     <AnimatedSection id="designer-to-builder" className="case-rule scroll-mt-32 pt-20">
       <CaseSectionLabel>06. From designer to builder</CaseSectionLabel>
-      <div className="type-body mt-7 max-w-6xl space-y-5">
+      <div className="type-body mt-7 space-y-5">
         <p>
           A big reason this project matters is that I did not stop at defining the experience in Figma. <strong>I built it.</strong>
         </p>
@@ -718,7 +718,7 @@ function ReadingDesignerBuilder() {
         AI did not replace product thinking. It accelerated execution <span className="text-teal">after</span> the structure was clear.
       </h2>
       <ReadingBuildLayers />
-      <p className="type-body mt-8 max-w-6xl">
+      <p className="type-body mt-8">
         That became even more obvious when I connected the coding agent to Figma through MCP. Instead of asking the agent to guess from screenshots, I gave it access to the actual design definitions through a Figma-generated JSON structure. That improved fidelity and sped up the workflow substantially.
       </p>
     </AnimatedSection>
@@ -729,7 +729,7 @@ function ReadingProduct() {
   return (
     <AnimatedSection id="product" className="case-rule scroll-mt-32 pt-20">
       <CaseSectionLabel>07. The product</CaseSectionLabel>
-      <p className="type-body mt-5 max-w-6xl">
+      <p className="type-body mt-5">
         All the designs for this prototype were made using Figma, going from a low-fidelity idea to a high-fidelity prototype with its own mini design system after multiple rounds of feedback and iterations. The following screens show the key interactions and visual elements.
       </p>
       <ProductScreenRow
@@ -819,7 +819,7 @@ function ReadingTesting() {
   return (
     <AnimatedSection id="testing" className="case-rule scroll-mt-32 pt-20">
       <CaseSectionLabel>08. Testing and iteration</CaseSectionLabel>
-      <p className="type-body mt-7 max-w-6xl">
+      <p className="type-body mt-7">
         I ran lightweight usability sessions with classmates, where users were asked to add a book, create a note, and interact with the AI assistant. Everyone completed the tasks successfully, but the real value came from what needed improvement.
       </p>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -830,7 +830,7 @@ function ReadingTesting() {
           </div>
         ))}
       </div>
-      <div className="type-body mt-10 max-w-6xl">
+      <div className="type-body mt-10">
         <h3 className="type-case-subtitle">Tested in real scenarios</h3>
         <p className="mt-5">
           I also tested the system on myself over multiple weeks with real books I was reading. That was essential. <strong>AI can generate outputs that look polished on the surface while still being shallow, generic, or slightly wrong.</strong> Repeated usage helped me identify weak patterns, reduce hallucination risk, and make sure the output was actually useful for future recall rather than just cosmetically impressive.
@@ -1090,7 +1090,7 @@ function PortalApproach() {
           I worked with my UX partner to analyze the existing site using Google Analytics, internal dashboards, and custom funnels built with support from data engineers.
         </p>
       </div>
-      <div className="type-body mt-10 max-w-5xl space-y-5">
+      <div className="type-body mt-10 space-y-5">
         <p>
           We ranked pages by traffic, business importance, and role in the customer journey. This helped us see where the site was working, where users were dropping off, and where important pages were underperforming despite their business value.
         </p>
@@ -1106,7 +1106,7 @@ function PortalApproach() {
       <blockquote className="type-quote surface-card mt-8 border-l-4 border-teal p-8 text-muted">
         &ldquo;It&apos;s really difficult to find anything on the website, I prefer calling the call center, it&apos;s quicker&rdquo;
       </blockquote>
-      <p className="type-body mt-8 max-w-5xl">
+      <p className="type-body mt-8">
         Across 20 customer interviews, we heard similar patterns. Users felt overwhelmed and often preferred calling instead of browsing. The issue was not only the amount of content. Much of the content was written to satisfy internal teams, not to help customers make decisions.
       </p>
       <CaseImage src="/images/projects/portal/Case/3.avif" alt="Customer quote cards from user research interviews." aspect="aspect-[2.05/1]" />
@@ -1364,7 +1364,7 @@ function CaseSectionBlock({ section }: { section: CaseSection }) {
         <blockquote className="type-quote surface-card mt-8 p-8">
           &ldquo;{section.quote}&rdquo;
         </blockquote>
-        <div className="type-body mt-8 max-w-4xl space-y-5">
+        <div className="type-body mt-8 space-y-5">
           {section.body.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
@@ -1403,7 +1403,7 @@ function CaseSectionBlock({ section }: { section: CaseSection }) {
     return (
       <AnimatedSection className="case-divider">
         <CaseSectionLabel>{section.eyebrow}</CaseSectionLabel>
-        <h2 className="type-section-title mt-8 max-w-4xl">
+        <h2 className="type-section-title mt-8">
           {section.title}
         </h2>
         <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -1423,10 +1423,10 @@ function CaseSectionBlock({ section }: { section: CaseSection }) {
   return (
     <AnimatedSection className="case-divider">
       <CaseSectionLabel>{section.eyebrow}</CaseSectionLabel>
-      <h2 className="type-section-title mt-8 max-w-5xl">
+      <h2 className="type-section-title mt-8">
         {section.title}
       </h2>
-      <div className="type-body mt-8 max-w-4xl space-y-5">
+      <div className="type-body mt-8 space-y-5">
         {section.body.map((paragraph) => (
           <p key={paragraph}>{paragraph}</p>
         ))}

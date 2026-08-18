@@ -43,15 +43,10 @@ export type BuilderLabProject = {
   caseUrl?: string;
   details: {
     description: string;
-    /** Why this personal project earns a place in a design portfolio. */
-    relevance: string[];
-    /** Ordered walkthrough of the project; each shot stands on its own. */
-    shots: {
-      title: string;
-      caption: string;
-      src?: string;
-      alt?: string;
-    }[];
+    /** What the thing actually does — the work, not the pitch. */
+    features: string[];
+    /** Tools it was built with, rendered as one dot-separated line. */
+    stack: string[];
   };
 };
 

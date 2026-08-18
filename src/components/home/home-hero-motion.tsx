@@ -31,7 +31,7 @@ export function HomeHeroMotion({ content }: HomeHeroMotionProps) {
           onHoverStart={() => setShowHand(true)}
           onHoverEnd={() => setShowHand(false)}
         >
-          <h1 className="type-hero max-w-4xl">
+          <h1 className="type-hero">
             {content.hero.title}
           </h1>
           <AnimatePresence>

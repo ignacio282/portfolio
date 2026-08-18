@@ -454,6 +454,63 @@ img {
     @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full bg-teal px-5 py-2 text-sm font-medium text-white md:text-base;
   }
 
+  /* The track holds the clip's full 16:9 height so the page does not reflow
+     while the frame inside it grows. */
+  .lab-video-track {
+    @apply relative w-full;
+    aspect-ratio: 16 / 9;
+  }
+
+  .lab-video-frame {
+    @apply absolute inset-x-0 top-0 overflow-hidden bg-ink;
+    border-radius: var(--radius-media);
+  }
+
+  .lab-video {
+    @apply h-full w-full object-cover;
+  }
+
+  .lab-video-toggle {
+    @apply absolute bottom-4 left-4 inline-flex size-12 items-center justify-center rounded-full border-0 bg-paper/90 p-0 text-ink shadow-[0_10px_28px_rgba(36,37,38,0.22)] backdrop-blur-sm md:bottom-5 md:left-5;
+    transition-duration: 180ms;
+    transition-property: background-color, opacity, scale;
+    transition-timing-function: var(--ease-standard);
+  }
+
+  .lab-video-toggle:hover {
+    @apply bg-paper;
+    scale: 1.06;
+  }
+
+  /* Out of the way once it is running, back on approach. */
+  .lab-video-toggle[data-playing="true"] {
+    @apply opacity-0;
+  }
+
+  .lab-video-track:hover .lab-video-toggle,
+  .lab-video-toggle:focus-visible {
+    @apply opacity-100;
+  }
+
+  /* A text link that reads as an onward step without competing with the solid
+     buttons on the case study cards. The arrow carries the affordance. */
+  .ui-link-cta {
+    @apply inline-flex min-h-11 items-center gap-2 font-semibold text-teal transition-colors duration-150 hover:text-teal-dark;
+  }
+
+  .ui-link-cta svg {
+    transition: transform 200ms var(--ease-standard);
+  }
+
+  .ui-link-cta:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Same link, pointing back: the arrow leads, so it slides the other way. */
+  .ui-link-cta-back:hover svg {
+    transform: translateX(-4px);
+  }
+
   .ui-pill-outline {
     @apply inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-ink/15 bg-transparent px-5 py-2 text-sm font-medium text-ink transition-colors duration-150 hover:bg-paper md:text-base;
   }

@@ -46,7 +46,7 @@ export function ProjectCardList() {
                       </li>
                     ))}
                   </ul>
-                  <p className="type-body-large mt-5 max-w-2xl md:mt-8">{project.summary}</p>
+                  <p className="type-body-large mt-5 md:mt-8">{project.summary}</p>
                   <InlineCTA>Read Case Study</InlineCTA>
                 </div>
               </Link>

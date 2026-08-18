@@ -61,18 +61,14 @@ export const homeContent = {
         details: {
           description:
             "A household finance tracker built because categorizing a month of spending by hand never survives contact with real life. Statements from several cards and accounts go in, the Claude API sorts each transaction into a category, and the dashboard shows net cash flow, spending by category, and how the budget period is actually going.",
-          relevance: [
-            "Shows how I use an LLM as a working part of a product, not a bolt-on feature.",
-            "Turns a tedious household chore into a clear, budget-aware view of where money goes.",
-            "Covers the full path from data import and modeling to the dashboard and its charts."
+          features: [
+            "Imports statements from several cards and accounts in one pass.",
+            "Categorizes every transaction through the Claude API instead of by hand.",
+            "Tracks net cash flow and spending by category across the budget period.",
+            "Flags how the period is actually going against the budget that was set."
           ],
-          shots: [
-            {
-              title: "Walkthrough",
-              caption:
-                "Statements come in and get categorized, then the dashboard shows net cash flow, spending by category, and budget status across every card and account.",
-            }
-          ]
+          /* TODO(ignacio): confirm — inferred from the Vercel demo URL. */
+          stack: ["Next.js", "React", "TypeScript", "Claude API", "Vercel"]
         }
       },
       {
@@ -89,33 +85,14 @@ export const homeContent = {
         details: {
           description:
             "A personal meal-planning product that keeps recipes, meal rotations, and weekly planning in one dashboard so cooking decisions do not restart from zero every week.",
-          relevance: [
-            "Shows I can turn a common personal workflow into a structured product system.",
-            "Connects design, database-backed UI, and deployment-ready web development.",
-            "Makes my AI-assisted programming workflow visible through a practical shipped tool."
+          features: [
+            "Turns a pasted recipe or a rough note into a filled-in recipe form, asking a follow-up when something is unclear.",
+            "Plans the week in one rotation view instead of deciding meal by meal.",
+            "Pulls three options at random from the saved library when nothing sounds good.",
+            "Keeps every recipe in one place so the week does not restart from zero."
           ],
-          shots: [
-            {
-              title: "Smart recipe intake",
-              caption:
-                "Paste a recipe or a rough note and the assistant, connected to OpenAI's API, pulls out the ingredients, fills in the recipe form, and asks a follow-up if something's unclear.",
-              src: "/images/builder/meal-prep-assistant/slide-1.png",
-              alt: "Smart recipe intake form prefilled from a pasted recipe"
-            },
-            {
-              title: "Weekly rotation",
-              caption: "A planning surface for choosing meals across the week.",
-              src: "/images/builder/meal-prep-assistant/slide-2.png",
-              alt: "Weekly meal rotation planner"
-            },
-            {
-              title: "Recipe randomizer",
-              caption:
-                "When nothing sounds good, the app pulls three options at random from the saved recipe library.",
-              src: "/images/builder/meal-prep-assistant/slide-3.png",
-              alt: "Recipe randomizer suggesting three meals from the library"
-            }
-          ]
+          /* TODO(ignacio): confirm the database and host. */
+          stack: ["Next.js", "TypeScript", "Supabase", "OpenAI API", "Vercel"]
         }
       },
       {
@@ -130,31 +107,13 @@ export const homeContent = {
         details: {
           description:
             "A small arcade game inspired by survival wave mechanics, built to explore player feedback, upgrade loops, pacing, and the feeling of pressure over time.",
-          relevance: [
-            "Shows interaction design beyond conventional product screens.",
-            "Highlights systems thinking through balancing, progression, and feedback loops.",
-            "Extends my AI-assisted programming workflow into game logic and a real engine, not just web interfaces."
+          features: [
+            "A wave survival loop that ramps pressure the longer a run lasts.",
+            "Upgrades between waves that change how the rest of the run plays.",
+            "Distinct enemy types built to read at a glance under pressure.",
+            "Score, time survived, and HP tracked on screen throughout."
           ],
-          shots: [
-            {
-              title: "In-game view",
-              caption: "Polygon-based characters and enemies, with score, time survived, and HP tracked on screen.",
-              src: "/images/builder/survivor-style-game/slide-1.png",
-              alt: "Gameplay screenshot showing polygon characters, score, time, and HP"
-            },
-            {
-              title: "Enemy types",
-              caption: "A look at the different enemy types and how they read at a glance during a run.",
-              src: "/images/builder/survivor-style-game/slide-2.png",
-              alt: "The different enemy types in the game"
-            },
-            {
-              title: "Built in Godot",
-              caption: "The project in the Godot editor, where the scenes, scripts, and game logic come together.",
-              src: "/images/builder/survivor-style-game/slide-3.png",
-              alt: "The game open in the Godot editor"
-            }
-          ]
+          stack: ["Godot", "GDScript"]
         }
       }
     ] satisfies BuilderLabProject[]

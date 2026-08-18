@@ -3,9 +3,9 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { AnimatedSection, StaggerGroup, StaggerItem } from "@/components/motion/animated-section";
 import { MediaFrame } from "@/components/visual/media-frame";
 import { PageSection } from "@/components/visual/page-section";
-import { SectionLabel } from "@/components/visual/section-label";
 import { homeContent } from "@/content/home";
 import type { BuilderLabProject } from "@/content/types";
+import { LabVideo } from "./lab-video";
 
 /** Ordered so the label matches whichever URL the project actually carries. */
 function projectLinks(project: BuilderLabProject) {
@@ -23,35 +23,25 @@ export function LabIndex() {
     <main>
       <PageSection spacing="hero">
         <AnimatedSection>
-          {/* Same back affordance as the case studies: this page is only
-              reached from the home section, so it needs a way out. */}
-          <Link
-            className="type-body-small group inline-flex min-h-10 items-center gap-3 text-muted transition-colors hover:text-ink focus-ring"
-            href="/#builder-lab"
-          >
-            <ArrowLeft
-              aria-hidden="true"
-              className="transition-transform duration-200 group-hover:-translate-x-1"
-              size={18}
-            />
+          {/* This page is only reached from the home section, so it needs a
+              way out — the same back affordance the case studies use. */}
+          <Link className="ui-link-cta ui-link-cta-back focus-ring" href="/#builder-lab">
+            <ArrowLeft aria-hidden="true" size={20} />
             Back
           </Link>
-          <SectionLabel className="mt-6" variant="accent">
-            Lab
-          </SectionLabel>
-          <h1 className="type-display mt-6 max-w-4xl">{builderLab.label}</h1>
-          <p className="type-body-large mt-6 max-w-3xl">{builderLab.body}</p>
+          <h1 className="type-display mt-8">{builderLab.label}</h1>
+          <p className="type-body-large mt-6">{builderLab.body}</p>
         </AnimatedSection>
       </PageSection>
 
-      <PageSection className="pb-24">
-        <StaggerGroup className="grid gap-16" stagger={0.1}>
+      <PageSection className="pb-24 pt-8">
+        <StaggerGroup className="grid gap-24" stagger={0.1}>
           {builderLab.projects.map((project, index) => (
             <StaggerItem
               key={project.slug}
               // A rule between entries, not around them: the first row opens
               // straight after the intro.
-              className={index === 0 ? undefined : "case-rule pt-16"}
+              className={index === 0 ? undefined : "case-rule pt-24"}
             >
               <LabProject project={project} priority={index === 0} />
             </StaggerItem>
@@ -70,33 +60,35 @@ function LabProject({
   priority: boolean;
 }) {
   const links = projectLinks(project);
-  const shots = project.details.shots.filter((shot) => shot.src);
 
   return (
     <article style={{ "--project-accent": project.accent } as React.CSSProperties}>
       <LabProjectMedia priority={priority} project={project} />
 
-      <div className="mt-8 max-w-3xl">
+      <div className="mt-16">
         <h2 className="type-home-title">{project.title}</h2>
-        <ul className="mt-3 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <li className="ui-tag" key={tag}>
-              {tag}
-            </li>
-          ))}
-        </ul>
         <p className="type-body-large mt-6">{project.summary}</p>
         <p className="type-body mt-5">{project.details.description}</p>
 
-        <h3 className="type-case-subtitle mt-8">Why it belongs here</h3>
+        <h3 className="type-case-subtitle mt-12">Main features</h3>
         <ul className="type-body mt-4 list-disc space-y-2 pl-5">
-          {project.details.relevance.map((point) => (
-            <li key={point}>{point}</li>
+          {project.details.features.map((feature) => (
+            <li key={feature}>{feature}</li>
           ))}
         </ul>
 
+        <h3 className="type-case-subtitle mt-12">Tech stack</h3>
+        <p className="type-body mt-4">
+          {project.details.stack.map((tool, index) => (
+            <span key={tool}>
+              {index > 0 ? <span aria-hidden="true"> · </span> : null}
+              {tool}
+            </span>
+          ))}
+        </p>
+
         {links.length > 0 ? (
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-12 flex flex-wrap gap-3">
             {links.map((link) => (
               <a
                 className="ui-pill-outline focus-ring"
@@ -112,32 +104,12 @@ function LabProject({
           </div>
         ) : null}
       </div>
-
-      {shots.length > 0 ? (
-        <div className="mt-12 grid gap-8 md:grid-cols-2">
-          {shots.map((shot) => (
-            <figure key={shot.title}>
-              <MediaFrame
-                alt={shot.alt ?? shot.title}
-                className="aspect-[1.5/1] w-full"
-                fit="contain"
-                sizes="(max-width: 768px) 92vw, 620px"
-                src={shot.src as string}
-              />
-              <figcaption className="mt-4">
-                <p className="type-small-title">{shot.title}</p>
-                <p className="type-body-small mt-2 text-muted">{shot.caption}</p>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      ) : null}
     </article>
   );
 }
 
-/* The lead visual is whatever the project has: a looping clip or a still. A
-   project with neither renders copy only rather than a broken frame. */
+/* The lead visual is whatever the project has: a clip that opens as you reach
+   it, or a still. A project with neither renders copy only. */
 function LabProjectMedia({
   project,
   priority
@@ -147,19 +119,11 @@ function LabProjectMedia({
 }) {
   if (project.video) {
     return (
-      <div className="media-frame aspect-video w-full">
-        <video
-          aria-label={project.imageAlt ?? project.title}
-          autoPlay
-          className="h-full w-full object-cover"
-          loop
-          muted
-          playsInline
-          poster={project.videoPoster}
-          preload="metadata"
-          src={project.video}
-        />
-      </div>
+      <LabVideo
+        label={project.title}
+        poster={project.videoPoster}
+        src={project.video}
+      />
     );
   }
 
