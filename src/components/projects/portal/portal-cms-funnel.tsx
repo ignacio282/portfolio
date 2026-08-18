@@ -129,7 +129,7 @@ export function PortalCmsFunnel() {
       };
 
   return (
-    <div className="w-full max-w-[420px]" ref={figureRef}>
+    <div className="figure-block max-w-[620px]" ref={figureRef}>
       <motion.svg
         animate={isInView ? "show" : "hidden"}
         className="figure-svg"

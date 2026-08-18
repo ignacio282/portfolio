@@ -187,10 +187,6 @@ img {
     @apply text-lg font-medium leading-tight text-teal;
   }
 
-  .type-index-marker {
-    @apply text-4xl font-semibold leading-none text-teal/70;
-  }
-
   .type-hero-hand {
     @apply text-fluid-title leading-none;
   }
@@ -275,7 +271,6 @@ img {
   .type-display,
   .type-case-display-title,
   .type-case-display-metric,
-  .type-case-subtitle,
   .type-section-title,
   .type-impact-heading,
   .type-card-title,
@@ -288,7 +283,10 @@ img {
     text-wrap: balance;
   }
 
-  .type-case-display-title {
+  /* Sentence-length headings, not labels: balancing them would pull the first
+     lines short of the measure the container already sets. */
+  .type-case-display-title,
+  .type-case-subtitle {
     text-wrap: wrap;
   }
 
@@ -304,8 +302,7 @@ img {
 
   .type-case-display-metric,
   .type-metric,
-  .type-impact-metric,
-  .type-index-marker {
+  .type-impact-metric {
     font-variant-numeric: tabular-nums;
   }
 
@@ -325,6 +322,19 @@ img {
 
   .case-rule {
     @apply border-t border-line;
+  }
+
+  /* Sections are told apart by their surfaces and the space between them, not
+     by a rule. The figures sit in this gap, on the paper, between the cards. */
+  /* minmax(0, 1fr) rather than the default auto, so no child's min-content
+     width can widen the section past the column it was given. */
+  .case-section {
+    @apply grid gap-12;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case-card {
+    @apply min-w-0 p-6 md:p-10;
   }
 
   .focus-ring {
@@ -928,6 +938,13 @@ img {
      the page. */
   .figure-scroll {
     @apply w-full overflow-x-auto;
+  }
+
+  /* A figure standing in the reading column rather than beside it: centred,
+     with its own cap so a near-square drawing does not grow as tall as the
+     column is wide. */
+  .figure-block {
+    @apply mx-auto mt-12 w-full;
   }
 
   .figure-svg-wide {

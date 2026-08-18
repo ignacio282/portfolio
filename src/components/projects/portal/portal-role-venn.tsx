@@ -132,7 +132,7 @@ export function PortalRoleVenn() {
       };
 
   return (
-    <div className="w-full max-w-[560px]" ref={figureRef}>
+    <div className="figure-block max-w-[480px]" ref={figureRef}>
       <motion.svg
         animate={isInView ? "show" : "hidden"}
         className="figure-svg"

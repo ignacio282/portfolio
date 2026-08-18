@@ -141,7 +141,7 @@ export function PortalComponentReuse() {
       };
 
   return (
-    <div className="w-full max-w-[420px]" ref={figureRef}>
+    <div className="figure-block max-w-[680px]" ref={figureRef}>
       <motion.svg
         animate={isInView ? "show" : "hidden"}
         className="figure-svg"
