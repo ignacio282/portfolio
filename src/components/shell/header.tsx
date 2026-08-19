@@ -27,8 +27,11 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 flex justify-center px-5 md:px-8">
       <div
+        data-floating={isFloating}
         className={cn(
-          "mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-10 ease-out md:rounded-full md:px-8",
+          /* py-10 is 80px of chrome before the bar's own content; on a short
+             laptop window that is a tenth of the screen, so it steps down. */
+          "site-header-bar mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 py-10 ease-out md:rounded-full md:px-8",
           !reducedMotion && "transition-[background-color,box-shadow,padding,margin-top,border-radius] duration-300",
           isFloating &&
             "-mx-5 border-b border-ink/10 bg-paper px-5 py-4 md:mx-0 md:mt-4 md:border-b-0 md:bg-paper/95 md:px-6 md:py-2.5 md:shadow-[0_18px_45px_rgba(36,37,38,0.14),0_4px_14px_rgba(36,37,38,0.08)]"

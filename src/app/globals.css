@@ -14,29 +14,31 @@
   --color-teal: #00877f;
   --color-teal-dark: #006d68;
   --color-line: #d8d4cc;
-  /* Fluid ramp: each token hits its min at 375px and its max — the value this
-     scale has always used — at 1280px, so the desktop design is unchanged and
-     only phones and small tablets scale down. The rem addend is what keeps
+  /* Fluid ramp: each token hits its min at 375px and its max at 1536px. The
+     top anchor used to sit at 1280px, which meant a 1280-wide laptop got the
+     same pixel sizes as a 27" monitor — same type, far less screen to hold it,
+     so the page read as zoomed in. Small laptops now land partway up the ramp
+     and only wide desktops see the full scale. The rem addend is what keeps
      browser font-size settings working; a vw-only clamp ignores them. */
-  --text-xs: clamp(0.8125rem, 0.761rem + 0.221vw, 0.9375rem); /* 13 → 15 */
-  --text-sm: clamp(0.9375rem, 0.873rem + 0.276vw, 1.09375rem); /* 15 → 17.5 */
-  --text-base: clamp(1.0625rem, 0.985rem + 0.331vw, 1.25rem); /* 17 → 20 */
-  --text-lg: clamp(1.15625rem, 1.053rem + 0.442vw, 1.40625rem); /* 18.5 → 22.5 */
-  --text-xl: clamp(1.25rem, 1.121rem + 0.552vw, 1.5625rem); /* 20 → 25 */
-  --text-2xl: clamp(1.4375rem, 1.256rem + 0.773vw, 1.875rem); /* 23 → 30 */
-  --text-3xl: clamp(1.6875rem, 1.416rem + 1.16vw, 2.34375rem); /* 27 → 37.5 */
-  --text-4xl: clamp(1.875rem, 1.487rem + 1.657vw, 2.8125rem); /* 30 → 45 */
-  --text-5xl: clamp(2.25rem, 1.628rem + 2.652vw, 3.75rem); /* 36 → 60 */
-  --text-6xl: clamp(2.5rem, 1.594rem + 3.867vw, 4.6875rem); /* 40 → 75 */
-  --text-7xl: clamp(2.75rem, 1.559rem + 5.083vw, 5.625rem); /* 44 → 90 */
+  --text-xs: clamp(0.8125rem, 0.772rem + 0.172vw, 0.9375rem); /* 13 → 15 */
+  --text-sm: clamp(0.9375rem, 0.887rem + 0.215vw, 1.09375rem); /* 15 → 17.5 */
+  --text-base: clamp(1.0625rem, 1.002rem + 0.258vw, 1.25rem); /* 17 → 20 */
+  --text-lg: clamp(1.15625rem, 1.076rem + 0.345vw, 1.40625rem); /* 18.5 → 22.5 */
+  --text-xl: clamp(1.25rem, 1.149rem + 0.431vw, 1.5625rem); /* 20 → 25 */
+  --text-2xl: clamp(1.4375rem, 1.296rem + 0.603vw, 1.875rem); /* 23 → 30 */
+  --text-3xl: clamp(1.6875rem, 1.476rem + 0.904vw, 2.34375rem); /* 27 → 37.5 */
+  --text-4xl: clamp(1.875rem, 1.572rem + 1.292vw, 2.8125rem); /* 30 → 45 */
+  --text-5xl: clamp(2.25rem, 1.766rem + 2.067vw, 3.75rem); /* 36 → 60 */
+  --text-6xl: clamp(2.5rem, 1.793rem + 3.015vw, 4.6875rem); /* 40 → 75 */
+  --text-7xl: clamp(2.75rem, 1.821rem + 3.962vw, 5.625rem); /* 44 → 90 */
 
   /* Span tokens for type that used to jump at the md: breakpoint. One clamp
      across the whole range replaces the two-step pair, so nothing snaps. */
-  --text-fluid-hero: clamp(2.25rem, 0.852rem + 5.967vw, 5.625rem); /* 36 → 90 */
-  --text-fluid-display: clamp(1.875rem, 1.098rem + 3.315vw, 3.75rem); /* 30 → 60 */
-  --text-fluid-title: clamp(1.6875rem, 1.221rem + 1.989vw, 2.8125rem); /* 27 → 45 */
-  --text-fluid-lead: clamp(1.0625rem, 0.92rem + 0.608vw, 1.40625rem); /* 17 → 22.5 */
-  --text-fluid-label: clamp(0.9375rem, 0.808rem + 0.552vw, 1.25rem); /* 15 → 20 */
+  --text-fluid-hero: clamp(2.25rem, 1.16rem + 4.651vw, 5.625rem); /* 36 → 90 */
+  --text-fluid-display: clamp(1.875rem, 1.269rem + 2.584vw, 3.75rem); /* 30 → 60 */
+  --text-fluid-title: clamp(1.6875rem, 1.324rem + 1.55vw, 2.8125rem); /* 27 → 45 */
+  --text-fluid-lead: clamp(1.0625rem, 0.951rem + 0.474vw, 1.40625rem); /* 17 → 22.5 */
+  --text-fluid-label: clamp(0.9375rem, 0.837rem + 0.431vw, 1.25rem); /* 15 → 20 */
 }
 
 :root {
@@ -164,18 +166,18 @@ img {
   }
 
   .type-case-section-label {
-    font-size: clamp(0.875rem, 0.823rem + 0.221vw, 1rem); /* 14 → 16 */
+    font-size: clamp(0.875rem, 0.835rem + 0.172vw, 1rem); /* 14 → 16 */
     @apply font-semibold leading-tight tracking-[0.02em] text-teal;
   }
 
   .type-case-display-title,
   .type-case-display-metric {
-    font-size: clamp(1.75rem, 1.336rem + 1.768vw, 2.75rem); /* 28 → 44 */
+    font-size: clamp(1.75rem, 1.427rem + 1.378vw, 2.75rem); /* 28 → 44 */
     @apply font-semibold leading-[1.16] text-ink;
   }
 
   .type-case-subtitle {
-    font-size: clamp(1.1875rem, 1.058rem + 0.552vw, 1.5rem); /* 19 → 24 */
+    font-size: clamp(1.1875rem, 1.087rem + 0.431vw, 1.5rem); /* 19 → 24 */
     @apply font-semibold leading-[1.3] text-ink;
   }
 
@@ -220,7 +222,7 @@ img {
   }
 
   .type-section-title {
-    font-size: clamp(1.375rem, 1.116rem + 1.105vw, 2rem); /* 22 → 32 */
+    font-size: clamp(1.375rem, 1.173rem + 0.861vw, 2rem); /* 22 → 32 */
     @apply font-semibold leading-tight text-ink;
   }
 
@@ -229,27 +231,27 @@ img {
   }
 
   .type-card-title {
-    font-size: clamp(1.0625rem, 0.985rem + 0.331vw, 1.25rem); /* 17 → 20 */
+    font-size: clamp(1.0625rem, 1.002rem + 0.258vw, 1.25rem); /* 17 → 20 */
     @apply font-semibold leading-tight text-ink;
   }
 
   .type-small-title {
-    font-size: clamp(1.0625rem, 0.985rem + 0.331vw, 1.25rem); /* 17 → 20 */
+    font-size: clamp(1.0625rem, 1.002rem + 0.258vw, 1.25rem); /* 17 → 20 */
     @apply font-semibold leading-6 text-ink;
   }
 
   .type-body-large {
-    font-size: clamp(1.03125rem, 0.941rem + 0.387vw, 1.25rem); /* 16.5 → 20 */
+    font-size: clamp(1.03125rem, 0.961rem + 0.301vw, 1.25rem); /* 16.5 → 20 */
     @apply font-normal leading-[1.6] text-ink;
   }
 
   .type-body {
-    font-size: clamp(1rem, 0.948rem + 0.221vw, 1.125rem); /* 16 → 18 */
+    font-size: clamp(1rem, 0.96rem + 0.172vw, 1.125rem); /* 16 → 18 */
     @apply font-normal leading-[1.6] text-ink;
   }
 
   .type-body-small {
-    font-size: clamp(0.875rem, 0.823rem + 0.221vw, 1rem); /* 14 → 16 */
+    font-size: clamp(0.875rem, 0.835rem + 0.172vw, 1rem); /* 14 → 16 */
     @apply font-normal leading-[1.55] text-ink;
   }
 
@@ -339,6 +341,29 @@ img {
 
   .focus-ring {
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+  }
+
+  /* The hero's height is capped against the window as well as in px. A fixed
+     620px block under 128px of padding is taller than a small laptop window,
+     so the hero was the whole first screen with no sign that case studies
+     follow it. On a short screen the padding steps down too — 6rem still
+     clears the header, which shrinks at the same height. */
+  .home-hero {
+    min-height: min(560px, 82svh);
+    padding-top: 7rem;
+  }
+
+  @media (min-width: 768px) {
+    .home-hero {
+      min-height: min(620px, 82svh);
+      padding-top: 8rem;
+    }
+  }
+
+  @media (max-height: 800px) {
+    .home-hero {
+      padding-top: 6.75rem;
+    }
   }
 
   .layout-section-sm {
@@ -524,7 +549,7 @@ img {
   .ui-tag {
     /* A notch below text-xs on mobile: at 13px the two 24-char tags in the
        portal card need 301px in a 295px column and spill to a third row. */
-    font-size: clamp(0.75rem, 0.672rem + 0.331vw, 0.9375rem); /* 12 → 15 */
+    font-size: clamp(0.75rem, 0.689rem + 0.258vw, 0.9375rem); /* 12 → 15 */
     @apply inline-flex items-center whitespace-nowrap rounded-full border px-2 py-0.5 font-medium md:px-3 md:py-1;
     border-color: var(--project-accent, var(--color-ink));
     background-color: transparent;
@@ -1079,7 +1104,7 @@ img {
   }
 
   .about-bar-label {
-    font-size: clamp(0.875rem, 0.823rem + 0.221vw, 1rem); /* 14 → 16 */
+    font-size: clamp(0.875rem, 0.835rem + 0.172vw, 1rem); /* 14 → 16 */
     @apply truncate font-semibold text-ink;
   }
 
@@ -1221,6 +1246,15 @@ img {
     .about-rail-item[data-open="true"] .about-detail {
       @apply visible mt-0 translate-y-0 opacity-100;
     }
+  }
+}
+
+/* Unlayered on purpose: it overrides the py-10 utility on the header bar,
+   which sits in Tailwind's utilities layer. Scoped to the resting state so the
+   scrolled, floating header still shrinks to its own tighter padding. */
+@media (max-height: 800px) {
+  .site-header-bar[data-floating="false"] {
+    padding-block: 1.75rem;
   }
 }
 
