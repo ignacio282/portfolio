@@ -21,7 +21,9 @@ export function HomeHeroMotion({ content }: HomeHeroMotionProps) {
   const hiddenY = reducedMotion ? 0 : motionDistances.heroFollowY;
 
   return (
-    <PageSection className="min-h-[560px] justify-center pt-28 md:min-h-[620px] md:pt-32">
+    // Height and top padding both live in .home-hero, so the short-screen rule
+    // there is not fighting a pt-* utility for the same property.
+    <PageSection className="home-hero justify-center">
       <div className="w-full">
         <motion.div
           className="relative inline-block"
