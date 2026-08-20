@@ -25,7 +25,7 @@ You built it with AI and it works. Here's what usually needs a second look befor
 For Founders
 
 **field: og.headline**
-You built with AI. That's real progress.
+You built with AI. Now what?
 
 **field: og.footer**
 Ignacio Vergara, product designer
@@ -34,11 +34,8 @@ Ignacio Vergara, product designer
 
 ## 1. Hero
 
-**field: hero.label**
-For Founders
-
 **field: hero.title**
-You built with AI and now you have a working product. That's real progress.
+You built with AI, and it works. Now what?
 
 **field: hero.body** — the part in `**bold**` is set in semibold with a
 hand-drawn teal underline under it.
@@ -312,13 +309,13 @@ Who I Am
 Ignacio Vergara
 
 **field: bio.body[0]**
-I'm a product designer from Ecuador, now in Tampa. I moved here for a master's in Digital Media at UCF and stayed.
+I'm a product designer, originally from Ecuador, now based in Tampa. I have a master's in Digital Media from the University of Central Florida, focused on human-computer interaction.
 
 **field: bio.body[1]**
-I like early-stage products because the questions are still open. There's no committee, no legacy system to route around, and the person who decides is usually the person I'm talking to.
+Most of my work has been inside big companies. I like early-stage products because the problems are just as real without the bureaucracy: no committee, no legacy system to route around, and the person who decides is usually the person I'm talking to.
 
 **field: bio.body[2]**
-I build things on weekends, usually with more enthusiasm than planning. I read too much science fiction, I have opinions about ramen, and I'll trade anime recommendations with anyone who asks.
+On my own time I design and build things, usually with more enthusiasm than planning. I read too much science fiction and fantasy, I play more games than I admit to, and I'll trade anime recommendations with anyone who asks.
 
 ---
 

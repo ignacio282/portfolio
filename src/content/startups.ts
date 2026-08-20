@@ -7,8 +7,7 @@ export const SHOW_TESTIMONIALS = false;
 // Text wrapped in *asterisks* renders as <em>. Used sparingly, once per section.
 export const startupsContent = {
   hero: {
-    label: "For founders",
-    title: "You built with AI and now you have a working product. That's real progress.",
+    title: "You built with AI, and it works. Now what?",
     body:
       "Getting a first version working and deployed used to take months and a full team. You did it faster than that, more efficiently, and it runs “just fine.” The thing with AI is that it doesn't think about the part that usually comes next: **what happens once people start using it? Real people, not friends and family, not your team.**",
     // TODO(copy): your wording. This is the "so what do you actually do" answer,
@@ -216,9 +215,9 @@ export const startupsContent = {
     label: "Who I Am",
     title: "Ignacio Vergara",
     body: [
-      "I'm a product designer from Ecuador, now in Tampa. I moved here for a master's in Digital Media at UCF and stayed.",
-      "I like early-stage products because the questions are still open. There's no committee, no legacy system to route around, and the person who decides is usually the person I'm talking to.",
-      "I build things on weekends, usually with more enthusiasm than planning. I read too much science fiction, I have opinions about ramen, and I'll trade anime recommendations with anyone who asks."
+      "I'm a product designer, originally from Ecuador, now based in Tampa. I have a master's in Digital Media from the University of Central Florida, focused on human-computer interaction.",
+      "Most of my work has been inside big companies. I like early-stage products because the problems are just as real without the bureaucracy: no committee, no legacy system to route around, and the person who decides is usually the person I'm talking to.",
+      "On my own time I design and build things, usually with more enthusiasm than planning. I read too much science fiction and fantasy, I play more games than I admit to, and I'll trade anime recommendations with anyone who asks."
     ],
     image: "/images/about-hero.png",
     imageAlt: "Ignacio smiling outdoors."

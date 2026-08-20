@@ -45,7 +45,7 @@ export default async function OpengraphImage() {
             color: "#242526"
           }}
         >
-          {"You built with AI. That's real progress."}
+          {"You built with AI. Now what?"}
         </div>
         <div
           style={{

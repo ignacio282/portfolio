@@ -172,9 +172,6 @@ function StartupsHero() {
     <section className="layout-section-hero pb-8">
       <StaggerGroup className="grid gap-6" delayChildren={0.1} trigger="load">
         <StaggerItem>
-          <SectionLabel variant="accent">{hero.label}</SectionLabel>
-        </StaggerItem>
-        <StaggerItem>
           <h1 className="type-display landing-heading-wrap">{hero.title}</h1>
         </StaggerItem>
         <StaggerItem>
