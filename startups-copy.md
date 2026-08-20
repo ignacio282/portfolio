@@ -55,7 +55,7 @@ the page says what you do before anyone scrolls. `TODO(copy)`.
 
 **field: hero.credential** — moved up from the "How I help" section so the reason
 to believe the claim above sits in the hero. Rendered on a teal tint.
-I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.
+I spent four years designing digital products for a bank with millions of clients, mostly transactional flows where real money was involved and there was no room to get it wrong. All those years and dozens of conversations with real people taught me what an interface and a system actually need to succeed.
 
 **field: hero.primaryCta**
 Book a free call

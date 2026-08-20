@@ -110,18 +110,31 @@ function CtaRow({
   );
 }
 
+// Sections are told apart by their surfaces and the space between them, the
+// same way the case studies work. `surface={false}` leaves a section on the
+// paper, for the ones that are themselves a grid of cards.
 function LandingSection({
   id,
   children,
-  className
+  className,
+  surface = true
 }: {
   id: string;
   children: ReactNode;
   className?: string;
+  surface?: boolean;
 }) {
+  if (!surface) {
+    return (
+      <section className={cn("layout-section-lg scroll-mt-24", className)} id={id}>
+        {children}
+      </section>
+    );
+  }
+
   return (
-    <section className={cn("layout-section-lg scroll-mt-24", className)} id={id}>
-      {children}
+    <section className={cn("layout-section-surface scroll-mt-24", className)} id={id}>
+      <div className="surface-card landing-section-card">{children}</div>
     </section>
   );
 }
@@ -273,10 +286,10 @@ function OfferingGrid() {
     <LandingSection id="offerings">
       <SectionIntro paragraphs={[offerings.intro]} title={offerings.title} />
 
-      <RevealGroup className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <RevealGroup className="mt-10 grid gap-5">
         {offerings.items.map((item) => (
           <StaggerItem className="h-full" key={item.name}>
-            <article className="landing-offering-card surface-card">
+            <article className="landing-offering-card">
               <header className="landing-offering-header">
                 <h3 className="type-section-title">{item.name}</h3>
               </header>
@@ -341,7 +354,7 @@ function ProcessSteps() {
 
 function SelectedWork() {
   return (
-    <LandingSection id="work">
+    <LandingSection id="work" surface={false}>
       <Reveal>
         <h2 className="type-impact-heading landing-heading-wrap">{work.title}</h2>
       </Reveal>
