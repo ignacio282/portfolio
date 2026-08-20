@@ -707,7 +707,11 @@ img {
     /* minmax(0,…) on both tracks: without it the column inherits min-width auto
        and any wide child, like the journey chart, stretches the whole page
        instead of scrolling inside its own container. */
-    @apply mx-auto grid w-full max-w-[1420px] grid-cols-[minmax(0,1fr)] px-5 md:px-8 xl:grid-cols-[190px_minmax(0,1fr)] xl:gap-14;
+    /* Same gutter rule as PageSection: it grows with the viewport until the
+       max-width takes over. Below the 1420px cap nothing else holds the content
+       off the window edge, so a 1280–1400 laptop ran nearly edge to edge on
+       md:px-8 alone. */
+    @apply mx-auto grid w-full max-w-[1420px] grid-cols-[minmax(0,1fr)] px-5 md:px-8 lg:px-[max(2rem,4vw)] xl:grid-cols-[190px_minmax(0,1fr)] xl:gap-14;
   }
 
   .landing-side-nav {
