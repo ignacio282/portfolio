@@ -378,6 +378,12 @@ img {
     @apply py-16 md:py-24;
   }
 
+  /* Surfaced sections carry their own padding, so the section itself only owns
+     the gap between one card and the next. */
+  .layout-section-surface {
+    @apply py-5 md:py-8;
+  }
+
   .layout-section-hero {
     @apply pt-32 md:pt-44;
   }
@@ -744,30 +750,38 @@ img {
     @apply size-12;
   }
 
+  /* Section card ground, the landing equivalent of .case-card. */
+  .landing-section-card {
+    @apply min-w-0 p-6 md:p-10;
+  }
+
+  /* The timeline nodes mask the line behind them, so they have to match
+     whatever ground they sit on. */
+  .landing-section-card .landing-timeline-node {
+    @apply bg-card;
+  }
+
+  /* Stacked full width now, so the card carries a soft surface instead of a
+     strong one: paper showing through the section card, held together by a
+     hairline rather than by contrast. */
   .landing-offering-card {
-    @apply flex h-full flex-col overflow-hidden;
-    transition-duration: 200ms;
-    transition-property: transform;
-    transition-timing-function: var(--ease-standard);
+    @apply flex h-full flex-col overflow-hidden bg-paper/60;
+    border-radius: var(--radius-card);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-line) 60%, transparent);
   }
 
   .landing-offering-header {
-    @apply bg-teal px-6 py-6 text-center md:px-8;
+    @apply px-6 pt-6 text-left md:px-8 md:pt-8;
   }
 
   .landing-offering-header .type-section-title {
-    color: var(--color-paper);
     font-weight: 500;
   }
 
   /* Flex column rather than grid, so the timeline block can push itself to the
      bottom with mt-auto and line up across cards of different lengths. */
   .landing-offering-body {
-    @apply flex flex-1 flex-col gap-8 p-6 md:p-8;
-  }
-
-  .landing-offering-card:hover {
-    transform: translate3d(0, -4px, 0);
+    @apply flex flex-1 flex-col gap-8 px-6 pb-6 pt-6 md:px-8 md:pb-8;
   }
 
   .landing-includes-item {
@@ -1307,10 +1321,6 @@ img {
   }
 
   .project-card:hover .project-media-layer {
-    transform: none !important;
-  }
-
-  .landing-offering-card:hover {
     transform: none !important;
   }
 

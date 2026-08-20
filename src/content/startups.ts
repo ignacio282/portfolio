@@ -24,7 +24,7 @@ export const startupsContent = {
     // The reason to believe any of the above, kept in the hero so nobody has to
     // scroll for it.
     credential:
-      "I spent four years designing for a bank. Millions of real people, real money, no room to get it wrong. Demos don't teach you that discipline. Real users do, and I've had four years of them.",
+      "I spent four years designing digital products for a bank with millions of clients, mostly transactional flows where real money was involved and there was no room to get it wrong. All those years and dozens of conversations with real people taught me what an interface and a system actually need to succeed.",
     primaryCta: "Book a free call",
     secondaryCta: "Email me"
   },
