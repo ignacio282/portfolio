@@ -1,3 +1,4 @@
+import { AboutSection } from "@/components/home/about-section";
 import { BuilderLabSection } from "@/components/home/builder-lab-section";
 import { Hero } from "@/components/home/hero";
 import { ImpactGrid } from "@/components/home/impact-grid";
@@ -11,6 +12,7 @@ export default function Home() {
       <ImpactGrid />
       <ProjectCardList />
       <BuilderLabSection />
+      <AboutSection />
       <StartupsBanner />
     </main>
   );

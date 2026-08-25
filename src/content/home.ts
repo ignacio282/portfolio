@@ -118,6 +118,14 @@ export const homeContent = {
       }
     ] satisfies BuilderLabProject[]
   },
+  about: {
+    label: "About Me",
+    body:
+      "I'm a systems thinker and problem solver by nature. I enjoy difficult challenges where I can turn my ideas into real solutions that make people's lives easier. I have shipped financial products to millions of users. I love puzzles, games, and animals. I hold a master's degree in Digital Media from UCF and a bachelor's in Multimedia Design from Ecuador, and I love building web-based tools to solve my day-to-day problems.",
+    cta: "Read more about me",
+    href: "/about",
+    linkedinCta: "Connect on LinkedIn"
+  },
   startupsBanner: {
     title: "I also work with early-stage teams on product design",
     body:
