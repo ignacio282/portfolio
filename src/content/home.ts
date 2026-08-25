@@ -5,9 +5,9 @@ export const homeContent = {
   hero: {
     title: "Hey, I'm Ignacio",
     kicker: "Product Designer",
+    // **bold** markers are rendered by withEmphasis; keep the copy plain text.
     lines: [
-      "Product designer who thinks in systems, not screens.",
-      "4+ years designing for enterprise banking products. Now I use AI to take that same thinking from prototype to the real thing."
+      "**Product designer** with more than **four years** of experience creating complex transactional products serving **4 million users.** I work from problem discovery to handoff, turning ambiguity into measurable business impact."
     ]
   },
   workOn: [

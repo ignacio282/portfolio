@@ -1,3 +1,4 @@
+import { stripEmphasis } from "@/components/visual/with-emphasis";
 import { aboutContent } from "@/content/about";
 import { homeContent } from "@/content/home";
 import { caseStudies } from "@/content/projects";
@@ -110,7 +111,7 @@ export function getFallbackAnswer(promptId?: CompanionPromptId) {
 function buildProfileContext() {
   return [
     "Ignacio profile context:",
-    `Hero: ${homeContent.hero.lines.join(" ")}`,
+    `Hero: ${stripEmphasis(homeContent.hero.lines.join(" "))}`,
     `About: ${aboutContent.story.beats.map((beat) => beat.body).join(" ")}`,
     `Education: ${aboutContent.education.items.map((item) => `${item.degree} - ${item.school}${item.year ? ` (${item.year})` : ""}`).join("; ")}`,
     `Experience: ${aboutContent.experience.entries.map((entry) => `${entry.role} at ${entry.org} (${entry.rangeLabel}): ${entry.summary}`).join("\n")}`,

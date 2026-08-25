@@ -7,6 +7,7 @@ import { motionDistances, motionPresets } from "@/components/motion/presets";
 import { CTAButton } from "@/components/visual/cta-button";
 import { LinkedInIcon } from "@/components/visual/linkedin-icon";
 import { PageSection } from "@/components/visual/page-section";
+import { withEmphasis } from "@/components/visual/with-emphasis";
 import type { homeContent } from "@/content/home";
 import { siteConfig } from "@/content/site";
 
@@ -74,7 +75,7 @@ export function HomeHeroMotion({ content }: HomeHeroMotionProps) {
                 delay: reducedMotion ? 0 : 0.5 + index * 0.12
               }}
             >
-              {line}
+              {withEmphasis(line)}
             </motion.p>
           ))}
         </div>

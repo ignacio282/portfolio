@@ -1,5 +1,4 @@
 import type { CSSProperties, ReactNode } from "react";
-import { Fragment } from "react";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { ProjectCardMedia } from "@/components/home/project-card-media";
@@ -15,6 +14,7 @@ import { Disclosure } from "@/components/visual/disclosure";
 import { InlineCTA } from "@/components/visual/inline-cta";
 import { MediaFrame } from "@/components/visual/media-frame";
 import { SectionLabel } from "@/components/visual/section-label";
+import { withEmphasis } from "@/components/visual/with-emphasis";
 import { projects } from "@/content/projects";
 import {
   BOOKING_URL,
@@ -43,22 +43,6 @@ function Reveal({ children, className }: { children: ReactNode; className?: stri
 
 function RevealGroup({ children, className }: { children: ReactNode; className?: string }) {
   return <StaggerGroup className={className}>{children}</StaggerGroup>;
-}
-
-// Content strings mark emphasis inline so the copy stays plain text and keeps
-// round-tripping with startups-copy.md: **bold** and *italic*.
-function withEmphasis(text: string): ReactNode {
-  return text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).map((token, index) => {
-    if (token.startsWith("**") && token.endsWith("**")) {
-      return <strong key={index}>{token.slice(2, -2)}</strong>;
-    }
-
-    if (token.length > 2 && token.startsWith("*") && token.endsWith("*")) {
-      return <em key={index}>{token.slice(1, -1)}</em>;
-    }
-
-    return <Fragment key={index}>{token}</Fragment>;
-  });
 }
 
 function BookingCTA({
