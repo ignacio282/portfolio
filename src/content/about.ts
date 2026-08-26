@@ -99,7 +99,7 @@ export const aboutContent = {
     label: "Experience",
     title: "Where I've done the work",
     intro:
-      "Six years of it, from front-end builds to a bank serving millions. Pick a stretch to see what happened there.",
+      "Four years designing at a bank serving millions, and the front-end years before that. Pick a stretch to see what happened there.",
     entries: [
       {
         id: "paseo",

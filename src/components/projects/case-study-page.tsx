@@ -27,6 +27,7 @@ const portalSectionLinks: CaseStudySectionLink[] = [
   { label: "My approach", href: "#approach" },
   { label: "My role", href: "#role" },
   { label: "UI strategy", href: "#strategy" },
+  { label: "Constraints", href: "#constraints" },
   { label: "Key decisions", href: "#decisions" },
   { label: "What changed", href: "#changed" },
   { label: "What I learned", href: "#matters" }
@@ -864,6 +865,7 @@ function PortalCaseStudyPage({
         <PortalApproach />
         <PortalRole />
         <PortalStrategy />
+        <PortalConstraints />
         <PortalDecisions />
         <PortalChanged />
         <PortalLearned nextProject={nextProject} />
@@ -990,7 +992,7 @@ function PortalApproach() {
       <CaseCard>
       <CaseSectionLabel>03. My approach</CaseSectionLabel>
       <p className="type-case-subtitle mt-7">
-        We audited the site from both a user and business perspective.
+        I audited the site with my UX partner, from both a user and business perspective.
       </p>
       {/* The metric reads as a headline over the paragraph it belongs to,
           rather than as a column beside it — this section runs in one column
@@ -999,10 +1001,10 @@ function PortalApproach() {
       <p className="type-case-metric-label mt-3">Analyzed using data</p>
       <div className="type-body mt-8 space-y-5">
         <p>
-          I worked with my UX partner to analyze the existing site using Google Analytics, internal dashboards, and custom funnels built with support from data engineers.
+          I pulled the numbers from Google Analytics and the internal dashboards, and worked with data engineers to build custom funnels for the paths those tools did not cover.
         </p>
         <p>
-          We ranked pages by traffic, business importance, and role in the customer journey. This helped us see where the site was working, where users were dropping off, and where important pages were underperforming despite their business value.
+          Then I ranked every page by traffic, business importance, and its role in the customer journey. That ranking is what showed us where the site was working, where users were dropping off, and where important pages were underperforming despite their business value.
         </p>
         <p>
           One of the clearest findings was that some high-priority pages were receiving far less traffic than expected. That pointed to a navigation and information architecture issue, not just a content issue.
@@ -1083,6 +1085,30 @@ function PortalStrategy() {
   );
 }
 
+function PortalConstraints() {
+  return (
+    <div id="constraints" className="case-section scroll-mt-32">
+      <CaseCard>
+      <CaseSectionLabel>06. Technical constraints</CaseSectionLabel>
+      <h2 className="type-case-display-title mt-7">
+        The CMS was <span className="text-teal">more restrictive</span> than we planned for
+      </h2>
+      <div className="type-body mt-8 space-y-5">
+        <p>
+          Once the technical team started building, the new CMS turned out to have tighter limits than the early demos suggested. Several of the interactions I had designed were not possible to build, at least not in the time the migration allowed.
+        </p>
+        <p>
+          So I had to decide what to protect. Visual detail and the richer interactions were the first things I let go. The architecture, the reusable templates, and the rules for how a page got assembled were not negotiable, because those were the parts that solved the original problem.
+        </p>
+        <p>
+          A few components went back to the drawing board and were rebuilt around what the CMS could actually render. The pages ended up simpler than my first designs, but the structure survived.
+        </p>
+      </div>
+      </CaseCard>
+    </div>
+  );
+}
+
 function PortalDecisions() {
   const decisions = [
     ["Treat the migration as a chance to fix the structure", "The CMS migration could have become a simple content transfer. Instead, we used it to question what should stay, what should be merged, and what needed a clearer path."],
@@ -1094,7 +1120,7 @@ function PortalDecisions() {
   return (
     <div id="decisions" className="case-section scroll-mt-32">
       <CaseCard>
-      <CaseSectionLabel>06. Key decisions and tradeoffs</CaseSectionLabel>
+      <CaseSectionLabel>07. Key decisions and tradeoffs</CaseSectionLabel>
       <div className="mt-7 grid gap-4 md:grid-cols-2">
         {decisions.map(([title, body]) => (
           <div key={title} className="surface-paper rounded-[8px] border border-teal p-5">
@@ -1112,7 +1138,7 @@ function PortalChanged() {
   return (
     <div id="changed" className="case-section scroll-mt-32">
       <CaseCard>
-      <CaseSectionLabel>07. What changed</CaseSectionLabel>
+      <CaseSectionLabel>08. What changed</CaseSectionLabel>
       <div className="mt-7 grid gap-4 md:grid-cols-2">
         <div className="surface-paper rounded-[8px] border border-teal p-5">
           <h3 className="type-case-subtitle">User side</h3>
@@ -1139,7 +1165,7 @@ function PortalLearned({ nextProject }: { nextProject: CaseStudy }) {
   return (
     <div id="matters" className="case-section scroll-mt-32">
       <CaseCard>
-      <CaseSectionLabel>08. What I learned</CaseSectionLabel>
+      <CaseSectionLabel>09. What I learned</CaseSectionLabel>
       <h2 className="type-case-display-title mt-7">
         This project shows <span className="text-teal">how I work</span> when the problem is bigger than the screen.
       </h2>

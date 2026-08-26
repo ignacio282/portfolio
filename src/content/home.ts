@@ -7,7 +7,7 @@ export const homeContent = {
     kicker: "Product Designer",
     // **bold** markers are rendered by withEmphasis; keep the copy plain text.
     lines: [
-      "**Product designer** with more than **four years** of experience creating complex transactional products serving **4 million users.** I work from problem discovery to handoff, turning ambiguity into measurable business impact."
+      "**Product designer** with **four years** of experience creating complex transactional products serving **4 million users.** I work from problem discovery to handoff, turning ambiguity into measurable business impact."
     ]
   },
   workOn: [
