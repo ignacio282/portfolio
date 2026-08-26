@@ -4,7 +4,7 @@ export const siteConfig = {
   name: "Ignacio Vergara",
   title: "IGNACIO VERGARA",
   description:
-    "UX/UI designer crafting intuitive web and mobile experiences. Explore projects for Banco Pichincha and more.",
+    "Product designer working on complex transactional products, from banking at scale to AI-assisted tools. Case studies from Banco Pichincha and beyond.",
   url: "https://ignaciovergara.me",
   resumeUrl:
     "https://drive.google.com/file/d/1xigL8vO2x6H0eIgNPHIhuby91b5f9QEn/view?usp=sharing",
