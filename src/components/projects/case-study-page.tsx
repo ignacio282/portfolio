@@ -8,11 +8,11 @@ import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { PortalCmsFunnel } from "@/components/projects/portal/portal-cms-funnel";
 import { PortalComponentReuse } from "@/components/projects/portal/portal-component-reuse";
 import { PortalPagePerformance } from "@/components/projects/portal/portal-page-performance";
-import { PortalRoleVenn } from "@/components/projects/portal/portal-role-venn";
 import { ReadingBuildLayers } from "@/components/projects/reading/reading-build-layers";
 import { ReadingCoreIdeaFlow } from "@/components/projects/reading/reading-core-idea-flow";
 import { ReadingReflectionCycle } from "@/components/projects/reading/reading-reflection-cycle";
 import { Card } from "@/components/visual/card";
+import { CaseVideo } from "@/components/visual/case-video";
 import { InlineCTA } from "@/components/visual/inline-cta";
 import { MediaFrame } from "@/components/visual/media-frame";
 import { PageSection } from "@/components/visual/page-section";
@@ -25,7 +25,7 @@ const portalSectionLinks: CaseStudySectionLink[] = [
   { label: "Why we started", href: "#why-started" },
   { label: "The challenge", href: "#challenge" },
   { label: "My approach", href: "#approach" },
-  { label: "My role", href: "#role" },
+  { label: "From findings to structure", href: "#process" },
   { label: "UI strategy", href: "#strategy" },
   { label: "Constraints", href: "#constraints" },
   { label: "Key decisions", href: "#decisions" },
@@ -147,6 +147,16 @@ function QrHero() {
   );
 }
 
+function BankCallout() {
+  return (
+    <div>
+      <p className="type-body">
+        Banco Pichincha is Ecuador&apos;s largest and most popular bank. It serves more than 4 million users through its digital platforms, including the website, mobile application, and web banking. It is a bank with a strong focus on transactional solutions for its personal banking clients.
+      </p>
+    </div>
+  );
+}
+
 function QrOverview() {
   const outcomes = [
     [
@@ -171,6 +181,7 @@ function QrOverview() {
     <div>
       <Card padding="lg">
         <div className="space-y-7">
+          <BankCallout />
           <div>
             <h2 className="type-section-title">The problem</h2>
             <p className="type-body mt-3">
@@ -195,7 +206,7 @@ function QrOverview() {
             <h2 className="type-section-title">Outcomes</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-4">
               {outcomes.map(([value, label]) => (
-                <div key={value} className="min-h-40 surface-paper rounded-[8px] border border-teal p-5">
+                <div key={value} className="min-h-40 surface-paper rounded-[8px] p-5">
                   <p className="type-small-title">{value}</p>
                   <p className="type-body-small mt-3">{label}</p>
                 </div>
@@ -286,7 +297,7 @@ function QrWhatLearned() {
         {findings.map((finding) => {
           const Icon = finding.icon;
           return (
-            <div key={finding.title} className="surface-paper rounded-[8px] border border-teal p-5">
+            <div key={finding.title} className="surface-paper rounded-[8px] p-5">
               <div className="flex items-center gap-3">
                 <Icon aria-hidden="true" className="text-teal" size={25} />
                 <h4 className="type-case-subtitle">{finding.title}</h4>
@@ -352,7 +363,7 @@ function QrKeyDecisions() {
       <CaseSectionLabel>04. Key decisions</CaseSectionLabel>
       <div className="mt-7 grid gap-4 md:grid-cols-2">
         {decisions.map(([title, body]) => (
-          <div key={title} className="surface-paper rounded-[8px] border border-teal p-5">
+          <div key={title} className="surface-paper rounded-[8px] p-5">
             <h3 className="type-case-subtitle">{title}</h3>
             <p className="type-body-small mt-4">{body}</p>
           </div>
@@ -534,7 +545,7 @@ function ReadingOverview() {
             <h2 className="type-section-title">Outcomes</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-4">
               {outcomes.map(([value, label]) => (
-                <div key={value} className="min-h-40 surface-paper rounded-[8px] border border-teal p-5">
+                <div key={value} className="min-h-40 surface-paper rounded-[8px] p-5">
                   <p className="type-small-title">{value}</p>
                   <p className="type-body-small mt-3">{label}</p>
                 </div>
@@ -747,7 +758,7 @@ function ReadingTesting() {
       </p>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         {findings.map(([title, body]) => (
-          <div key={title} className="surface-paper rounded-[8px] border border-teal p-5">
+          <div key={title} className="surface-paper rounded-[8px] p-5">
             <h3 className="type-case-subtitle">{title}</h3>
             <p className="type-body-small mt-4">{body}</p>
           </div>
@@ -790,7 +801,7 @@ function ReadingLearnings({ nextProject }: { nextProject: CaseStudy }) {
       <CaseSectionLabel>09. What I learned</CaseSectionLabel>
       <div className="mt-7 grid gap-4 md:grid-cols-2">
         {learnings.map(([title, body]) => (
-          <div key={title} className="surface-paper rounded-[8px] border border-teal p-5">
+          <div key={title} className="surface-paper rounded-[8px] p-5">
             <h3 className="type-case-subtitle">{title}</h3>
             <p className="type-body-small mt-4">{body}</p>
           </div>
@@ -863,7 +874,7 @@ function PortalCaseStudyPage({
         <PortalStarted />
         <PortalChallenge />
         <PortalApproach />
-        <PortalRole />
+        <PortalProcess />
         <PortalStrategy />
         <PortalConstraints />
         <PortalDecisions />
@@ -902,10 +913,11 @@ function PortalOverview() {
     <div>
       <Card padding="lg">
         <div className="space-y-7">
+          <BankCallout />
           <div>
             <h2 className="type-section-title">The problem</h2>
             <p className="type-body mt-3">
-              Banco Pichincha&apos;s public website had grown into a fragmented system of more than 250 pages. Different teams had created and managed content over time, which led to inconsistent navigation, duplicated pages, and important information becoming harder to find.
+              The bank&apos;s public website had grown into a fragmented system of more than 250 pages. Different teams had created and managed content over time, which led to inconsistent navigation, duplicated pages, and important information becoming harder to find.
             </p>
           </div>
           <div>
@@ -924,7 +936,7 @@ function PortalOverview() {
             <h2 className="type-section-title">Outcomes</h2>
             <div className="mt-6 grid gap-4 md:grid-cols-4">
               {outcomes.map(([value, label]) => (
-                <div key={value} className="min-h-40 surface-paper rounded-[8px] border border-teal p-5">
+                <div key={value} className="min-h-40 surface-paper rounded-[8px] p-5">
                   <p className="type-small-title">{value}</p>
                   <p className="type-body-small mt-3">{label}</p>
                 </div>
@@ -1026,31 +1038,90 @@ function PortalApproach() {
   );
 }
 
-function PortalRole() {
+function PortalProcess() {
   return (
-    <div id="role" className="case-section scroll-mt-32">
+    <div id="process" className="case-section scroll-mt-32">
       <CaseCard>
-      <CaseSectionLabel>04. My role</CaseSectionLabel>
+      <CaseSectionLabel>04. From findings to structure</CaseSectionLabel>
       <p className="type-case-subtitle mt-7">
-        I worked at the intersection of structure, business needs, and design execution.
+        We had the numbers from the audit, but not the reason behind them.
       </p>
-      <h3 className="type-case-subtitle mt-10">My responsibilities included:</h3>
-      <ul className="type-body mt-5 list-disc space-y-2 pl-5">
-            <li><strong>Analyzing</strong> site data to understand page performance and user behavior</li>
-            <li><strong>Defining</strong> the logic for the new information architecture</li>
-            <li><strong>Designing</strong> the reusable CMS component system</li>
-            <li><strong>Aligning</strong> brand, content, product, and engineering stakeholders</li>
-        <li><strong>Creating</strong> guidelines so teams could use the system after launch</li>
-      </ul>
-      <div className="mt-10">
-        <p className="type-body">
-          Because many departments owned different parts of the website, the design process needed constant alignment. I led recurring working sessions with brand and communications, product stakeholders, the external technical provider, and the internal technical team.
-        </p>
-        <p className="type-body mt-5">
-          Those sessions helped us test early design directions against real content. They also helped me identify where teams needed flexibility, where the system needed stronger rules, and where custom requests would create long-term maintenance problems.
+
+      <p className="type-body mt-7">
+        I mapped the full navigation tree and ran sessions with every area that owned pages, walking each team through the exact path a user had to follow to reach their content.
+      </p>
+      <div className="mt-10 rounded-[8px] bg-teal/10 p-6 md:p-7">
+        <p className="type-eyebrow-accent">The finding</p>
+        <p className="type-body mt-3">
+          The site had five levels of navigation. Anything sitting between the third and the fifth level took three or four menus to reach, drew almost no traffic, and in most cases the area that owned it did not know it was there.
         </p>
       </div>
-      <PortalRoleVenn />
+      <div className="type-body mt-8 space-y-5">
+        <p>
+          <strong>Some of the buried pages were disclosures the bank is legally required to surface from the first page.</strong> Nobody in the room knew they were missing.
+        </p>
+        <p>
+          We used the sessions to recategorize every page, move what had ended up in the wrong branch, and delete content that was expired or no longer relevant.
+        </p>
+      </div>
+      <CaseImage
+        src="/images/projects/portal/Case/nav.png"
+        alt="Workshop board mapping the navigation tree across five levels, with team comments and the questions that guided the session."
+        aspect="aspect-[1.45/1]"
+        fit="contain"
+      />
+
+      <h3 className="type-case-subtitle mt-16">
+        From nested menus to a mega menu
+      </h3>
+      <p className="type-body mt-7">
+        The old structure moved users through a chain: nav bar, menu page, submenu, destination. Every one of those steps was a new page load, and every one of them depended on guessing which label was hiding what they wanted.
+      </p>
+      <p className="type-body mt-5">
+        The mega menu keeps the categories people already knew and shows all of them at once. One click and the full range of products and services is on screen. Where people are comparing options, a product catalogue sits before the destination page.
+      </p>
+      {/* TODO: architecture before/after figure goes here. */}
+      <CaseVideo
+        src="/images/projects/portal/Case/MegamenuDemo-compressed.mp4"
+        label="the mega menu demo"
+        aspect="aspect-video"
+      />
+      <p className="type-case-display-title mt-14">
+        <span className="text-teal">Two clicks</span> now reach the page, instead of four menus and a reload at every level.
+      </p>
+
+      <h3 className="type-case-subtitle mt-16">
+        Then the pages themselves
+      </h3>
+      <p className="type-body mt-7">
+        The same review exposed the content. Pages were outdated walls of text, written in the language of the bank instead of the customer&apos;s. Routing people to a page they could not read would not have fixed anything.
+      </p>
+      <p className="type-body mt-5">
+        So we scored the product pages of other banks on order, visual design, content, options, navigation, and access. Three actionables came out of it.
+      </p>
+      <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="surface-paper rounded-[8px] p-5">
+          <p className="type-small-title">Speak the user&apos;s language</p>
+          <p className="type-body-small mt-2">No banking jargon. Customers should not have to translate a product in order to understand it.</p>
+        </div>
+        <div className="surface-paper rounded-[8px] p-5">
+          <p className="type-small-title">Repeat the same sections</p>
+          <p className="type-body-small mt-2">Learn where the requirements sit on one page and you know where they are on all of them.</p>
+        </div>
+        <div className="surface-paper rounded-[8px] p-5">
+          <p className="type-small-title">Design the content</p>
+          <p className="type-body-small mt-2">Banking information is dense, so layout and hierarchy do as much work as the words.</p>
+        </div>
+      </div>
+      <CaseImage
+        src="/images/projects/portal/Case/Benchmark.png"
+        alt="Benchmark board comparing menus, internal pages, and submenus across competing banks, with a scoring table."
+        aspect="aspect-[1.85/1]"
+        fit="contain"
+      />
+      <p className="type-body mt-10">
+        Those three actionables are what the component system had to deliver, and they are where the UI strategy started.
+      </p>
       </CaseCard>
     </div>
   );
@@ -1123,7 +1194,7 @@ function PortalDecisions() {
       <CaseSectionLabel>07. Key decisions and tradeoffs</CaseSectionLabel>
       <div className="mt-7 grid gap-4 md:grid-cols-2">
         {decisions.map(([title, body]) => (
-          <div key={title} className="surface-paper rounded-[8px] border border-teal p-5">
+          <div key={title} className="surface-paper rounded-[8px] p-5">
             <h3 className="type-case-subtitle">{title}</h3>
             <p className="type-body-small mt-4">{body}</p>
           </div>
@@ -1140,13 +1211,13 @@ function PortalChanged() {
       <CaseCard>
       <CaseSectionLabel>08. What changed</CaseSectionLabel>
       <div className="mt-7 grid gap-4 md:grid-cols-2">
-        <div className="surface-paper rounded-[8px] border border-teal p-5">
+        <div className="surface-paper rounded-[8px] p-5">
           <h3 className="type-case-subtitle">User side</h3>
           <p className="type-body mt-5">
             The website became easier to navigate because priority pages had clearer paths and page layouts became more consistent. Users could reach important information with fewer steps, and the overall experience felt less fragmented. <strong>After launch, bounce rate dropped by 12%.</strong>
           </p>
         </div>
-        <div className="surface-paper rounded-[8px] border border-teal p-5">
+        <div className="surface-paper rounded-[8px] p-5">
           <h3 className="type-case-subtitle">Business side</h3>
           <p className="type-body mt-5">
             The redesign reduced duplicated and outdated content, standardized product pages through reusable CMS components, and gave teams a clearer governance model for future publishing.
